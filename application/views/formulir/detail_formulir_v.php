@@ -1,11 +1,27 @@
 <!--Swiper slider css-->
 <link href="<?php echo base_url(); ?>assets/libs/swiper/swiper-bundle.min.css" rel="stylesheet" type="text/css" />
+<!--select2 css-->
+<link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css" rel="stylesheet" />
 
 <div class="row">
     <div class="col-lg-12">
         <div class="card">
-            <div class="card-header">
-                <h5 class="card-title mb-0">Detail Data Pelaku Usaha</h5>
+            <div class="card-header">                
+                <div class="float-start">
+                    <h5 class="card-title mb-0">Detail Data Pelaku Usaha</h5>
+                </div>
+                <div class="float-end">
+                    <?php if($detail['status'] == 1) { ?>                        
+                        <?php if($userdata['pos_name'] == 'KORWIL') { ?>
+                            <button type="button" class="btn btn-danger btn-sm" data-bs-toggle="modal" data-bs-target="#exampleModalgrid">
+                                <i class=" las la-check-circle"></i> Approve
+                            </button>
+                        <?php } ?>
+                        <a href="#" class="btn btn-sm btn-secondary">Belum Diapprove</a>
+                    <?php } else { ?>
+                        <a href="#" class="btn btn-sm btn-success">Sudah Diapprove</a>
+                    <?php } ?>
+                </div>
             </div>
             <div class="card-body">
                 <div class="row mb-3">
@@ -310,9 +326,51 @@
 </div>
 <!--end row-->
 
+<div class="modal fade" id="exampleModalgrid" tabindex="-1" aria-labelledby="exampleModalgridLabel" aria-modal="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalgridLabel">Approve <?php echo $detail['nama_pelaku_usaha'];?></h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <form action="<?php echo site_url('formulir/approval'); ?>" method="post">
+                    <div class="row g-3">
+                        <div class="col">
+                            <input type="hidden" name="id_form" value="<?php echo $detail["id"];?>">
+                            <div><hr/>
+                                <label class="form-label">Surveyor</label>
+                                <select name="surveyor" required>
+                                    <option value="">Pilih Surveyor</option>
+                                    <?php foreach($surveyor as $v) { ?>
+                                        <option value="<?php echo $v['id']; ?>"><?php echo $v['fullname']; ?></option>
+                                    <?php } ?>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="col-lg-12"><hr/>
+                            <div class="hstack gap-2 justify-content-end">
+                                <button type="button" class="btn btn-light" data-bs-dismiss="modal">Close</button>
+                                <button type="submit" onclick="return confirm('Apakah Anda yakin?');" class="btn btn-danger">Approve</button>
+                            </div>
+                        </div><!--end col-->
+                    </div><!--end row-->
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
 <!--Swiper slider js-->
 <script src="<?php echo base_url(); ?>assets/libs/swiper/swiper-bundle.min.js"></script>
+<!--select2 cdn-->
+<script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js"></script>
+
 <script>
+    $(document).ready(function () {
+        $(".select-single").select2();
+    })
+
     var swiper = new Swiper(".responsive-swiper", {
         loop: !0,
         slidesPerView: 1,

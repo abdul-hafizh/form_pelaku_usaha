@@ -55,13 +55,19 @@ class Formulir extends Telescoope_Controller {
 
         $data = array();
 
-        $position = $this->Administration_m->getPosition("ADMINISTRATOR");
+        $position = $this->Administration_m->getPosition("ENUM");
+        $srv = $this->Administration_m->getPosition("VIEWER");
 
         $data['list_formulir'] = $this->Formulir_m->getFormulir($this->data['userdata']['employee_id'])->result_array();
 
-        if($position){
+        if(!$position){
             
             $data['list_formulir'] = $this->Formulir_m->getFormulir()->result_array();
+        
+        }
+        if($srv){
+            
+            $data['list_formulir'] = $this->Formulir_m->getFormulirSrv($this->data['userdata']['employee_id'])->result_array();
         }
 
 
@@ -103,11 +109,13 @@ class Formulir extends Telescoope_Controller {
 
         $data = array();
 
-        $position = $this->Administration_m->getPosition("ADMINISTRATOR");
+        $position = $this->Administration_m->getPosition("ENUM");
 
         $data['detail'] = $this->Formulir_m->getDetail($id, $this->data['userdata']['employee_id'])->row_array();
 
-        if($position){
+        $data['surveyor'] = $this->Formulir_m->getSurveyor()->result_array();
+
+        if(!$position){
             
             $data['detail'] = $this->Formulir_m->getDetail($id)->row_array();
         }
@@ -256,6 +264,7 @@ class Formulir extends Telescoope_Controller {
             'desc_produk8' => $post['desc_produk8'],
             'desc_produk9' => $post['desc_produk9'],
             'desc_produk10' => $post['desc_produk10'],
+            'status' => 1,
             'tanggal_input' => date('Y-m-d H:i:s'),
             'user_id' => $this->data['userdata']['employee_id']
         );
@@ -440,6 +449,46 @@ class Formulir extends Telescoope_Controller {
             }            
 
             redirect(site_url('formulir/edit_data/' . $post['id_form']));
+        
+        } else {
+            $this->renderMessage("error");
+        }
+    }
+
+    public function approval(){
+
+        $post = $this->input->post(); 
+
+        $this->db->trans_begin();        
+
+        $data = array(            
+            'status' => 2,
+            'tanggal_approve' => date('Y-m-d H:i:s')
+        );
+
+        $this->db->where('id', $post['id_form']);
+        $simpan = $this->db->update('formulir', $data);
+
+        $data_srv = array(            
+            'id_formulir' => $post['id_form'],
+            'id_surveyor' => $post['surveyor'],
+            'tanggal_input' => date('Y-m-d H:i:s'),
+            'input_by' => $this->data['userdata']['employee_id']
+        );
+
+        $simpan_srv = $this->db->insert('formulir_surveyor', $data_srv);
+        
+        if($simpan && $simpan_srv){
+            
+            if ($this->db->trans_status() === FALSE)  {
+                $this->setMessage("Failed Approve data.");
+                $this->db->trans_rollback();
+            } else {
+                $this->setMessage("Success Approve data.");
+                $this->db->trans_commit();
+            }            
+
+            redirect(site_url('formulir/detail_data/' . $post['id_form']));
         
         } else {
             $this->renderMessage("error");

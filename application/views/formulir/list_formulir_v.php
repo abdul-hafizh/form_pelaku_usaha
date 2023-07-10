@@ -18,7 +18,7 @@
             <div class="card-body">
                 <table id="data-form" class="table table-bordered dt-responsive nowrap table-striped align-middle" style="width:100%">
                     <thead>
-                        <tr>                           
+                        <tr>
                             <th class='col-sm-1 text-center'>No</th>
                             <th>Pelaku Usaha</th>
                             <th>KBLI</th>
@@ -26,13 +26,14 @@
                             <th>Jenis Produk</th>
                             <th>Kabupaten</th>
                             <th>No Kontak / WA</th>
+                            <th>Status</th>
                             <th>Foto Produk</th>
                             <th>Action</th>
                         </tr>
                     </thead>
                     <tbody>
                         <?php $no=1; foreach($list_formulir as $v) { ?>
-                            <tr>                            
+                            <tr> 
                                 <td class='text-center'><?php echo $no++; ?></td>
                                 <td><?php echo $v['nama_pelaku_usaha']; ?></td>
                                 <td><?php echo $v['kbli']; ?></td>
@@ -40,6 +41,7 @@
                                 <td><?php echo $v['jenis_produk']; ?></td>
                                 <td><?php echo $v['kabupaten']; ?></td>
                                 <td><?php echo $v['no_telp']; ?></td>
+                                <td><?php echo $v['status'] == 2 ? '<span class="badge bg-success">Sudah Diapprove</span>' : '<span class="badge bg-danger">Belum Diapprove</span>'; ?></td>
                                 <td>
                                     <div class="avatar-group">
                                         <a href="<?php echo base_url('uploads/formulir/' . $v['foto_ktp']); ?>" target="_blank" class="avatar-group-item" data-img="<?php echo base_url('uploads/formulir/' . $v['foto_ktp']); ?>" data-bs-toggle="tooltip" data-bs-trigger="hover" data-bs-placement="top" title="Foto Ktp">
