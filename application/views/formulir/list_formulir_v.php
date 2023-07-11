@@ -47,12 +47,19 @@
                                         <a href="<?php echo base_url('uploads/formulir/' . $v['foto_ktp']); ?>" target="_blank" class="avatar-group-item" data-img="<?php echo base_url('uploads/formulir/' . $v['foto_ktp']); ?>" data-bs-toggle="tooltip" data-bs-trigger="hover" data-bs-placement="top" title="Foto Ktp">
                                             <img src="<?php echo base_url('uploads/formulir/' . $v['foto_ktp']); ?>" alt="" class="rounded-circle avatar-xxs">
                                         </a>                                    
-                                        <a href="<?php echo base_url('uploads/formulir/' . $v['foto_produk1']); ?>" target="_blank" class="avatar-group-item" data-img="<?php echo base_url('uploads/formulir/' . $v['foto_produk1']); ?>" data-bs-toggle="tooltip" data-bs-trigger="hover" data-bs-placement="top" title="Foto Produk">
+                                        <a href="<?php echo base_url('uploads/formulir/' . $v['foto_produk1']); ?>" target="_blank" class="avatar-group-item" data-img="<?php echo base_url('uploads/formulir/' . $v['foto_produk1']); ?>" data-bs-toggle="tooltip" data-bs-trigger="hover" data-bs-placement="top" title="Foto Produk 1">
                                             <img src="<?php echo base_url('uploads/formulir/' . $v['foto_produk1']); ?>" alt="" class="rounded-circle avatar-xxs">
                                         </a>                                                                            
-                                        <a href="<?php echo base_url('uploads/formulir/' . $v['foto_produk2']); ?>" target="_blank" class="avatar-group-item" data-img="<?php echo base_url('uploads/formulir/' . $v['foto_produk2']); ?>" data-bs-toggle="tooltip" data-bs-trigger="hover" data-bs-placement="top" title="Foto Produk">
-                                            <img src="<?php echo base_url('uploads/formulir/' . $v['foto_produk2']); ?>" alt="" class="rounded-circle avatar-xxs">
-                                        </a>                                                                            
+                                        <?php if(!empty($v['foto_produk2'])) { ?>
+                                            <a href="<?php echo base_url('uploads/formulir/' . $v['foto_produk2']); ?>" target="_blank" class="avatar-group-item" data-img="<?php echo base_url('uploads/formulir/' . $v['foto_produk2']); ?>" data-bs-toggle="tooltip" data-bs-trigger="hover" data-bs-placement="top" title="Foto Produk 2">
+                                                <img src="<?php echo base_url('uploads/formulir/' . $v['foto_produk2']); ?>" alt="" class="rounded-circle avatar-xxs">
+                                            </a>                                
+                                        <?php } ?>
+                                        <?php if(!empty($v['foto_produk3'])) { ?>
+                                            <a href="<?php echo base_url('uploads/formulir/' . $v['foto_produk3']); ?>" target="_blank" class="avatar-group-item" data-img="<?php echo base_url('uploads/formulir/' . $v['foto_produk3']); ?>" data-bs-toggle="tooltip" data-bs-trigger="hover" data-bs-placement="top" title="Foto Produk 3">
+                                                <img src="<?php echo base_url('uploads/formulir/' . $v['foto_produk3']); ?>" alt="" class="rounded-circle avatar-xxs">
+                                            </a>                                
+                                        <?php } ?>
                                     </div>
                                 </td>
                                 <td>

@@ -14,7 +14,7 @@
                             <label class="form-label">1. Nama Pelaku Usaha</label>
                         </div>
                         <div class="col-lg-9">
-                            <input type="text" class="form-control" name="nama_pelaku_usaha" placeholder="Nama Pelaku Usaha" >
+                            <input type="text" class="form-control" name="nama_pelaku_usaha" placeholder="Nama Pelaku Usaha" required>
                         </div>
                     </div>
                     <div class="row mb-3">
@@ -22,7 +22,7 @@
                             <label class="form-label">2. NIK</label>
                         </div>
                         <div class="col-lg-9">
-                            <input type="number" class="form-control" name="nik" placeholder="NIK" >
+                            <input type="number" class="form-control" name="nik" placeholder="NIK" required>
                         </div>
                     </div>
                     <div class="row mb-3">
@@ -30,7 +30,7 @@
                             <label class="form-label">3. Nomor Kontak/WA</label>
                         </div>
                         <div class="col-lg-9">
-                            <input type="text" class="form-control" name="no_telp" placeholder="Nomor Kontak/WA" >
+                            <input type="text" class="form-control" name="no_telp" placeholder="Nomor Kontak/WA" required>
                         </div>
                     </div>
                     <div class="row mb-3">
@@ -38,7 +38,7 @@
                             <label for="leaveemails" class="form-label">4. Email</label>
                         </div>
                         <div class="col-lg-9">
-                            <input type="email" class="form-control" name="email" placeholder="Enter your email" >
+                            <input type="email" class="form-control" name="email" placeholder="Enter your email" required>
                         </div>
                     </div>
                     <div class="row mb-3">
@@ -54,7 +54,7 @@
                             <label class="form-label">6. Nama/Merek Produk</label>
                         </div>
                         <div class="col-lg-9">
-                            <input type="text" class="form-control" name="nama_produk" placeholder="Nama/Merek Produk" >
+                            <input type="text" class="form-control" name="nama_produk" placeholder="Nama/Merek Produk" required>
                         </div>
                     </div>
                     <div class="row mb-3">
@@ -70,7 +70,7 @@
                             <label class="form-label">8. Jenis Produk <small class="text-muted">(sesuai KBLI)</small></label> 
                         </div>
                         <div class="col-lg-3">
-                            <input type="text" class="form-control" name="jenis_produk" placeholder="Nama/Merek Produk" >
+                            <input type="text" class="form-control" name="jenis_produk" placeholder="Nama/Merek Produk" required>
                         </div>
                         <div class="col-lg-3">
                             <input type="number" class="form-control" name="kbli" placeholder="KBLI" >
@@ -81,11 +81,16 @@
                             <label class="form-label">&nbsp;</label>
                         </div>
                         <div class="col-lg-3">
-                            <select class="select-single" name="kabupaten" >
-                                <option value="">Pilih Kabupaten</option>
-                                <?php foreach($kabupaten as $v) { ?>
-                                    <option value="<?php echo $v['regency_name']; ?>"><?php echo $v['regency_name']; ?></option>
+                            <select class="select-single" name="provinsi" id="provinsi">
+                                <option value="">Pilih Provinsi</option>
+                                <?php foreach($provinsi as $v) { ?>
+                                    <option value="<?php echo $v['province_name']; ?>"><?php echo $v['province_name']; ?></option>
                                 <?php } ?>
+                            </select>
+                        </div>
+                        <div class="col-lg-3">
+                            <select class="select-single" name="kabupaten" id="kabupaten" disabled>
+                                <option value="">Pilih Kabupaten</option>
                             </select>
                         </div>
                     </div>
@@ -94,7 +99,7 @@
                             <label class="form-label">9. Alamat Produksi</label>
                         </div>
                         <div class="col-lg-9">
-                            <textarea class="form-control" name="alamat_produksi" rows="3" placeholder="Alamat Produksi" ></textarea>
+                            <textarea class="form-control" name="alamat_produksi" rows="3" placeholder="Alamat Produksi" required></textarea>
                         </div>
                     </div>
                     <div class="row mb-3">
@@ -102,7 +107,7 @@
                             <label class="form-label">10. Alamat Outlet Penjualan</label>
                         </div>
                         <div class="col-lg-9">
-                            <textarea class="form-control" name="alamat_outlet" rows="3" placeholder="Alamat Produksi" ></textarea>
+                            <textarea class="form-control" name="alamat_outlet" rows="3" placeholder="Alamat Outlet" ></textarea>
                         </div>
                     </div>                    
                 </div>
@@ -202,5 +207,22 @@
 <script>    
     $(document).ready(function () {
         $(".select-single").select2();
+
+        $("#provinsi").on("change", function () {
+			let provinsi = $("#provinsi").val();
+			$.ajax({
+				url: "<?php echo site_url('formulir/get_regency');?>",
+				data: { provinsi: provinsi },
+				method: "post",
+				dataType: "json",
+				success: function (data) {
+					kabupaten = '<option value="">Pilih Kabupaten</option>';                    
+					$.each(data, function (i, item) {   
+						kabupaten += '<option value="' + item.regency_name +'">' + item.regency_name + "</option>";
+					});                    
+					$("#kabupaten").html(kabupaten).removeAttr("disabled");
+				},
+			});
+		});
     })
 </script>

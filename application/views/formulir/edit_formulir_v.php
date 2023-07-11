@@ -16,7 +16,7 @@
                             <label class="form-label">1. Nama Pelaku Usaha</label>
                         </div>
                         <div class="col-lg-9">
-                            <input type="text" class="form-control" name="nama_pelaku_usaha" placeholder="Nama Pelaku Usaha" value="<?php echo $detail['nama_pelaku_usaha']; ?>" >
+                            <input type="text" class="form-control" name="nama_pelaku_usaha" placeholder="Nama Pelaku Usaha" value="<?php echo $detail['nama_pelaku_usaha']; ?>" required>
                             <input type="hidden" name="id_form" value="<?php echo $detail['id']; ?>" >
                         </div>
                     </div>
@@ -25,7 +25,7 @@
                             <label class="form-label">2. NIK</label>
                         </div>
                         <div class="col-lg-9">
-                            <input type="text" class="form-control" name="nik" placeholder="NIK" value="<?php echo $detail['nik']; ?>" >
+                            <input type="text" class="form-control" name="nik" placeholder="NIK" value="<?php echo $detail['nik']; ?>" required>
                         </div>
                     </div>
                     <div class="row mb-3">
@@ -33,7 +33,7 @@
                             <label class="form-label">3. Nomor Kontak/WA</label>
                         </div>
                         <div class="col-lg-9">
-                            <input type="text" class="form-control" name="no_telp" placeholder="Nomor Kontak/WA" value="<?php echo $detail['no_telp']; ?>" >
+                            <input type="text" class="form-control" name="no_telp" placeholder="Nomor Kontak/WA" value="<?php echo $detail['no_telp']; ?>" required>
                         </div>
                     </div>
                     <div class="row mb-3">
@@ -41,7 +41,7 @@
                             <label for="leaveemails" class="form-label">4. Email</label>
                         </div>
                         <div class="col-lg-9">
-                            <input type="email" class="form-control" name="email" placeholder="Enter your email" value="<?php echo $detail['email']; ?>" >
+                            <input type="email" class="form-control" name="email" placeholder="Enter your email" value="<?php echo $detail['email']; ?>" required>
                         </div>
                     </div>
                     <div class="row mb-3">
@@ -57,7 +57,7 @@
                             <label class="form-label">6. Nama/Merek Produk</label>
                         </div>
                         <div class="col-lg-9">
-                            <input type="text" class="form-control" name="nama_produk" placeholder="Nama/Merek Produk" value="<?php echo $detail['nama_produk']; ?>" >
+                            <input type="text" class="form-control" name="nama_produk" placeholder="Nama/Merek Produk" value="<?php echo $detail['nama_produk']; ?>" required>
                         </div>
                     </div>
                     <div class="row mb-3">
@@ -73,7 +73,7 @@
                             <label class="form-label">8. Jenis Produk <small class="text-muted">(sesuai KBLI)</small></label> 
                         </div>
                         <div class="col-lg-3">
-                            <input type="text" class="form-control" name="jenis_produk" placeholder="Nama/Merek Produk" value="<?php echo $detail['jenis_produk']; ?>" >
+                            <input type="text" class="form-control" name="jenis_produk" placeholder="Nama/Merek Produk" value="<?php echo $detail['jenis_produk']; ?>" required>
                         </div>
                         <div class="col-lg-3">
                             <input type="text" class="form-control" name="kbli" placeholder="KBLI" value="<?php echo $detail['kbli']; ?>" >
@@ -84,9 +84,16 @@
                             <label class="form-label">&nbsp;</label>
                         </div>
                         <div class="col-lg-3">
-                            <select class="select-single" name="kabupaten" >
-                                <option>Pilih Kabupaten</option>
-                                <?php foreach($kabupaten as $v) { ?>
+                            <select class="select-single" name="provinsi" id="provinsi">
+                                <option value="">Pilih Provinsi</option>
+                                <?php foreach($provinsi as $v) { ?>
+                                    <option value="<?php echo $v['province_name']; ?>" <?php echo $detail['provinsi'] == $v['province_name'] ? 'selected' : '' ; ?>><?php echo $v['province_name']; ?></option>
+                                <?php } ?>
+                            </select>
+                        </div>
+                        <div class="col-lg-3">
+                            <select class="select-single" name="kabupaten" id="kabupaten" disabled>
+                            <?php foreach($kabupaten as $v) { ?>
                                     <option value="<?php echo $v['regency_name']; ?>" <?php echo $detail['kabupaten'] == $v['regency_name'] ? 'selected' : '' ; ?>><?php echo $v['regency_name']; ?></option>
                                 <?php } ?>
                             </select>
@@ -97,7 +104,7 @@
                             <label class="form-label">9. Alamat Produksi</label>
                         </div>
                         <div class="col-lg-9">
-                            <textarea class="form-control" name="alamat_produksi" rows="3" placeholder="Alamat Produksi" ><?php echo $detail['alamat_produksi']; ?></textarea>
+                            <textarea class="form-control" name="alamat_produksi" rows="3" placeholder="Alamat Produksi" required><?php echo $detail['alamat_produksi']; ?></textarea>
                         </div>
                     </div>
                     <div class="row mb-3">
@@ -107,7 +114,19 @@
                         <div class="col-lg-9">
                             <textarea class="form-control" name="alamat_outlet" rows="3" placeholder="Alamat Produksi" ><?php echo $detail['alamat_outlet']; ?></textarea>
                         </div>
-                    </div>                    
+                    </div>   
+                    <div class="row mb-3">
+                        <div class="col-lg-3">
+                            <label class="form-label">Foto KTP</label>
+                        </div>
+                        <div class="col-lg-3">
+                            <div class="d-inline-flex gap-2 border border-dashed p-2 mb-2 w-75">
+                                <a href="<?php echo base_url('uploads/formulir/' . $detail['foto_ktp']); ?>" target="_blank" class="bg-light rounded p-1">
+                                    <img src="<?php echo base_url('uploads/formulir/' . $detail['foto_ktp']); ?>" alt="" class="img-fluid d-block" />
+                                </a>
+                            </div>
+                        </div>
+                    </div>                  
                 </div>
             </div>
         </div>
@@ -117,28 +136,11 @@
         <div class="col-lg-12">
             <div class="card">
                 <div class="card-header">
-                    <h4 class="card-title mb-0">Foto KTP dan Produk</h4>
+                    <h4 class="card-title mb-0">Foto Produk</h4>
                 </div>
                 <div class="card-body">
                     <div class="swiper responsive-swiper rounded gallery-light pb-4">
                         <div class="swiper-wrapper">
-                            <div class="swiper-slide">
-                                <div class="gallery-box card">
-                                    <div class="gallery-container">
-                                        <a class="image-popup" href="<?php echo base_url('uploads/formulir/' . $detail['foto_ktp']); ?>" target="_blank" title="Foto KTP">
-                                            <img class="gallery-img img-fluid mx-auto" src="<?php echo base_url('uploads/formulir/' . $detail['foto_ktp']); ?>" alt="" />
-                                            <div class="gallery-overlay">
-                                                <h5 class="overlay-caption"><?php echo $detail['foto_ktp'];?></h5>
-                                            </div>
-                                        </a>
-                                    </div>
-                                    <div class="box-content">
-                                        <div class="d-flex align-items-center mt-1">
-                                            <div class="flex-grow-1 text-muted">at <a href="" class="text-body text-truncate"><?php echo $detail['tanggal_input'];?></a></div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
                             <div class="swiper-slide">
                                 <div class="gallery-box card">
                                     <div class="gallery-container">
@@ -426,5 +428,22 @@
 <script>    
     $(document).ready(function () {
         $(".select-single").select2();
+
+        $("#provinsi").on("change", function () {
+			let provinsi = $("#provinsi").val();
+			$.ajax({
+				url: "<?php echo site_url('formulir/get_regency');?>",
+				data: { provinsi: provinsi },
+				method: "post",
+				dataType: "json",
+				success: function (data) {
+					kabupaten = '<option value="">Pilih Kabupaten</option>';                    
+					$.each(data, function (i, item) {   
+						kabupaten += '<option value="' + item.regency_name +'">' + item.regency_name + "</option>";
+					});                    
+					$("#kabupaten").html(kabupaten).removeAttr("disabled");
+				},
+			});
+		});
     })
 </script>

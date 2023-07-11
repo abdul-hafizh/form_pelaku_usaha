@@ -85,6 +85,7 @@ class Formulir extends Telescoope_Controller {
         }
 
         $data['kabupaten'] = $this->Formulir_m->getKabupaten()->result_array();
+        $data['provinsi'] = $this->Formulir_m->getProvinsi()->result_array();
 
 		$this->template("formulir/add_formulir_v", "Tambah Data Pelaku Usaha", $data);
     }
@@ -101,6 +102,7 @@ class Formulir extends Telescoope_Controller {
 
         $data['detail'] = $this->Formulir_m->getDetail($id, $this->data['userdata']['employee_id'])->row_array();
         $data['kabupaten'] = $this->Formulir_m->getKabupaten()->result_array();
+        $data['provinsi'] = $this->Formulir_m->getProvinsi()->result_array();
 
 		$this->template("formulir/edit_formulir_v", "Edit Data Pelaku Usaha", $data);
     }
@@ -240,6 +242,7 @@ class Formulir extends Telescoope_Controller {
             'nama_produk' => $post['nama_produk'],
             'jenis_produk' => $post['jenis_produk'],
             'kbli' => $post['kbli'],
+            'provinsi' => $post['provinsi'],
             'kabupaten' => $post['kabupaten'],
             'alamat_produksi' => $post['alamat_produksi'],
             'alamat_outlet' => $post['alamat_outlet'],
@@ -407,10 +410,11 @@ class Formulir extends Telescoope_Controller {
             'nama_produk' => $post['nama_produk'],
             'jenis_produk' => $post['jenis_produk'],
             'kbli' => $post['kbli'],
+            'provinsi' => $post['provinsi'],
             'kabupaten' => $post['kabupaten'],
             'alamat_produksi' => $post['alamat_produksi'],
             'alamat_outlet' => $post['alamat_outlet'],
-            'foto_ktp' => isset($uploadKtp['file_name']) ? $uploadKtp['file_name'] : '',
+            'foto_ktp' => isset($uploadKtp['file_name']) ? $uploadKtp['file_name'] : $row_data['foto_ktp'],
             'foto_produk1' => isset($uploadProduk1['file_name']) ? $uploadProduk1['file_name'] : $row_data['foto_produk1'],
             'foto_produk2' => isset($uploadProduk2['file_name']) ? $uploadProduk2['file_name'] : $row_data['foto_produk2'],
             'foto_produk3' => isset($uploadProduk3['file_name']) ? $uploadProduk3['file_name'] : $row_data['foto_produk3'],
@@ -517,6 +521,13 @@ class Formulir extends Telescoope_Controller {
         } else {
             $this->renderMessage("error");
         }
+    }
+
+    public function get_regency()
+    {
+        $provinces = $this->input->post('provinsi', true);
+        $data = $this->db->get_where('adm_ref_locations', ['province_name' => $provinces, 'regency_name !=' => NULL, 'district_name' => NULL])->result_array();
+        echo json_encode($data);
     }
 
 }

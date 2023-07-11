@@ -96,6 +96,9 @@
                         <label class="form-label">&nbsp;</label>
                     </div>
                     <div class="col-lg-3">
+                        <h6><?php echo $detail['provinsi']; ?></h6>
+                    </div>
+                    <div class="col-lg-3">
                         <h6><?php echo $detail['kabupaten']; ?></h6>
                     </div>
                 </div>
@@ -115,214 +118,210 @@
                         <textarea class="form-control" name="alamat_outlet" rows="3" placeholder="Alamat Produksi" readonly ><?php echo $detail['alamat_outlet']; ?></textarea>
                     </div>
                 </div>                    
+                <div class="row mb-3">
+                    <div class="col-lg-3">
+                        <label class="form-label">Foto KTP</label>
+                    </div>
+                    <div class="col-lg-3">
+                        <div class="d-inline-flex gap-2 border border-dashed p-2 mb-2 w-75">
+                            <a href="<?php echo base_url('uploads/formulir/' . $detail['foto_ktp']); ?>" target="_blank" class="bg-light rounded p-1">
+                                <img src="<?php echo base_url('uploads/formulir/' . $detail['foto_ktp']); ?>" alt="" class="img-fluid d-block" />
+                            </a>
+                        </div>
+                    </div>
+                </div>                    
             </div>
         </div>
     </div>
 </div>
 
-<div class="col-lg-12">
-    <div class="card">
-        <div class="card-header">
-            <h4 class="card-title mb-0">Foto KTP dan Produk</h4>
-        </div>
-        <div class="card-body">
-            <div class="swiper responsive-swiper rounded gallery-light pb-4">
-                <div class="swiper-wrapper">
-                    <div class="swiper-slide">
-                        <div class="gallery-box card">
-                            <div class="gallery-container">
-                                <a class="image-popup" href="<?php echo base_url('uploads/formulir/' . $detail['foto_ktp']); ?>" target="_blank" title="Foto KTP">
-                                    <img class="gallery-img img-fluid mx-auto" src="<?php echo base_url('uploads/formulir/' . $detail['foto_ktp']); ?>" alt="" />
-                                    <div class="gallery-overlay">
-                                        <h5 class="overlay-caption"><?php echo $detail['foto_ktp'];?></h5>
-                                    </div>
-                                </a>
-                            </div>
-                            <div class="box-content">
-                                <div class="d-flex align-items-center mt-1">
-                                    <div class="flex-grow-1 text-muted">at <a href="" class="text-body text-truncate"><?php echo $detail['tanggal_input'];?></a></div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="swiper-slide">
-                        <div class="gallery-box card">
-                            <div class="gallery-container">
-                                <a class="image-popup" href="<?php echo base_url('uploads/formulir/' . $detail['foto_produk1']); ?>" target="_blank" title="Produk 1">
-                                    <img class="gallery-img img-fluid mx-auto" src="<?php echo base_url('uploads/formulir/' . $detail['foto_produk1']); ?>" alt="" />
-                                    <div class="gallery-overlay">
-                                        <h5 class="overlay-caption"><?php echo $detail['foto_produk1']; ?></h5>
-                                    </div>
-                                </a>
-                            </div>
-                            <div class="box-content">
-                                <div class="d-flex align-items-center mt-1">
-                                    <div class="flex-grow-1 text-muted"><?php echo $detail['desc_produk1']; ?></div>           
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="swiper-slide">
-                        <div class="gallery-box card">
-                            <div class="gallery-container">
-                                <a class="image-popup" href="<?php echo base_url('uploads/formulir/' . $detail['foto_produk2']); ?>" target="_blank" title="Produk 2">
-                                    <img class="gallery-img img-fluid mx-auto" src="<?php echo base_url('uploads/formulir/' . $detail['foto_produk2']); ?>" alt="" />
-                                    <div class="gallery-overlay">
-                                        <h5 class="overlay-caption"><?php echo $detail['foto_produk2']; ?></h5>
-                                    </div>
-                                </a>
-                            </div>
-                            <div class="box-content">
-                                <div class="d-flex align-items-center mt-1">
-                                    <div class="flex-grow-1 text-muted"><?php echo $detail['desc_produk2']; ?></div>           
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="swiper-slide">
-                        <div class="gallery-box card">
-                            <div class="gallery-container">
-                                <a class="image-popup" href="<?php echo base_url('uploads/formulir/' . $detail['foto_produk3']); ?>" target="_blank" title="Produk 3">
-                                    <img class="gallery-img img-fluid mx-auto" src="<?php echo base_url('uploads/formulir/' . $detail['foto_produk3']); ?>" alt="" />
-                                    <div class="gallery-overlay">
-                                        <h5 class="overlay-caption"><?php echo $detail['foto_produk3']; ?></h5>
-                                    </div>
-                                </a>
-                            </div>
-                            <div class="box-content">
-                                <div class="d-flex align-items-center mt-1">
-                                    <div class="flex-grow-1 text-muted"><?php echo $detail['desc_produk3']; ?></div>           
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="swiper-slide">
-                        <div class="gallery-box card">
-                            <div class="gallery-container">
-                                <a class="image-popup" href="<?php echo base_url('uploads/formulir/' . $detail['foto_produk4']); ?>" target="_blank" title="Produk 4">
-                                    <img class="gallery-img img-fluid mx-auto" src="<?php echo base_url('uploads/formulir/' . $detail['foto_produk4']); ?>" alt="" />
-                                    <div class="gallery-overlay">
-                                        <h5 class="overlay-caption"><?php echo $detail['foto_produk4']; ?></h5>
-                                    </div>
-                                </a>
-                            </div>
-                            <div class="box-content">
-                                <div class="d-flex align-items-center mt-1">
-                                    <div class="flex-grow-1 text-muted"><?php echo $detail['desc_produk4']; ?></div>           
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="swiper-slide">
-                        <div class="gallery-box card">
-                            <div class="gallery-container">
-                                <a class="image-popup" href="<?php echo base_url('uploads/formulir/' . $detail['foto_produk5']); ?>" target="_blank" title="Produk 5">
-                                    <img class="gallery-img img-fluid mx-auto" src="<?php echo base_url('uploads/formulir/' . $detail['foto_produk5']); ?>" alt="" />
-                                    <div class="gallery-overlay">
-                                        <h5 class="overlay-caption"><?php echo $detail['foto_produk5']; ?></h5>
-                                    </div>
-                                </a>
-                            </div>
-                            <div class="box-content">
-                                <div class="d-flex align-items-center mt-1">
-                                    <div class="flex-grow-1 text-muted"><?php echo $detail['desc_produk5']; ?></div>           
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="swiper-slide">
-                        <div class="gallery-box card">
-                            <div class="gallery-container">
-                                <a class="image-popup" href="<?php echo base_url('uploads/formulir/' . $detail['foto_produk6']); ?>" target="_blank" title="Produk 6">
-                                    <img class="gallery-img img-fluid mx-auto" src="<?php echo base_url('uploads/formulir/' . $detail['foto_produk6']); ?>" alt="" />
-                                    <div class="gallery-overlay">
-                                        <h5 class="overlay-caption"><?php echo $detail['foto_produk6']; ?></h5>
-                                    </div>
-                                </a>
-                            </div>
-                            <div class="box-content">
-                                <div class="d-flex align-items-center mt-1">
-                                    <div class="flex-grow-1 text-muted"><?php echo $detail['desc_produk6']; ?></div>           
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="swiper-slide">
-                        <div class="gallery-box card">
-                            <div class="gallery-container">
-                                <a class="image-popup" href="<?php echo base_url('uploads/formulir/' . $detail['foto_produk7']); ?>" target="_blank" title="Produk 7">
-                                    <img class="gallery-img img-fluid mx-auto" src="<?php echo base_url('uploads/formulir/' . $detail['foto_produk7']); ?>" alt="" />
-                                    <div class="gallery-overlay">
-                                        <h5 class="overlay-caption"><?php echo $detail['foto_produk7']; ?></h5>
-                                    </div>
-                                </a>
-                            </div>
-                            <div class="box-content">
-                                <div class="d-flex align-items-center mt-1">
-                                    <div class="flex-grow-1 text-muted"><?php echo $detail['desc_produk7']; ?></div>           
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="swiper-slide">
-                        <div class="gallery-box card">
-                            <div class="gallery-container">
-                                <a class="image-popup" href="<?php echo base_url('uploads/formulir/' . $detail['foto_produk8']); ?>" target="_blank" title="Produk 8">
-                                    <img class="gallery-img img-fluid mx-auto" src="<?php echo base_url('uploads/formulir/' . $detail['foto_produk8']); ?>" alt="" />
-                                    <div class="gallery-overlay">
-                                        <h5 class="overlay-caption"><?php echo $detail['foto_produk8']; ?></h5>
-                                    </div>
-                                </a>
-                            </div>
-                            <div class="box-content">
-                                <div class="d-flex align-items-center mt-1">
-                                    <div class="flex-grow-1 text-muted"><?php echo $detail['desc_produk8']; ?></div>           
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="swiper-slide">
-                        <div class="gallery-box card">
-                            <div class="gallery-container">
-                                <a class="image-popup" href="<?php echo base_url('uploads/formulir/' . $detail['foto_produk9']); ?>" target="_blank" title="Produk 9">
-                                    <img class="gallery-img img-fluid mx-auto" src="<?php echo base_url('uploads/formulir/' . $detail['foto_produk9']); ?>" alt="" />
-                                    <div class="gallery-overlay">
-                                        <h5 class="overlay-caption"><?php echo $detail['foto_produk9']; ?></h5>
-                                    </div>
-                                </a>
-                            </div>
-                            <div class="box-content">
-                                <div class="d-flex align-items-center mt-1">
-                                    <div class="flex-grow-1 text-muted"><?php echo $detail['desc_produk9']; ?></div>           
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="swiper-slide">
-                        <div class="gallery-box card">
-                            <div class="gallery-container">
-                                <a class="image-popup" href="<?php echo base_url('uploads/formulir/' . $detail['foto_produk10']); ?>" target="_blank" title="Produk 10">
-                                    <img class="gallery-img img-fluid mx-auto" src="<?php echo base_url('uploads/formulir/' . $detail['foto_produk10']); ?>" alt="" />
-                                    <div class="gallery-overlay">
-                                        <h5 class="overlay-caption"><?php echo $detail['foto_produk10']; ?></h5>
-                                    </div>
-                                </a>
-                            </div>
-                            <div class="box-content">
-                                <div class="d-flex align-items-center mt-1">
-                                    <div class="flex-grow-1 text-muted"><?php echo $detail['desc_produk10']; ?></div>           
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    
-                </div>
-                <div class="swiper-pagination swiper-pagination-dark"></div>
+<div class="row">
+    <div class="col-lg-12">
+        <div class="card">
+            <div class="card-header">
+                <h4 class="card-title mb-0">Foto Produk</h4>
             </div>
-        </div><!-- end card-body -->
-    </div><!-- end card -->
-</div>
-<!--end col-->
+            <div class="card-body">
+                <div class="swiper responsive-swiper rounded gallery-light pb-4">
+                    <div class="swiper-wrapper">                    
+                        <div class="swiper-slide">
+                            <div class="gallery-box card">
+                                <div class="gallery-container">
+                                    <a class="image-popup" href="<?php echo base_url('uploads/formulir/' . $detail['foto_produk1']); ?>" target="_blank" title="Produk 1">
+                                        <img class="gallery-img img-fluid mx-auto" src="<?php echo base_url('uploads/formulir/' . $detail['foto_produk1']); ?>" alt="" />
+                                        <div class="gallery-overlay">
+                                            <h5 class="overlay-caption"><?php echo $detail['foto_produk1']; ?></h5>
+                                        </div>
+                                    </a>
+                                </div>
+                                <div class="box-content">
+                                    <div class="d-flex align-items-center mt-1">
+                                        <div class="flex-grow-1 text-muted"><?php echo $detail['desc_produk1']; ?></div>           
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="swiper-slide">
+                            <div class="gallery-box card">
+                                <div class="gallery-container">
+                                    <a class="image-popup" href="<?php echo base_url('uploads/formulir/' . $detail['foto_produk2']); ?>" target="_blank" title="Produk 2">
+                                        <img class="gallery-img img-fluid mx-auto" src="<?php echo base_url('uploads/formulir/' . $detail['foto_produk2']); ?>" alt="" />
+                                        <div class="gallery-overlay">
+                                            <h5 class="overlay-caption"><?php echo $detail['foto_produk2']; ?></h5>
+                                        </div>
+                                    </a>
+                                </div>
+                                <div class="box-content">
+                                    <div class="d-flex align-items-center mt-1">
+                                        <div class="flex-grow-1 text-muted"><?php echo $detail['desc_produk2']; ?></div>           
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="swiper-slide">
+                            <div class="gallery-box card">
+                                <div class="gallery-container">
+                                    <a class="image-popup" href="<?php echo base_url('uploads/formulir/' . $detail['foto_produk3']); ?>" target="_blank" title="Produk 3">
+                                        <img class="gallery-img img-fluid mx-auto" src="<?php echo base_url('uploads/formulir/' . $detail['foto_produk3']); ?>" alt="" />
+                                        <div class="gallery-overlay">
+                                            <h5 class="overlay-caption"><?php echo $detail['foto_produk3']; ?></h5>
+                                        </div>
+                                    </a>
+                                </div>
+                                <div class="box-content">
+                                    <div class="d-flex align-items-center mt-1">
+                                        <div class="flex-grow-1 text-muted"><?php echo $detail['desc_produk3']; ?></div>           
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="swiper-slide">
+                            <div class="gallery-box card">
+                                <div class="gallery-container">
+                                    <a class="image-popup" href="<?php echo base_url('uploads/formulir/' . $detail['foto_produk4']); ?>" target="_blank" title="Produk 4">
+                                        <img class="gallery-img img-fluid mx-auto" src="<?php echo base_url('uploads/formulir/' . $detail['foto_produk4']); ?>" alt="" />
+                                        <div class="gallery-overlay">
+                                            <h5 class="overlay-caption"><?php echo $detail['foto_produk4']; ?></h5>
+                                        </div>
+                                    </a>
+                                </div>
+                                <div class="box-content">
+                                    <div class="d-flex align-items-center mt-1">
+                                        <div class="flex-grow-1 text-muted"><?php echo $detail['desc_produk4']; ?></div>           
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="swiper-slide">
+                            <div class="gallery-box card">
+                                <div class="gallery-container">
+                                    <a class="image-popup" href="<?php echo base_url('uploads/formulir/' . $detail['foto_produk5']); ?>" target="_blank" title="Produk 5">
+                                        <img class="gallery-img img-fluid mx-auto" src="<?php echo base_url('uploads/formulir/' . $detail['foto_produk5']); ?>" alt="" />
+                                        <div class="gallery-overlay">
+                                            <h5 class="overlay-caption"><?php echo $detail['foto_produk5']; ?></h5>
+                                        </div>
+                                    </a>
+                                </div>
+                                <div class="box-content">
+                                    <div class="d-flex align-items-center mt-1">
+                                        <div class="flex-grow-1 text-muted"><?php echo $detail['desc_produk5']; ?></div>           
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="swiper-slide">
+                            <div class="gallery-box card">
+                                <div class="gallery-container">
+                                    <a class="image-popup" href="<?php echo base_url('uploads/formulir/' . $detail['foto_produk6']); ?>" target="_blank" title="Produk 6">
+                                        <img class="gallery-img img-fluid mx-auto" src="<?php echo base_url('uploads/formulir/' . $detail['foto_produk6']); ?>" alt="" />
+                                        <div class="gallery-overlay">
+                                            <h5 class="overlay-caption"><?php echo $detail['foto_produk6']; ?></h5>
+                                        </div>
+                                    </a>
+                                </div>
+                                <div class="box-content">
+                                    <div class="d-flex align-items-center mt-1">
+                                        <div class="flex-grow-1 text-muted"><?php echo $detail['desc_produk6']; ?></div>           
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="swiper-slide">
+                            <div class="gallery-box card">
+                                <div class="gallery-container">
+                                    <a class="image-popup" href="<?php echo base_url('uploads/formulir/' . $detail['foto_produk7']); ?>" target="_blank" title="Produk 7">
+                                        <img class="gallery-img img-fluid mx-auto" src="<?php echo base_url('uploads/formulir/' . $detail['foto_produk7']); ?>" alt="" />
+                                        <div class="gallery-overlay">
+                                            <h5 class="overlay-caption"><?php echo $detail['foto_produk7']; ?></h5>
+                                        </div>
+                                    </a>
+                                </div>
+                                <div class="box-content">
+                                    <div class="d-flex align-items-center mt-1">
+                                        <div class="flex-grow-1 text-muted"><?php echo $detail['desc_produk7']; ?></div>           
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="swiper-slide">
+                            <div class="gallery-box card">
+                                <div class="gallery-container">
+                                    <a class="image-popup" href="<?php echo base_url('uploads/formulir/' . $detail['foto_produk8']); ?>" target="_blank" title="Produk 8">
+                                        <img class="gallery-img img-fluid mx-auto" src="<?php echo base_url('uploads/formulir/' . $detail['foto_produk8']); ?>" alt="" />
+                                        <div class="gallery-overlay">
+                                            <h5 class="overlay-caption"><?php echo $detail['foto_produk8']; ?></h5>
+                                        </div>
+                                    </a>
+                                </div>
+                                <div class="box-content">
+                                    <div class="d-flex align-items-center mt-1">
+                                        <div class="flex-grow-1 text-muted"><?php echo $detail['desc_produk8']; ?></div>           
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="swiper-slide">
+                            <div class="gallery-box card">
+                                <div class="gallery-container">
+                                    <a class="image-popup" href="<?php echo base_url('uploads/formulir/' . $detail['foto_produk9']); ?>" target="_blank" title="Produk 9">
+                                        <img class="gallery-img img-fluid mx-auto" src="<?php echo base_url('uploads/formulir/' . $detail['foto_produk9']); ?>" alt="" />
+                                        <div class="gallery-overlay">
+                                            <h5 class="overlay-caption"><?php echo $detail['foto_produk9']; ?></h5>
+                                        </div>
+                                    </a>
+                                </div>
+                                <div class="box-content">
+                                    <div class="d-flex align-items-center mt-1">
+                                        <div class="flex-grow-1 text-muted"><?php echo $detail['desc_produk9']; ?></div>           
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="swiper-slide">
+                            <div class="gallery-box card">
+                                <div class="gallery-container">
+                                    <a class="image-popup" href="<?php echo base_url('uploads/formulir/' . $detail['foto_produk10']); ?>" target="_blank" title="Produk 10">
+                                        <img class="gallery-img img-fluid mx-auto" src="<?php echo base_url('uploads/formulir/' . $detail['foto_produk10']); ?>" alt="" />
+                                        <div class="gallery-overlay">
+                                            <h5 class="overlay-caption"><?php echo $detail['foto_produk10']; ?></h5>
+                                        </div>
+                                    </a>
+                                </div>
+                                <div class="box-content">
+                                    <div class="d-flex align-items-center mt-1">
+                                        <div class="flex-grow-1 text-muted"><?php echo $detail['desc_produk10']; ?></div>           
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                    </div>
+                    <div class="swiper-pagination swiper-pagination-dark"></div>
+                </div>
+            </div><!-- end card-body -->
+        </div><!-- end card -->
+    </div>
+    <!--end col-->
 </div>
 <!--end row-->
 

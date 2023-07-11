@@ -45,11 +45,23 @@ class Formulir_m extends CI_Model {
 
 	}
 	
+	public function getProvinsi(){
+		
+		$this->db->where('level', 2);
+		$this->db->where('regency_name IS NULL', null, true);
+		$this->db->order_by('province_name', 'asc');
+
+		return $this->db->get('adm_ref_locations');
+
+	}
+
 	public function getKabupaten(){
 		
+		$this->db->where('level', 3);
+		$this->db->where('regency_name IS NOT NULL', null, false);
 		$this->db->order_by('regency_name', 'asc');
 
-		return $this->db->get('vw_kabupaten');
+		return $this->db->get('adm_ref_locations');
 
 	}
 

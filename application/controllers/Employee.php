@@ -11,7 +11,7 @@ class Employee extends Telescoope_Controller
     // Call the Model constructor
     parent::__construct();
 
-    $this->load->model(array("Administration_m"));
+    $this->load->model(array("Administration_m","Formulir_m"));
 
     $this->data['date_format'] = "h:i A | d M Y";
 
@@ -43,10 +43,11 @@ class Employee extends Telescoope_Controller
 
     $sess = $this->session->userdata(do_hash(SESSION_PREFIX));
 
-    $position = $this->Administration_m->getPosition("ADMINISTRATOR");
+    $position1 = $this->Administration_m->getPosition("ADMINISTRATOR");
+    $position2 = $this->Administration_m->getPosition("KORWIL");
 
-    if(!$position){
-        $this->noAccess("Hanya ADMINISTRATOR yang dapat mengubah data.");
+    if(!$position1 && !$position2){
+        $this->noAccess("Anda tidak memiliki hak akses untuk halaman ini.");
     }
 
     if(empty($sess)){
@@ -56,14 +57,16 @@ class Employee extends Telescoope_Controller
 
   public function index(){
       $data = array();
-      $data['get_employee'] = $this->Administration_m->employee_view()->result_array();
+      $data['get_employee'] = $this->Administration_m->employee_view()->result_array();      
       $this->template("employee/list_employee_v", "Employee", $data);
   }
 
   public function add(){
     $data = array();
     $data['get_employee_type'] = $this->Administration_m->get_employee_type()->result_array();
-    $data['get_pos'] = $this->Administration_m->getPos()->result_array();
+    $data['get_pos'] = $this->Administration_m->getPos()->result_array();    
+    $data['provinsi'] = $this->Formulir_m->getProvinsi()->result_array();
+    $data['pendamping'] = $this->Formulir_m->getSurveyor()->result_array();
     $this->template("employee/add_employee_v", "Add Employee", $data);
   }
 
@@ -72,6 +75,9 @@ class Employee extends Telescoope_Controller
     $data['get_employee_type'] = $this->Administration_m->get_employee_type()->result_array();
     $data['get_pos'] = $this->Administration_m->getPos()->result_array();
     $data['get_employee'] = $this->Administration_m->employee_view($id)->row_array();
+    $data['provinsi'] = $this->Formulir_m->getProvinsi()->result_array();
+    $data['kabupaten'] = $this->Formulir_m->getKabupaten()->result_array();
+    $data['pendamping'] = $this->Formulir_m->getSurveyor()->result_array();
     $this->template("employee/edit_employee_v", "Edit Employee", $data);
   }
   
@@ -84,8 +90,14 @@ class Employee extends Telescoope_Controller
 
     $inputEmp = array(    
       'fullname' => $post['fullname'],
+      'nik' => $post['nik'],
+      'provinsi' => $post['provinsi'],
+      'kabupaten' => $post['kabupaten'],
+      'alamat' => $post['alamat'],
       'email' => $post['email'],
+      'status' => $post['status'],
       'phone' => $post['phone'],
+      'pendamping_id' => $post['pendamping'],
       'adm_pos_id' => $post['employee_pos_id']
     );
     
@@ -124,8 +136,14 @@ class Employee extends Telescoope_Controller
 
     $updateEmp = array(
       'fullname' => $post['fullname'],
+      'nik' => $post['nik'],
+      'provinsi' => $post['provinsi'],
+      'kabupaten' => $post['kabupaten'],
+      'alamat' => $post['alamat'],
       'email' => $post['email'],
       'phone' => $post['phone'],
+      'status' => $post['status'],
+      'pendamping_id' => $post['pendamping'],
       'adm_pos_id' => $post['employee_pos_id']
     );
     
@@ -152,5 +170,12 @@ class Employee extends Telescoope_Controller
     } else {
         $this->renderMessage("error");
     }
+  }
+
+  public function get_regency()
+  {
+      $provinces = $this->input->post('provinsi', true);
+      $data = $this->db->get_where('adm_ref_locations', ['province_name' => $provinces, 'regency_name !=' => NULL, 'district_name' => NULL])->result_array();
+      echo json_encode($data);
   }
 }

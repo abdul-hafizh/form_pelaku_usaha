@@ -8,7 +8,7 @@ class Log extends Telescoope_Controller {
 
 		parent::__construct();
 
-		$this->load->model(array('Administration_m'));
+		$this->load->model(array('Administration_m','Formulir_m'));
 
 		$this->form_validation->set_error_delimiters('<span class="help-block">', '</span>');
 
@@ -25,9 +25,18 @@ class Log extends Telescoope_Controller {
 
 		$data = array();
 
+		$data['provinsi'] = $this->Formulir_m->getProvinsi()->result_array();
+    	$data['pendamping'] = $this->Formulir_m->getSurveyor()->result_array();
+
 		if(!empty($sess)){
 			
 			$user = $this->Administration_m->getLogin();
+
+			$position = $this->Administration_m->getPosition("ADMINISTRATOR");
+
+			if(!$position){
+				redirect(site_url('formulir'));
+			}
 
 			$data['controller_name'] = "log";
 
@@ -35,10 +44,97 @@ class Log extends Telescoope_Controller {
 			
 		} else {
 
-			$this->load->view("login_v");
+			$this->load->view("login_v", $data);
 
 		}			
 
+	}
+
+	public function submit_daftar(){
+		$post = $this->input->post(); 
+	
+		$posisi = $this->Administration_m->get_pos_id(3)->row_array();
+
+		$this->load->helper(array('form'));
+	
+		$this->db->trans_begin(); 
+
+		$this->form_validation->set_rules('nik', 'NIK', 'required|is_unique[adm_employee.nik]');
+		$this->form_validation->set_rules('phone', 'Phone', 'required|is_unique[adm_employee.phone]');
+
+		$password = $post['password_inp'];
+
+      	$check = $this->db->where("user_name", $post['user_name_inp'])->get("adm_user")->num_rows();
+
+		if ($this->form_validation->run() == FALSE) {
+			$this->db->trans_rollback();
+			$this->setMessage(validation_errors());
+			redirect(site_url());
+
+		} else {
+
+			if($check < 1){
+
+				$inputEmp = array(    
+					'fullname' => $post['fullname'],
+					'nik' => $post['nik'],
+					'provinsi' => $post['provinsi'],
+					'kabupaten' => $post['kabupaten'],
+					'alamat' => $post['alamat'],
+					'status' => 1,
+					'phone' => $post['phone'],
+					'pendamping_id' => $post['pendamping'],
+					'adm_pos_id' => 3
+				);
+			
+				$this->db->insert("adm_employee", $inputEmp); 
+			
+				$insert_id = $this->db->insert_id();
+			
+				$data_pos = array(
+					'employee_id' => $insert_id,
+					'pos_id' => 3,
+					'pos_name'=> $posisi['pos_name']
+				);
+			
+				$save = $this->db->insert('adm_employee_pos', $data_pos);
+	
+				$data_user = array(
+					'employeeid' => $insert_id,
+					'user_name' => $post['user_name_inp'],
+					'complete_name' => $post['fullname'],
+					'created_date' => date('Y-m-d H:i:s')
+				  );
+		
+				if(!empty($password)){
+					$data_user['password'] = strtoupper(do_hash($password,'sha1'));
+				}
+	
+				$insert_user = $this->db->insert('adm_user', $data_user);			
+			
+				if ($this->db->trans_status() === FALSE)  {
+					$this->setMessage("Gagal menambah data");					
+					$this->db->trans_rollback();
+				} else {
+					$this->setMessage("Sukses menambah data");
+					$this->db->trans_commit();
+				}					
+				
+				redirect(site_url());
+	
+			} else {
+				$this->setMessage("Username telah digunakan.");
+				$this->db->trans_rollback();
+				redirect(site_url());
+			}
+		}
+	}
+
+	public function get_regency()
+	{
+		$provinces = $this->input->post('provinsi', true);
+		$data = $this->db->get_where('adm_ref_locations', ['province_name' => $provinces, 'regency_name !=' => NULL, 'district_name' => NULL])->result_array();
+		echo json_encode($data);
 	}
 	
 	public function in(){
@@ -60,17 +156,19 @@ class Log extends Telescoope_Controller {
 
 			$data = $this->Administration_m->checkLogin($username,$password)->row_array();
 
+			$emp = $this->Administration_m->employee_view($data['employeeid'])->row_array();
+
 			if(!empty($data)){
-				if(empty($data['is_locked']) && empty($data['status'])){
+				if($emp['status'] == 2){
 					$first_pos = $this->db->where("employee_id",$data['employeeid'])->order_by('is_main_job','desc')->get("vw_adm_pos")->row()->pos_id;
 					$this->session->set_userdata(do_hash("ROLE"),$first_pos);
 					$this->session->set_userdata(do_hash(SESSION_PREFIX),$data['id']);
 				} else {
-					$this->setMessage("Sorry, your account is suspended","Error");
+					$this->setMessage("Maaf, akun Anda belum aktif.","Error");
 				}
 
 			} else {
-				$this->setMessage("Wrong username and password","Error");
+				$this->setMessage("Wrong username and password.","Error");
 			}
 
 			redirect(site_url('home'));

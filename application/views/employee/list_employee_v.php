@@ -34,6 +34,7 @@
                                     <th>Email</th>
                                     <th>Telepon</th>
                                     <th>Posisi</th>
+                                    <th>Status</th>
                                     <th>Action</th>
                                 </tr>
                             </thead>
@@ -45,6 +46,7 @@
                                         <td><?php echo $v['email'];?></td>
                                         <td><?php echo $v['phone'];?></td>
                                         <td><?php echo $v['pos_name'];?></td>
+                                        <td><?php echo $v['status'] == 2 ? '<span class="badge bg-success">Aktif</span>' : '<span class="badge bg-danger">Tidak Aktif</span>'; ?></td>
                                         <td>
                                             <div class="dropdown d-inline-block">
                                                 <button class="btn btn-soft-secondary btn-sm dropdown" type="button" data-bs-toggle="dropdown" aria-expanded="false">

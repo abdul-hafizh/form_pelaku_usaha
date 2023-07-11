@@ -93,6 +93,10 @@
                             <!-- end card body -->
                         </div>
                         <!-- end card -->
+                        
+                        <div class="mt-4 text-center">
+                            <p class="mb-0">Tidak memiliki akun ? <a href="#" class="fw-semibold text-primary text-decoration-underline" data-bs-toggle="modal" data-bs-target="#daftarModal"> Daftar </a> </p>
+                        </div>
 
                     </div>
                 </div>
@@ -119,21 +123,119 @@
         <!-- end Footer -->
     </div>
     <!-- end auth-page-wrapper -->
+    
+    <!-- jquery cdn-->
+    <script src="https://code.jquery.com/jquery-3.6.1.min.js" integrity="sha256-o88AwQnZB+VDvE9tvIXrMQaPlFFSUTR+nldQm1LuPXQ=" crossorigin="anonymous"></script>    
+    <!--select2 css-->
+    <link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css" rel="stylesheet" />
+    
+    <div id="daftarModal" class="modal fade" tabindex="-1" aria-hidden="true" style="display: none;">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content border-0 overflow-hidden">
+                <div class="modal-body p-5">
+                    <h5 class="mb-3">Daftar</h5> <hr/>
+                    <form action="<?php echo site_url('log/submit_daftar'); ?>" method="post">                        
+                        <div class="form-group row mb-2">
+                            <div class="col-md-12">
+                                <label class="label-control">Nama Lengkap</label>
+                                <input type="text" class="form-control col-lg-7" name="fullname" placeholder="Nama Lengkap" required>                                
+                            </div>
+                        </div>
+                        <div class="form-group row mb-2">
+                            <div class="col-md-12">
+                                <label class="label-control">NIK</label>
+                                <input type="number" class="form-control col-lg-7" name="nik" placeholder="NIK" required>                                
+                            </div>
+                        </div>
+                        <div class="form-group row mb-2">
+                            <div class="col-md-12">
+                                <label class="label-control">Phone</label>
+                                <input type="text" maxlength="25" class="form-control col-lg-7" name="phone" placeholder="08123....." onkeypress="return onlyNumber(event)" required>                                
+                            </div>
+                        </div>                        
+                        <div class="form-group row mb-2">
+                            <div class="col-md-12">
+                                <label class="label-control">Username</label>
+                                <input type="text" class="form-control col-lg-7" name="user_name_inp" placeholder="Username" required>                                
+                            </div>
+                        </div>
+                        <div class="form-group row mb-2">
+                            <div class="col-md-12">
+                                <label class="label-control">Password</label>
+                                <input type="password" class="form-control col-lg-7" name="password_inp" placeholder="Password" required>                                
+                            </div>
+                        </div>
+                        <div class="form-group row mb-2">
+                            <div class="col-md-12">
+                                <label class="label-control">Nama Pendamping</label>
+                                <select class="form-control" name="pendamping">
+                                    <option value="">Pilih Pendamping</option>
+                                    <?php foreach($pendamping as $v) { ?>
+                                        <option value="<?php echo $v['id']; ?>"><?php echo $v['fullname']; ?></option>
+                                    <?php } ?>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="form-group row mb-2">
+                            <div class="col-md-12">
+                                <label class="label-control">Provinsi</label>
+                                <select class="form-control" name="provinsi" id="provinsi" required>
+                                    <option value="">Pilih Provinsi</option>
+                                    <?php foreach($provinsi as $v) { ?>
+                                        <option value="<?php echo $v['province_name']; ?>"><?php echo $v['province_name']; ?></option>
+                                    <?php } ?>
+                                </select>
+                            </div>
+                        </div>                        
+                        <div class="form-group row mb-2">
+                            <div class="col-md-12">
+                                <label class="label-control">Kabupaten</label>
+                                <select class="form-control" name="kabupaten" id="kabupaten" disabled>
+                                    <option value="">Pilih Kabupaten</option>
+                                </select>
+                            </div>
+                        </div>                        
+                        <div class="form-group row last mb-3">
+                            <div class="col-md-12">
+                                <label class="label-control">Alamat</label>
+                                <textarea class="form-control" name="alamat" rows="3" placeholder="Alamat" required></textarea>
+                            </div>
+                        </div>  
+                        <button type="submit" class="btn btn-primary w-100" onclick="return confirm('Apakah Anda yakin?');">Submit</button>
+                    </form>
+                </div>
+            </div><!-- /.modal-content -->
+        </div><!-- /.modal-dialog -->
+    </div><!-- /.modal -->
 
     <!-- JAVASCRIPT -->
     <script src="<?php echo base_url();?>assets/libs/bootstrap/js/bootstrap.bundle.min.js"></script>
-    <script src="<?php echo base_url();?>assets/libs/simplebar/simplebar.min.js"></script>
-    <script src="<?php echo base_url();?>assets/libs/node-waves/waves.min.js"></script>
-    <script src="<?php echo base_url();?>assets/libs/feather-icons/feather.min.js"></script>
-    <script src="<?php echo base_url();?>assets/js/pages/plugins/lord-icon-2.1.0.js"></script>
-    <script src="<?php echo base_url();?>assets/js/plugins.js"></script>
+    <!--select2 cdn-->
+    <script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js"></script>
 
-    <!-- particles js -->
-    <script src="<?php echo base_url();?>assets/libs/particles.js/particles.js"></script>
-    <!-- particles app js -->
-    <script src="<?php echo base_url();?>assets/js/pages/particles.app.js"></script>
-    <!-- password-addon init -->
-    <script src="<?php echo base_url();?>assets/js/pages/password-addon.init.js"></script>
+    <script>    
+        $(document).ready(function () {
+            $(".select-single").select2();
+
+            $("#provinsi").on("change", function () {
+                let provinsi = $("#provinsi").val();
+                $.ajax({
+                    url: "<?php echo site_url('log/get_regency');?>",
+                    data: { provinsi: provinsi },
+                    method: "post",
+                    dataType: "json",
+                    success: function (data) {
+                        kabupaten = '<option value="">Pilih Kabupaten</option>';                    
+                        $.each(data, function (i, item) {   
+                            kabupaten += '<option value="' + item.regency_name +'">' + item.regency_name + "</option>";
+                        });                    
+                        $("#kabupaten").html(kabupaten).removeAttr("disabled");
+                    },
+                });
+            });
+        })
+        
+    </script>
 
 </body>
 </html>
