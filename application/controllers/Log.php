@@ -136,6 +136,13 @@ class Log extends Telescoope_Controller {
 		$data = $this->db->get_where('adm_ref_locations', ['province_name' => $provinces, 'regency_name !=' => NULL, 'district_name' => NULL])->result_array();
 		echo json_encode($data);
 	}
+
+	public function get_pendamping()
+	{
+		$provinces = $this->input->post('provinsi', true);
+		$data = $this->db->get_where('adm_employee', ['provinsi' => $provinces, 'adm_pos_id' => 4])->result_array();
+		echo json_encode($data);
+	}
 	
 	public function in(){
 

@@ -494,11 +494,23 @@ class Administration_m extends CI_Model {
 		return $this->db->get("vw_user_access");
 	}
 
-	public function employee_view($id = ""){
+	public function employee_view($id = "", $provinsi = "", $enum = ""){
 
 		if(!empty($id)){
 
 			$this->db->where("id",$id);
+
+		}
+
+		if(!empty($provinsi)){
+
+			$this->db->where("provinsi", $provinsi);
+
+		}
+
+		if(!empty($enum)){
+
+			$this->db->where("pos_name", $enum);
 
 		}
 

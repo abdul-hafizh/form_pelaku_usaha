@@ -45,8 +45,9 @@ class Employee extends Telescoope_Controller
 
     $position1 = $this->Administration_m->getPosition("ADMINISTRATOR");
     $position2 = $this->Administration_m->getPosition("KORWIL");
+    $position3 = $this->Administration_m->getPosition("VIEWER");
 
-    if(!$position1 && !$position2){
+    if(!$position1 && !$position2 && !$position3){
         $this->noAccess("Anda tidak memiliki hak akses untuk halaman ini.");
     }
 
@@ -57,7 +58,20 @@ class Employee extends Telescoope_Controller
 
   public function index(){
       $data = array();
+
+      $pos1 = $this->Administration_m->getPosition("KORWIL");
+      $pos2 = $this->Administration_m->getPosition("VIEWER");
+
       $data['get_employee'] = $this->Administration_m->employee_view()->result_array();      
+
+      if($pos1){        
+        $data['get_employee'] = $this->Administration_m->employee_view("", $this->data['userdata']['provinsi'])->result_array();      
+      }
+
+      if($pos2){        
+        $data['get_employee'] = $this->Administration_m->employee_view("", $this->data['userdata']['provinsi'], "ENUM")->result_array();      
+      }
+
       $this->template("employee/list_employee_v", "Employee", $data);
   }
 

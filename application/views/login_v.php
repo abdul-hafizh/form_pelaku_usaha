@@ -47,8 +47,8 @@
                             <div class="card-body p-4">
                                 <div class="text-center mt-2">
                                     <!-- <img class="mb-3" src="<?php echo base_url();?>assets/images/logo/logo-wege.png" alt="Logo" height="45"> -->
-                                    <h5 class="text-muted">Welcome Back !</h5>
-                                    <p class="text-muted">To Be Preferred Partner in Creating <br/> Space for Better Human's Life</p> <hr/>
+                                    <h5 class="text-muted">LOGIN</h5>
+                                    <p class="text-muted">Aplikasi Registrasi Petugas Pendamping <br/> Sertifikasi Produk Halal</p> <hr/>
                                 </div>
                                 <div class="p-2 mt-4">
                                     <form action="<?php echo site_url("log/in") ?>" method="post">
@@ -64,7 +64,7 @@
                                         <?php } $this->session->unset_userdata('message'); ?>
                                         <div class="mb-3">
                                             <label for="username" class="form-label">Username</label>
-                                            <input type="text" class="form-control" name="username_login" placeholder="Enter username">
+                                            <input type="text" class="form-control" name="username_login" placeholder="Enter username" required>
                                         </div>
 
                                         <div class="mb-5">
@@ -72,7 +72,7 @@
                                             </div>
                                             <label class="form-label" for="password-input">Password</label>
                                             <div class="position-relative auth-pass-inputgroup mb-3">
-                                                <input type="password" class="form-control pe-5" placeholder="Enter password" name="password_login">
+                                                <input type="password" class="form-control pe-5" placeholder="Enter password" name="password_login" required>
                                                 <button class="btn btn-link position-absolute end-0 top-0 text-decoration-none text-muted" type="button" id="password-addon"><i class="ri-eye-fill align-middle"></i></button>
                                             </div>
                                         </div>
@@ -83,7 +83,7 @@
 
                                         <div class="mt-4 text-center">
                                             <div class="signin-other-title">
-                                                <h5 class="fs-13 mb-4 title">Sistem Pencatatan Pelaku Usaha ver 1.0</h5>
+                                                <h5 class="fs-13 mb-4 title">ver 1.0</h5>
                                             </div>
                                         </div>
 
@@ -164,18 +164,7 @@
                                 <label class="label-control">Password</label>
                                 <input type="password" class="form-control col-lg-7" name="password_inp" placeholder="Password" required>                                
                             </div>
-                        </div>
-                        <div class="form-group row mb-2">
-                            <div class="col-md-12">
-                                <label class="label-control">Nama Pendamping</label>
-                                <select class="form-control" name="pendamping">
-                                    <option value="">Pilih Pendamping</option>
-                                    <?php foreach($pendamping as $v) { ?>
-                                        <option value="<?php echo $v['id']; ?>"><?php echo $v['fullname']; ?></option>
-                                    <?php } ?>
-                                </select>
-                            </div>
-                        </div>
+                        </div>                        
                         <div class="form-group row mb-2">
                             <div class="col-md-12">
                                 <label class="label-control">Provinsi</label>
@@ -195,12 +184,20 @@
                                 </select>
                             </div>
                         </div>                        
-                        <div class="form-group row last mb-3">
+                        <div class="form-group row mb-2">
                             <div class="col-md-12">
                                 <label class="label-control">Alamat</label>
                                 <textarea class="form-control" name="alamat" rows="3" placeholder="Alamat" required></textarea>
                             </div>
                         </div>  
+                        <div class="form-group row last mb-3">
+                            <div class="col-md-12">
+                                <label class="label-control">Nama Pendamping</label>
+                                <select class="form-control" name="pendamping" id="pendamping" required disabled>
+                                    <option value="">Pilih Pendamping</option>
+                                </select>
+                            </div>
+                        </div>
                         <button type="submit" class="btn btn-primary w-100" onclick="return confirm('Apakah Anda yakin?');">Submit</button>
                     </form>
                 </div>
@@ -230,6 +227,20 @@
                             kabupaten += '<option value="' + item.regency_name +'">' + item.regency_name + "</option>";
                         });                    
                         $("#kabupaten").html(kabupaten).removeAttr("disabled");
+                    },
+                });
+
+                $.ajax({
+                    url: "<?php echo site_url('log/get_pendamping');?>",
+                    data: { provinsi: provinsi },
+                    method: "post",
+                    dataType: "json",
+                    success: function (data) {
+                        pendamping = '<option value="">Pilih Pendamping</option>';                    
+                        $.each(data, function (i, item) {   
+                            pendamping += '<option value="' + item.id +'">' + item.fullname + "</option>";
+                        });                    
+                        $("#pendamping").html(pendamping).removeAttr("disabled");
                     },
                 });
             });
