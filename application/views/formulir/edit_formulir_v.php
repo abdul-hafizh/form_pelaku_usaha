@@ -22,10 +22,25 @@
                     </div>
                     <div class="row mb-3">
                         <div class="col-lg-3">
+                            &nbsp;
+                        </div>
+                        <div class="col-lg-3">
+                            <input type="text" class="form-control" name="nik" placeholder="NIK" value="<?php echo $detail['nik']; ?>" required>
+                        </div>
+                        <div class="col-lg-3">
+                            <input type="file" class="form-control" name="foto_ktp">
+                        </div>
+                    </div>
+                    <div class="row mb-3">
+                        <div class="col-lg-3">
                             <label class="form-label">2. NIK</label>
                         </div>
-                        <div class="col-lg-9">
-                            <input type="text" class="form-control" name="nik" placeholder="NIK" value="<?php echo $detail['nik']; ?>" required>
+                        <div class="col-lg-2">
+                            <div class="d-inline-flex gap-2 border border-dashed p-2 mb-2 w-75">
+                                <a href="<?php echo base_url('uploads/formulir/' . $detail['foto_ktp']); ?>" target="_blank" class="bg-light rounded p-1">
+                                    <img src="<?php echo base_url('uploads/formulir/' . $detail['foto_ktp']); ?>" alt="" class="img-fluid d-block" />
+                                </a>
+                            </div>
                         </div>
                     </div>
                     <div class="row mb-3">
@@ -46,7 +61,7 @@
                     </div>
                     <div class="row mb-3">
                         <div class="col-lg-3">
-                            <label class="form-label">5. NPWP Jika Ada</label>
+                            <label class="form-label">5. NPWP <small class="text-muted">Jika ada</small></label>
                         </div>
                         <div class="col-lg-9">
                             <input type="number" class="form-control" name="no_npwp" placeholder="NPWP Jika Ada" value="<?php echo $detail['no_npwp']; ?>" >
@@ -54,15 +69,7 @@
                     </div>
                     <div class="row mb-3">
                         <div class="col-lg-3">
-                            <label class="form-label">6. Nama/Merek Produk</label>
-                        </div>
-                        <div class="col-lg-9">
-                            <input type="text" class="form-control" name="nama_produk" placeholder="Nama/Merek Produk" value="<?php echo $detail['nama_produk']; ?>" required>
-                        </div>
-                    </div>
-                    <div class="row mb-3">
-                        <div class="col-lg-3">
-                            <label class="form-label">7. NIB Jika Ada</label>
+                            <label class="form-label">6. NIB <small class="text-muted">Jika ada</small></label>
                         </div>
                         <div class="col-lg-9">
                             <input type="number" class="form-control" name="no_nib" placeholder="NIB Jika Ada" value="<?php echo $detail['no_nib']; ?>" >
@@ -70,13 +77,22 @@
                     </div>
                     <div class="row mb-3">
                         <div class="col-lg-3">
-                            <label class="form-label">8. Jenis Produk <small class="text-muted">(sesuai KBLI)</small></label> 
+                            <label class="form-label">7. Jenis Produk <small class="text-muted">(sesuai KBLI)</small></label> 
                         </div>
                         <div class="col-lg-3">
-                            <input type="text" class="form-control" name="jenis_produk" placeholder="Nama/Merek Produk" value="<?php echo $detail['jenis_produk']; ?>" required>
+                            <input type="text" class="form-control" name="jenis_produk" placeholder="Jenis Produk" value="<?php echo $detail['jenis_produk']; ?>" required>
                         </div>
                         <div class="col-lg-3">
                             <input type="text" class="form-control" name="kbli" placeholder="KBLI" value="<?php echo $detail['kbli']; ?>" >
+                        </div>
+                    </div> 
+                    
+                    <div class="row mb-3">
+                        <div class="col-lg-3">
+                            <label class="form-label">8. Merek Produk</label>
+                        </div>
+                        <div class="col-lg-9">
+                            <input type="text" class="form-control" name="nama_produk" placeholder="Merek Produk" value="<?php echo $detail['nama_produk']; ?>" required>
                         </div>
                     </div> <hr/>
                     <div class="row mb-3">
@@ -114,280 +130,368 @@
                         <div class="col-lg-9">
                             <textarea class="form-control" name="alamat_outlet" rows="3" placeholder="Alamat Produksi" ><?php echo $detail['alamat_outlet']; ?></textarea>
                         </div>
-                    </div>   
-                    <div class="row mb-3">
+                    </div>                 
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <div class="row mt-2">
+        <div class="col-lg-12">
+            <div class="card">
+                <div class="card-header">
+                    <div class="form-floating">
+                        <input type="text" class="form-control" name="produk1_inp" value="<?php echo $detail['produk_1']; ?>" readonly>
+                        <label class="form-label">11. Nama Produk 1</label>
+                    </div>
+                </div>
+                <div class="card-body">
+                    <div class="row mb-3">  
                         <div class="col-lg-3">
-                            <label class="form-label">Foto KTP</label>
-                        </div>
-                        <div class="col-lg-3">
-                            <div class="d-inline-flex gap-2 border border-dashed p-2 mb-2 w-75">
-                                <a href="<?php echo base_url('uploads/formulir/' . $detail['foto_ktp']); ?>" target="_blank" class="bg-light rounded p-1">
-                                    <img src="<?php echo base_url('uploads/formulir/' . $detail['foto_ktp']); ?>" alt="" class="img-fluid d-block" />
+                            <label class="form-label">Varian 1</label>
+                            <div class="border border-dashed w-50">
+                                <a href="<?php echo base_url('uploads/formulir/' . $detail['foto_produk1']); ?>" target="_blank" class="bg-light rounded p-1">
+                                    <img src="<?php echo base_url('uploads/formulir/' . $detail['foto_produk1']); ?>" alt="" class="img-fluid d-block" />
                                 </a>
                             </div>
+                            <input type="file" class="form-control" name="foto_produk1">
+                            <input type="text" class="form-control mt-2" name="desc_produk1" placeholder="Keterangan Varian 1" value="<?php echo $detail['desc_produk1']?>">
                         </div>
-                    </div>                  
+                        <div class="col-lg-3">
+                            <label class="form-label">Varian 2</label>
+                            <div class="border border-dashed w-50">
+                                <a href="<?php echo base_url('uploads/formulir/' . $detail['foto_produk2']); ?>" target="_blank" class="bg-light rounded p-1">
+                                    <img src="<?php echo base_url('uploads/formulir/' . $detail['foto_produk2']); ?>" alt="" class="img-fluid d-block" />
+                                </a>
+                            </div>
+                            <input type="file" class="form-control" name="foto_produk2">
+                            <input type="text" class="form-control mt-2" name="desc_produk2" placeholder="Keterangan Varian 2" value="<?php echo $detail['desc_produk2']?>">
+                        </div>                    
+                        <div class="col-lg-3">
+                            <label class="form-label">Varian 3</label>
+                            <div class="border border-dashed w-50">
+                                <a href="<?php echo base_url('uploads/formulir/' . $detail['foto_produk3']); ?>" target="_blank" class="bg-light rounded p-1">
+                                    <img src="<?php echo base_url('uploads/formulir/' . $detail['foto_produk3']); ?>" alt="" class="img-fluid d-block" />
+                                </a>
+                            </div>
+                            <input type="file" class="form-control" name="foto_produk3">
+                            <input type="text" class="form-control mt-2" name="desc_produk3" placeholder="Keterangan Varian 3" value="<?php echo $detail['desc_produk3']?>">
+                        </div>                                        
+                        <div class="col-lg-3">
+                            <label class="form-label">Varian 4</label>
+                            <div class="border border-dashed w-50">
+                                <a href="<?php echo base_url('uploads/formulir/' . $detail['foto_produk4']); ?>" target="_blank" class="bg-light rounded p-1">
+                                    <img src="<?php echo base_url('uploads/formulir/' . $detail['foto_produk4']); ?>" alt="" class="img-fluid d-block" />
+                                </a>
+                            </div>
+                            <input type="file" class="form-control" name="foto_produk4">
+                            <input type="text" class="form-control mt-2" name="desc_produk4" placeholder="Keterangan Varian 4" value="<?php echo $detail['desc_produk4']?>">
+                        </div>                                                            
+                    </div>
+                    <div class="row mb-3">
+                        <div class="col-lg-3">
+                            <label class="form-label">Varian 5</label>
+                            <div class="border border-dashed w-50">
+                                <a href="<?php echo base_url('uploads/formulir/' . $detail['foto_produk5']); ?>" target="_blank" class="bg-light rounded p-1">
+                                    <img src="<?php echo base_url('uploads/formulir/' . $detail['foto_produk5']); ?>" alt="" class="img-fluid d-block" />
+                                </a>
+                            </div>
+                            <input type="file" class="form-control" name="foto_produk5">
+                            <input type="text" class="form-control mt-2" name="desc_produk5" placeholder="Keterangan Varian 5" value="<?php echo $detail['desc_produk5']?>">
+                        </div>
+                        <div class="col-lg-3">
+                            <label class="form-label">Varian 6</label>
+                            <div class="border border-dashed w-50">
+                                <a href="<?php echo base_url('uploads/formulir/' . $detail['foto_produk6']); ?>" target="_blank" class="bg-light rounded p-1">
+                                    <img src="<?php echo base_url('uploads/formulir/' . $detail['foto_produk6']); ?>" alt="" class="img-fluid d-block" />
+                                </a>
+                            </div>
+                            <input type="file" class="form-control" name="foto_produk6">
+                            <input type="text" class="form-control mt-2" name="desc_produk6" placeholder="Keterangan Varian 6" value="<?php echo $detail['desc_produk6']?>">
+                        </div>
+                        <div class="col-lg-3">
+                            <label class="form-label">Varian 7</label>
+                            <div class="border border-dashed w-50">
+                                <a href="<?php echo base_url('uploads/formulir/' . $detail['foto_produk7']); ?>" target="_blank" class="bg-light rounded p-1">
+                                    <img src="<?php echo base_url('uploads/formulir/' . $detail['foto_produk7']); ?>" alt="" class="img-fluid d-block" />
+                                </a>
+                            </div>
+                            <input type="file" class="form-control" name="foto_produk7">
+                            <input type="text" class="form-control mt-2" name="desc_produk7" placeholder="Keterangan Varian 7" value="<?php echo $detail['desc_produk7']?>">
+                        </div>                        
+                        <div class="col-lg-3">
+                            <label class="form-label">Varian 8</label>
+                            <div class="border border-dashed w-50">
+                                <a href="<?php echo base_url('uploads/formulir/' . $detail['foto_produk8']); ?>" target="_blank" class="bg-light rounded p-1">
+                                    <img src="<?php echo base_url('uploads/formulir/' . $detail['foto_produk8']); ?>" alt="" class="img-fluid d-block" />
+                                </a>
+                            </div>
+                            <input type="file" class="form-control" name="foto_produk8">
+                            <input type="text" class="form-control mt-2" name="desc_produk8" placeholder="Keterangan Varian 8" value="<?php echo $detail['desc_produk8']?>">
+                        </div>
+                    </div>
+                    <div class="row mb-3">
+                        <div class="col-lg-3">
+                            <label class="form-label">Varian 9</label>
+                            <div class="border border-dashed w-50">
+                                <a href="<?php echo base_url('uploads/formulir/' . $detail['foto_produk9']); ?>" target="_blank" class="bg-light rounded p-1">
+                                    <img src="<?php echo base_url('uploads/formulir/' . $detail['foto_produk9']); ?>" alt="" class="img-fluid d-block" />
+                                </a>
+                            </div>
+                            <input type="file" class="form-control" name="foto_produk9">
+                            <input type="text" class="form-control mt-2" name="desc_produk9" placeholder="Keterangan Varian 9" value="<?php echo $detail['desc_produk9']?>">
+                        </div>
+                        <div class="col-lg-3">
+                            <label class="form-label">Varian 10</label>
+                            <div class="border border-dashed w-50">
+                                <a href="<?php echo base_url('uploads/formulir/' . $detail['foto_produk10']); ?>" target="_blank" class="bg-light rounded p-1">
+                                    <img src="<?php echo base_url('uploads/formulir/' . $detail['foto_produk10']); ?>" alt="" class="img-fluid d-block" />
+                                </a>
+                            </div>
+                            <input type="file" class="form-control" name="foto_produk10">
+                            <input type="text" class="form-control mt-2" name="desc_produk10" placeholder="Keterangan Varian 10" value="<?php echo $detail['desc_produk10']?>">
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
     </div>
 
-    <div class="row">
+    <div class="row mt-2">
         <div class="col-lg-12">
             <div class="card">
                 <div class="card-header">
-                    <h4 class="card-title mb-0">Foto Produk</h4>
+                    <div class="form-floating">
+                        <input type="text" class="form-control" name="produk2_inp" value="<?php echo $detail['produk_2']; ?>" readonly>
+                        <label class="form-label">12. Nama Produk 2</label>
+                    </div>
                 </div>
                 <div class="card-body">
-                    <div class="swiper responsive-swiper rounded gallery-light pb-4">
-                        <div class="swiper-wrapper">
-                            <div class="swiper-slide">
-                                <div class="gallery-box card">
-                                    <div class="gallery-container">
-                                        <a class="image-popup" href="<?php echo base_url('uploads/formulir/' . $detail['foto_produk1']); ?>" target="_blank" title="Produk 1">
-                                            <img class="gallery-img img-fluid mx-auto" src="<?php echo base_url('uploads/formulir/' . $detail['foto_produk1']); ?>" alt="" />
-                                            <div class="gallery-overlay">
-                                                <h5 class="overlay-caption"><?php echo $detail['foto_produk1']; ?></h5>
-                                            </div>
-                                        </a>
-                                    </div>
-                                    <div class="box-content">
-                                        <div class="d-flex align-items-center mt-1">
-                                            <div class="flex-grow-1 text-muted"><?php echo $detail['desc_produk1']; ?></div>           
-                                        </div>
-                                    </div>
-                                </div>
+                    <div class="row mb-3">  
+                        <div class="col-lg-3">
+                            <label class="form-label">Varian 1</label>
+                            <div class="border border-dashed w-50">
+                                <a href="<?php echo base_url('uploads/formulir/' . $detail['foto_produk1_2']); ?>" target="_blank" class="bg-light rounded p-1">
+                                    <img src="<?php echo base_url('uploads/formulir/' . $detail['foto_produk1_2']); ?>" alt="" class="img-fluid d-block" />
+                                </a>
                             </div>
-                            <div class="swiper-slide">
-                                <div class="gallery-box card">
-                                    <div class="gallery-container">
-                                        <a class="image-popup" href="<?php echo base_url('uploads/formulir/' . $detail['foto_produk2']); ?>" target="_blank" title="Produk 2">
-                                            <img class="gallery-img img-fluid mx-auto" src="<?php echo base_url('uploads/formulir/' . $detail['foto_produk2']); ?>" alt="" />
-                                            <div class="gallery-overlay">
-                                                <h5 class="overlay-caption"><?php echo $detail['foto_produk2']; ?></h5>
-                                            </div>
-                                        </a>
-                                    </div>
-                                    <div class="box-content">
-                                        <div class="d-flex align-items-center mt-1">
-                                            <div class="flex-grow-1 text-muted"><?php echo $detail['desc_produk2']; ?></div>           
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="swiper-slide">
-                                <div class="gallery-box card">
-                                    <div class="gallery-container">
-                                        <a class="image-popup" href="<?php echo base_url('uploads/formulir/' . $detail['foto_produk3']); ?>" target="_blank" title="Produk 3">
-                                            <img class="gallery-img img-fluid mx-auto" src="<?php echo base_url('uploads/formulir/' . $detail['foto_produk3']); ?>" alt="" />
-                                            <div class="gallery-overlay">
-                                                <h5 class="overlay-caption"><?php echo $detail['foto_produk3']; ?></h5>
-                                            </div>
-                                        </a>
-                                    </div>
-                                    <div class="box-content">
-                                        <div class="d-flex align-items-center mt-1">
-                                            <div class="flex-grow-1 text-muted"><?php echo $detail['desc_produk3']; ?></div>           
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="swiper-slide">
-                                <div class="gallery-box card">
-                                    <div class="gallery-container">
-                                        <a class="image-popup" href="<?php echo base_url('uploads/formulir/' . $detail['foto_produk4']); ?>" target="_blank" title="Produk 4">
-                                            <img class="gallery-img img-fluid mx-auto" src="<?php echo base_url('uploads/formulir/' . $detail['foto_produk4']); ?>" alt="" />
-                                            <div class="gallery-overlay">
-                                                <h5 class="overlay-caption"><?php echo $detail['foto_produk4']; ?></h5>
-                                            </div>
-                                        </a>
-                                    </div>
-                                    <div class="box-content">
-                                        <div class="d-flex align-items-center mt-1">
-                                            <div class="flex-grow-1 text-muted"><?php echo $detail['desc_produk4']; ?></div>           
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="swiper-slide">
-                                <div class="gallery-box card">
-                                    <div class="gallery-container">
-                                        <a class="image-popup" href="<?php echo base_url('uploads/formulir/' . $detail['foto_produk5']); ?>" target="_blank" title="Produk 5">
-                                            <img class="gallery-img img-fluid mx-auto" src="<?php echo base_url('uploads/formulir/' . $detail['foto_produk5']); ?>" alt="" />
-                                            <div class="gallery-overlay">
-                                                <h5 class="overlay-caption"><?php echo $detail['foto_produk5']; ?></h5>
-                                            </div>
-                                        </a>
-                                    </div>
-                                    <div class="box-content">
-                                        <div class="d-flex align-items-center mt-1">
-                                            <div class="flex-grow-1 text-muted"><?php echo $detail['desc_produk5']; ?></div>           
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="swiper-slide">
-                                <div class="gallery-box card">
-                                    <div class="gallery-container">
-                                        <a class="image-popup" href="<?php echo base_url('uploads/formulir/' . $detail['foto_produk6']); ?>" target="_blank" title="Produk 6">
-                                            <img class="gallery-img img-fluid mx-auto" src="<?php echo base_url('uploads/formulir/' . $detail['foto_produk6']); ?>" alt="" />
-                                            <div class="gallery-overlay">
-                                                <h5 class="overlay-caption"><?php echo $detail['foto_produk6']; ?></h5>
-                                            </div>
-                                        </a>
-                                    </div>
-                                    <div class="box-content">
-                                        <div class="d-flex align-items-center mt-1">
-                                            <div class="flex-grow-1 text-muted"><?php echo $detail['desc_produk6']; ?></div>           
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="swiper-slide">
-                                <div class="gallery-box card">
-                                    <div class="gallery-container">
-                                        <a class="image-popup" href="<?php echo base_url('uploads/formulir/' . $detail['foto_produk7']); ?>" target="_blank" title="Produk 7">
-                                            <img class="gallery-img img-fluid mx-auto" src="<?php echo base_url('uploads/formulir/' . $detail['foto_produk7']); ?>" alt="" />
-                                            <div class="gallery-overlay">
-                                                <h5 class="overlay-caption"><?php echo $detail['foto_produk7']; ?></h5>
-                                            </div>
-                                        </a>
-                                    </div>
-                                    <div class="box-content">
-                                        <div class="d-flex align-items-center mt-1">
-                                            <div class="flex-grow-1 text-muted"><?php echo $detail['desc_produk7']; ?></div>           
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="swiper-slide">
-                                <div class="gallery-box card">
-                                    <div class="gallery-container">
-                                        <a class="image-popup" href="<?php echo base_url('uploads/formulir/' . $detail['foto_produk8']); ?>" target="_blank" title="Produk 8">
-                                            <img class="gallery-img img-fluid mx-auto" src="<?php echo base_url('uploads/formulir/' . $detail['foto_produk8']); ?>" alt="" />
-                                            <div class="gallery-overlay">
-                                                <h5 class="overlay-caption"><?php echo $detail['foto_produk8']; ?></h5>
-                                            </div>
-                                        </a>
-                                    </div>
-                                    <div class="box-content">
-                                        <div class="d-flex align-items-center mt-1">
-                                            <div class="flex-grow-1 text-muted"><?php echo $detail['desc_produk8']; ?></div>           
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="swiper-slide">
-                                <div class="gallery-box card">
-                                    <div class="gallery-container">
-                                        <a class="image-popup" href="<?php echo base_url('uploads/formulir/' . $detail['foto_produk9']); ?>" target="_blank" title="Produk 9">
-                                            <img class="gallery-img img-fluid mx-auto" src="<?php echo base_url('uploads/formulir/' . $detail['foto_produk9']); ?>" alt="" />
-                                            <div class="gallery-overlay">
-                                                <h5 class="overlay-caption"><?php echo $detail['foto_produk9']; ?></h5>
-                                            </div>
-                                        </a>
-                                    </div>
-                                    <div class="box-content">
-                                        <div class="d-flex align-items-center mt-1">
-                                            <div class="flex-grow-1 text-muted"><?php echo $detail['desc_produk9']; ?></div>           
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="swiper-slide">
-                                <div class="gallery-box card">
-                                    <div class="gallery-container">
-                                        <a class="image-popup" href="<?php echo base_url('uploads/formulir/' . $detail['foto_produk10']); ?>" target="_blank" title="Produk 10">
-                                            <img class="gallery-img img-fluid mx-auto" src="<?php echo base_url('uploads/formulir/' . $detail['foto_produk10']); ?>" alt="" />
-                                            <div class="gallery-overlay">
-                                                <h5 class="overlay-caption"><?php echo $detail['foto_produk10']; ?></h5>
-                                            </div>
-                                        </a>
-                                    </div>
-                                    <div class="box-content">
-                                        <div class="d-flex align-items-center mt-1">
-                                            <div class="flex-grow-1 text-muted"><?php echo $detail['desc_produk10']; ?></div>           
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            
+                            <input type="file" class="form-control" name="foto_produk1_2">
+                            <input type="text" class="form-control mt-2" name="desc_produk1_2" placeholder="Keterangan Varian 1" value="<?php echo $detail['desc_produk1_2']?>">
                         </div>
-                        <div class="swiper-pagination swiper-pagination-dark"></div>
+                        <div class="col-lg-3">
+                            <label class="form-label">Varian 2</label>
+                            <div class="border border-dashed w-50">
+                                <a href="<?php echo base_url('uploads/formulir/' . $detail['foto_produk2_2']); ?>" target="_blank" class="bg-light rounded p-1">
+                                    <img src="<?php echo base_url('uploads/formulir/' . $detail['foto_produk2_2']); ?>" alt="" class="img-fluid d-block" />
+                                </a>
+                            </div>
+                            <input type="file" class="form-control" name="foto_produk2_2">
+                            <input type="text" class="form-control mt-2" name="desc_produk2_2" placeholder="Keterangan Varian 2" value="<?php echo $detail['desc_produk2_2']?>">
+                        </div>
+                        <div class="col-lg-3">
+                            <label class="form-label">Varian 3</label>
+                            <div class="border border-dashed w-50">
+                                <a href="<?php echo base_url('uploads/formulir/' . $detail['foto_produk3_2']); ?>" target="_blank" class="bg-light rounded p-1">
+                                    <img src="<?php echo base_url('uploads/formulir/' . $detail['foto_produk3_2']); ?>" alt="" class="img-fluid d-block" />
+                                </a>
+                            </div>
+                            <input type="file" class="form-control" name="foto_produk3_2">
+                            <input type="text" class="form-control mt-2" name="desc_produk3_2" placeholder="Keterangan Varian 3" value="<?php echo $detail['desc_produk3_2']?>">
+                        </div>                        
+                        <div class="col-lg-3">
+                            <label class="form-label">Varian 4</label>
+                            <div class="border border-dashed w-50">
+                                <a href="<?php echo base_url('uploads/formulir/' . $detail['foto_produk4_2']); ?>" target="_blank" class="bg-light rounded p-1">
+                                    <img src="<?php echo base_url('uploads/formulir/' . $detail['foto_produk4_2']); ?>" alt="" class="img-fluid d-block" />
+                                </a>
+                            </div>
+                            <input type="file" class="form-control" name="foto_produk4_2">
+                            <input type="text" class="form-control mt-2" name="desc_produk4_2" placeholder="Keterangan Varian 4" value="<?php echo $detail['desc_produk4_2']?>">
+                        </div>
                     </div>
-                </div><!-- end card-body -->
-            </div><!-- end card -->
+                    <div class="row mb-3">
+                        <div class="col-lg-3">
+                            <label class="form-label">Varian 5</label>
+                            <div class="border border-dashed w-50">
+                                <a href="<?php echo base_url('uploads/formulir/' . $detail['foto_produk5_2']); ?>" target="_blank" class="bg-light rounded p-1">
+                                    <img src="<?php echo base_url('uploads/formulir/' . $detail['foto_produk5_2']); ?>" alt="" class="img-fluid d-block" />
+                                </a>
+                            </div>
+                            <input type="file" class="form-control" name="foto_produk5_2">
+                            <input type="text" class="form-control mt-2" name="desc_produk5_2" placeholder="Keterangan Varian 5" value="<?php echo $detail['desc_produk5_2']?>">
+                        </div>
+                        <div class="col-lg-3">
+                            <label class="form-label">Varian 6</label>
+                            <div class="border border-dashed w-50">
+                                <a href="<?php echo base_url('uploads/formulir/' . $detail['foto_produk6_2']); ?>" target="_blank" class="bg-light rounded p-1">
+                                    <img src="<?php echo base_url('uploads/formulir/' . $detail['foto_produk6_2']); ?>" alt="" class="img-fluid d-block" />
+                                </a>
+                            </div>
+                            <input type="file" class="form-control" name="foto_produk6_2">
+                            <input type="text" class="form-control mt-2" name="desc_produk6_2" placeholder="Keterangan Varian 6" value="<?php echo $detail['desc_produk6_2']?>">
+                        </div>
+                        <div class="col-lg-3">
+                            <label class="form-label">Varian 7</label>
+                            <div class="border border-dashed w-50">
+                                <a href="<?php echo base_url('uploads/formulir/' . $detail['foto_produk7_2']); ?>" target="_blank" class="bg-light rounded p-1">
+                                    <img src="<?php echo base_url('uploads/formulir/' . $detail['foto_produk7_2']); ?>" alt="" class="img-fluid d-block" />
+                                </a>
+                            </div>
+                            <input type="file" class="form-control" name="foto_produk7_2">
+                            <input type="text" class="form-control mt-2" name="desc_produk7_2" placeholder="Keterangan Varian 7" value="<?php echo $detail['desc_produk7_2']?>">
+                        </div>                        
+                        <div class="col-lg-3">
+                            <label class="form-label">Varian 8</label>
+                            <div class="border border-dashed w-50">
+                                <a href="<?php echo base_url('uploads/formulir/' . $detail['foto_produk8_2']); ?>" target="_blank" class="bg-light rounded p-1">
+                                    <img src="<?php echo base_url('uploads/formulir/' . $detail['foto_produk8_2']); ?>" alt="" class="img-fluid d-block" />
+                                </a>
+                            </div>
+                            <input type="file" class="form-control" name="foto_produk8_2">
+                            <input type="text" class="form-control mt-2" name="desc_produk8_2" placeholder="Keterangan Varian 8" value="<?php echo $detail['desc_produk8_2']?>">
+                        </div>
+                    </div>
+                    <div class="row mb-3">
+                        <div class="col-lg-3">
+                            <label class="form-label">Varian 9</label>
+                            <div class="border border-dashed w-50">
+                                <a href="<?php echo base_url('uploads/formulir/' . $detail['foto_produk9_2']); ?>" target="_blank" class="bg-light rounded p-1">
+                                    <img src="<?php echo base_url('uploads/formulir/' . $detail['foto_produk9_2']); ?>" alt="" class="img-fluid d-block" />
+                                </a>
+                            </div>
+                            <input type="file" class="form-control" name="foto_produk9_2">
+                            <input type="text" class="form-control mt-2" name="desc_produk9_2" placeholder="Keterangan Varian 9" value="<?php echo $detail['desc_produk9_2']?>">
+                        </div>
+                        <div class="col-lg-3">
+                            <label class="form-label">Varian 10</label>
+                            <div class="border border-dashed w-50">
+                                <a href="<?php echo base_url('uploads/formulir/' . $detail['foto_produk10_2']); ?>" target="_blank" class="bg-light rounded p-1">
+                                    <img src="<?php echo base_url('uploads/formulir/' . $detail['foto_produk10_2']); ?>" alt="" class="img-fluid d-block" />
+                                </a>
+                            </div>
+                            <input type="file" class="form-control" name="foto_produk10_2">
+                            <input type="text" class="form-control mt-2" name="desc_produk10_2" placeholder="Keterangan Varian 10" value="<?php echo $detail['desc_produk10_2']?>">
+                        </div>
+                    </div>
+                </div>
+            </div>
         </div>
-        <!--end col-->
     </div>
-    <!--end row-->
 
     <div class="row mt-2">
         <div class="col-lg-12">
             <div class="card">
                 <div class="card-header">
-                    <h4 class="card-title mb-0">11. Foto Produk/KTP</h4>
+                    <div class="form-floating">
+                        <input type="text" class="form-control" name="produk3_inp" value="<?php echo $detail['produk_3']; ?>" readonly>
+                        <label class="form-label">13. Nama Produk 3</label>
+                    </div>
                 </div>
-
                 <div class="card-body">
-                    <div class="row mb-3">                        
+                    <div class="row mb-3">  
                         <div class="col-lg-3">
-                            <label class="form-label">Foto KTP</label>
-                            <input type="file" class="form-control" name="foto_ktp">
+                            <label class="form-label">Varian 1</label>
+                            <div class="border border-dashed w-50">
+                                <a href="<?php echo base_url('uploads/formulir/' . $detail['foto_produk1_3']); ?>" target="_blank" class="bg-light rounded p-1">
+                                    <img src="<?php echo base_url('uploads/formulir/' . $detail['foto_produk1_3']); ?>" alt="" class="img-fluid d-block" />
+                                </a>
+                            </div>
+                            <input type="file" class="form-control" name="foto_produk1_3">
+                            <input type="text" class="form-control mt-2" name="desc_produk1_3" placeholder="Keterangan Varian 1" value="<?php echo $detail['desc_produk1_3']?>">
                         </div>
                         <div class="col-lg-3">
-                            <label class="form-label">Foto 1</label>
-                            <input type="file" class="form-control" name="foto_produk1">
-                            <input type="text" class="form-control mt-2" name="desc_produk1" placeholder="Keterangan Produk 1" value="<?php echo $detail['desc_produk1']; ?>" />
+                            <label class="form-label">Varian 2</label>
+                            <div class="border border-dashed w-50">
+                                <a href="<?php echo base_url('uploads/formulir/' . $detail['foto_produk2_3']); ?>" target="_blank" class="bg-light rounded p-1">
+                                    <img src="<?php echo base_url('uploads/formulir/' . $detail['foto_produk2_3']); ?>" alt="" class="img-fluid d-block" />
+                                </a>
+                            </div>
+                            <input type="file" class="form-control" name="foto_produk2_3">
+                            <input type="text" class="form-control mt-2" name="desc_produk2_3" placeholder="Keterangan Varian 2" value="<?php echo $detail['desc_produk2_3']?>">
                         </div>
                         <div class="col-lg-3">
-                            <label class="form-label">Foto 2</label>
-                            <input type="file" class="form-control" name="foto_produk2">
-                            <input type="text" class="form-control mt-2" name="desc_produk2" placeholder="Keterangan Produk 2" value="<?php echo $detail['desc_produk2']; ?>" />
-                        </div>
-                        <div class="col-lg-3">
-                            <label class="form-label">Foto 3</label>
-                            <input type="file" class="form-control" name="foto_produk3">
-                            <input type="text" class="form-control mt-2" name="desc_produk3" placeholder="Keterangan Produk 3" value="<?php echo $detail['desc_produk3']; ?>" />
+                            <label class="form-label">Varian 3</label>
+                            <div class="border border-dashed w-50">
+                                <a href="<?php echo base_url('uploads/formulir/' . $detail['foto_produk3_3']); ?>" target="_blank" class="bg-light rounded p-1">
+                                    <img src="<?php echo base_url('uploads/formulir/' . $detail['foto_produk3_3']); ?>" alt="" class="img-fluid d-block" />
+                                </a>
+                            </div>
+                            <input type="file" class="form-control" name="foto_produk3_3">
+                            <input type="text" class="form-control mt-2" name="desc_produk3_3" placeholder="Keterangan Varian 3" value="<?php echo $detail['desc_produk3_3']?>">
                         </div>                        
+                        <div class="col-lg-3">
+                            <label class="form-label">Varian 4</label>
+                            <div class="border border-dashed w-50">
+                                <a href="<?php echo base_url('uploads/formulir/' . $detail['foto_produk4_3']); ?>" target="_blank" class="bg-light rounded p-1">
+                                    <img src="<?php echo base_url('uploads/formulir/' . $detail['foto_produk4_3']); ?>" alt="" class="img-fluid d-block" />
+                                </a>
+                            </div>
+                            <input type="file" class="form-control" name="foto_produk4_3">
+                            <input type="text" class="form-control mt-2" name="desc_produk4_3" placeholder="Keterangan Varian 4" value="<?php echo $detail['desc_produk4_3']?>">
+                        </div>
                     </div>
                     <div class="row mb-3">
                         <div class="col-lg-3">
-                            <label class="form-label">Foto 4</label>
-                            <input type="file" class="form-control" name="foto_produk4">
-                            <input type="text" class="form-control mt-2" name="desc_produk4" placeholder="Keterangan Produk 4" value="<?php echo $detail['desc_produk4']; ?>" />
+                            <label class="form-label">Varian 5</label>
+                            <div class="border border-dashed w-50">
+                                <a href="<?php echo base_url('uploads/formulir/' . $detail['foto_produk5_3']); ?>" target="_blank" class="bg-light rounded p-1">
+                                    <img src="<?php echo base_url('uploads/formulir/' . $detail['foto_produk5_3']); ?>" alt="" class="img-fluid d-block" />
+                                </a>
+                            </div>
+                            <input type="file" class="form-control" name="foto_produk5_3">
+                            <input type="text" class="form-control mt-2" name="desc_produk5_3" placeholder="Keterangan Varian 5" value="<?php echo $detail['desc_produk5_3']?>">
                         </div>
                         <div class="col-lg-3">
-                            <label class="form-label">Foto 5</label>
-                            <input type="file" class="form-control" name="foto_produk5">
-                            <input type="text" class="form-control mt-2" name="desc_produk5" placeholder="Keterangan Produk 5" value="<?php echo $detail['desc_produk5']; ?>" />
+                            <label class="form-label">Varian 6</label>
+                            <div class="border border-dashed w-50">
+                                <a href="<?php echo base_url('uploads/formulir/' . $detail['foto_produk6_3']); ?>" target="_blank" class="bg-light rounded p-1">
+                                    <img src="<?php echo base_url('uploads/formulir/' . $detail['foto_produk6_3']); ?>" alt="" class="img-fluid d-block" />
+                                </a>
+                            </div>
+                            <input type="file" class="form-control" name="foto_produk6_3">
+                            <input type="text" class="form-control mt-2" name="desc_produk6_3" placeholder="Keterangan Varian 6" value="<?php echo $detail['desc_produk6_3']?>">
                         </div>
                         <div class="col-lg-3">
-                            <label class="form-label">Foto 6</label>
-                            <input type="file" class="form-control" name="foto_produk6">
-                            <input type="text" class="form-control mt-2" name="desc_produk6" placeholder="Keterangan Produk 6" value="<?php echo $detail['desc_produk6']; ?>" />
-                        </div>
-                        <div class="col-lg-3">
-                            <label class="form-label">Foto 7</label>
-                            <input type="file" class="form-control" name="foto_produk7">
-                            <input type="text" class="form-control mt-2" name="desc_produk7" placeholder="Keterangan Produk 7" value="<?php echo $detail['desc_produk7']; ?>" />
+                            <label class="form-label">Varian 7</label>
+                            <div class="border border-dashed w-50">
+                                <a href="<?php echo base_url('uploads/formulir/' . $detail['foto_produk7_3']); ?>" target="_blank" class="bg-light rounded p-1">
+                                    <img src="<?php echo base_url('uploads/formulir/' . $detail['foto_produk7_3']); ?>" alt="" class="img-fluid d-block" />
+                                </a>
+                            </div>
+                            <input type="file" class="form-control" name="foto_produk7_3">
+                            <input type="text" class="form-control mt-2" name="desc_produk7_3" placeholder="Keterangan Varian 7" value="<?php echo $detail['desc_produk7_3']?>">
                         </div>                        
+                        <div class="col-lg-3">
+                            <label class="form-label">Varian 8</label>
+                            <div class="border border-dashed w-50">
+                                <a href="<?php echo base_url('uploads/formulir/' . $detail['foto_produk8_3']); ?>" target="_blank" class="bg-light rounded p-1">
+                                    <img src="<?php echo base_url('uploads/formulir/' . $detail['foto_produk8_3']); ?>" alt="" class="img-fluid d-block" />
+                                </a>
+                            </div>
+                            <input type="file" class="form-control" name="foto_produk8_3">
+                            <input type="text" class="form-control mt-2" name="desc_produk8_3" placeholder="Keterangan Varian 8" value="<?php echo $detail['desc_produk8_3']?>">
+                        </div>
                     </div>
                     <div class="row mb-3">
                         <div class="col-lg-3">
-                            <label class="form-label">Foto 8</label>
-                            <input type="file" class="form-control" name="foto_produk8">
-                            <input type="text" class="form-control mt-2" name="desc_produk8" placeholder="Keterangan Produk 8" value="<?php echo $detail['desc_produk8']; ?>" />
+                            <label class="form-label">Varian 9</label>
+                            <div class="border border-dashed w-50">
+                                <a href="<?php echo base_url('uploads/formulir/' . $detail['foto_produk9_3']); ?>" target="_blank" class="bg-light rounded p-1">
+                                    <img src="<?php echo base_url('uploads/formulir/' . $detail['foto_produk9_3']); ?>" alt="" class="img-fluid d-block" />
+                                </a>
+                            </div>
+                            <input type="file" class="form-control" name="foto_produk9_3">
+                            <input type="text" class="form-control mt-2" name="desc_produk9_3" placeholder="Keterangan Varian 9" value="<?php echo $detail['desc_produk9_3']?>">
                         </div>
                         <div class="col-lg-3">
-                            <label class="form-label">Foto 9</label>
-                            <input type="file" class="form-control" name="foto_produk9">
-                            <input type="text" class="form-control mt-2" name="desc_produk9" placeholder="Keterangan Produk 9" value="<?php echo $detail['desc_produk9']; ?>" />
-                        </div>
-                        <div class="col-lg-3">
-                            <label class="form-label">Foto 10</label>
-                            <input type="file" class="form-control" name="foto_produk10">
-                            <input type="text" class="form-control mt-2" name="desc_produk10" placeholder="Keterangan Produk 10" value="<?php echo $detail['desc_produk10']; ?>" />
+                            <label class="form-label">Varian 10</label>
+                            <div class="border border-dashed w-50">
+                                <a href="<?php echo base_url('uploads/formulir/' . $detail['foto_produk10_3']); ?>" target="_blank" class="bg-light rounded p-1">
+                                    <img src="<?php echo base_url('uploads/formulir/' . $detail['foto_produk10_3']); ?>" alt="" class="img-fluid d-block" />
+                                </a>
+                            </div>
+                            <input type="file" class="form-control" name="foto_produk10_3">
+                            <input type="text" class="form-control mt-2" name="desc_produk10_3" placeholder="Keterangan Varian 10" value="<?php echo $detail['desc_produk10_3']?>">
                         </div>
                     </div>
                 </div>

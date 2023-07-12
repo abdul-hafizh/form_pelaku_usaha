@@ -21,8 +21,11 @@
                         <div class="col-lg-3">
                             <label class="form-label">2. NIK</label>
                         </div>
-                        <div class="col-lg-9">
+                        <div class="col-lg-4">
                             <input type="number" class="form-control" name="nik" placeholder="NIK" required>
+                        </div>
+                        <div class="col-lg-3">
+                            <input type="file" class="form-control" name="foto_ktp" required>
                         </div>
                     </div>
                     <div class="row mb-3">
@@ -43,23 +46,15 @@
                     </div>
                     <div class="row mb-3">
                         <div class="col-lg-3">
-                            <label class="form-label">5. NPWP Jika Ada</label>
+                            <label class="form-label">5. NPWP <small class="text-muted">Jika ada</small></label>
                         </div>
                         <div class="col-lg-9">
                             <input type="number" class="form-control" name="no_npwp" placeholder="NPWP Jika Ada">
                         </div>
-                    </div>
+                    </div>                    
                     <div class="row mb-3">
                         <div class="col-lg-3">
-                            <label class="form-label">6. Nama/Merek Produk</label>
-                        </div>
-                        <div class="col-lg-9">
-                            <input type="text" class="form-control" name="nama_produk" placeholder="Nama/Merek Produk" required>
-                        </div>
-                    </div>
-                    <div class="row mb-3">
-                        <div class="col-lg-3">
-                            <label class="form-label">7. NIB Jika Ada</label>
+                            <label class="form-label">6. NIB <small class="text-muted">Jika ada</small></label>
                         </div>
                         <div class="col-lg-9">
                             <input type="number" class="form-control" name="no_nib" placeholder="NIB Jika Ada">
@@ -67,13 +62,21 @@
                     </div>
                     <div class="row mb-3">
                         <div class="col-lg-3">
-                            <label class="form-label">8. Jenis Produk <small class="text-muted">(sesuai KBLI)</small></label> 
+                            <label class="form-label">7. Jenis Produk <small class="text-muted">(sesuai KBLI)</small></label> 
                         </div>
                         <div class="col-lg-3">
-                            <input type="text" class="form-control" name="jenis_produk" placeholder="Nama/Merek Produk" required>
+                            <input type="text" class="form-control" name="jenis_produk" placeholder="Jenis Produk" required>
                         </div>
                         <div class="col-lg-3">
                             <input type="number" class="form-control" name="kbli" placeholder="KBLI" >
+                        </div>
+                    </div> 
+                    <div class="row mb-3">
+                        <div class="col-lg-3">
+                            <label class="form-label">8. Merek Produk</label>
+                        </div>
+                        <div class="col-lg-9">
+                            <input type="text" class="form-control" name="nama_produk" placeholder="Merek Produk" required>
                         </div>
                     </div> <hr/>
                     <div class="row mb-3">
@@ -119,68 +122,208 @@
         <div class="col-lg-12">
             <div class="card">
                 <div class="card-header">
-                    <h4 class="card-title mb-0">11. Foto Produk/KTP</h4>
+                    <div class="form-floating">
+                        <input type="text" class="form-control" name="produk1_inp" placeholder="Nama Produk 1" >
+                        <label class="form-label">11. Nama Produk 1</label>
+                    </div>
                 </div>
-
                 <div class="card-body">
-                    <div class="row mb-3">                        
+                    <div class="row mb-3">  
                         <div class="col-lg-3">
-                            <label class="form-label">Foto KTP</label>
-                            <input type="file" class="form-control" name="foto_ktp" required>
-                        </div>
-                        <div class="col-lg-3">
-                            <label class="form-label">Foto 1</label>
+                            <label class="form-label">Varian 1</label>
                             <input type="file" class="form-control" name="foto_produk1" required>
-                            <input type="text" class="form-control mt-2" name="desc_produk1" placeholder="Keterangan Produk 1" >
+                            <input type="text" class="form-control mt-2" name="desc_produk1" placeholder="Keterangan Varian 1" >
                         </div>
                         <div class="col-lg-3">
-                            <label class="form-label">Foto 2</label>
+                            <label class="form-label">Varian 2</label>
                             <input type="file" class="form-control" name="foto_produk2">
-                            <input type="text" class="form-control mt-2" name="desc_produk2" placeholder="Keterangan Produk 2" >
+                            <input type="text" class="form-control mt-2" name="desc_produk2" placeholder="Keterangan Varian 2" >
                         </div>
                         <div class="col-lg-3">
-                            <label class="form-label">Foto 3</label>
+                            <label class="form-label">Varian 3</label>
                             <input type="file" class="form-control" name="foto_produk3">
-                            <input type="text" class="form-control mt-2" name="desc_produk3" placeholder="Keterangan Produk 3" >
+                            <input type="text" class="form-control mt-2" name="desc_produk3" placeholder="Keterangan Varian 3" >
                         </div>                        
-                    </div>
-                    <div class="row mb-3">
                         <div class="col-lg-3">
-                            <label class="form-label">Foto 4</label>
+                            <label class="form-label">Varian 4</label>
                             <input type="file" class="form-control" name="foto_produk4">
-                            <input type="text" class="form-control mt-2" name="desc_produk4" placeholder="Keterangan Produk 4" >
+                            <input type="text" class="form-control mt-2" name="desc_produk4" placeholder="Keterangan Varian 4" >
                         </div>
-                        <div class="col-lg-3">
-                            <label class="form-label">Foto 5</label>
-                            <input type="file" class="form-control" name="foto_produk5">
-                            <input type="text" class="form-control mt-2" name="desc_produk5" placeholder="Keterangan Produk 5" >
-                        </div>
-                        <div class="col-lg-3">
-                            <label class="form-label">Foto 6</label>
-                            <input type="file" class="form-control" name="foto_produk6">
-                            <input type="text" class="form-control mt-2" name="desc_produk6" placeholder="Keterangan Produk 6" >
-                        </div>
-                        <div class="col-lg-3">
-                            <label class="form-label">Foto 7</label>
-                            <input type="file" class="form-control" name="foto_produk7">
-                            <input type="text" class="form-control mt-2" name="desc_produk7" placeholder="Keterangan Produk 7" >
-                        </div>                        
                     </div>
                     <div class="row mb-3">
                         <div class="col-lg-3">
-                            <label class="form-label">Foto 8</label>
+                            <label class="form-label">Varian 5</label>
+                            <input type="file" class="form-control" name="foto_produk5">
+                            <input type="text" class="form-control mt-2" name="desc_produk5" placeholder="Keterangan Varian 5" >
+                        </div>
+                        <div class="col-lg-3">
+                            <label class="form-label">Varian 6</label>
+                            <input type="file" class="form-control" name="foto_produk6">
+                            <input type="text" class="form-control mt-2" name="desc_produk6" placeholder="Keterangan Varian 6" >
+                        </div>
+                        <div class="col-lg-3">
+                            <label class="form-label">Varian 7</label>
+                            <input type="file" class="form-control" name="foto_produk7">
+                            <input type="text" class="form-control mt-2" name="desc_produk7" placeholder="Keterangan Varian 7" >
+                        </div>                        
+                        <div class="col-lg-3">
+                            <label class="form-label">Varian 8</label>
                             <input type="file" class="form-control" name="foto_produk8">
-                            <input type="text" class="form-control mt-2" name="desc_produk8" placeholder="Keterangan Produk 8" >
+                            <input type="text" class="form-control mt-2" name="desc_produk8" placeholder="Keterangan Varian 8" >
                         </div>
+                    </div>
+                    <div class="row mb-3">
                         <div class="col-lg-3">
-                            <label class="form-label">Foto 9</label>
+                            <label class="form-label">Varian 9</label>
                             <input type="file" class="form-control" name="foto_produk9">
-                            <input type="text" class="form-control mt-2" name="desc_produk9" placeholder="Keterangan Produk 9" >
+                            <input type="text" class="form-control mt-2" name="desc_produk9" placeholder="Keterangan Varian 9" >
                         </div>
                         <div class="col-lg-3">
-                            <label class="form-label">Foto 10</label>
+                            <label class="form-label">Varian 10</label>
                             <input type="file" class="form-control" name="foto_produk10">
-                            <input type="text" class="form-control mt-2" name="desc_produk10" placeholder="Keterangan Produk 10" >
+                            <input type="text" class="form-control mt-2" name="desc_produk10" placeholder="Keterangan Varian 10" >
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="row mt-2">
+        <div class="col-lg-12">
+            <div class="card">
+                <div class="card-header">
+                    <div class="form-floating">
+                        <input type="text" class="form-control" name="produk2_inp" placeholder="Nama Produk 2" >
+                        <label class="form-label">12. Nama Produk 2</label>
+                    </div>
+                </div>
+                <div class="card-body">
+                    <div class="row mb-3">  
+                        <div class="col-lg-3">
+                            <label class="form-label">Varian 1</label>
+                            <input type="file" class="form-control" name="foto_produk1_2">
+                            <input type="text" class="form-control mt-2" name="desc_produk1_2" placeholder="Keterangan Varian 1" >
+                        </div>
+                        <div class="col-lg-3">
+                            <label class="form-label">Varian 2</label>
+                            <input type="file" class="form-control" name="foto_produk2_2">
+                            <input type="text" class="form-control mt-2" name="desc_produk2_2" placeholder="Keterangan Varian 2" >
+                        </div>
+                        <div class="col-lg-3">
+                            <label class="form-label">Varian 3</label>
+                            <input type="file" class="form-control" name="foto_produk3_2">
+                            <input type="text" class="form-control mt-2" name="desc_produk3_2" placeholder="Keterangan Varian 3" >
+                        </div>                        
+                        <div class="col-lg-3">
+                            <label class="form-label">Varian 4</label>
+                            <input type="file" class="form-control" name="foto_produk4_2">
+                            <input type="text" class="form-control mt-2" name="desc_produk4_2" placeholder="Keterangan Varian 4" >
+                        </div>
+                    </div>
+                    <div class="row mb-3">
+                        <div class="col-lg-3">
+                            <label class="form-label">Varian 5</label>
+                            <input type="file" class="form-control" name="foto_produk5_2">
+                            <input type="text" class="form-control mt-2" name="desc_produk5_2" placeholder="Keterangan Varian 5" >
+                        </div>
+                        <div class="col-lg-3">
+                            <label class="form-label">Varian 6</label>
+                            <input type="file" class="form-control" name="foto_produk6_2">
+                            <input type="text" class="form-control mt-2" name="desc_produk6_2" placeholder="Keterangan Varian 6" >
+                        </div>
+                        <div class="col-lg-3">
+                            <label class="form-label">Varian 7</label>
+                            <input type="file" class="form-control" name="foto_produk7_2">
+                            <input type="text" class="form-control mt-2" name="desc_produk7_2" placeholder="Keterangan Varian 7" >
+                        </div>                        
+                        <div class="col-lg-3">
+                            <label class="form-label">Varian 8</label>
+                            <input type="file" class="form-control" name="foto_produk8_2">
+                            <input type="text" class="form-control mt-2" name="desc_produk8_2" placeholder="Keterangan Varian 8" >
+                        </div>
+                    </div>
+                    <div class="row mb-3">
+                        <div class="col-lg-3">
+                            <label class="form-label">Varian 9</label>
+                            <input type="file" class="form-control" name="foto_produk9_2">
+                            <input type="text" class="form-control mt-2" name="desc_produk9_2" placeholder="Keterangan Varian 9" >
+                        </div>
+                        <div class="col-lg-3">
+                            <label class="form-label">Varian 10</label>
+                            <input type="file" class="form-control" name="foto_produk10_2">
+                            <input type="text" class="form-control mt-2" name="desc_produk10_2" placeholder="Keterangan Varian 10" >
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="row mt-2">
+        <div class="col-lg-12">
+            <div class="card">
+                <div class="card-header">
+                    <div class="form-floating">
+                        <input type="text" class="form-control" name="produk3_inp" placeholder="Nama Produk 3" >
+                        <label class="form-label">13. Nama Produk 3</label>
+                    </div>
+                </div>
+                <div class="card-body">
+                    <div class="row mb-3">  
+                        <div class="col-lg-3">
+                            <label class="form-label">Varian 1</label>
+                            <input type="file" class="form-control" name="foto_produk1_3">
+                            <input type="text" class="form-control mt-2" name="desc_produk1_3" placeholder="Keterangan Varian 1" >
+                        </div>
+                        <div class="col-lg-3">
+                            <label class="form-label">Varian 2</label>
+                            <input type="file" class="form-control" name="foto_produk2_3">
+                            <input type="text" class="form-control mt-2" name="desc_produk2_3" placeholder="Keterangan Varian 2" >
+                        </div>
+                        <div class="col-lg-3">
+                            <label class="form-label">Varian 3</label>
+                            <input type="file" class="form-control" name="foto_produk3_3">
+                            <input type="text" class="form-control mt-2" name="desc_produk3_3" placeholder="Keterangan Varian 3" >
+                        </div>                        
+                        <div class="col-lg-3">
+                            <label class="form-label">Varian 4</label>
+                            <input type="file" class="form-control" name="foto_produk4_3">
+                            <input type="text" class="form-control mt-2" name="desc_produk4_3" placeholder="Keterangan Varian 4" >
+                        </div>
+                    </div>
+                    <div class="row mb-3">
+                        <div class="col-lg-3">
+                            <label class="form-label">Varian 5</label>
+                            <input type="file" class="form-control" name="foto_produk5_3">
+                            <input type="text" class="form-control mt-2" name="desc_produk5_3" placeholder="Keterangan Varian 5" >
+                        </div>
+                        <div class="col-lg-3">
+                            <label class="form-label">Varian 6</label>
+                            <input type="file" class="form-control" name="foto_produk6_3">
+                            <input type="text" class="form-control mt-2" name="desc_produk6_3" placeholder="Keterangan Varian 6" >
+                        </div>
+                        <div class="col-lg-3">
+                            <label class="form-label">Varian 7</label>
+                            <input type="file" class="form-control" name="foto_produk7_3">
+                            <input type="text" class="form-control mt-2" name="desc_produk7_3" placeholder="Keterangan Varian 7" >
+                        </div>                        
+                        <div class="col-lg-3">
+                            <label class="form-label">Varian 8</label>
+                            <input type="file" class="form-control" name="foto_produk8_3">
+                            <input type="text" class="form-control mt-2" name="desc_produk8_3" placeholder="Keterangan Varian 8" >
+                        </div>
+                    </div>
+                    <div class="row mb-3">
+                        <div class="col-lg-3">
+                            <label class="form-label">Varian 9</label>
+                            <input type="file" class="form-control" name="foto_produk9_3">
+                            <input type="text" class="form-control mt-2" name="desc_produk9_3" placeholder="Keterangan Varian 9" >
+                        </div>
+                        <div class="col-lg-3">
+                            <label class="form-label">Varian 10</label>
+                            <input type="file" class="form-control" name="foto_produk10_3">
+                            <input type="text" class="form-control mt-2" name="desc_produk10_3" placeholder="Keterangan Varian 10" >
                         </div>
                     </div>
                 </div>

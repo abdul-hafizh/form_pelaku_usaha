@@ -133,108 +133,295 @@ class Formulir extends Telescoope_Controller {
 
         $dir = './uploads/' . $this->data['dir'];
 
-        if(!empty($_FILES['foto_ktp']['name'])){
-            $_FILES['file']['name'] = $this->data['userdata']['employee_id'] . '_ktp_' . date('his') . '_' . $_FILES['foto_ktp']['name'];
-            $_FILES['file']['type'] = $_FILES['foto_ktp']['type'];
-            $_FILES['file']['tmp_name'] = $_FILES['foto_ktp']['tmp_name'];
-            $_FILES['file']['error'] = $_FILES['foto_ktp']['error'];
-            $_FILES['file']['size'] = $_FILES['foto_ktp']['size'];
-            if($this->upload->do_upload('file')){ $uploadKtp = $this->upload->data(); }
-        }
+        // start upload 
 
-        if(!empty($_FILES['foto_produk1']['name'])){
-            $_FILES['file']['name'] = $this->data['userdata']['employee_id'] . '_prod1_' . date('his') . '_' . $_FILES['foto_produk1']['name'];
-            $_FILES['file']['type'] = $_FILES['foto_produk1']['type'];
-            $_FILES['file']['tmp_name'] = $_FILES['foto_produk1']['tmp_name'];
-            $_FILES['file']['error'] = $_FILES['foto_produk1']['error'];
-            $_FILES['file']['size'] = $_FILES['foto_produk1']['size'];
-            if($this->upload->do_upload('file')){ $uploadProduk1 = $this->upload->data(); }
-        }
+            if(!empty($_FILES['foto_ktp']['name'])){
+                $_FILES['file']['name'] = $this->data['userdata']['employee_id'] . '_ktp_' . date('his') . '_' . $_FILES['foto_ktp']['name'];
+                $_FILES['file']['type'] = $_FILES['foto_ktp']['type'];
+                $_FILES['file']['tmp_name'] = $_FILES['foto_ktp']['tmp_name'];
+                $_FILES['file']['error'] = $_FILES['foto_ktp']['error'];
+                $_FILES['file']['size'] = $_FILES['foto_ktp']['size'];
+                if($this->upload->do_upload('file')){ $uploadKtp = $this->upload->data(); }
+            }
 
-        if(!empty($_FILES['foto_produk2']['name'])){
-            $_FILES['file']['name'] = $this->data['userdata']['employee_id'] . '_prod2_' . date('his') . '_' . $_FILES['foto_produk2']['name'];
-            $_FILES['file']['type'] = $_FILES['foto_produk2']['type'];
-            $_FILES['file']['tmp_name'] = $_FILES['foto_produk2']['tmp_name'];
-            $_FILES['file']['error'] = $_FILES['foto_produk2']['error'];
-            $_FILES['file']['size'] = $_FILES['foto_produk2']['size'];
-            if($this->upload->do_upload('file')){ $uploadProduk2 = $this->upload->data(); }
-        }
+            if(!empty($_FILES['foto_produk1']['name'])){
+                $_FILES['file']['name'] = $this->data['userdata']['employee_id'] . '_prod1_' . date('his') . '_' . $_FILES['foto_produk1']['name'];
+                $_FILES['file']['type'] = $_FILES['foto_produk1']['type'];
+                $_FILES['file']['tmp_name'] = $_FILES['foto_produk1']['tmp_name'];
+                $_FILES['file']['error'] = $_FILES['foto_produk1']['error'];
+                $_FILES['file']['size'] = $_FILES['foto_produk1']['size'];
+                if($this->upload->do_upload('file')){ $uploadProduk1 = $this->upload->data(); }
+            }
 
-        if(!empty($_FILES['foto_produk3']['name'])){
-            $_FILES['file']['name'] = $this->data['userdata']['employee_id'] . '_prod3_' . date('his') . '_' . $_FILES['foto_produk3']['name'];
-            $_FILES['file']['type'] = $_FILES['foto_produk3']['type'];
-            $_FILES['file']['tmp_name'] = $_FILES['foto_produk3']['tmp_name'];
-            $_FILES['file']['error'] = $_FILES['foto_produk3']['error'];
-            $_FILES['file']['size'] = $_FILES['foto_produk3']['size'];
-            if($this->upload->do_upload('file')){ $uploadProduk3 = $this->upload->data(); }
-        }
+            if(!empty($_FILES['foto_produk1_2']['name'])){
+                $_FILES['file']['name'] = $this->data['userdata']['employee_id'] . '_prod1_2_' . date('his') . '_' . $_FILES['foto_produk1_2']['name'];
+                $_FILES['file']['type'] = $_FILES['foto_produk1_2']['type'];
+                $_FILES['file']['tmp_name'] = $_FILES['foto_produk1_2']['tmp_name'];
+                $_FILES['file']['error'] = $_FILES['foto_produk1_2']['error'];
+                $_FILES['file']['size'] = $_FILES['foto_produk1_2']['size'];
+                if($this->upload->do_upload('file')){ $uploadProduk1_2 = $this->upload->data(); }
+            }
 
-        if(!empty($_FILES['foto_produk4']['name'])){
-            $_FILES['file']['name'] = $this->data['userdata']['employee_id'] . '_prod4_' . date('his') . '_' . $_FILES['foto_produk4']['name'];
-            $_FILES['file']['type'] = $_FILES['foto_produk4']['type'];
-            $_FILES['file']['tmp_name'] = $_FILES['foto_produk4']['tmp_name'];
-            $_FILES['file']['error'] = $_FILES['foto_produk4']['error'];
-            $_FILES['file']['size'] = $_FILES['foto_produk4']['size'];
-            if($this->upload->do_upload('file')){ $uploadProduk4 = $this->upload->data(); }
-        }
+            if(!empty($_FILES['foto_produk1_3']['name'])){
+                $_FILES['file']['name'] = $this->data['userdata']['employee_id'] . '_prod1_3_' . date('his') . '_' . $_FILES['foto_produk1_3']['name'];
+                $_FILES['file']['type'] = $_FILES['foto_produk1_3']['type'];
+                $_FILES['file']['tmp_name'] = $_FILES['foto_produk1_3']['tmp_name'];
+                $_FILES['file']['error'] = $_FILES['foto_produk1_3']['error'];
+                $_FILES['file']['size'] = $_FILES['foto_produk1_3']['size'];
+                if($this->upload->do_upload('file')){ $uploadProduk1_3 = $this->upload->data(); }
+            }
 
-        if(!empty($_FILES['foto_produk5']['name'])){
-            $_FILES['file']['name'] = $this->data['userdata']['employee_id'] . '_prod5_' . date('his') . '_' . $_FILES['foto_produk5']['name'];
-            $_FILES['file']['type'] = $_FILES['foto_produk5']['type'];
-            $_FILES['file']['tmp_name'] = $_FILES['foto_produk5']['tmp_name'];
-            $_FILES['file']['error'] = $_FILES['foto_produk5']['error'];
-            $_FILES['file']['size'] = $_FILES['foto_produk5']['size'];
-            if($this->upload->do_upload('file')){ $uploadProduk5 = $this->upload->data(); }
-        }
+            if(!empty($_FILES['foto_produk2']['name'])){
+                $_FILES['file']['name'] = $this->data['userdata']['employee_id'] . '_prod2_' . date('his') . '_' . $_FILES['foto_produk2']['name'];
+                $_FILES['file']['type'] = $_FILES['foto_produk2']['type'];
+                $_FILES['file']['tmp_name'] = $_FILES['foto_produk2']['tmp_name'];
+                $_FILES['file']['error'] = $_FILES['foto_produk2']['error'];
+                $_FILES['file']['size'] = $_FILES['foto_produk2']['size'];
+                if($this->upload->do_upload('file')){ $uploadProduk2 = $this->upload->data(); }
+            }
 
-        if(!empty($_FILES['foto_produk6']['name'])){
-            $_FILES['file']['name'] = $this->data['userdata']['employee_id'] . '_prod6_' . date('his') . '_' . $_FILES['foto_produk6']['name'];
-            $_FILES['file']['type'] = $_FILES['foto_produk6']['type'];
-            $_FILES['file']['tmp_name'] = $_FILES['foto_produk6']['tmp_name'];
-            $_FILES['file']['error'] = $_FILES['foto_produk6']['error'];
-            $_FILES['file']['size'] = $_FILES['foto_produk6']['size'];
-            if($this->upload->do_upload('file')){ $uploadProduk6 = $this->upload->data(); }
-        }
+            if(!empty($_FILES['foto_produk2_2']['name'])){
+                $_FILES['file']['name'] = $this->data['userdata']['employee_id'] . '_prod2_2_' . date('his') . '_' . $_FILES['foto_produk2_2']['name'];
+                $_FILES['file']['type'] = $_FILES['foto_produk2_2']['type'];
+                $_FILES['file']['tmp_name'] = $_FILES['foto_produk2_2']['tmp_name'];
+                $_FILES['file']['error'] = $_FILES['foto_produk2_2']['error'];
+                $_FILES['file']['size'] = $_FILES['foto_produk2_2']['size'];
+                if($this->upload->do_upload('file')){ $uploadProduk2_2 = $this->upload->data(); }
+            }
 
-        if(!empty($_FILES['foto_produk7']['name'])){
-            $_FILES['file']['name'] = $this->data['userdata']['employee_id'] . '_prod7_' . date('his') . '_' . $_FILES['foto_produk7']['name'];
-            $_FILES['file']['type'] = $_FILES['foto_produk7']['type'];
-            $_FILES['file']['tmp_name'] = $_FILES['foto_produk7']['tmp_name'];
-            $_FILES['file']['error'] = $_FILES['foto_produk7']['error'];
-            $_FILES['file']['size'] = $_FILES['foto_produk7']['size'];
-            if($this->upload->do_upload('file')){ $uploadProduk7 = $this->upload->data(); }
-        }
+            if(!empty($_FILES['foto_produk2_3']['name'])){
+                $_FILES['file']['name'] = $this->data['userdata']['employee_id'] . '_prod2_3_' . date('his') . '_' . $_FILES['foto_produk2_3']['name'];
+                $_FILES['file']['type'] = $_FILES['foto_produk2_3']['type'];
+                $_FILES['file']['tmp_name'] = $_FILES['foto_produk2_3']['tmp_name'];
+                $_FILES['file']['error'] = $_FILES['foto_produk2_3']['error'];
+                $_FILES['file']['size'] = $_FILES['foto_produk2_3']['size'];
+                if($this->upload->do_upload('file')){ $uploadProduk2_3 = $this->upload->data(); }
+            }
 
-        if(!empty($_FILES['foto_produk8']['name'])){
-            $_FILES['file']['name'] = $this->data['userdata']['employee_id'] . '_prod8_' . date('his') . '_' . $_FILES['foto_produk8']['name'];
-            $_FILES['file']['type'] = $_FILES['foto_produk8']['type'];
-            $_FILES['file']['tmp_name'] = $_FILES['foto_produk8']['tmp_name'];
-            $_FILES['file']['error'] = $_FILES['foto_produk8']['error'];
-            $_FILES['file']['size'] = $_FILES['foto_produk8']['size'];
-            if($this->upload->do_upload('file')){ $uploadProduk8 = $this->upload->data(); }
-        }
+            if(!empty($_FILES['foto_produk3']['name'])){
+                $_FILES['file']['name'] = $this->data['userdata']['employee_id'] . '_prod3_' . date('his') . '_' . $_FILES['foto_produk3']['name'];
+                $_FILES['file']['type'] = $_FILES['foto_produk3']['type'];
+                $_FILES['file']['tmp_name'] = $_FILES['foto_produk3']['tmp_name'];
+                $_FILES['file']['error'] = $_FILES['foto_produk3']['error'];
+                $_FILES['file']['size'] = $_FILES['foto_produk3']['size'];
+                if($this->upload->do_upload('file')){ $uploadProduk3 = $this->upload->data(); }
+            }
 
-        if(!empty($_FILES['foto_produk9']['name'])){
-            $_FILES['file']['name'] = $this->data['userdata']['employee_id'] . '_prod9_' . date('his') . '_' . $_FILES['foto_produk9']['name'];
-            $_FILES['file']['type'] = $_FILES['foto_produk9']['type'];
-            $_FILES['file']['tmp_name'] = $_FILES['foto_produk9']['tmp_name'];
-            $_FILES['file']['error'] = $_FILES['foto_produk9']['error'];
-            $_FILES['file']['size'] = $_FILES['foto_produk9']['size'];
-            if($this->upload->do_upload('file')){ $uploadProduk9 = $this->upload->data(); }
-        }
+            if(!empty($_FILES['foto_produk3_2']['name'])){
+                $_FILES['file']['name'] = $this->data['userdata']['employee_id'] . '_prod3_2_' . date('his') . '_' . $_FILES['foto_produk3_2']['name'];
+                $_FILES['file']['type'] = $_FILES['foto_produk3_2']['type'];
+                $_FILES['file']['tmp_name'] = $_FILES['foto_produk3_2']['tmp_name'];
+                $_FILES['file']['error'] = $_FILES['foto_produk3_2']['error'];
+                $_FILES['file']['size'] = $_FILES['foto_produk3_2']['size'];
+                if($this->upload->do_upload('file')){ $uploadProduk3_2 = $this->upload->data(); }
+            }
 
-        if(!empty($_FILES['foto_produk10']['name'])){
-            $_FILES['file']['name'] = $this->data['userdata']['employee_id'] . '_prod10_' . date('his') . '_' . $_FILES['foto_produk10']['name'];
-            $_FILES['file']['type'] = $_FILES['foto_produk10']['type'];
-            $_FILES['file']['tmp_name'] = $_FILES['foto_produk10']['tmp_name'];
-            $_FILES['file']['error'] = $_FILES['foto_produk10']['error'];
-            $_FILES['file']['size'] = $_FILES['foto_produk10']['size'];
-            if($this->upload->do_upload('file')){ $uploadProduk10 = $this->upload->data(); }
-        }
+            if(!empty($_FILES['foto_produk3_3']['name'])){
+                $_FILES['file']['name'] = $this->data['userdata']['employee_id'] . '_prod3_3_' . date('his') . '_' . $_FILES['foto_produk3_3']['name'];
+                $_FILES['file']['type'] = $_FILES['foto_produk3_3']['type'];
+                $_FILES['file']['tmp_name'] = $_FILES['foto_produk3_3']['tmp_name'];
+                $_FILES['file']['error'] = $_FILES['foto_produk3_3']['error'];
+                $_FILES['file']['size'] = $_FILES['foto_produk3_3']['size'];
+                if($this->upload->do_upload('file')){ $uploadProduk3_3 = $this->upload->data(); }
+            }
+
+            if(!empty($_FILES['foto_produk4']['name'])){
+                $_FILES['file']['name'] = $this->data['userdata']['employee_id'] . '_prod4_' . date('his') . '_' . $_FILES['foto_produk4']['name'];
+                $_FILES['file']['type'] = $_FILES['foto_produk4']['type'];
+                $_FILES['file']['tmp_name'] = $_FILES['foto_produk4']['tmp_name'];
+                $_FILES['file']['error'] = $_FILES['foto_produk4']['error'];
+                $_FILES['file']['size'] = $_FILES['foto_produk4']['size'];
+                if($this->upload->do_upload('file')){ $uploadProduk4 = $this->upload->data(); }
+            }
+
+            if(!empty($_FILES['foto_produk4_2']['name'])){
+                $_FILES['file']['name'] = $this->data['userdata']['employee_id'] . '_prod4_2_' . date('his') . '_' . $_FILES['foto_produk4_2']['name'];
+                $_FILES['file']['type'] = $_FILES['foto_produk4_2']['type'];
+                $_FILES['file']['tmp_name'] = $_FILES['foto_produk4_2']['tmp_name'];
+                $_FILES['file']['error'] = $_FILES['foto_produk4_2']['error'];
+                $_FILES['file']['size'] = $_FILES['foto_produk4_2']['size'];
+                if($this->upload->do_upload('file')){ $uploadProduk4_2 = $this->upload->data(); }
+            }
+
+            if(!empty($_FILES['foto_produk4_3']['name'])){
+                $_FILES['file']['name'] = $this->data['userdata']['employee_id'] . '_prod4_3_' . date('his') . '_' . $_FILES['foto_produk4_3']['name'];
+                $_FILES['file']['type'] = $_FILES['foto_produk4_3']['type'];
+                $_FILES['file']['tmp_name'] = $_FILES['foto_produk4_3']['tmp_name'];
+                $_FILES['file']['error'] = $_FILES['foto_produk4_3']['error'];
+                $_FILES['file']['size'] = $_FILES['foto_produk4_3']['size'];
+                if($this->upload->do_upload('file')){ $uploadProduk4_3 = $this->upload->data(); }
+            }
+
+            if(!empty($_FILES['foto_produk5']['name'])){
+                $_FILES['file']['name'] = $this->data['userdata']['employee_id'] . '_prod5_' . date('his') . '_' . $_FILES['foto_produk5']['name'];
+                $_FILES['file']['type'] = $_FILES['foto_produk5']['type'];
+                $_FILES['file']['tmp_name'] = $_FILES['foto_produk5']['tmp_name'];
+                $_FILES['file']['error'] = $_FILES['foto_produk5']['error'];
+                $_FILES['file']['size'] = $_FILES['foto_produk5']['size'];
+                if($this->upload->do_upload('file')){ $uploadProduk5 = $this->upload->data(); }
+            }
+
+            if(!empty($_FILES['foto_produk5_2']['name'])){
+                $_FILES['file']['name'] = $this->data['userdata']['employee_id'] . '_prod5_2_' . date('his') . '_' . $_FILES['foto_produk5_2']['name'];
+                $_FILES['file']['type'] = $_FILES['foto_produk5_2']['type'];
+                $_FILES['file']['tmp_name'] = $_FILES['foto_produk5_2']['tmp_name'];
+                $_FILES['file']['error'] = $_FILES['foto_produk5_2']['error'];
+                $_FILES['file']['size'] = $_FILES['foto_produk5_2']['size'];
+                if($this->upload->do_upload('file')){ $uploadProduk5_2 = $this->upload->data(); }
+            }
+
+            if(!empty($_FILES['foto_produk5_3']['name'])){
+                $_FILES['file']['name'] = $this->data['userdata']['employee_id'] . '_prod5_3_' . date('his') . '_' . $_FILES['foto_produk5_3']['name'];
+                $_FILES['file']['type'] = $_FILES['foto_produk5_3']['type'];
+                $_FILES['file']['tmp_name'] = $_FILES['foto_produk5_3']['tmp_name'];
+                $_FILES['file']['error'] = $_FILES['foto_produk5_3']['error'];
+                $_FILES['file']['size'] = $_FILES['foto_produk5_3']['size'];
+                if($this->upload->do_upload('file')){ $uploadProduk5_3 = $this->upload->data(); }
+            }
+
+            if(!empty($_FILES['foto_produk6']['name'])){
+                $_FILES['file']['name'] = $this->data['userdata']['employee_id'] . '_prod6_' . date('his') . '_' . $_FILES['foto_produk6']['name'];
+                $_FILES['file']['type'] = $_FILES['foto_produk6']['type'];
+                $_FILES['file']['tmp_name'] = $_FILES['foto_produk6']['tmp_name'];
+                $_FILES['file']['error'] = $_FILES['foto_produk6']['error'];
+                $_FILES['file']['size'] = $_FILES['foto_produk6']['size'];
+                if($this->upload->do_upload('file')){ $uploadProduk6 = $this->upload->data(); }
+            }
+
+            if(!empty($_FILES['foto_produk6_2']['name'])){
+                $_FILES['file']['name'] = $this->data['userdata']['employee_id'] . '_prod6_2_' . date('his') . '_' . $_FILES['foto_produk6_2']['name'];
+                $_FILES['file']['type'] = $_FILES['foto_produk6_2']['type'];
+                $_FILES['file']['tmp_name'] = $_FILES['foto_produk6_2']['tmp_name'];
+                $_FILES['file']['error'] = $_FILES['foto_produk6_2']['error'];
+                $_FILES['file']['size'] = $_FILES['foto_produk6_2']['size'];
+                if($this->upload->do_upload('file')){ $uploadProduk6_2 = $this->upload->data(); }
+            }
+
+            if(!empty($_FILES['foto_produk6_3']['name'])){
+                $_FILES['file']['name'] = $this->data['userdata']['employee_id'] . '_prod6_3_' . date('his') . '_' . $_FILES['foto_produk6_3']['name'];
+                $_FILES['file']['type'] = $_FILES['foto_produk6_3']['type'];
+                $_FILES['file']['tmp_name'] = $_FILES['foto_produk6_3']['tmp_name'];
+                $_FILES['file']['error'] = $_FILES['foto_produk6_3']['error'];
+                $_FILES['file']['size'] = $_FILES['foto_produk6_3']['size'];
+                if($this->upload->do_upload('file')){ $uploadProduk6_3 = $this->upload->data(); }
+            }
+
+            if(!empty($_FILES['foto_produk7']['name'])){
+                $_FILES['file']['name'] = $this->data['userdata']['employee_id'] . '_prod7_' . date('his') . '_' . $_FILES['foto_produk7']['name'];
+                $_FILES['file']['type'] = $_FILES['foto_produk7']['type'];
+                $_FILES['file']['tmp_name'] = $_FILES['foto_produk7']['tmp_name'];
+                $_FILES['file']['error'] = $_FILES['foto_produk7']['error'];
+                $_FILES['file']['size'] = $_FILES['foto_produk7']['size'];
+                if($this->upload->do_upload('file')){ $uploadProduk7 = $this->upload->data(); }
+            }
+
+            if(!empty($_FILES['foto_produk7_2']['name'])){
+                $_FILES['file']['name'] = $this->data['userdata']['employee_id'] . '_prod7_2_' . date('his') . '_' . $_FILES['foto_produk7_2']['name'];
+                $_FILES['file']['type'] = $_FILES['foto_produk7_2']['type'];
+                $_FILES['file']['tmp_name'] = $_FILES['foto_produk7_2']['tmp_name'];
+                $_FILES['file']['error'] = $_FILES['foto_produk7_2']['error'];
+                $_FILES['file']['size'] = $_FILES['foto_produk7_2']['size'];
+                if($this->upload->do_upload('file')){ $uploadProduk7_2 = $this->upload->data(); }
+            }
+
+            if(!empty($_FILES['foto_produk7_3']['name'])){
+                $_FILES['file']['name'] = $this->data['userdata']['employee_id'] . '_prod7_3_' . date('his') . '_' . $_FILES['foto_produk7_3']['name'];
+                $_FILES['file']['type'] = $_FILES['foto_produk7_3']['type'];
+                $_FILES['file']['tmp_name'] = $_FILES['foto_produk7_3']['tmp_name'];
+                $_FILES['file']['error'] = $_FILES['foto_produk7_3']['error'];
+                $_FILES['file']['size'] = $_FILES['foto_produk7_3']['size'];
+                if($this->upload->do_upload('file')){ $uploadProduk7_3 = $this->upload->data(); }
+            }
+
+            if(!empty($_FILES['foto_produk8']['name'])){
+                $_FILES['file']['name'] = $this->data['userdata']['employee_id'] . '_prod8_' . date('his') . '_' . $_FILES['foto_produk8']['name'];
+                $_FILES['file']['type'] = $_FILES['foto_produk8']['type'];
+                $_FILES['file']['tmp_name'] = $_FILES['foto_produk8']['tmp_name'];
+                $_FILES['file']['error'] = $_FILES['foto_produk8']['error'];
+                $_FILES['file']['size'] = $_FILES['foto_produk8']['size'];
+                if($this->upload->do_upload('file')){ $uploadProduk8 = $this->upload->data(); }
+            }
+
+            if(!empty($_FILES['foto_produk8_2']['name'])){
+                $_FILES['file']['name'] = $this->data['userdata']['employee_id'] . '_prod8_2_' . date('his') . '_' . $_FILES['foto_produk8_2']['name'];
+                $_FILES['file']['type'] = $_FILES['foto_produk8_2']['type'];
+                $_FILES['file']['tmp_name'] = $_FILES['foto_produk8_2']['tmp_name'];
+                $_FILES['file']['error'] = $_FILES['foto_produk8_2']['error'];
+                $_FILES['file']['size'] = $_FILES['foto_produk8_2']['size'];
+                if($this->upload->do_upload('file')){ $uploadProduk8_2 = $this->upload->data(); }
+            }
+
+            if(!empty($_FILES['foto_produk8_3']['name'])){
+                $_FILES['file']['name'] = $this->data['userdata']['employee_id'] . '_prod8_3_' . date('his') . '_' . $_FILES['foto_produk8_3']['name'];
+                $_FILES['file']['type'] = $_FILES['foto_produk8_3']['type'];
+                $_FILES['file']['tmp_name'] = $_FILES['foto_produk8_3']['tmp_name'];
+                $_FILES['file']['error'] = $_FILES['foto_produk8_3']['error'];
+                $_FILES['file']['size'] = $_FILES['foto_produk8_3']['size'];
+                if($this->upload->do_upload('file')){ $uploadProduk8_3 = $this->upload->data(); }
+            }
+
+            if(!empty($_FILES['foto_produk9']['name'])){
+                $_FILES['file']['name'] = $this->data['userdata']['employee_id'] . '_prod9_' . date('his') . '_' . $_FILES['foto_produk9']['name'];
+                $_FILES['file']['type'] = $_FILES['foto_produk9']['type'];
+                $_FILES['file']['tmp_name'] = $_FILES['foto_produk9']['tmp_name'];
+                $_FILES['file']['error'] = $_FILES['foto_produk9']['error'];
+                $_FILES['file']['size'] = $_FILES['foto_produk9']['size'];
+                if($this->upload->do_upload('file')){ $uploadProduk9 = $this->upload->data(); }
+            }
+
+            if(!empty($_FILES['foto_produk9_2']['name'])){
+                $_FILES['file']['name'] = $this->data['userdata']['employee_id'] . '_prod9_2_' . date('his') . '_' . $_FILES['foto_produk9_2']['name'];
+                $_FILES['file']['type'] = $_FILES['foto_produk9_2']['type'];
+                $_FILES['file']['tmp_name'] = $_FILES['foto_produk9_2']['tmp_name'];
+                $_FILES['file']['error'] = $_FILES['foto_produk9_2']['error'];
+                $_FILES['file']['size'] = $_FILES['foto_produk9_2']['size'];
+                if($this->upload->do_upload('file')){ $uploadProduk9_2 = $this->upload->data(); }
+            }
+
+            if(!empty($_FILES['foto_produk9_3']['name'])){
+                $_FILES['file']['name'] = $this->data['userdata']['employee_id'] . '_prod9_3_' . date('his') . '_' . $_FILES['foto_produk9_3']['name'];
+                $_FILES['file']['type'] = $_FILES['foto_produk9_3']['type'];
+                $_FILES['file']['tmp_name'] = $_FILES['foto_produk9_3']['tmp_name'];
+                $_FILES['file']['error'] = $_FILES['foto_produk9_3']['error'];
+                $_FILES['file']['size'] = $_FILES['foto_produk9_3']['size'];
+                if($this->upload->do_upload('file')){ $uploadProduk9_3 = $this->upload->data(); }
+            }
+
+            if(!empty($_FILES['foto_produk10']['name'])){
+                $_FILES['file']['name'] = $this->data['userdata']['employee_id'] . '_prod10_' . date('his') . '_' . $_FILES['foto_produk10']['name'];
+                $_FILES['file']['type'] = $_FILES['foto_produk10']['type'];
+                $_FILES['file']['tmp_name'] = $_FILES['foto_produk10']['tmp_name'];
+                $_FILES['file']['error'] = $_FILES['foto_produk10']['error'];
+                $_FILES['file']['size'] = $_FILES['foto_produk10']['size'];
+                if($this->upload->do_upload('file')){ $uploadProduk10 = $this->upload->data(); }
+            }
+
+            if(!empty($_FILES['foto_produk10_2']['name'])){
+                $_FILES['file']['name'] = $this->data['userdata']['employee_id'] . '_prod10_2_' . date('his') . '_' . $_FILES['foto_produk10_2']['name'];
+                $_FILES['file']['type'] = $_FILES['foto_produk10_2']['type'];
+                $_FILES['file']['tmp_name'] = $_FILES['foto_produk10_2']['tmp_name'];
+                $_FILES['file']['error'] = $_FILES['foto_produk10_2']['error'];
+                $_FILES['file']['size'] = $_FILES['foto_produk10_2']['size'];
+                if($this->upload->do_upload('file')){ $uploadProduk10_2 = $this->upload->data(); }
+            }
+
+            if(!empty($_FILES['foto_produk10_3']['name'])){
+                $_FILES['file']['name'] = $this->data['userdata']['employee_id'] . '_prod10_3_' . date('his') . '_' . $_FILES['foto_produk10_3']['name'];
+                $_FILES['file']['type'] = $_FILES['foto_produk10_3']['type'];
+                $_FILES['file']['tmp_name'] = $_FILES['foto_produk10_3']['tmp_name'];
+                $_FILES['file']['error'] = $_FILES['foto_produk10_3']['error'];
+                $_FILES['file']['size'] = $_FILES['foto_produk10_3']['size'];
+                if($this->upload->do_upload('file')){ $uploadProduk10_3 = $this->upload->data(); }
+            }
+
+        // end upload
 
         $data = array(
             'nama_pelaku_usaha' => $post['nama_pelaku_usaha'],
             'nik' => $post['nik'],
+            'produk_1' => $post['produk1_inp'],
+            'produk_2' => $post['produk2_inp'],
+            'produk_3' => $post['produk3_inp'],
             'no_telp' => $post['no_telp'],
             'email' => $post['email'],
             'no_npwp' => $post['no_npwp'],
@@ -248,25 +435,65 @@ class Formulir extends Telescoope_Controller {
             'alamat_outlet' => $post['alamat_outlet'],
             'foto_ktp' => isset($uploadKtp['file_name']) ? $uploadKtp['file_name'] : '',
             'foto_produk1' => isset($uploadProduk1['file_name']) ? $uploadProduk1['file_name'] : '',
+            'foto_produk1_2' => isset($uploadProduk1_2['file_name']) ? $uploadProduk1_2['file_name'] : '',
+            'foto_produk1_3' => isset($uploadProduk1_3['file_name']) ? $uploadProduk1_3['file_name'] : '',
             'foto_produk2' => isset($uploadProduk2['file_name']) ? $uploadProduk2['file_name'] : '',
+            'foto_produk2_2' => isset($uploadProduk2_2['file_name']) ? $uploadProduk2_2['file_name'] : '',
+            'foto_produk2_3' => isset($uploadProduk2_3['file_name']) ? $uploadProduk2_3['file_name'] : '',
             'foto_produk3' => isset($uploadProduk3['file_name']) ? $uploadProduk3['file_name'] : '',
+            'foto_produk3_2' => isset($uploadProduk3_2['file_name']) ? $uploadProduk3_2['file_name'] : '',
+            'foto_produk3_3' => isset($uploadProduk3_3['file_name']) ? $uploadProduk3_3['file_name'] : '',
             'foto_produk4' => isset($uploadProduk4['file_name']) ? $uploadProduk4['file_name'] : '',
+            'foto_produk4_2' => isset($uploadProduk4_2['file_name']) ? $uploadProduk4_2['file_name'] : '',
+            'foto_produk4_3' => isset($uploadProduk4_3['file_name']) ? $uploadProduk4_3['file_name'] : '',
             'foto_produk5' => isset($uploadProduk5['file_name']) ? $uploadProduk5['file_name'] : '',
+            'foto_produk5_2' => isset($uploadProduk5_2['file_name']) ? $uploadProduk5_2['file_name'] : '',
+            'foto_produk5_3' => isset($uploadProduk5_3['file_name']) ? $uploadProduk5_3['file_name'] : '',
             'foto_produk6' => isset($uploadProduk6['file_name']) ? $uploadProduk6['file_name'] : '',
+            'foto_produk6_2' => isset($uploadProduk6_2['file_name']) ? $uploadProduk6_2['file_name'] : '',
+            'foto_produk6_3' => isset($uploadProduk6_3['file_name']) ? $uploadProduk6_3['file_name'] : '',
             'foto_produk7' => isset($uploadProduk7['file_name']) ? $uploadProduk7['file_name'] : '',
+            'foto_produk7_2' => isset($uploadProduk7_2['file_name']) ? $uploadProduk7_2['file_name'] : '',
+            'foto_produk7_3' => isset($uploadProduk7_3['file_name']) ? $uploadProduk7_3['file_name'] : '',
             'foto_produk8' => isset($uploadProduk8['file_name']) ? $uploadProduk8['file_name'] : '',
+            'foto_produk8_2' => isset($uploadProduk8_2['file_name']) ? $uploadProduk8_2['file_name'] : '',
+            'foto_produk8_3' => isset($uploadProduk8_3['file_name']) ? $uploadProduk8_3['file_name'] : '',
             'foto_produk9' => isset($uploadProduk9['file_name']) ? $uploadProduk9['file_name'] : '',
+            'foto_produk9_2' => isset($uploadProduk9_2['file_name']) ? $uploadProduk9_2['file_name'] : '',
+            'foto_produk9_3' => isset($uploadProduk9_3['file_name']) ? $uploadProduk9_3['file_name'] : '',
             'foto_produk10' => isset($uploadProduk10['file_name']) ? $uploadProduk10['file_name'] : '',
+            'foto_produk10_2' => isset($uploadProduk10_2['file_name']) ? $uploadProduk10_2['file_name'] : '',
+            'foto_produk10_3' => isset($uploadProduk10_3['file_name']) ? $uploadProduk10_3['file_name'] : '',
             'desc_produk1' => $post['desc_produk1'],
+            'desc_produk1_2' => $post['desc_produk1_2'],
+            'desc_produk1_3' => $post['desc_produk1_3'],
             'desc_produk2' => $post['desc_produk2'],
+            'desc_produk2_2' => $post['desc_produk2_2'],
+            'desc_produk2_3' => $post['desc_produk2_3'],
             'desc_produk3' => $post['desc_produk3'],
+            'desc_produk3_2' => $post['desc_produk3_2'],
+            'desc_produk3_3' => $post['desc_produk3_3'],
             'desc_produk4' => $post['desc_produk4'],
+            'desc_produk4_2' => $post['desc_produk4_2'],
+            'desc_produk4_3' => $post['desc_produk4_3'],
             'desc_produk5' => $post['desc_produk5'],
+            'desc_produk5_2' => $post['desc_produk5_2'],
+            'desc_produk5_3' => $post['desc_produk5_3'],
             'desc_produk6' => $post['desc_produk6'],
+            'desc_produk6_2' => $post['desc_produk6_2'],
+            'desc_produk6_3' => $post['desc_produk6_3'],
             'desc_produk7' => $post['desc_produk7'],
+            'desc_produk7_2' => $post['desc_produk7_2'],
+            'desc_produk7_3' => $post['desc_produk7_3'],
             'desc_produk8' => $post['desc_produk8'],
+            'desc_produk8_2' => $post['desc_produk8_2'],
+            'desc_produk8_3' => $post['desc_produk8_3'],
             'desc_produk9' => $post['desc_produk9'],
+            'desc_produk9_2' => $post['desc_produk9_2'],
+            'desc_produk9_3' => $post['desc_produk9_3'],
             'desc_produk10' => $post['desc_produk10'],
+            'desc_produk10_2' => $post['desc_produk10_2'],
+            'desc_produk10_3' => $post['desc_produk10_3'],
             'status' => 1,
             'tanggal_input' => date('Y-m-d H:i:s'),
             'user_id' => $this->data['userdata']['employee_id']
@@ -299,104 +526,288 @@ class Formulir extends Telescoope_Controller {
 
         $dir = './uploads/' . $this->data['dir'];
 
-        if(!empty($_FILES['foto_ktp']['name'])){
-            $_FILES['file']['name'] = $this->data['userdata']['employee_id'] . '_ktp_' . date('his') . '_' . $_FILES['foto_ktp']['name'];
-            $_FILES['file']['type'] = $_FILES['foto_ktp']['type'];
-            $_FILES['file']['tmp_name'] = $_FILES['foto_ktp']['tmp_name'];
-            $_FILES['file']['error'] = $_FILES['foto_ktp']['error'];
-            $_FILES['file']['size'] = $_FILES['foto_ktp']['size'];
-            if($this->upload->do_upload('file')){ $uploadKtp = $this->upload->data(); }
-        }
+        // start upload 
 
-        if(!empty($_FILES['foto_produk1']['name'])){
-            $_FILES['file']['name'] = $this->data['userdata']['employee_id'] . '_prod1_' . date('his') . '_' . $_FILES['foto_produk1']['name'];
-            $_FILES['file']['type'] = $_FILES['foto_produk1']['type'];
-            $_FILES['file']['tmp_name'] = $_FILES['foto_produk1']['tmp_name'];
-            $_FILES['file']['error'] = $_FILES['foto_produk1']['error'];
-            $_FILES['file']['size'] = $_FILES['foto_produk1']['size'];
-            if($this->upload->do_upload('file')){ $uploadProduk1 = $this->upload->data(); }
-        }
+            if(!empty($_FILES['foto_ktp']['name'])){
+                $_FILES['file']['name'] = $this->data['userdata']['employee_id'] . '_ktp_' . date('his') . '_' . $_FILES['foto_ktp']['name'];
+                $_FILES['file']['type'] = $_FILES['foto_ktp']['type'];
+                $_FILES['file']['tmp_name'] = $_FILES['foto_ktp']['tmp_name'];
+                $_FILES['file']['error'] = $_FILES['foto_ktp']['error'];
+                $_FILES['file']['size'] = $_FILES['foto_ktp']['size'];
+                if($this->upload->do_upload('file')){ $uploadKtp = $this->upload->data(); }
+            }
 
-        if(!empty($_FILES['foto_produk2']['name'])){
-            $_FILES['file']['name'] = $this->data['userdata']['employee_id'] . '_prod2_' . date('his') . '_' . $_FILES['foto_produk2']['name'];
-            $_FILES['file']['type'] = $_FILES['foto_produk2']['type'];
-            $_FILES['file']['tmp_name'] = $_FILES['foto_produk2']['tmp_name'];
-            $_FILES['file']['error'] = $_FILES['foto_produk2']['error'];
-            $_FILES['file']['size'] = $_FILES['foto_produk2']['size'];
-            if($this->upload->do_upload('file')){ $uploadProduk2 = $this->upload->data(); }
-        }
+            if(!empty($_FILES['foto_produk1']['name'])){
+                $_FILES['file']['name'] = $this->data['userdata']['employee_id'] . '_prod1_' . date('his') . '_' . $_FILES['foto_produk1']['name'];
+                $_FILES['file']['type'] = $_FILES['foto_produk1']['type'];
+                $_FILES['file']['tmp_name'] = $_FILES['foto_produk1']['tmp_name'];
+                $_FILES['file']['error'] = $_FILES['foto_produk1']['error'];
+                $_FILES['file']['size'] = $_FILES['foto_produk1']['size'];
+                if($this->upload->do_upload('file')){ $uploadProduk1 = $this->upload->data(); }
+            }
 
-        if(!empty($_FILES['foto_produk3']['name'])){
-            $_FILES['file']['name'] = $this->data['userdata']['employee_id'] . '_prod3_' . date('his') . '_' . $_FILES['foto_produk3']['name'];
-            $_FILES['file']['type'] = $_FILES['foto_produk3']['type'];
-            $_FILES['file']['tmp_name'] = $_FILES['foto_produk3']['tmp_name'];
-            $_FILES['file']['error'] = $_FILES['foto_produk3']['error'];
-            $_FILES['file']['size'] = $_FILES['foto_produk3']['size'];
-            if($this->upload->do_upload('file')){ $uploadProduk3 = $this->upload->data(); }
-        }
+            if(!empty($_FILES['foto_produk1_2']['name'])){
+                $_FILES['file']['name'] = $this->data['userdata']['employee_id'] . '_prod1_2_' . date('his') . '_' . $_FILES['foto_produk1_2']['name'];
+                $_FILES['file']['type'] = $_FILES['foto_produk1_2']['type'];
+                $_FILES['file']['tmp_name'] = $_FILES['foto_produk1_2']['tmp_name'];
+                $_FILES['file']['error'] = $_FILES['foto_produk1_2']['error'];
+                $_FILES['file']['size'] = $_FILES['foto_produk1_2']['size'];
+                if($this->upload->do_upload('file')){ $uploadProduk1_2 = $this->upload->data(); }
+            }
 
-        if(!empty($_FILES['foto_produk4']['name'])){
-            $_FILES['file']['name'] = $this->data['userdata']['employee_id'] . '_prod4_' . date('his') . '_' . $_FILES['foto_produk4']['name'];
-            $_FILES['file']['type'] = $_FILES['foto_produk4']['type'];
-            $_FILES['file']['tmp_name'] = $_FILES['foto_produk4']['tmp_name'];
-            $_FILES['file']['error'] = $_FILES['foto_produk4']['error'];
-            $_FILES['file']['size'] = $_FILES['foto_produk4']['size'];
-            if($this->upload->do_upload('file')){ $uploadProduk4 = $this->upload->data(); }
-        }
+            if(!empty($_FILES['foto_produk1_3']['name'])){
+                $_FILES['file']['name'] = $this->data['userdata']['employee_id'] . '_prod1_3_' . date('his') . '_' . $_FILES['foto_produk1_3']['name'];
+                $_FILES['file']['type'] = $_FILES['foto_produk1_3']['type'];
+                $_FILES['file']['tmp_name'] = $_FILES['foto_produk1_3']['tmp_name'];
+                $_FILES['file']['error'] = $_FILES['foto_produk1_3']['error'];
+                $_FILES['file']['size'] = $_FILES['foto_produk1_3']['size'];
+                if($this->upload->do_upload('file')){ $uploadProduk1_3 = $this->upload->data(); }
+            }
 
-        if(!empty($_FILES['foto_produk5']['name'])){
-            $_FILES['file']['name'] = $this->data['userdata']['employee_id'] . '_prod5_' . date('his') . '_' . $_FILES['foto_produk5']['name'];
-            $_FILES['file']['type'] = $_FILES['foto_produk5']['type'];
-            $_FILES['file']['tmp_name'] = $_FILES['foto_produk5']['tmp_name'];
-            $_FILES['file']['error'] = $_FILES['foto_produk5']['error'];
-            $_FILES['file']['size'] = $_FILES['foto_produk5']['size'];
-            if($this->upload->do_upload('file')){ $uploadProduk5 = $this->upload->data(); }
-        }
+            if(!empty($_FILES['foto_produk2']['name'])){
+                $_FILES['file']['name'] = $this->data['userdata']['employee_id'] . '_prod2_' . date('his') . '_' . $_FILES['foto_produk2']['name'];
+                $_FILES['file']['type'] = $_FILES['foto_produk2']['type'];
+                $_FILES['file']['tmp_name'] = $_FILES['foto_produk2']['tmp_name'];
+                $_FILES['file']['error'] = $_FILES['foto_produk2']['error'];
+                $_FILES['file']['size'] = $_FILES['foto_produk2']['size'];
+                if($this->upload->do_upload('file')){ $uploadProduk2 = $this->upload->data(); }
+            }
 
-        if(!empty($_FILES['foto_produk6']['name'])){
-            $_FILES['file']['name'] = $this->data['userdata']['employee_id'] . '_prod6_' . date('his') . '_' . $_FILES['foto_produk6']['name'];
-            $_FILES['file']['type'] = $_FILES['foto_produk6']['type'];
-            $_FILES['file']['tmp_name'] = $_FILES['foto_produk6']['tmp_name'];
-            $_FILES['file']['error'] = $_FILES['foto_produk6']['error'];
-            $_FILES['file']['size'] = $_FILES['foto_produk6']['size'];
-            if($this->upload->do_upload('file')){ $uploadProduk6 = $this->upload->data(); }
-        }
+            if(!empty($_FILES['foto_produk2_2']['name'])){
+                $_FILES['file']['name'] = $this->data['userdata']['employee_id'] . '_prod2_2_' . date('his') . '_' . $_FILES['foto_produk2_2']['name'];
+                $_FILES['file']['type'] = $_FILES['foto_produk2_2']['type'];
+                $_FILES['file']['tmp_name'] = $_FILES['foto_produk2_2']['tmp_name'];
+                $_FILES['file']['error'] = $_FILES['foto_produk2_2']['error'];
+                $_FILES['file']['size'] = $_FILES['foto_produk2_2']['size'];
+                if($this->upload->do_upload('file')){ $uploadProduk2_2 = $this->upload->data(); }
+            }
 
-        if(!empty($_FILES['foto_produk7']['name'])){
-            $_FILES['file']['name'] = $this->data['userdata']['employee_id'] . '_prod7_' . date('his') . '_' . $_FILES['foto_produk7']['name'];
-            $_FILES['file']['type'] = $_FILES['foto_produk7']['type'];
-            $_FILES['file']['tmp_name'] = $_FILES['foto_produk7']['tmp_name'];
-            $_FILES['file']['error'] = $_FILES['foto_produk7']['error'];
-            $_FILES['file']['size'] = $_FILES['foto_produk7']['size'];
-            if($this->upload->do_upload('file')){ $uploadProduk7 = $this->upload->data(); }
-        }
+            if(!empty($_FILES['foto_produk2_3']['name'])){
+                $_FILES['file']['name'] = $this->data['userdata']['employee_id'] . '_prod2_3_' . date('his') . '_' . $_FILES['foto_produk2_3']['name'];
+                $_FILES['file']['type'] = $_FILES['foto_produk2_3']['type'];
+                $_FILES['file']['tmp_name'] = $_FILES['foto_produk2_3']['tmp_name'];
+                $_FILES['file']['error'] = $_FILES['foto_produk2_3']['error'];
+                $_FILES['file']['size'] = $_FILES['foto_produk2_3']['size'];
+                if($this->upload->do_upload('file')){ $uploadProduk2_3 = $this->upload->data(); }
+            }
 
-        if(!empty($_FILES['foto_produk8']['name'])){
-            $_FILES['file']['name'] = $this->data['userdata']['employee_id'] . '_prod8_' . date('his') . '_' . $_FILES['foto_produk8']['name'];
-            $_FILES['file']['type'] = $_FILES['foto_produk8']['type'];
-            $_FILES['file']['tmp_name'] = $_FILES['foto_produk8']['tmp_name'];
-            $_FILES['file']['error'] = $_FILES['foto_produk8']['error'];
-            $_FILES['file']['size'] = $_FILES['foto_produk8']['size'];
-            if($this->upload->do_upload('file')){ $uploadProduk8 = $this->upload->data(); }
-        }
+            if(!empty($_FILES['foto_produk3']['name'])){
+                $_FILES['file']['name'] = $this->data['userdata']['employee_id'] . '_prod3_' . date('his') . '_' . $_FILES['foto_produk3']['name'];
+                $_FILES['file']['type'] = $_FILES['foto_produk3']['type'];
+                $_FILES['file']['tmp_name'] = $_FILES['foto_produk3']['tmp_name'];
+                $_FILES['file']['error'] = $_FILES['foto_produk3']['error'];
+                $_FILES['file']['size'] = $_FILES['foto_produk3']['size'];
+                if($this->upload->do_upload('file')){ $uploadProduk3 = $this->upload->data(); }
+            }
 
-        if(!empty($_FILES['foto_produk9']['name'])){
-            $_FILES['file']['name'] = $this->data['userdata']['employee_id'] . '_prod9_' . date('his') . '_' . $_FILES['foto_produk9']['name'];
-            $_FILES['file']['type'] = $_FILES['foto_produk9']['type'];
-            $_FILES['file']['tmp_name'] = $_FILES['foto_produk9']['tmp_name'];
-            $_FILES['file']['error'] = $_FILES['foto_produk9']['error'];
-            $_FILES['file']['size'] = $_FILES['foto_produk9']['size'];
-            if($this->upload->do_upload('file')){ $uploadProduk9 = $this->upload->data(); }
-        }
+            if(!empty($_FILES['foto_produk3_2']['name'])){
+                $_FILES['file']['name'] = $this->data['userdata']['employee_id'] . '_prod3_2_' . date('his') . '_' . $_FILES['foto_produk3_2']['name'];
+                $_FILES['file']['type'] = $_FILES['foto_produk3_2']['type'];
+                $_FILES['file']['tmp_name'] = $_FILES['foto_produk3_2']['tmp_name'];
+                $_FILES['file']['error'] = $_FILES['foto_produk3_2']['error'];
+                $_FILES['file']['size'] = $_FILES['foto_produk3_2']['size'];
+                if($this->upload->do_upload('file')){ $uploadProduk3_2 = $this->upload->data(); }
+            }
 
-        if(!empty($_FILES['foto_produk10']['name'])){
-            $_FILES['file']['name'] = $this->data['userdata']['employee_id'] . '_prod10_' . date('his') . '_' . $_FILES['foto_produk10']['name'];
-            $_FILES['file']['type'] = $_FILES['foto_produk10']['type'];
-            $_FILES['file']['tmp_name'] = $_FILES['foto_produk10']['tmp_name'];
-            $_FILES['file']['error'] = $_FILES['foto_produk10']['error'];
-            $_FILES['file']['size'] = $_FILES['foto_produk10']['size'];
-            if($this->upload->do_upload('file')){ $uploadProduk10 = $this->upload->data(); }
-        }
+            if(!empty($_FILES['foto_produk3_3']['name'])){
+                $_FILES['file']['name'] = $this->data['userdata']['employee_id'] . '_prod3_3_' . date('his') . '_' . $_FILES['foto_produk3_3']['name'];
+                $_FILES['file']['type'] = $_FILES['foto_produk3_3']['type'];
+                $_FILES['file']['tmp_name'] = $_FILES['foto_produk3_3']['tmp_name'];
+                $_FILES['file']['error'] = $_FILES['foto_produk3_3']['error'];
+                $_FILES['file']['size'] = $_FILES['foto_produk3_3']['size'];
+                if($this->upload->do_upload('file')){ $uploadProduk3_3 = $this->upload->data(); }
+            }
+
+            if(!empty($_FILES['foto_produk4']['name'])){
+                $_FILES['file']['name'] = $this->data['userdata']['employee_id'] . '_prod4_' . date('his') . '_' . $_FILES['foto_produk4']['name'];
+                $_FILES['file']['type'] = $_FILES['foto_produk4']['type'];
+                $_FILES['file']['tmp_name'] = $_FILES['foto_produk4']['tmp_name'];
+                $_FILES['file']['error'] = $_FILES['foto_produk4']['error'];
+                $_FILES['file']['size'] = $_FILES['foto_produk4']['size'];
+                if($this->upload->do_upload('file')){ $uploadProduk4 = $this->upload->data(); }
+            }
+
+            if(!empty($_FILES['foto_produk4_2']['name'])){
+                $_FILES['file']['name'] = $this->data['userdata']['employee_id'] . '_prod4_2_' . date('his') . '_' . $_FILES['foto_produk4_2']['name'];
+                $_FILES['file']['type'] = $_FILES['foto_produk4_2']['type'];
+                $_FILES['file']['tmp_name'] = $_FILES['foto_produk4_2']['tmp_name'];
+                $_FILES['file']['error'] = $_FILES['foto_produk4_2']['error'];
+                $_FILES['file']['size'] = $_FILES['foto_produk4_2']['size'];
+                if($this->upload->do_upload('file')){ $uploadProduk4_2 = $this->upload->data(); }
+            }
+
+            if(!empty($_FILES['foto_produk4_3']['name'])){
+                $_FILES['file']['name'] = $this->data['userdata']['employee_id'] . '_prod4_3_' . date('his') . '_' . $_FILES['foto_produk4_3']['name'];
+                $_FILES['file']['type'] = $_FILES['foto_produk4_3']['type'];
+                $_FILES['file']['tmp_name'] = $_FILES['foto_produk4_3']['tmp_name'];
+                $_FILES['file']['error'] = $_FILES['foto_produk4_3']['error'];
+                $_FILES['file']['size'] = $_FILES['foto_produk4_3']['size'];
+                if($this->upload->do_upload('file')){ $uploadProduk4_3 = $this->upload->data(); }
+            }
+
+            if(!empty($_FILES['foto_produk5']['name'])){
+                $_FILES['file']['name'] = $this->data['userdata']['employee_id'] . '_prod5_' . date('his') . '_' . $_FILES['foto_produk5']['name'];
+                $_FILES['file']['type'] = $_FILES['foto_produk5']['type'];
+                $_FILES['file']['tmp_name'] = $_FILES['foto_produk5']['tmp_name'];
+                $_FILES['file']['error'] = $_FILES['foto_produk5']['error'];
+                $_FILES['file']['size'] = $_FILES['foto_produk5']['size'];
+                if($this->upload->do_upload('file')){ $uploadProduk5 = $this->upload->data(); }
+            }
+
+            if(!empty($_FILES['foto_produk5_2']['name'])){
+                $_FILES['file']['name'] = $this->data['userdata']['employee_id'] . '_prod5_2_' . date('his') . '_' . $_FILES['foto_produk5_2']['name'];
+                $_FILES['file']['type'] = $_FILES['foto_produk5_2']['type'];
+                $_FILES['file']['tmp_name'] = $_FILES['foto_produk5_2']['tmp_name'];
+                $_FILES['file']['error'] = $_FILES['foto_produk5_2']['error'];
+                $_FILES['file']['size'] = $_FILES['foto_produk5_2']['size'];
+                if($this->upload->do_upload('file')){ $uploadProduk5_2 = $this->upload->data(); }
+            }
+
+            if(!empty($_FILES['foto_produk5_3']['name'])){
+                $_FILES['file']['name'] = $this->data['userdata']['employee_id'] . '_prod5_3_' . date('his') . '_' . $_FILES['foto_produk5_3']['name'];
+                $_FILES['file']['type'] = $_FILES['foto_produk5_3']['type'];
+                $_FILES['file']['tmp_name'] = $_FILES['foto_produk5_3']['tmp_name'];
+                $_FILES['file']['error'] = $_FILES['foto_produk5_3']['error'];
+                $_FILES['file']['size'] = $_FILES['foto_produk5_3']['size'];
+                if($this->upload->do_upload('file')){ $uploadProduk5_3 = $this->upload->data(); }
+            }
+
+            if(!empty($_FILES['foto_produk6']['name'])){
+                $_FILES['file']['name'] = $this->data['userdata']['employee_id'] . '_prod6_' . date('his') . '_' . $_FILES['foto_produk6']['name'];
+                $_FILES['file']['type'] = $_FILES['foto_produk6']['type'];
+                $_FILES['file']['tmp_name'] = $_FILES['foto_produk6']['tmp_name'];
+                $_FILES['file']['error'] = $_FILES['foto_produk6']['error'];
+                $_FILES['file']['size'] = $_FILES['foto_produk6']['size'];
+                if($this->upload->do_upload('file')){ $uploadProduk6 = $this->upload->data(); }
+            }
+
+            if(!empty($_FILES['foto_produk6_2']['name'])){
+                $_FILES['file']['name'] = $this->data['userdata']['employee_id'] . '_prod6_2_' . date('his') . '_' . $_FILES['foto_produk6_2']['name'];
+                $_FILES['file']['type'] = $_FILES['foto_produk6_2']['type'];
+                $_FILES['file']['tmp_name'] = $_FILES['foto_produk6_2']['tmp_name'];
+                $_FILES['file']['error'] = $_FILES['foto_produk6_2']['error'];
+                $_FILES['file']['size'] = $_FILES['foto_produk6_2']['size'];
+                if($this->upload->do_upload('file')){ $uploadProduk6_2 = $this->upload->data(); }
+            }
+
+            if(!empty($_FILES['foto_produk6_3']['name'])){
+                $_FILES['file']['name'] = $this->data['userdata']['employee_id'] . '_prod6_3_' . date('his') . '_' . $_FILES['foto_produk6_3']['name'];
+                $_FILES['file']['type'] = $_FILES['foto_produk6_3']['type'];
+                $_FILES['file']['tmp_name'] = $_FILES['foto_produk6_3']['tmp_name'];
+                $_FILES['file']['error'] = $_FILES['foto_produk6_3']['error'];
+                $_FILES['file']['size'] = $_FILES['foto_produk6_3']['size'];
+                if($this->upload->do_upload('file')){ $uploadProduk6_3 = $this->upload->data(); }
+            }
+
+            if(!empty($_FILES['foto_produk7']['name'])){
+                $_FILES['file']['name'] = $this->data['userdata']['employee_id'] . '_prod7_' . date('his') . '_' . $_FILES['foto_produk7']['name'];
+                $_FILES['file']['type'] = $_FILES['foto_produk7']['type'];
+                $_FILES['file']['tmp_name'] = $_FILES['foto_produk7']['tmp_name'];
+                $_FILES['file']['error'] = $_FILES['foto_produk7']['error'];
+                $_FILES['file']['size'] = $_FILES['foto_produk7']['size'];
+                if($this->upload->do_upload('file')){ $uploadProduk7 = $this->upload->data(); }
+            }
+
+            if(!empty($_FILES['foto_produk7_2']['name'])){
+                $_FILES['file']['name'] = $this->data['userdata']['employee_id'] . '_prod7_2_' . date('his') . '_' . $_FILES['foto_produk7_2']['name'];
+                $_FILES['file']['type'] = $_FILES['foto_produk7_2']['type'];
+                $_FILES['file']['tmp_name'] = $_FILES['foto_produk7_2']['tmp_name'];
+                $_FILES['file']['error'] = $_FILES['foto_produk7_2']['error'];
+                $_FILES['file']['size'] = $_FILES['foto_produk7_2']['size'];
+                if($this->upload->do_upload('file')){ $uploadProduk7_2 = $this->upload->data(); }
+            }
+
+            if(!empty($_FILES['foto_produk7_3']['name'])){
+                $_FILES['file']['name'] = $this->data['userdata']['employee_id'] . '_prod7_3_' . date('his') . '_' . $_FILES['foto_produk7_3']['name'];
+                $_FILES['file']['type'] = $_FILES['foto_produk7_3']['type'];
+                $_FILES['file']['tmp_name'] = $_FILES['foto_produk7_3']['tmp_name'];
+                $_FILES['file']['error'] = $_FILES['foto_produk7_3']['error'];
+                $_FILES['file']['size'] = $_FILES['foto_produk7_3']['size'];
+                if($this->upload->do_upload('file')){ $uploadProduk7_3 = $this->upload->data(); }
+            }
+
+            if(!empty($_FILES['foto_produk8']['name'])){
+                $_FILES['file']['name'] = $this->data['userdata']['employee_id'] . '_prod8_' . date('his') . '_' . $_FILES['foto_produk8']['name'];
+                $_FILES['file']['type'] = $_FILES['foto_produk8']['type'];
+                $_FILES['file']['tmp_name'] = $_FILES['foto_produk8']['tmp_name'];
+                $_FILES['file']['error'] = $_FILES['foto_produk8']['error'];
+                $_FILES['file']['size'] = $_FILES['foto_produk8']['size'];
+                if($this->upload->do_upload('file')){ $uploadProduk8 = $this->upload->data(); }
+            }
+
+            if(!empty($_FILES['foto_produk8_2']['name'])){
+                $_FILES['file']['name'] = $this->data['userdata']['employee_id'] . '_prod8_2_' . date('his') . '_' . $_FILES['foto_produk8_2']['name'];
+                $_FILES['file']['type'] = $_FILES['foto_produk8_2']['type'];
+                $_FILES['file']['tmp_name'] = $_FILES['foto_produk8_2']['tmp_name'];
+                $_FILES['file']['error'] = $_FILES['foto_produk8_2']['error'];
+                $_FILES['file']['size'] = $_FILES['foto_produk8_2']['size'];
+                if($this->upload->do_upload('file')){ $uploadProduk8_2 = $this->upload->data(); }
+            }
+
+            if(!empty($_FILES['foto_produk8_3']['name'])){
+                $_FILES['file']['name'] = $this->data['userdata']['employee_id'] . '_prod8_3_' . date('his') . '_' . $_FILES['foto_produk8_3']['name'];
+                $_FILES['file']['type'] = $_FILES['foto_produk8_3']['type'];
+                $_FILES['file']['tmp_name'] = $_FILES['foto_produk8_3']['tmp_name'];
+                $_FILES['file']['error'] = $_FILES['foto_produk8_3']['error'];
+                $_FILES['file']['size'] = $_FILES['foto_produk8_3']['size'];
+                if($this->upload->do_upload('file')){ $uploadProduk8_3 = $this->upload->data(); }
+            }
+
+            if(!empty($_FILES['foto_produk9']['name'])){
+                $_FILES['file']['name'] = $this->data['userdata']['employee_id'] . '_prod9_' . date('his') . '_' . $_FILES['foto_produk9']['name'];
+                $_FILES['file']['type'] = $_FILES['foto_produk9']['type'];
+                $_FILES['file']['tmp_name'] = $_FILES['foto_produk9']['tmp_name'];
+                $_FILES['file']['error'] = $_FILES['foto_produk9']['error'];
+                $_FILES['file']['size'] = $_FILES['foto_produk9']['size'];
+                if($this->upload->do_upload('file')){ $uploadProduk9 = $this->upload->data(); }
+            }
+
+            if(!empty($_FILES['foto_produk9_2']['name'])){
+                $_FILES['file']['name'] = $this->data['userdata']['employee_id'] . '_prod9_2_' . date('his') . '_' . $_FILES['foto_produk9_2']['name'];
+                $_FILES['file']['type'] = $_FILES['foto_produk9_2']['type'];
+                $_FILES['file']['tmp_name'] = $_FILES['foto_produk9_2']['tmp_name'];
+                $_FILES['file']['error'] = $_FILES['foto_produk9_2']['error'];
+                $_FILES['file']['size'] = $_FILES['foto_produk9_2']['size'];
+                if($this->upload->do_upload('file')){ $uploadProduk9_2 = $this->upload->data(); }
+            }
+
+            if(!empty($_FILES['foto_produk9_3']['name'])){
+                $_FILES['file']['name'] = $this->data['userdata']['employee_id'] . '_prod9_3_' . date('his') . '_' . $_FILES['foto_produk9_3']['name'];
+                $_FILES['file']['type'] = $_FILES['foto_produk9_3']['type'];
+                $_FILES['file']['tmp_name'] = $_FILES['foto_produk9_3']['tmp_name'];
+                $_FILES['file']['error'] = $_FILES['foto_produk9_3']['error'];
+                $_FILES['file']['size'] = $_FILES['foto_produk9_3']['size'];
+                if($this->upload->do_upload('file')){ $uploadProduk9_3 = $this->upload->data(); }
+            }
+
+            if(!empty($_FILES['foto_produk10']['name'])){
+                $_FILES['file']['name'] = $this->data['userdata']['employee_id'] . '_prod10_' . date('his') . '_' . $_FILES['foto_produk10']['name'];
+                $_FILES['file']['type'] = $_FILES['foto_produk10']['type'];
+                $_FILES['file']['tmp_name'] = $_FILES['foto_produk10']['tmp_name'];
+                $_FILES['file']['error'] = $_FILES['foto_produk10']['error'];
+                $_FILES['file']['size'] = $_FILES['foto_produk10']['size'];
+                if($this->upload->do_upload('file')){ $uploadProduk10 = $this->upload->data(); }
+            }
+
+            if(!empty($_FILES['foto_produk10_2']['name'])){
+                $_FILES['file']['name'] = $this->data['userdata']['employee_id'] . '_prod10_2_' . date('his') . '_' . $_FILES['foto_produk10_2']['name'];
+                $_FILES['file']['type'] = $_FILES['foto_produk10_2']['type'];
+                $_FILES['file']['tmp_name'] = $_FILES['foto_produk10_2']['tmp_name'];
+                $_FILES['file']['error'] = $_FILES['foto_produk10_2']['error'];
+                $_FILES['file']['size'] = $_FILES['foto_produk10_2']['size'];
+                if($this->upload->do_upload('file')){ $uploadProduk10_2 = $this->upload->data(); }
+            }
+
+            if(!empty($_FILES['foto_produk10_3']['name'])){
+                $_FILES['file']['name'] = $this->data['userdata']['employee_id'] . '_prod10_3_' . date('his') . '_' . $_FILES['foto_produk10_3']['name'];
+                $_FILES['file']['type'] = $_FILES['foto_produk10_3']['type'];
+                $_FILES['file']['tmp_name'] = $_FILES['foto_produk10_3']['tmp_name'];
+                $_FILES['file']['error'] = $_FILES['foto_produk10_3']['error'];
+                $_FILES['file']['size'] = $_FILES['foto_produk10_3']['size'];
+                if($this->upload->do_upload('file')){ $uploadProduk10_3 = $this->upload->data(); }
+            }
+
+        // end upload
 
         $row_data = $this->Formulir_m->getDetail($post['id_form'], $this->data['userdata']['employee_id'])->row_array();
 
@@ -424,17 +835,57 @@ class Formulir extends Telescoope_Controller {
             'foto_produk7' => isset($uploadProduk7['file_name']) ? $uploadProduk7['file_name'] : $row_data['foto_produk7'],
             'foto_produk8' => isset($uploadProduk8['file_name']) ? $uploadProduk8['file_name'] : $row_data['foto_produk8'],
             'foto_produk9' => isset($uploadProduk9['file_name']) ? $uploadProduk9['file_name'] : $row_data['foto_produk9'],
-            'foto_produk10' => isset($uploadProduk10['file_name']) ? $uploadProduk10['file_name'] : $row_data['foto_produk10'],
+            'foto_produk10' => isset($uploadProduk10['file_name']) ? $uploadProduk10['file_name'] : $row_data['foto_produk10'],            
+            'foto_produk1_2' => isset($uploadProduk1_2['file_name']) ? $uploadProduk1_2['file_name'] : $row_data['foto_produk1_2'],
+            'foto_produk1_3' => isset($uploadProduk1_3['file_name']) ? $uploadProduk1_3['file_name'] : $row_data['foto_produk1_3'],
+            'foto_produk2_2' => isset($uploadProduk2_2['file_name']) ? $uploadProduk2_2['file_name'] : $row_data['foto_produk2_2'],
+            'foto_produk2_3' => isset($uploadProduk2_3['file_name']) ? $uploadProduk2_3['file_name'] : $row_data['foto_produk2_3'],
+            'foto_produk3_2' => isset($uploadProduk3_2['file_name']) ? $uploadProduk3_2['file_name'] : $row_data['foto_produk3_2'],
+            'foto_produk3_3' => isset($uploadProduk3_3['file_name']) ? $uploadProduk3_3['file_name'] : $row_data['foto_produk3_3'],
+            'foto_produk4_2' => isset($uploadProduk4_2['file_name']) ? $uploadProduk4_2['file_name'] : $row_data['foto_produk4_2'],
+            'foto_produk4_3' => isset($uploadProduk4_3['file_name']) ? $uploadProduk4_3['file_name'] : $row_data['foto_produk4_3'],
+            'foto_produk5_2' => isset($uploadProduk5_2['file_name']) ? $uploadProduk5_2['file_name'] : $row_data['foto_produk5_2'],
+            'foto_produk5_3' => isset($uploadProduk5_3['file_name']) ? $uploadProduk5_3['file_name'] : $row_data['foto_produk5_3'],
+            'foto_produk6_2' => isset($uploadProduk6_2['file_name']) ? $uploadProduk6_2['file_name'] : $row_data['foto_produk6_2'],
+            'foto_produk6_3' => isset($uploadProduk6_3['file_name']) ? $uploadProduk6_3['file_name'] : $row_data['foto_produk6_3'],
+            'foto_produk7_2' => isset($uploadProduk7_2['file_name']) ? $uploadProduk7_2['file_name'] : $row_data['foto_produk7_2'],
+            'foto_produk7_3' => isset($uploadProduk7_3['file_name']) ? $uploadProduk7_3['file_name'] : $row_data['foto_produk7_3'],
+            'foto_produk8_2' => isset($uploadProduk8_2['file_name']) ? $uploadProduk8_2['file_name'] : $row_data['foto_produk8_2'],
+            'foto_produk8_3' => isset($uploadProduk8_3['file_name']) ? $uploadProduk8_3['file_name'] : $row_data['foto_produk8_3'],
+            'foto_produk9_2' => isset($uploadProduk9_2['file_name']) ? $uploadProduk9_2['file_name'] : $row_data['foto_produk9_2'],
+            'foto_produk9_3' => isset($uploadProduk9_3['file_name']) ? $uploadProduk9_3['file_name'] : $row_data['foto_produk9_3'],
+            'foto_produk10_2' => isset($uploadProduk10_2['file_name']) ? $uploadProduk10_2['file_name'] : $row_data['foto_produk10_2'],
+            'foto_produk10_3' => isset($uploadProduk10_3['file_name']) ? $uploadProduk10_3['file_name'] : $row_data['foto_produk10_3'],
             'desc_produk1' => $post['desc_produk1'],
+            'desc_produk1_2' => $post['desc_produk1_2'],
+            'desc_produk1_3' => $post['desc_produk1_3'],
             'desc_produk2' => $post['desc_produk2'],
+            'desc_produk2_2' => $post['desc_produk2_2'],
+            'desc_produk2_3' => $post['desc_produk2_3'],
             'desc_produk3' => $post['desc_produk3'],
+            'desc_produk3_2' => $post['desc_produk3_2'],
+            'desc_produk3_3' => $post['desc_produk3_3'],
             'desc_produk4' => $post['desc_produk4'],
+            'desc_produk4_2' => $post['desc_produk4_2'],
+            'desc_produk4_3' => $post['desc_produk4_3'],
             'desc_produk5' => $post['desc_produk5'],
+            'desc_produk5_2' => $post['desc_produk5_2'],
+            'desc_produk5_3' => $post['desc_produk5_3'],
             'desc_produk6' => $post['desc_produk6'],
+            'desc_produk6_2' => $post['desc_produk6_2'],
+            'desc_produk6_3' => $post['desc_produk6_3'],
             'desc_produk7' => $post['desc_produk7'],
+            'desc_produk7_2' => $post['desc_produk7_2'],
+            'desc_produk7_3' => $post['desc_produk7_3'],
             'desc_produk8' => $post['desc_produk8'],
+            'desc_produk8_2' => $post['desc_produk8_2'],
+            'desc_produk8_3' => $post['desc_produk8_3'],
             'desc_produk9' => $post['desc_produk9'],
+            'desc_produk9_2' => $post['desc_produk9_2'],
+            'desc_produk9_3' => $post['desc_produk9_3'],
             'desc_produk10' => $post['desc_produk10'],
+            'desc_produk10_2' => $post['desc_produk10_2'],
+            'desc_produk10_3' => $post['desc_produk10_3'],
             'tanggal_update' => date('Y-m-d H:i:s'),
             'update_by' => $this->data['userdata']['employee_id']
         );
