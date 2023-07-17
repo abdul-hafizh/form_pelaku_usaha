@@ -1,7 +1,18 @@
-<!--select2 css-->
+<!-- select2 css-->
 <link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css" rel="stylesheet" />
+<!-- jquery validate-->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.19.0/jquery.validate.min.js"></script>
 
-<form action="<?php echo site_url('formulir/submit_formulir'); ?>" method="post" enctype="multipart/form-data">
+<style>
+    label.error {
+        color: red;
+        font-size: 14px;
+        display: block;
+        margin-top: 5px;
+    }
+</style>
+
+<form action="<?php echo site_url('formulir/submit_formulir'); ?>" method="post" id="basic-form" enctype="multipart/form-data">
     <div class="row">
         <div class="col-lg-12">
             <div class="card">
@@ -21,11 +32,14 @@
                         <div class="col-lg-3">
                             <label class="form-label">2. NIK</label>
                         </div>
-                        <div class="col-lg-4">
+                        <div class="col-lg-3">
                             <input type="number" class="form-control" name="nik" placeholder="NIK" required>
                         </div>
                         <div class="col-lg-3">
-                            <input type="file" class="form-control" name="foto_ktp" required>
+                            <div class="input-group">
+                                <label class="input-group-text">Upload KTP</label>   
+                                <input type="file" class="form-control" name="foto_ktp" required>
+                            </div>
                         </div>
                     </div>
                     <div class="row mb-3">
@@ -62,10 +76,10 @@
                     </div>
                     <div class="row mb-3">
                         <div class="col-lg-3">
-                            <label class="form-label">7. Jenis Produk <small class="text-muted">(sesuai KBLI)</small></label> 
+                            <label class="form-label">7. Jenis Usaha <small class="text-muted">(sesuai KBLI)</small></label> 
                         </div>
                         <div class="col-lg-3">
-                            <input type="text" class="form-control" name="jenis_produk" placeholder="Jenis Produk" required>
+                            <input type="text" class="form-control" name="jenis_produk" placeholder="Jenis Usaha" required>
                         </div>
                         <div class="col-lg-3">
                             <input type="number" class="form-control" name="kbli" placeholder="KBLI" >
@@ -122,10 +136,8 @@
         <div class="col-lg-12">
             <div class="card">
                 <div class="card-header">
-                    <div class="form-floating">
-                        <input type="text" class="form-control" name="produk1_inp" placeholder="Nama Produk 1" >
-                        <label class="form-label">11. Nama Produk 1</label>
-                    </div>
+                    <label class="form-label">11. Nama Produk 1</label>                    
+                    <input type="text" class="form-control" name="produk1_inp" placeholder="Nama Produk 1" required>
                 </div>
                 <div class="card-body">
                     <div class="row mb-3">  
@@ -193,17 +205,15 @@
         <div class="col-lg-12">
             <div class="card">
                 <div class="card-header">
-                    <div class="form-floating">
-                        <input type="text" class="form-control" name="produk2_inp" placeholder="Nama Produk 2" >
-                        <label class="form-label">12. Nama Produk 2</label>
-                    </div>
+                    <label class="form-label">12. Nama Produk 2</label>
+                    <input type="text" class="form-control" name="produk2_inp" id="prod2" placeholder="Nama Produk 2">                    
                 </div>
                 <div class="card-body">
                     <div class="row mb-3">  
                         <div class="col-lg-3">
                             <label class="form-label">Varian 1</label>
-                            <input type="file" class="form-control" name="foto_produk1_2">
-                            <input type="text" class="form-control mt-2" name="desc_produk1_2" placeholder="Keterangan Varian 1" >
+                            <input type="file" class="form-control" id="prod2_var" name="foto_produk1_2">
+                            <input type="text" class="form-control mt-2" id="prod2_ket" name="desc_produk1_2" placeholder="Keterangan Varian 1" >
                         </div>
                         <div class="col-lg-3">
                             <label class="form-label">Varian 2</label>
@@ -264,10 +274,8 @@
         <div class="col-lg-12">
             <div class="card">
                 <div class="card-header">
-                    <div class="form-floating">
-                        <input type="text" class="form-control" name="produk3_inp" placeholder="Nama Produk 3" >
-                        <label class="form-label">13. Nama Produk 3</label>
-                    </div>
+                    <label class="form-label">13. Nama Produk 3</label>
+                    <input type="text" class="form-control" name="produk3_inp" placeholder="Nama Produk 3">
                 </div>
                 <div class="card-body">
                     <div class="row mb-3">  
@@ -348,9 +356,16 @@
 <script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js"></script>
 
 <script>    
-    $(document).ready(function () {
+    $(document).ready(function () {        
         $(".select-single").select2();
 
+        $("#basic-form").validate({
+            invalidHandler: function(event, validator) {            
+                var errors = validator.numberOfInvalids();
+                if (errors) { window.scrollTo({top: 0}); }
+            }
+        });
+        
         $("#provinsi").on("change", function () {
 			let provinsi = $("#provinsi").val();
 			$.ajax({

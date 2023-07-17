@@ -113,13 +113,14 @@ class Formulir extends Telescoope_Controller {
 
         $position = $this->Administration_m->getPosition("ENUM");
 
-        $data['detail'] = $this->Formulir_m->getDetail($id, $this->data['userdata']['employee_id'])->row_array();
+        $data['detail'] = $this->Formulir_m->getDetail($id, $this->data['userdata']['employee_id'])->row_array();        
 
         $data['surveyor'] = $this->Formulir_m->getSurveyor()->result_array();
 
         if(!$position){
             
             $data['detail'] = $this->Formulir_m->getDetail($id)->row_array();
+            $data['pendamping'] = $this->db->get_where('adm_employee', ['id' => $data['detail']['user_id']])->row_array();
         }
 
 		$this->template("formulir/detail_formulir_v", "Detail Data Pelaku Usaha", $data);
@@ -818,6 +819,7 @@ class Formulir extends Telescoope_Controller {
             'email' => $post['email'],
             'no_npwp' => $post['no_npwp'],
             'no_nib' => $post['no_nib'],
+            'status' => 1,
             'nama_produk' => $post['nama_produk'],
             'jenis_produk' => $post['jenis_produk'],
             'kbli' => $post['kbli'],
@@ -927,6 +929,8 @@ class Formulir extends Telescoope_Controller {
         $data_srv = array(            
             'id_formulir' => $post['id_form'],
             'id_surveyor' => $post['surveyor'],
+            'username' => $post['username'],
+            'password' => $post['password'],
             'tanggal_input' => date('Y-m-d H:i:s'),
             'input_by' => $this->data['userdata']['employee_id']
         );
@@ -940,6 +944,38 @@ class Formulir extends Telescoope_Controller {
                 $this->db->trans_rollback();
             } else {
                 $this->setMessage("Success Approve data.");
+                $this->db->trans_commit();
+            }            
+
+            redirect(site_url('formulir/detail_data/' . $post['id_form']));
+        
+        } else {
+            $this->renderMessage("error");
+        }
+    }
+
+    public function unapproval(){
+
+        $post = $this->input->post(); 
+
+        $this->db->trans_begin();        
+
+        $data = array(            
+            'status' => 3,
+            'alasan' => $post['alasan'],
+            'tanggal_approve' => date('Y-m-d H:i:s')
+        );
+
+        $this->db->where('id', $post['id_form']);
+        $simpan = $this->db->update('formulir', $data);
+        
+        if($simpan){
+            
+            if ($this->db->trans_status() === FALSE)  {
+                $this->setMessage("Failed Unapprove data.");
+                $this->db->trans_rollback();
+            } else {
+                $this->setMessage("Success Unapprove data.");
                 $this->db->trans_commit();
             }            
 

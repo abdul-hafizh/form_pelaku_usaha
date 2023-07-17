@@ -43,10 +43,12 @@ class User_access extends Telescoope_Controller
 
     $sess = $this->session->userdata(do_hash(SESSION_PREFIX));
 
-    $position = $this->Administration_m->getPosition("ADMINISTRATOR");
+    $position1 = $this->Administration_m->getPosition("ADMINISTRATOR");
+    $position2 = $this->Administration_m->getPosition("KORWIL");
+    $position3 = $this->Administration_m->getPosition("VIEWER");
 
-    if(!$position){
-        $this->noAccess("Hanya ADMINISTRATOR yang dapat mengubah data.");
+    if(!$position1 && !$position2 && !$position3){
+        $this->noAccess("Anda tidak memiliki hak akses untuk halaman ini.");
     }
 
     if(empty($sess)){
@@ -56,7 +58,20 @@ class User_access extends Telescoope_Controller
 
   public function index(){
       $data = array();
+
+      $pos1 = $this->Administration_m->getPosition("KORWIL");
+      $pos2 = $this->Administration_m->getPosition("VIEWER");   
+
       $data['get_user'] = $this->Administration_m->user_access_view()->result_array();
+
+      if($pos1){        
+        $data['get_user'] = $this->Administration_m->user_access_view("", $this->data['userdata']['provinsi'])->result_array();      
+      }
+
+      if($pos2){        
+        $data['get_user'] = $this->Administration_m->user_access_view("", $this->data['userdata']['provinsi'], "ENUM")->result_array();      
+      }
+
       $this->template("user_access/list_user_v", "User Access", $data);
   }
 

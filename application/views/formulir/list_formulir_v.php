@@ -23,8 +23,8 @@
                             <th>Pelaku Usaha</th>
                             <th>KBLI</th>
                             <th>Nama Produk</th>
-                            <th>Jenis Produk</th>
-                            <th>Kabupaten</th>
+                            <th>Jenis Usaha</th>
+                            <th>Provinsi</th>
                             <th>No Kontak / WA</th>
                             <th>Status</th>
                             <th>Foto Produk</th>
@@ -39,9 +39,9 @@
                                 <td><?php echo $v['kbli']; ?></td>
                                 <td><?php echo $v['nama_produk']; ?></td>
                                 <td><?php echo $v['jenis_produk']; ?></td>
-                                <td><?php echo $v['kabupaten']; ?></td>
+                                <td><?php echo $v['provinsi']; ?></td>
                                 <td><?php echo $v['no_telp']; ?></td>
-                                <td><?php echo $v['status'] == 2 ? '<span class="badge bg-success">Sudah Diapprove</span>' : '<span class="badge bg-danger">Belum Diapprove</span>'; ?></td>
+                                <td><?php if ($v['status'] == 2) { echo '<span class="badge bg-success">Sudah Diapprove</span>'; } elseif ($v['status'] == 3) { echo '<span class="badge bg-danger">Tidak Diapprove</span>'; } else { echo '<span class="badge bg-danger">Belum Diapprove</span>'; } ?></td>
                                 <td>
                                     <div class="avatar-group">
                                         <a href="<?php echo base_url('uploads/formulir/' . $v['foto_ktp']); ?>" target="_blank" class="avatar-group-item" data-img="<?php echo base_url('uploads/formulir/' . $v['foto_ktp']); ?>" data-bs-toggle="tooltip" data-bs-trigger="hover" data-bs-placement="top" title="Foto Ktp">
@@ -69,7 +69,9 @@
                                         </button>
                                         <ul class="dropdown-menu dropdown-menu-end">
                                             <li><a href="<?php echo site_url('formulir/detail_data/' . $v['id']); ?>" class="dropdown-item"><i class="ri-eye-fill align-bottom me-2 text-muted"></i> View</a></li>
-                                            <li><a href="<?php echo site_url('formulir/edit_data/' . $v['id']); ?>" class="dropdown-item edit-item-btn"><i class="ri-pencil-fill align-bottom me-2 text-muted"></i> Edit</a></li>
+                                            <?php if($v['status'] != 2) { ?>
+                                                <li><a href="<?php echo site_url('formulir/edit_data/' . $v['id']); ?>" class="dropdown-item edit-item-btn"><i class="ri-pencil-fill align-bottom me-2 text-muted"></i> Edit</a></li>
+                                            <?php } ?>
                                             <?php if($userdata['pos_name'] == 'ADMINISTRATOR') { ?>
                                                 <li>
                                                     <a href="<?php echo site_url('formulir/delete_formulir/' . $v['id']); ?>" onclick="return confirm('Apakah Anda yakin?');" class="dropdown-item remove-item-btn">

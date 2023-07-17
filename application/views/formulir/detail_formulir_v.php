@@ -13,11 +13,16 @@
                 <div class="float-end">
                     <?php if($detail['status'] == 1) { ?>                        
                         <?php if($userdata['pos_name'] == 'KORWIL') { ?>
-                            <button type="button" class="btn btn-danger btn-sm" data-bs-toggle="modal" data-bs-target="#exampleModalgrid">
-                                <i class=" las la-check-circle"></i> Approve
+                            <button type="button" class="btn btn-info btn-sm" data-bs-toggle="modal" data-bs-target="#modal_approve">
+                                <i class="las la-check-circle"></i> Approve
                             </button>
+                            <button type="button" class="btn btn-danger btn-sm" data-bs-toggle="modal" data-bs-target="#modal_unapprove">
+                                <i class="las la-times-circle"></i> Unapprove
+                            </button> | 
                         <?php } ?>
                         <a href="#" class="btn btn-sm btn-secondary">Belum Diapprove</a>
+                    <?php } elseif($detail['status'] == 3) { ?>
+                        <a href="#" class="btn btn-sm btn-danger">Tidak Diapprove</a>
                     <?php } else { ?>
                         <a href="#" class="btn btn-sm btn-success">Sudah Diapprove</a>
                     <?php } ?>
@@ -32,6 +37,16 @@
                         <input type="text" class="form-control" name="nama_pelaku_usaha" placeholder="Nama Pelaku Usaha" value="<?php echo $detail['nama_pelaku_usaha']; ?>" readonly >
                     </div>
                 </div>
+                <?php if($detail['status'] == 3) { ?>
+                    <div class="row mb-3">
+                        <div class="col-lg-3">
+                            <label class="form-label text-danger">&nbsp;&nbsp;&nbsp;&nbsp; Alasan Tidak Diapprove</label>
+                        </div>
+                        <div class="col-lg-9">
+                            <input type="text" class="form-control" name="alasan" placeholder="Alasan" value="<?php echo $detail['alasan']; ?>" readonly>                            
+                        </div>
+                    </div>
+                <?php } ?>
                 <div class="row mb-3">
                     <div class="col-lg-3">
                         &nbsp;
@@ -86,10 +101,10 @@
                 </div>
                 <div class="row mb-3">
                     <div class="col-lg-3">
-                        <label class="form-label">7. Jenis Produk <small class="text-muted">(sesuai KBLI)</small></label> 
+                        <label class="form-label">7. Jenis Usaha <small class="text-muted">(sesuai KBLI)</small></label> 
                     </div>
                     <div class="col-lg-3">
-                        <input type="text" class="form-control" name="jenis_produk" placeholder="Jenis Produk" value="<?php echo $detail['jenis_produk']; ?>" readonly >
+                        <input type="text" class="form-control" name="jenis_produk" placeholder="Jenis Usaha" value="<?php echo $detail['jenis_produk']; ?>" readonly >
                     </div>
                     <div class="col-lg-3">
                         <input type="text" class="form-control" name="kbli" placeholder="KBLI" value="<?php echo $detail['kbli']; ?>" readonly >
@@ -139,10 +154,8 @@
     <div class="col-lg-12">
         <div class="card">
             <div class="card-header">
-                <div class="form-floating">
-                    <input type="text" class="form-control" name="produk1_inp" value="<?php echo $detail['produk_1']; ?>" readonly>
-                    <label class="form-label">11. Nama Produk 1</label>
-                </div>
+                <label class="form-label">11. Nama Produk 1</label>
+                <input type="text" class="form-control" name="produk1_inp" value="<?php echo $detail['produk_1']; ?>" readonly>
             </div>
             <div class="card-body">
                 <div class="row mb-3">  
@@ -250,10 +263,8 @@
     <div class="col-lg-12">
         <div class="card">
             <div class="card-header">
-                <div class="form-floating">
-                    <input type="text" class="form-control" name="produk2_inp" value="<?php echo $detail['produk_2']; ?>" readonly>
-                    <label class="form-label">12. Nama Produk 2</label>
-                </div>
+                <label class="form-label">12. Nama Produk 2</label>
+                <input type="text" class="form-control" name="produk2_inp" value="<?php echo $detail['produk_2']; ?>" readonly>
             </div>
             <div class="card-body">
                 <div class="row mb-3">  
@@ -361,10 +372,8 @@
     <div class="col-lg-12">
         <div class="card">
             <div class="card-header">
-                <div class="form-floating">
-                    <input type="text" class="form-control" name="produk3_inp" value="<?php echo $detail['produk_3']; ?>" readonly>
-                    <label class="form-label">13. Nama Produk 3</label>
-                </div>
+                <label class="form-label">13. Nama Produk 3</label>
+                <input type="text" class="form-control" name="produk3_inp" value="<?php echo $detail['produk_3']; ?>" readonly>
             </div>
             <div class="card-body">
                 <div class="row mb-3">  
@@ -468,11 +477,11 @@
     </div>
 </div>
 
-<div class="modal fade" id="exampleModalgrid" tabindex="-1" aria-labelledby="exampleModalgridLabel" aria-modal="true">
+<div class="modal fade" id="modal_approve" tabindex="-1" aria-labelledby="modal_approveLabel" aria-modal="true">
     <div class="modal-dialog">
         <div class="modal-content">
             <div class="modal-header">
-                <h5 class="modal-title" id="exampleModalgridLabel">Approve <?php echo $detail['nama_pelaku_usaha'];?></h5>
+                <h5 class="modal-title" id="modal_approveLabel">Approve <?php echo $detail['nama_pelaku_usaha'];?></h5>
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
             <div class="modal-body">
@@ -481,19 +490,57 @@
                         <div class="col">
                             <input type="hidden" name="id_form" value="<?php echo $detail["id"];?>">
                             <div><hr/>
-                                <label class="form-label">Surveyor</label>
-                                <select name="surveyor" required>
-                                    <option value="">Pilih Surveyor</option>
+                                <label class="form-label">Pendamping</label>
+                                <select class="form-control" name="surveyor" required>
+                                    <option value="">Pilih Pendamping</option>
                                     <?php foreach($surveyor as $v) { ?>
-                                        <option value="<?php echo $v['id']; ?>"><?php echo $v['fullname']; ?></option>
+                                        <option value="<?php echo $v['id']; ?>" <?php echo $pendamping['pendamping_id'] == $v['id'] ? "selected" : "" ;?>><?php echo $v['fullname']; ?></option>
                                     <?php } ?>
                                 </select>
                             </div>
+                            <div class="mt-2">
+                                <label class="form-label">Username</label>
+                                <input type="text" class="form-control" name="username" placeholder="Username" required>
+                            </div>
+                            <div class="mt-2">
+                                <label class="form-label">Password</label>
+                                <input type="password" class="form-control" name="password" placeholder="Password" required>
+                            </div>                            
                         </div>
                         <div class="col-lg-12"><hr/>
                             <div class="hstack gap-2 justify-content-end">
                                 <button type="button" class="btn btn-light" data-bs-dismiss="modal">Close</button>
                                 <button type="submit" onclick="return confirm('Apakah Anda yakin?');" class="btn btn-danger">Approve</button>
+                            </div>
+                        </div><!--end col-->
+                    </div><!--end row-->
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="modal fade" id="modal_unapprove" tabindex="-1" aria-labelledby="modal_unapproveLabel" aria-modal="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="modal_unapproveLabel">Unapprove <?php echo $detail['nama_pelaku_usaha'];?></h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <form action="<?php echo site_url('formulir/unapproval'); ?>" method="post">
+                    <div class="row g-3">
+                        <div class="col">
+                            <input type="hidden" name="id_form" value="<?php echo $detail["id"];?>"> <hr/>                            
+                            <div class="mt-2">
+                                <label class="form-label">Alasan Tidak Diapprove</label>
+                                <input type="text" class="form-control" name="alasan" placeholder="Alasan tidak diapprove" required>
+                            </div>                         
+                        </div>
+                        <div class="col-lg-12"><hr/>
+                            <div class="hstack gap-2 justify-content-end">
+                                <button type="button" class="btn btn-light" data-bs-dismiss="modal">Close</button>
+                                <button type="submit" onclick="return confirm('Apakah Anda yakin?');" class="btn btn-danger">Unapprove</button>
                             </div>
                         </div><!--end col-->
                     </div><!--end row-->

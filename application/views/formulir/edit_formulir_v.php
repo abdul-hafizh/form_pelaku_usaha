@@ -1,9 +1,18 @@
 <!--select2 css-->
 <link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css" rel="stylesheet" />
-<!--Swiper slider css-->
-<link href="<?php echo base_url(); ?>assets/libs/swiper/swiper-bundle.min.css" rel="stylesheet" type="text/css" />
+<!-- jquery validate-->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.19.0/jquery.validate.min.js"></script>
 
-<form action="<?php echo site_url('formulir/update_formulir'); ?>" method="post" enctype="multipart/form-data">
+<style>
+    label.error {
+        color: red;
+        font-size: 14px;
+        display: block;
+        margin-top: 5px;
+    }
+</style>
+
+<form action="<?php echo site_url('formulir/update_formulir'); ?>" method="post" id="basic-form" enctype="multipart/form-data">
     <div class="row">
         <div class="col-lg-12">
             <div class="card">
@@ -20,6 +29,18 @@
                             <input type="hidden" name="id_form" value="<?php echo $detail['id']; ?>" >
                         </div>
                     </div>
+                    
+                    <?php if($detail['status'] == 3) { ?>
+                        <div class="row mb-3">
+                            <div class="col-lg-3">
+                                <label class="form-label text-danger">&nbsp;&nbsp;&nbsp;&nbsp; Alasan Tidak Diapprove</label>
+                            </div>
+                            <div class="col-lg-9">
+                                <input type="text" class="form-control" name="alasan" placeholder="Alasan" value="<?php echo $detail['alasan']; ?>" readonly>                            
+                            </div>
+                        </div>
+                    <?php } ?>
+
                     <div class="row mb-3">
                         <div class="col-lg-3">
                             &nbsp;
@@ -28,7 +49,10 @@
                             <input type="text" class="form-control" name="nik" placeholder="NIK" value="<?php echo $detail['nik']; ?>" required>
                         </div>
                         <div class="col-lg-3">
-                            <input type="file" class="form-control" name="foto_ktp">
+                            <div class="input-group">
+                                <label class="input-group-text">Upload KTP</label>                                
+                                <input type="file" class="form-control" name="foto_ktp">
+                            </div>
                         </div>
                     </div>
                     <div class="row mb-3">
@@ -77,10 +101,10 @@
                     </div>
                     <div class="row mb-3">
                         <div class="col-lg-3">
-                            <label class="form-label">7. Jenis Produk <small class="text-muted">(sesuai KBLI)</small></label> 
+                            <label class="form-label">7. Jenis Usaha <small class="text-muted">(sesuai KBLI)</small></label> 
                         </div>
                         <div class="col-lg-3">
-                            <input type="text" class="form-control" name="jenis_produk" placeholder="Jenis Produk" value="<?php echo $detail['jenis_produk']; ?>" required>
+                            <input type="text" class="form-control" name="jenis_produk" placeholder="Jenis Usaha" value="<?php echo $detail['jenis_produk']; ?>" required>
                         </div>
                         <div class="col-lg-3">
                             <input type="text" class="form-control" name="kbli" placeholder="KBLI" value="<?php echo $detail['kbli']; ?>" >
@@ -140,10 +164,8 @@
         <div class="col-lg-12">
             <div class="card">
                 <div class="card-header">
-                    <div class="form-floating">
-                        <input type="text" class="form-control" name="produk1_inp" value="<?php echo $detail['produk_1']; ?>" readonly>
-                        <label class="form-label">11. Nama Produk 1</label>
-                    </div>
+                    <label class="form-label">11. Nama Produk 1</label>
+                    <input type="text" class="form-control" name="produk1_inp" value="<?php echo $detail['produk_1']; ?>" required>
                 </div>
                 <div class="card-body">
                     <div class="row mb-3">  
@@ -261,10 +283,8 @@
         <div class="col-lg-12">
             <div class="card">
                 <div class="card-header">
-                    <div class="form-floating">
-                        <input type="text" class="form-control" name="produk2_inp" value="<?php echo $detail['produk_2']; ?>" readonly>
-                        <label class="form-label">12. Nama Produk 2</label>
-                    </div>
+                    <label class="form-label">12. Nama Produk 2</label>
+                    <input type="text" class="form-control" name="produk2_inp" value="<?php echo $detail['produk_2']; ?>">                    
                 </div>
                 <div class="card-body">
                     <div class="row mb-3">  
@@ -382,10 +402,8 @@
         <div class="col-lg-12">
             <div class="card">
                 <div class="card-header">
-                    <div class="form-floating">
-                        <input type="text" class="form-control" name="produk3_inp" value="<?php echo $detail['produk_3']; ?>" readonly>
-                        <label class="form-label">13. Nama Produk 3</label>
-                    </div>
+                    <label class="form-label">13. Nama Produk 3</label>
+                    <input type="text" class="form-control" name="produk3_inp" value="<?php echo $detail['produk_3']; ?>">
                 </div>
                 <div class="card-body">
                     <div class="row mb-3">  
@@ -515,23 +533,16 @@
 <!--select2 cdn-->
 <script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js"></script>
 
-<!--Swiper slider js-->
-<script src="<?php echo base_url(); ?>assets/libs/swiper/swiper-bundle.min.js"></script>
-
-<script>
-    var swiper = new Swiper(".responsive-swiper", {
-        loop: !0,
-        slidesPerView: 1,
-        spaceBetween: 10,
-        pagination: { el: ".swiper-pagination", clickable: !0 },
-        breakpoints: { 640: { slidesPerView: 2, spaceBetween: 20 }, 768: { slidesPerView: 3, spaceBetween: 40 }, 1200: { slidesPerView: 4, spaceBetween: 50 } },
-    });
-
-</script>
-
 <script>    
     $(document).ready(function () {
         $(".select-single").select2();
+
+        $("#basic-form").validate({
+            invalidHandler: function(event, validator) {            
+                var errors = validator.numberOfInvalids();
+                if (errors) { window.scrollTo({top: 0}); }
+            }
+        });
 
         $("#provinsi").on("change", function () {
 			let provinsi = $("#provinsi").val();

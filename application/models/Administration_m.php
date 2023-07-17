@@ -483,7 +483,7 @@ class Administration_m extends CI_Model {
 		return $this->db->get("adm_user");
 	}
 
-	public function user_access_view($id = ""){
+	public function user_access_view($id = "", $provinsi = "", $enum = ""){
 
 		if(!empty($id)){
 
@@ -491,6 +491,18 @@ class Administration_m extends CI_Model {
 
 		}
 
+		if(!empty($provinsi)){
+
+			$this->db->where("provinsi", $provinsi);
+
+		}
+
+		if(!empty($enum)){
+
+			$this->db->where("pos_name", $enum);
+
+		}
+		
 		return $this->db->get("vw_user_access");
 	}
 
