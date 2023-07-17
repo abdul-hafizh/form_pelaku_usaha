@@ -1051,6 +1051,23 @@ class Formulir extends Telescoope_Controller {
         }
     }
 
+    public function export_data() {
+      
+        $data = array();
+
+        $data['list_formulir'] = $this->Formulir_m->getFormulirEksport()->result_array();
+
+        $pos = $this->Administration_m->getPosition("VIEWER");
+
+        if($pos) {
+            $data['list_formulir'] = $this->Formulir_m->getFormulirEksportSrv($this->data['userdata']['employee_id'])->result_array();
+        }
+        
+        $data['nama_file'] = "Data Form " . date('Y-m-d H:i:s');
+
+		$this->load->view("formulir/export_formulir_v", $data);
+    }
+
     public function get_regency()
     {
         $provinces = $this->input->post('provinsi', true);

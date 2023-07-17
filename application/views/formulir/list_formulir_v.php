@@ -13,6 +13,9 @@
                 </div>
                 <div class="float-end">
                     <a href="<?php echo site_url('formulir/tambah_data');?>" class="btn btn-sm btn-primary"><i class="ri-add-line align-middle me-1"></i> Tambah Data</a>
+                    <?php if($userdata['pos_name'] != 'ENUM' && $userdata['pos_name'] != 'KORWIL') { ?>
+                        <a href="<?php echo site_url('formulir/export_data');?>" onclick="return confirm('Apakah Anda yakin?');" class="btn btn-sm btn-warning"><i class="las la-file-excel"></i> Export Data</a>
+                    <?php } ?>
                 </div>
             </div>
             <div class="card-body">
