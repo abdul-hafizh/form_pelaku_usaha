@@ -81,7 +81,7 @@ class Formulir extends Telescoope_Controller {
         $position = $this->Administration_m->getPosition("ENUM");
 
         if(!$position){
-            $this->noAccess("Hanya ENUM yang dapat mengubah data.");
+            $this->noAccess("Hanya Petugas yang dapat mengubah data.");
         }
 
         $data['kabupaten'] = $this->Formulir_m->getKabupaten()->result_array();
@@ -97,7 +97,7 @@ class Formulir extends Telescoope_Controller {
         $position = $this->Administration_m->getPosition("ENUM");
 
         if(!$position){
-            $this->noAccess("Hanya ENUM yang dapat mengubah data.");
+            $this->noAccess("Hanya Petugas yang dapat mengubah data.");
         }
 
         $data['detail'] = $this->Formulir_m->getDetail($id, $this->data['userdata']['employee_id'])->row_array();
@@ -114,8 +114,8 @@ class Formulir extends Telescoope_Controller {
         $position = $this->Administration_m->getPosition("ENUM");
 
         $data['detail'] = $this->Formulir_m->getDetail($id, $this->data['userdata']['employee_id'])->row_array();        
-
         $data['surveyor'] = $this->Formulir_m->getSurveyor()->result_array();
+        $data['form_srv'] = $this->Formulir_m->getFormSrv($id)->row_array();
 
         if(!$position){
             
@@ -984,6 +984,47 @@ class Formulir extends Telescoope_Controller {
         } else {
             $this->renderMessage("error");
         }
+    }
+
+    public function update_status_pendamping($id){
+
+        $post = $this->input->post(); 
+
+        $this->db->trans_begin();        
+
+        $row_data = $this->Formulir_m->getDetail($id)->row_array();
+
+        if($row_data['status'] == 2) {
+            $data = array(   
+                'status_pendamping' => 2,
+                'tanggal_selesai' => date('Y-m-d H:i:s')
+            );
+    
+            $this->db->where('id', $id);
+            $simpan = $this->db->update('formulir', $data);
+            
+            if($simpan){
+                
+                if ($this->db->trans_status() === FALSE)  {
+                    $this->setMessage("Failed ubah data.");
+                    $this->db->trans_rollback();
+                } else {
+                    $this->setMessage("Success ubah data.");
+                    $this->db->trans_commit();
+                }            
+    
+                redirect(site_url('formulir/detail_data/' . $id));
+            
+            } else {
+                $this->renderMessage("error");
+                redirect(site_url('formulir/detail_data/' . $id));
+            }
+
+        } else {
+            $this->setMessage("Data Belum Diapprove.");
+            $this->db->trans_rollback();
+            redirect(site_url('formulir/detail_data/' . $id));
+        }    
     }
 
     public function delete_formulir($id){        

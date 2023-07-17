@@ -21,14 +21,31 @@
                             </button> | 
                         <?php } ?>
                         <a href="#" class="btn btn-sm btn-secondary">Belum Diapprove</a>
-                    <?php } elseif($detail['status'] == 3) { ?>
-                        <a href="#" class="btn btn-sm btn-danger">Tidak Diapprove</a>
-                    <?php } else { ?>
-                        <a href="#" class="btn btn-sm btn-success">Sudah Diapprove</a>
+                        <?php } elseif($detail['status'] == 3) { ?>
+                            <a href="#" class="btn btn-sm btn-danger">Tidak Diapprove</a>
+                        <?php } else { ?>
+                            <a href="#" class="btn btn-sm btn-success">Sudah Diapprove</a>
+                            <?php if($userdata['pos_name'] == 'VIEWER') { ?>
+                                <a href="<?php echo site_url('formulir/update_status_pendamping/' . $detail['id']);?>" onclick="return confirm('Apakah Anda yakin?');" class="btn btn-sm btn-danger"><i class="lab la-telegram-plane"></i> Selesai Pendampingan</a>
+                            <?php } ?>
                     <?php } ?>
+
                 </div>
             </div>
             <div class="card-body">
+                <div class="row mb-3">
+                    <div class="col-lg-3">
+                        &nbsp;
+                    </div>
+                    <div class="col-lg-3">
+                        <label class="form-label">Username</label>
+                        <input type="text" class="form-control" value="<?php echo $form_srv['username']; ?>" readonly>
+                    </div>
+                    <div class="col-lg-3">
+                        <label class="form-label">Password</label>
+                        <input type="text" class="form-control" value="<?php echo $form_srv['password']; ?>" readonly>
+                    </div>
+                </div>
                 <div class="row mb-3">
                     <div class="col-lg-3">
                         <label class="form-label">1. Nama Pelaku Usaha</label>

@@ -65,20 +65,36 @@ class User_access extends Telescoope_Controller
       $data['get_user'] = $this->Administration_m->user_access_view()->result_array();
 
       if($pos1){        
-        $data['get_user'] = $this->Administration_m->user_access_view("", $this->data['userdata']['provinsi'])->result_array();      
+        $data['get_user'] = $this->Administration_m->user_access_view("", $this->data['userdata']['provinsi'], "KORWIL")->result_array();      
       }
 
       if($pos2){        
-        $data['get_user'] = $this->Administration_m->user_access_view("", $this->data['userdata']['provinsi'], "ENUM")->result_array();      
+        $data['get_user'] = $this->Administration_m->user_access_view("", $this->data['userdata']['provinsi'], "VIEWER")->result_array();      
       }
 
       $this->template("user_access/list_user_v", "User Access", $data);
   }
 
   public function add(){
-    $data = array();
-    $data['get_employee'] = $this->Administration_m->get_employee()->result_array();
-    $this->template("user_access/add_user_v", "Add User Access", $data);
+      $data = array();
+      $pos1 = $this->Administration_m->getPosition("KORWIL");
+      $pos2 = $this->Administration_m->getPosition("VIEWER");
+
+      $data['get_employee'] = $this->Administration_m->get_new_employee()->result_array();
+
+      if($pos1){
+
+        $data['get_employee'] = $this->Administration_m->get_new_employee($this->data['userdata']['provinsi'], "KORWIL")->result_array();
+
+      }
+
+      if($pos2){
+
+        $data['get_employee'] = $this->Administration_m->get_new_employee($this->data['userdata']['provinsi'], "VIEWER")->result_array();
+
+      }
+
+      $this->template("user_access/add_user_v", "Add User Access", $data);
   }
   
   public function submit(){

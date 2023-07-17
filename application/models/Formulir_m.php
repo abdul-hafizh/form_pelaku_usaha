@@ -44,8 +44,19 @@ class Formulir_m extends CI_Model {
 		return $this->db->get('formulir');
 
 	}
+
+	public function getFormSrv($id){
+		
+		$this->db->where('id_formulir', $id);	
+		return $this->db->get('formulir_surveyor');
+
+	}
 	
-	public function getProvinsi(){
+	public function getProvinsi($pos = ""){
+
+		if(!empty($pos)) {
+			$this->db->where('province_name', $pos);
+		}
 		
 		$this->db->where('level', 2);
 		$this->db->where('regency_name IS NULL', null, true);

@@ -110,9 +110,30 @@ class Administration_m extends CI_Model {
 	}
 
 	public function getPos($id = ""){
+		
 		if(!empty($id)){
 			$this->db->where("pos_id",$id);
 		}
+		
+		return $this->db->get("adm_pos");
+	}
+
+	public function getNewPos($pos = ""){
+		
+		$pos_name = array("VIEWER", "ENUM");
+
+		if(empty($pos)){
+			$this->db->where("pos_name !=", "ADMINISTRATOR");
+		}
+
+		if($pos == 'VIEWER'){
+			$this->db->where("pos_name", "ENUM");
+		}
+
+		if($pos == 'KORWIL'){
+			$this->db->where_in("pos_name", $pos_name);
+		}
+		
 		return $this->db->get("adm_pos");
 	}
 
@@ -286,6 +307,32 @@ class Administration_m extends CI_Model {
 		if(!empty($id)){
 
 			$this->db->where("id",$id);
+
+		}
+
+		return $this->db->get("adm_employee");
+
+	}
+
+	public function get_new_employee($prov = "", $pos = ""){
+
+		$pos_id = array(3,4);
+
+		if(!empty($prov)){
+
+			$this->db->where("provinsi", $prov);
+
+		}
+
+		if($pos == "KORWIL"){
+
+			$this->db->where_in("adm_pos_id", $pos_id);
+
+		}
+
+		if($pos == "VIEWER"){
+
+			$this->db->where("adm_pos_id", 3);
 
 		}
 
@@ -483,7 +530,9 @@ class Administration_m extends CI_Model {
 		return $this->db->get("adm_user");
 	}
 
-	public function user_access_view($id = "", $provinsi = "", $enum = ""){
+	public function user_access_view($id = "", $provinsi = "", $pos = ""){
+
+		$pos_name = array("VIEWER", "ENUM");
 
 		if(!empty($id)){
 
@@ -497,16 +546,24 @@ class Administration_m extends CI_Model {
 
 		}
 
-		if(!empty($enum)){
+		if($pos == "KORWIL"){
 
-			$this->db->where("pos_name", $enum);
+			$this->db->where_in("pos_name", $pos_name);
+
+		}
+
+		if($pos == "VIEWER"){
+
+			$this->db->where("pos_name", "ENUM");
 
 		}
 		
 		return $this->db->get("vw_user_access");
 	}
 
-	public function employee_view($id = "", $provinsi = "", $enum = ""){
+	public function employee_view($id = "", $provinsi = "", $pos = ""){
+
+		$pos_list = array("VIEWER", "ENUM");
 
 		if(!empty($id)){
 
@@ -520,9 +577,15 @@ class Administration_m extends CI_Model {
 
 		}
 
-		if(!empty($enum)){
+		if($pos == "KORWIL"){
 
-			$this->db->where("pos_name", $enum);
+			$this->db->where_in("pos_name", $pos_list);
+
+		}
+
+		if($pos == "VIEWER"){
+
+			$this->db->where_in("pos_name", "ENUM");
 
 		}
 

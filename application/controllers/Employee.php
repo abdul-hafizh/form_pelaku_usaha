@@ -65,125 +65,152 @@ class Employee extends Telescoope_Controller
       $data['get_employee'] = $this->Administration_m->employee_view()->result_array();      
 
       if($pos1){        
-        $data['get_employee'] = $this->Administration_m->employee_view("", $this->data['userdata']['provinsi'])->result_array();      
+        $data['get_employee'] = $this->Administration_m->employee_view("", $this->data['userdata']['provinsi'], "KORWIL")->result_array();      
       }
 
       if($pos2){        
-        $data['get_employee'] = $this->Administration_m->employee_view("", $this->data['userdata']['provinsi'], "ENUM")->result_array();      
+        $data['get_employee'] = $this->Administration_m->employee_view("", $this->data['userdata']['provinsi'], "VIEWER")->result_array();      
       }
 
       $this->template("employee/list_employee_v", "Employee", $data);
   }
 
   public function add(){
-    $data = array();
-    $data['get_employee_type'] = $this->Administration_m->get_employee_type()->result_array();
-    $data['get_pos'] = $this->Administration_m->getPos()->result_array();    
-    $data['provinsi'] = $this->Formulir_m->getProvinsi()->result_array();
-    $data['pendamping'] = $this->Formulir_m->getSurveyor()->result_array();
-    $this->template("employee/add_employee_v", "Add Employee", $data);
+      $data = array();
+      $data['get_employee_type'] = $this->Administration_m->get_employee_type()->result_array();
+      $data['get_pos'] = $this->Administration_m->getNewPos()->result_array();  
+      $data['provinsi'] = $this->Formulir_m->getProvinsi()->result_array();
+
+      $pos1 = $this->Administration_m->getPosition("KORWIL");
+      $pos2 = $this->Administration_m->getPosition("VIEWER");
+
+      if($pos1){        
+        $data['get_pos'] = $this->Administration_m->getNewPos("KORWIL")->result_array();  
+        $data['provinsi'] = $this->Formulir_m->getProvinsi($this->data['userdata']['provinsi'])->result_array();
+      }
+
+      if($pos2){        
+        $data['get_pos'] = $this->Administration_m->getNewPos("VIEWER")->result_array();  
+        $data['provinsi'] = $this->Formulir_m->getProvinsi($this->data['userdata']['provinsi'])->result_array();
+      }
+
+      $data['pendamping'] = $this->Formulir_m->getSurveyor()->result_array();
+      $this->template("employee/add_employee_v", "Add Employee", $data);
   }
 
   public function update($id){
-    $data = array();
-    $data['get_employee_type'] = $this->Administration_m->get_employee_type()->result_array();
-    $data['get_pos'] = $this->Administration_m->getPos()->result_array();
-    $data['get_employee'] = $this->Administration_m->employee_view($id)->row_array();
-    $data['provinsi'] = $this->Formulir_m->getProvinsi()->result_array();
-    $data['kabupaten'] = $this->Formulir_m->getKabupaten()->result_array();
-    $data['pendamping'] = $this->Formulir_m->getSurveyor()->result_array();
-    $this->template("employee/edit_employee_v", "Edit Employee", $data);
+      $data = array();
+      $data['get_employee_type'] = $this->Administration_m->get_employee_type()->result_array();
+      $data['get_pos'] = $this->Administration_m->getNewPos()->result_array();  
+      $data['provinsi'] = $this->Formulir_m->getProvinsi()->result_array();
+      $data['get_employee'] = $this->Administration_m->employee_view($id)->row_array();
+
+      $pos1 = $this->Administration_m->getPosition("KORWIL");
+      $pos2 = $this->Administration_m->getPosition("VIEWER");
+
+      if($pos1){        
+        $data['get_pos'] = $this->Administration_m->getNewPos("KORWIL")->result_array();  
+        $data['provinsi'] = $this->Formulir_m->getProvinsi($this->data['userdata']['provinsi'])->result_array();
+      }
+
+      if($pos2){        
+        $data['get_pos'] = $this->Administration_m->getNewPos("VIEWER")->result_array();  
+        $data['provinsi'] = $this->Formulir_m->getProvinsi($this->data['userdata']['provinsi'])->result_array();
+      }
+      $data['kabupaten'] = $this->Formulir_m->getKabupaten()->result_array();
+      $data['pendamping'] = $this->Formulir_m->getSurveyor()->result_array();
+      $this->template("employee/edit_employee_v", "Edit Employee", $data);
   }
   
   public function submit(){
-    $post = $this->input->post(); 
+      $post = $this->input->post(); 
 
-    $posisi = $this->Administration_m->get_pos_id($post['employee_pos_id'])->row_array();
+      $posisi = $this->Administration_m->get_pos_id($post['employee_pos_id'])->row_array();
 
-    $this->db->trans_begin(); 
+      $this->db->trans_begin(); 
 
-    $inputEmp = array(    
-      'fullname' => $post['fullname'],
-      'nik' => $post['nik'],
-      'provinsi' => $post['provinsi'],
-      'kabupaten' => $post['kabupaten'],
-      'alamat' => $post['alamat'],
-      'email' => $post['email'],
-      'status' => $post['status'],
-      'phone' => $post['phone'],
-      'pendamping_id' => $post['pendamping'],
-      'adm_pos_id' => $post['employee_pos_id']
-    );
+      $inputEmp = array(    
+        'fullname' => $post['fullname'],
+        'nik' => $post['nik'],
+        'provinsi' => $post['provinsi'],
+        'kabupaten' => $post['kabupaten'],
+        'alamat' => $post['alamat'],
+        'email' => $post['email'],
+        'status' => $post['status'],
+        'phone' => $post['phone'],
+        'pendamping_id' => $post['pendamping'],
+        'adm_pos_id' => $post['employee_pos_id']
+      );
+      
+      $this->db->insert("adm_employee", $inputEmp); 
+
+      $insert_id = $this->db->insert_id();
+
+      $data_pos = array(
+        'employee_id' => $insert_id,
+        'pos_id' => $post['employee_pos_id'],
+        'pos_name'=> $posisi['pos_name']
+      );
     
-    $this->db->insert("adm_employee", $inputEmp); 
+      $save = $this->db->insert('adm_employee_pos', $data_pos);
 
-    $insert_id = $this->db->insert_id();
-
-    $data_pos = array(
-      'employee_id' => $insert_id,
-      'pos_id' => $post['employee_pos_id'],
-      'pos_name'=> $posisi['pos_name']
-    );
-  
-    $save = $this->db->insert('adm_employee_pos', $data_pos);
-
-    if($save){
-        if ($this->db->trans_status() === FALSE)  {
-          $this->setMessage("Gagal menambah data");
-          $this->db->trans_rollback();
-        } else {
-          $this->setMessage("Sukses menambah data");
-          $this->db->trans_commit();
-        }
-        redirect(site_url('employee'));
-    } else {
-        $this->renderMessage("error");
-    }
+      if($save){
+          if ($this->db->trans_status() === FALSE)  {
+            $this->setMessage("Gagal menambah data");
+            $this->db->trans_rollback();
+          } else {
+            $this->setMessage("Sukses menambah data");
+            $this->db->trans_commit();
+          }
+          redirect(site_url('employee'));
+      } else {
+          $this->renderMessage("error");
+      }
   }
 
   public function submit_update(){
-    $post = $this->input->post(); 
+      $post = $this->input->post(); 
 
-    $posisi = $this->Administration_m->get_pos_id($post['employee_pos_id'])->row_array();
+      $posisi = $this->Administration_m->get_pos_id($post['employee_pos_id'])->row_array();
 
-    $this->db->trans_begin(); 
+      $this->db->trans_begin(); 
 
-    $updateEmp = array(
-      'fullname' => $post['fullname'],
-      'nik' => $post['nik'],
-      'provinsi' => $post['provinsi'],
-      'kabupaten' => $post['kabupaten'],
-      'alamat' => $post['alamat'],
-      'email' => $post['email'],
-      'phone' => $post['phone'],
-      'status' => $post['status'],
-      'pendamping_id' => $post['pendamping'],
-      'adm_pos_id' => $post['employee_pos_id']
-    );
+      $updateEmp = array(
+        'fullname' => $post['fullname'],
+        'nik' => $post['nik'],
+        'provinsi' => $post['provinsi'],
+        'kabupaten' => $post['kabupaten'],
+        'alamat' => $post['alamat'],
+        'email' => $post['email'],
+        'phone' => $post['phone'],
+        'status' => $post['status'],
+        'pendamping_id' => $post['pendamping'],
+        'adm_pos_id' => $post['employee_pos_id']
+      );
+      
+      $this->db->where('id', $post['id']);
+      $update = $this->db->update('adm_employee', $updateEmp);
+
+      $data_pos = array(
+        'pos_id' => $post['employee_pos_id'],
+        'pos_name'=> $posisi['pos_name']
+      );
     
-    $this->db->where('id', $post['id']);
-    $update = $this->db->update('adm_employee', $updateEmp);
+      $this->db->where('employee_pos_id', $post['id']);
+      $update_pos = $this->db->update('adm_employee_pos', $data_pos);
 
-    $data_pos = array(
-      'pos_id' => $post['employee_pos_id'],
-      'pos_name'=> $posisi['pos_name']
-    );
-  
-    $this->db->where('employee_pos_id', $post['id']);
-    $update_pos = $this->db->update('adm_employee_pos', $data_pos);
-
-    if($update){
-      if ($this->db->trans_status() === FALSE)  {
-        $this->setMessage("Gagal mengubah data");
-        $this->db->trans_rollback();
+      if($update){
+        if ($this->db->trans_status() === FALSE)  {
+          $this->setMessage("Gagal mengubah data");
+          $this->db->trans_rollback();
+        } else {
+          $this->setMessage("Sukses mengubah data");
+          $this->db->trans_commit();
+        }
+        redirect(site_url('employee/update/' . $post['id']));
       } else {
-        $this->setMessage("Sukses mengubah data");
-        $this->db->trans_commit();
+          $this->renderMessage("error");
       }
-      redirect(site_url('employee/update/' . $post['id']));
-    } else {
-        $this->renderMessage("error");
-    }
   }
 
   public function get_regency()
