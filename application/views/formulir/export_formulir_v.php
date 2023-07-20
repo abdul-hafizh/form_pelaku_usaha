@@ -20,6 +20,8 @@
             <th>Modal</th>
             <th>Jumlah Produksi</th>
             <th>Satuan</th>
+            <th>Tahun Berdiri</th>
+            <th>Bulan</th>
             <th>Alamat Produksi</th>
             <th>Alamat Outlet</th>
             <th>Tanggal Input</th>
@@ -53,6 +55,8 @@
                 <td><?php echo $v['modal']; ?></td>
                 <td><?php echo $v['jml_produksi']; ?></td>
                 <td><?php echo $v['satuan']; ?></td>
+                <td><?php echo $v['tahun_berdiri']; ?></td>
+                <td><?php echo $v['bulan_berdiri']; ?></td>
                 <td><?php echo $v['alamat_produksi']; ?></td>
                 <td><?php echo $v['alamat_outlet']; ?></td>
                 <td><?php echo $v['tanggal_input']; ?></td>

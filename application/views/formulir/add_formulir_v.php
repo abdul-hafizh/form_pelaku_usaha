@@ -83,33 +83,66 @@
                         <div class="col-lg-3 is_nib">
                             <input type="number" class="form-control no_nib_inp" name="no_nib" placeholder="NIB Jika Ada">
                         </div>
-                    </div>                    
-                    <div class="row mb-3 is_no_nib">
-                        <div class="col-lg-3">
-                            &nbsp;
-                        </div>
-                        <div class="col-lg-3">
-                            <div class="input-group">
-                                <span class="input-group-text">Modal</span>
-                                <input type="number" class="form-control modal_inp" maxlength="50" name="modal" placeholder="Modal Dasar">
+                    </div>     
+                    <div class="is_no_nib">               
+                        <div class="row mb-3">
+                            <div class="col-lg-3">
+                                &nbsp;
+                            </div>
+                            <div class="col-lg-3">
+                                <div class="input-group">
+                                    <span class="input-group-text">Modal</span>
+                                    <input type="number" class="form-control modal_inp" maxlength="50" name="modal" placeholder="Modal Dasar">
+                                </div>
+                            </div>
+                            <div class="col-lg-3">
+                                <div class="input-group">
+                                    <span class="input-group-text">Kapasitas Produksi/Tahun</span>
+                                    <input type="number" class="form-control jml_prod_inp" maxlength="50" name="jml_produksi" placeholder="Kapasitas Produksi/Tahun">
+                                </div>
+                            </div>
+                            <div class="col-lg-3">
+                                <div class="input-group">
+                                    <span class="input-group-text">Satuan</span>
+                                    <select class="form-control satuan_inp" name="satuan">
+                                        <option value="">Pilih Satuan</option>
+                                        <option value="Liter">Liter</option>
+                                        <option value="Kg">Kg</option>
+                                        <option value="Ton">Ton</option>
+                                        <option value="Pcs">Pcs</option>
+                                    </select>
+                                </div>
                             </div>
                         </div>
-                        <div class="col-lg-3">
-                            <div class="input-group">
-                                <span class="input-group-text">Jumlah Produksi</span>
-                                <input type="number" class="form-control jml_prod_inp" maxlength="50" name="jml_produksi" placeholder="Jumlah Produksi">
+                        <div class="row mb-3">
+                            <div class="col-lg-3">
+                                &nbsp;
                             </div>
-                        </div>
-                        <div class="col-lg-3">
-                            <div class="input-group">
-                                <span class="input-group-text">Satuan</span>
-                                <select class="form-control satuan_inp" name="satuan">
-                                    <option value="">Pilih Satuan</option>
-                                    <option value="Liter">Liter</option>
-                                    <option value="Kg">Kg</option>
-                                    <option value="Ton">Ton</option>
-                                    <option value="Pcs">Pcs</option>
-                                </select>
+                            <div class="col-lg-2">
+                                <div class="input-group">
+                                    <span class="input-group-text">Tahun Berdiri</span>
+                                    <input type="number" class="form-control tahun_inp" min="1900" max="2023" name="tahun_berdiri" placeholder="Tahun Berdiri">
+                                </div>
+                            </div>
+                            <div class="col-lg-2">
+                                <div class="input-group">
+                                    <span class="input-group-text">Bulan</span>
+                                    <select class="form-control bulan_inp" name="bulan_berdiri">
+                                        <option value="">Pilih Bulan</option>
+                                        <option value="Januari">Januari</option>
+                                        <option value="Februari">Februari</option>
+                                        <option value="Maret">Maret</option>
+                                        <option value="April">April</option>
+                                        <option value="Mei">Mei</option>
+                                        <option value="Juni">Juni</option>
+                                        <option value="Juli">Juli</option>
+                                        <option value="Agustus">Agustus</option>
+                                        <option value="September">September</option>
+                                        <option value="Oktober">Oktober</option>
+                                        <option value="November">November</option>
+                                        <option value="Desember">Desember</option>
+                                    </select>
+                                </div>
                             </div>
                         </div>
                     </div>
@@ -433,6 +466,8 @@
                 $(".modal_inp").val("");
                 $(".jml_prod_inp").val("");
                 $(".satuan_inp").val("");
+                $(".tahun_inp").val("");
+                $(".bulan_inp").val("");
 
             } else if(inputValue == 'option2') {
                 $(".is_no_nib").show();

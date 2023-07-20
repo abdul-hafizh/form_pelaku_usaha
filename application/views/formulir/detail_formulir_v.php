@@ -118,32 +118,65 @@
                         <input type="number" class="form-control" name="no_nib no_nib_inp" placeholder="NIB Jika Ada" value="<?php echo $detail['no_nib']; ?>" readonly >
                     </div>
                 </div>
-                <div class="row mb-3 is_no_nib">
-                    <div class="col-lg-3">
-                        &nbsp;
-                    </div>
-                    <div class="col-lg-3">
-                        <div class="input-group">
-                            <span class="input-group-text">Modal</span>
-                            <input type="number" class="form-control modal_inp" maxlength="50" name="modal" placeholder="Modal Dasar" value="<?php echo $detail['modal']; ?>" readonly>
+                <div class="is_no_nib">
+                    <div class="row mb-3">
+                        <div class="col-lg-3">
+                            &nbsp;
+                        </div>
+                        <div class="col-lg-3">
+                            <div class="input-group">
+                                <span class="input-group-text">Modal</span>
+                                <input type="number" class="form-control modal_inp" maxlength="50" name="modal" placeholder="Modal Dasar" value="<?php echo $detail['modal']; ?>" readonly>
+                            </div>
+                        </div>
+                        <div class="col-lg-3">
+                            <div class="input-group">
+                                <span class="input-group-text">Kapasitas Produksi/Tahun</span>
+                                <input type="number" class="form-control jml_prod_inp" maxlength="50" name="jml_produksi" placeholder="Kapasitas Produksi/Tahun" value="<?php echo $detail['jml_produksi']; ?>" readonly>
+                            </div>
+                        </div>
+                        <div class="col-lg-3">
+                            <div class="input-group">
+                                <span class="input-group-text">Satuan</span>
+                                <select class="form-control satuan_inp" name="satuan" disabled>
+                                    <option value="">Pilih Satuan</option>
+                                    <option value="Liter" <?php echo $detail['satuan'] == 'Liter' ? 'selected' : ''; ?>>Liter</option>
+                                    <option value="Kg" <?php echo $detail['satuan'] == 'Kg' ? 'selected' : ''; ?>>Kg</option>
+                                    <option value="Ton" <?php echo $detail['satuan'] == 'Ton' ? 'selected' : ''; ?>>Ton</option>
+                                    <option value="Pcs" <?php echo $detail['satuan'] == 'Pcs' ? 'selected' : ''; ?>>Pcs</option>
+                                </select>
+                            </div>
                         </div>
                     </div>
-                    <div class="col-lg-3">
-                        <div class="input-group">
-                            <span class="input-group-text">Jumlah Produksi</span>
-                            <input type="number" class="form-control jml_prod_inp" maxlength="50" name="jml_produksi" placeholder="Jumlah Produksi" value="<?php echo $detail['jml_produksi']; ?>" readonly>
+                    <div class="row mb-3">
+                        <div class="col-lg-3">
+                            &nbsp;
                         </div>
-                    </div>
-                    <div class="col-lg-3">
-                        <div class="input-group">
-                            <span class="input-group-text">Satuan</span>
-                            <select class="form-control satuan_inp" name="satuan" readonly>
-                                <option value="">Pilih Satuan</option>
-                                <option value="Liter" <?php echo $detail['satuan'] == 'Liter' ? 'selected' : ''; ?>>Liter</option>
-                                <option value="Kg" <?php echo $detail['satuan'] == 'Kg' ? 'selected' : ''; ?>>Kg</option>
-                                <option value="Ton" <?php echo $detail['satuan'] == 'Ton' ? 'selected' : ''; ?>>Ton</option>
-                                <option value="Pcs" <?php echo $detail['satuan'] == 'Pcs' ? 'selected' : ''; ?>>Pcs</option>
-                            </select>
+                        <div class="col-lg-2">
+                            <div class="input-group">
+                                <span class="input-group-text">Tahun Berdiri</span>
+                                <input type="number" class="form-control tahun_inp" maxlength="4" name="tahun_berdiri" placeholder="Tahun Berdiri" value="<?php echo $detail['tahun_berdiri']; ?>" readonly>
+                            </div>
+                        </div>
+                        <div class="col-lg-2">
+                            <div class="input-group">
+                                <span class="input-group-text">Bulan</span>
+                                <select class="form-control bulan_inp" name="bulan_berdiri" disabled>
+                                    <option value="">Pilih Bulan</option>
+                                    <option value="Januari" <?php echo $detail['bulan_berdiri'] == 'Januari' ? 'selected' : ''; ?>>Januari</option>
+                                    <option value="Februari" <?php echo $detail['bulan_berdiri'] == 'Februari' ? 'selected' : ''; ?>>Februari</option>
+                                    <option value="Maret" <?php echo $detail['bulan_berdiri'] == 'Maret' ? 'selected' : ''; ?>>Maret</option>
+                                    <option value="April" <?php echo $detail['bulan_berdiri'] == 'April' ? 'selected' : ''; ?>>April</option>
+                                    <option value="Mei" <?php echo $detail['bulan_berdiri'] == 'Mei' ? 'selected' : ''; ?>>Mei</option>
+                                    <option value="Juni" <?php echo $detail['bulan_berdiri'] == 'Juni' ? 'selected' : ''; ?>>Juni</option>
+                                    <option value="Juli" <?php echo $detail['bulan_berdiri'] == 'Juli' ? 'selected' : ''; ?>>Juli</option>
+                                    <option value="Agustus" <?php echo $detail['bulan_berdiri'] == 'Agustus' ? 'selected' : ''; ?>>Agustus</option>
+                                    <option value="September" <?php echo $detail['bulan_berdiri'] == 'September' ? 'selected' : ''; ?>>September</option>
+                                    <option value="Oktober" <?php echo $detail['bulan_berdiri'] == 'Oktober' ? 'selected' : ''; ?>>Oktober</option>
+                                    <option value="November" <?php echo $detail['bulan_berdiri'] == 'November' ? 'selected' : ''; ?>>November</option>
+                                    <option value="Desember" <?php echo $detail['bulan_berdiri'] == 'Desember' ? 'selected' : ''; ?>>Desember</option>
+                                </select>
+                            </div>
                         </div>
                     </div>
                 </div>
