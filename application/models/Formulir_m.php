@@ -23,9 +23,10 @@ class Formulir_m extends CI_Model {
 
 	public function getFormulirEksport(){
 		
-		$this->db->select('formulir.*, aa.fullname as nama_input, aa.phone as phone_input, bb.fullname as nama_update, bb.phone as phone_update');
+		$this->db->select('formulir.*, aa.fullname as nama_input, aa.phone as phone_input, bb.fullname as nama_update, bb.phone as phone_update, formulir_surveyor.username, formulir_surveyor.password');
 		$this->db->join('adm_employee as aa', 'formulir.user_id = aa.id', 'left');
 		$this->db->join('adm_employee as bb', 'formulir.update_by = bb.id', 'left');
+		$this->db->join('formulir_surveyor', 'formulir_surveyor.id_formulir = formulir.id', 'left');		
 		$this->db->order_by('formulir.id', 'desc');
 
 		return $this->db->get('formulir');
