@@ -59,75 +59,65 @@ class Log extends Telescoope_Controller {
 	
 		$this->db->trans_begin(); 
 
-		$this->form_validation->set_rules('nik', 'NIK', 'required|is_unique[adm_employee.nik]');
-		$this->form_validation->set_rules('phone', 'Phone', 'required|is_unique[adm_employee.phone]');
-
 		$password = $post['password_inp'];
 
       	$check = $this->db->where("user_name", $post['user_name_inp'])->get("adm_user")->num_rows();
 
-		if ($this->form_validation->run() == FALSE) {
-			$this->db->trans_rollback();
-			$this->setMessage(validation_errors());
+		if($check < 1){
+
+			$inputEmp = array(    
+				'fullname' => $post['fullname'],
+				'nik' => $post['nik'],
+				'provinsi' => $post['provinsi'],
+				'kabupaten' => $post['kabupaten'],
+				'alamat' => $post['alamat'],
+				'status' => 1,
+				'phone' => $post['phone'],
+				'pendamping_id' => $post['pendamping'],
+				'adm_pos_id' => 3
+			);
+		
+			$this->db->insert("adm_employee", $inputEmp); 
+		
+			$insert_id = $this->db->insert_id();
+		
+			$data_pos = array(
+				'employee_id' => $insert_id,
+				'pos_id' => 3,
+				'pos_name'=> $posisi['pos_name']
+			);
+		
+			$save = $this->db->insert('adm_employee_pos', $data_pos);
+
+			$data_user = array(
+				'employeeid' => $insert_id,
+				'user_name' => $post['user_name_inp'],
+				'complete_name' => $post['fullname'],
+				'created_date' => date('Y-m-d H:i:s')
+				);
+	
+			if(!empty($password)){
+				$data_user['password'] = strtoupper(do_hash($password,'sha1'));
+			}
+
+			$insert_user = $this->db->insert('adm_user', $data_user);			
+		
+			if ($this->db->trans_status() === FALSE)  {
+				$this->setMessage("Gagal menambah data");					
+				$this->db->trans_rollback();
+			} else {
+				$this->setMessage("Sukses menambah data");
+				$this->db->trans_commit();
+			}					
+			
 			redirect(site_url());
 
 		} else {
-
-			if($check < 1){
-
-				$inputEmp = array(    
-					'fullname' => $post['fullname'],
-					'nik' => $post['nik'],
-					'provinsi' => $post['provinsi'],
-					'kabupaten' => $post['kabupaten'],
-					'alamat' => $post['alamat'],
-					'status' => 1,
-					'phone' => $post['phone'],
-					'pendamping_id' => $post['pendamping'],
-					'adm_pos_id' => 3
-				);
-			
-				$this->db->insert("adm_employee", $inputEmp); 
-			
-				$insert_id = $this->db->insert_id();
-			
-				$data_pos = array(
-					'employee_id' => $insert_id,
-					'pos_id' => 3,
-					'pos_name'=> $posisi['pos_name']
-				);
-			
-				$save = $this->db->insert('adm_employee_pos', $data_pos);
-	
-				$data_user = array(
-					'employeeid' => $insert_id,
-					'user_name' => $post['user_name_inp'],
-					'complete_name' => $post['fullname'],
-					'created_date' => date('Y-m-d H:i:s')
-				  );
-		
-				if(!empty($password)){
-					$data_user['password'] = strtoupper(do_hash($password,'sha1'));
-				}
-	
-				$insert_user = $this->db->insert('adm_user', $data_user);			
-			
-				if ($this->db->trans_status() === FALSE)  {
-					$this->setMessage("Gagal menambah data");					
-					$this->db->trans_rollback();
-				} else {
-					$this->setMessage("Sukses menambah data");
-					$this->db->trans_commit();
-				}					
-				
-				redirect(site_url());
-	
-			} else {
-				$this->setMessage("Username telah digunakan.");
-				$this->db->trans_rollback();
-				redirect(site_url());
-			}
+			$this->setMessage("Username telah digunakan.");
+			$this->db->trans_rollback();
+			redirect(site_url());
 		}
+		
 	}
 
 	public function get_regency()

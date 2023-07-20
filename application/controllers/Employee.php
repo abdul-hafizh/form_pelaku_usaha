@@ -69,7 +69,7 @@ class Employee extends Telescoope_Controller
       }
 
       if($pos2){        
-        $data['get_employee'] = $this->Administration_m->employee_view("", $this->data['userdata']['provinsi'], "VIEWER")->result_array();      
+        $data['get_employee'] = $this->Administration_m->employee_view("", "", "VIEWER", $this->data['userdata']['pendamping_id'])->result_array();      
       }
 
       $this->template("employee/list_employee_v", "Employee", $data);
@@ -80,6 +80,7 @@ class Employee extends Telescoope_Controller
       $data['get_employee_type'] = $this->Administration_m->get_employee_type()->result_array();
       $data['get_pos'] = $this->Administration_m->getNewPos()->result_array();  
       $data['provinsi'] = $this->Formulir_m->getProvinsi()->result_array();
+      $data['pendamping'] = $this->Formulir_m->getSurveyor()->result_array();
 
       $pos1 = $this->Administration_m->getPosition("KORWIL");
       $pos2 = $this->Administration_m->getPosition("VIEWER");
@@ -92,9 +93,9 @@ class Employee extends Telescoope_Controller
       if($pos2){        
         $data['get_pos'] = $this->Administration_m->getNewPos("VIEWER")->result_array();  
         $data['provinsi'] = $this->Formulir_m->getProvinsi($this->data['userdata']['provinsi'])->result_array();
+        $data['pendamping'] = $this->Formulir_m->getSurveyor($this->data['userdata']['pendamping_id'])->result_array();
       }
 
-      $data['pendamping'] = $this->Formulir_m->getSurveyor()->result_array();
       $this->template("employee/add_employee_v", "Add Employee", $data);
   }
 

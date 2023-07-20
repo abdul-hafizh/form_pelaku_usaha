@@ -51,19 +51,9 @@
                                     <td><?php echo $v['pos_name'];?></td>
                                     <td><?php echo $v['status'] == 2 ? '<span class="badge bg-success">Aktif</span>' : '<span class="badge bg-danger">Tidak Aktif</span>'; ?></td>
                                     <td>
-                                        <div class="dropdown d-inline-block">
-                                            <button class="btn btn-soft-secondary btn-sm dropdown" type="button" data-bs-toggle="dropdown" aria-expanded="false">
-                                                <i class="ri-more-fill align-middle"></i>
-                                            </button>
-                                            <ul class="dropdown-menu dropdown-menu-end">
-                                                <li><a href="<?php echo site_url('employee/update/' . $v['id']);?>" class="dropdown-item edit-item-btn"><i class="ri-pencil-fill align-bottom me-2 text-muted"></i> Edit</a></li>
-                                                <li>
-                                                    <a href="<?php echo site_url('employee/trash/' . $v['id']);?>" onclick="return confirm('Apakah Anda yakin?');" class="dropdown-item remove-item-btn">
-                                                        <i class="ri-delete-bin-fill align-bottom me-2 text-muted"></i> Delete
-                                                    </a>
-                                                </li>
-                                            </ul>
-                                        </div>
+                                        <div class="btn-group" role="group">
+                                            <a href="<?php echo site_url('employee/update/' . $v['id']);?>" class="btn btn-sm btn-warning">Edit</a>
+                                        </div>                                        
                                     </td>
                                 </tr>
                             <?php } ?>

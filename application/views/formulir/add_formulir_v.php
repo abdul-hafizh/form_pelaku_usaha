@@ -70,8 +70,47 @@
                         <div class="col-lg-3">
                             <label class="form-label">6. NIB <small class="text-muted">Jika ada</small></label>
                         </div>
-                        <div class="col-lg-9">
-                            <input type="number" class="form-control" name="no_nib" placeholder="NIB Jika Ada">
+                        <div class="col-lg-3">       
+                            <div class="form-check form-check-inline">
+                                <input class="form-check-input" type="radio" name="nib_radio" value="option1">
+                                <label class="form-check-label">Ada</label>
+                            </div>
+                            <div class="form-check form-check-inline">
+                                <input class="form-check-input" type="radio" name="nib_radio" value="option2">
+                                <label class="form-check-label">Belum Ada</label>
+                            </div>
+                        </div>
+                        <div class="col-lg-3 is_nib">
+                            <input type="number" class="form-control no_nib_inp" name="no_nib" placeholder="NIB Jika Ada">
+                        </div>
+                    </div>                    
+                    <div class="row mb-3 is_no_nib">
+                        <div class="col-lg-3">
+                            &nbsp;
+                        </div>
+                        <div class="col-lg-3">
+                            <div class="input-group">
+                                <span class="input-group-text">Modal</span>
+                                <input type="number" class="form-control modal_inp" maxlength="50" name="modal" placeholder="Modal Dasar">
+                            </div>
+                        </div>
+                        <div class="col-lg-3">
+                            <div class="input-group">
+                                <span class="input-group-text">Jumlah Produksi</span>
+                                <input type="number" class="form-control jml_prod_inp" maxlength="50" name="jml_produksi" placeholder="Jumlah Produksi">
+                            </div>
+                        </div>
+                        <div class="col-lg-3">
+                            <div class="input-group">
+                                <span class="input-group-text">Satuan</span>
+                                <select class="form-control satuan_inp" name="satuan">
+                                    <option value="">Pilih Satuan</option>
+                                    <option value="Liter">Liter</option>
+                                    <option value="Kg">Kg</option>
+                                    <option value="Ton">Ton</option>
+                                    <option value="Pcs">Pcs</option>
+                                </select>
+                            </div>
                         </div>
                     </div>
                     <div class="row mb-3">
@@ -382,5 +421,25 @@
 				},
 			});
 		});
+
+        $(".is_no_nib").hide();
+        $(".is_nib").hide();
+
+        $('input[type="radio"]').click(function(){
+            var inputValue = $(this).attr("value");
+            if(inputValue == 'option1') {
+                $(".is_no_nib").hide();
+                $(".is_nib").show();
+                $(".modal_inp").val("");
+                $(".jml_prod_inp").val("");
+                $(".satuan_inp").val("");
+
+            } else if(inputValue == 'option2') {
+                $(".is_no_nib").show();
+                $(".is_nib").hide();
+                $(".no_nib_inp").val("");
+            }            
+        });
+        
     })
 </script>

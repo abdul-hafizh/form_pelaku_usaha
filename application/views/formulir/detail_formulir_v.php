@@ -114,8 +114,37 @@
                     <div class="col-lg-3">
                         <label class="form-label">6. NIB <small class="text-muted">Jika ada</small></label>
                     </div>
-                    <div class="col-lg-9">
-                        <input type="number" class="form-control" name="no_nib" placeholder="NIB Jika Ada" value="<?php echo $detail['no_nib']; ?>" readonly >
+                    <div class="col-lg-3 is_nib">
+                        <input type="number" class="form-control" name="no_nib no_nib_inp" placeholder="NIB Jika Ada" value="<?php echo $detail['no_nib']; ?>" readonly >
+                    </div>
+                </div>
+                <div class="row mb-3 is_no_nib">
+                    <div class="col-lg-3">
+                        &nbsp;
+                    </div>
+                    <div class="col-lg-3">
+                        <div class="input-group">
+                            <span class="input-group-text">Modal</span>
+                            <input type="number" class="form-control modal_inp" maxlength="50" name="modal" placeholder="Modal Dasar" value="<?php echo $detail['modal']; ?>" readonly>
+                        </div>
+                    </div>
+                    <div class="col-lg-3">
+                        <div class="input-group">
+                            <span class="input-group-text">Jumlah Produksi</span>
+                            <input type="number" class="form-control jml_prod_inp" maxlength="50" name="jml_produksi" placeholder="Jumlah Produksi" value="<?php echo $detail['jml_produksi']; ?>" readonly>
+                        </div>
+                    </div>
+                    <div class="col-lg-3">
+                        <div class="input-group">
+                            <span class="input-group-text">Satuan</span>
+                            <select class="form-control satuan_inp" name="satuan" readonly>
+                                <option value="">Pilih Satuan</option>
+                                <option value="Liter" <?php echo $detail['satuan'] == 'Liter' ? 'selected' : ''; ?>>Liter</option>
+                                <option value="Kg" <?php echo $detail['satuan'] == 'Kg' ? 'selected' : ''; ?>>Kg</option>
+                                <option value="Ton" <?php echo $detail['satuan'] == 'Ton' ? 'selected' : ''; ?>>Ton</option>
+                                <option value="Pcs" <?php echo $detail['satuan'] == 'Pcs' ? 'selected' : ''; ?>>Pcs</option>
+                            </select>
+                        </div>
                     </div>
                 </div>
                 <div class="row mb-3">
@@ -518,11 +547,19 @@
                                 </select>
                             </div>
                             <div class="mt-2">
-                                <label class="form-label">Username</label>
+                                <label class="form-label">NIB</label>
+                                <input type="text" class="form-control" name="no_nib" placeholder="No NIB" value="<?php echo $detail['no_nib'];?>">
+                            </div>
+                            <div class="mt-2">
+                                <label class="form-label">KBLI</label>
+                                <input type="text" class="form-control" name="kbli" placeholder="KBLI" value="<?php echo $detail['kbli'];?>">
+                            </div>
+                            <div class="mt-2">
+                                <label class="form-label">Username Pelaku Usaha</label>
                                 <input type="text" class="form-control" name="username" placeholder="Username" required>
                             </div>
                             <div class="mt-2">
-                                <label class="form-label">Password</label>
+                                <label class="form-label">Password Pelaku Usaha</label>
                                 <input type="password" class="form-control" name="password" placeholder="Password" required>
                             </div>                            
                         </div>

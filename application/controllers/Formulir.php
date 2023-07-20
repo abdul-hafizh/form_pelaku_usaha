@@ -427,6 +427,9 @@ class Formulir extends Telescoope_Controller {
             'email' => $post['email'],
             'no_npwp' => $post['no_npwp'],
             'no_nib' => $post['no_nib'],
+            'modal' => $post['modal'],
+            'jml_produksi' => $post['jml_produksi'],
+            'satuan' => $post['satuan'],
             'nama_produk' => $post['nama_produk'],
             'jenis_produk' => $post['jenis_produk'],
             'kbli' => $post['kbli'],
@@ -819,6 +822,9 @@ class Formulir extends Telescoope_Controller {
             'email' => $post['email'],
             'no_npwp' => $post['no_npwp'],
             'no_nib' => $post['no_nib'],
+            'modal' => $post['modal'],
+            'jml_produksi' => $post['jml_produksi'],
+            'satuan' => $post['satuan'],
             'status' => 1,
             'nama_produk' => $post['nama_produk'],
             'jenis_produk' => $post['jenis_produk'],
@@ -920,6 +926,8 @@ class Formulir extends Telescoope_Controller {
 
         $data = array(            
             'status' => 2,
+            'no_nib' => $post['no_nib'],
+            'kbli' => $post['kbli'],
             'tanggal_approve' => date('Y-m-d H:i:s')
         );
 

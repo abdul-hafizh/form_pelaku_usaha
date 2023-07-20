@@ -56,8 +56,8 @@
                                             $pesan = $this->session->userdata('message');
                                             $pesan = (empty($pesan)) ? "" : $pesan;
                                             if(!empty($pesan)){ ?>
-                                                <div class="alert alert-danger alert-border-left alert-dismissible fade show mb-3" role="alert">
-                                                    <i class="ri-error-warning-line me-3 align-middle fs-16"></i><strong>Failed</strong>
+                                                <div class="alert alert-info alert-border-left alert-dismissible fade show mb-3" role="alert">
+                                                    <i class="ri-error-warning-line me-3 align-middle fs-16"></i><strong>Info</strong>
                                                     - <?php echo $pesan ?>
                                                     <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
                                                 </div>

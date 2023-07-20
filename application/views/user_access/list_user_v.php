@@ -34,10 +34,14 @@
                             <tr>
                                 <th>No</th>
                                 <th>Username</th>
+                                
+                                <?php if($userdata['pos_name'] == 'ADMINISTRATOR') { ?>
+                                    <th>Password</th>
+                                <?php } ?>
+
                                 <th>Nama Lengkap</th>
                                 <th>Posisi</th>
                                 <th>Email</th>
-                                <th>Action</th>
                             </tr>
                         </thead>
                         <tbody>
@@ -45,24 +49,14 @@
                                 <tr>
                                     <td class="text-center"><?php echo $no++;?></td>
                                     <td><?php echo $v['user_name'];?></td>
+                                    
+                                    <?php if($userdata['pos_name'] == 'ADMINISTRATOR') { ?>
+                                        <td><?php echo strtolower($v['password']);?></td>
+                                    <?php } ?>
+                                    
                                     <td><?php echo $v['complete_name'];?></td>
                                     <td><?php echo $v['pos_name'];?></td>
-                                    <td><?php echo $v['email'];?></td>
-                                    <td>
-                                        <div class="dropdown d-inline-block">
-                                            <button class="btn btn-soft-secondary btn-sm dropdown" type="button" data-bs-toggle="dropdown" aria-expanded="false">
-                                                <i class="ri-more-fill align-middle"></i>
-                                            </button>
-                                            <ul class="dropdown-menu dropdown-menu-end">
-                                                <li><a href="#" class="dropdown-item edit-item-btn"><i class="ri-pencil-fill align-bottom me-2 text-muted"></i> Edit</a></li>
-                                                <li>
-                                                    <a href="#" onclick="return confirm('Apakah Anda yakin?');" class="dropdown-item remove-item-btn">
-                                                        <i class="ri-delete-bin-fill align-bottom me-2 text-muted"></i> Delete
-                                                    </a>
-                                                </li>
-                                            </ul>
-                                        </div>
-                                    </td>
+                                    <td><?php echo $v['email'];?></td>                                   
                                 </tr>
                             <?php } ?>
                         </tbody>                            

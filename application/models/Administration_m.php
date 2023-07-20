@@ -314,13 +314,19 @@ class Administration_m extends CI_Model {
 
 	}
 
-	public function get_new_employee($prov = "", $pos = ""){
+	public function get_new_employee($prov = "", $pos = "", $pend = ""){
 
 		$pos_id = array(3,4);
 
 		if(!empty($prov)){
 
 			$this->db->where("provinsi", $prov);
+
+		}
+
+		if(!empty($pend)){
+
+			$this->db->where("pendamping_id", $pend);
 
 		}
 
@@ -530,7 +536,7 @@ class Administration_m extends CI_Model {
 		return $this->db->get("adm_user");
 	}
 
-	public function user_access_view($id = "", $provinsi = "", $pos = ""){
+	public function user_access_view($id = "", $provinsi = "", $pos = "", $pend = ""){
 
 		$pos_name = array("VIEWER", "ENUM");
 
@@ -557,11 +563,17 @@ class Administration_m extends CI_Model {
 			$this->db->where("pos_name", "ENUM");
 
 		}
+
+		if(!empty($pend)){
+
+			$this->db->where("pendamping_id", $pend);
+
+		}
 		
 		return $this->db->get("vw_user_access");
 	}
 
-	public function employee_view($id = "", $provinsi = "", $pos = ""){
+	public function employee_view($id = "", $provinsi = "", $pos = "", $pend = ""){
 
 		$pos_list = array("VIEWER", "ENUM");
 
@@ -586,6 +598,12 @@ class Administration_m extends CI_Model {
 		if($pos == "VIEWER"){
 
 			$this->db->where_in("pos_name", "ENUM");
+
+		}
+
+		if(!empty($pend)){
+
+			$this->db->where("pendamping_id", $pend);
 
 		}
 

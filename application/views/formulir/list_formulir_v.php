@@ -68,24 +68,17 @@
                                     </div>
                                 </td>
                                 <td>
-                                    <div class="dropdown d-inline-block">
-                                        <button class="btn btn-soft-secondary btn-sm dropdown" type="button" data-bs-toggle="dropdown" aria-expanded="false">
-                                            <i class="ri-more-fill align-middle"></i>
-                                        </button>
-                                        <ul class="dropdown-menu dropdown-menu-end">
-                                            <li><a href="<?php echo site_url('formulir/detail_data/' . $v['id']); ?>" class="dropdown-item"><i class="ri-eye-fill align-bottom me-2 text-muted"></i> View</a></li>
-                                            <?php if($v['status'] != 2) { ?>
-                                                <li><a href="<?php echo site_url('formulir/edit_data/' . $v['id']); ?>" class="dropdown-item edit-item-btn"><i class="ri-pencil-fill align-bottom me-2 text-muted"></i> Edit</a></li>
-                                            <?php } ?>
-                                            <?php if($userdata['pos_name'] == 'ADMINISTRATOR') { ?>
-                                                <li>
-                                                    <a href="<?php echo site_url('formulir/delete_formulir/' . $v['id']); ?>" onclick="return confirm('Apakah Anda yakin?');" class="dropdown-item remove-item-btn">
-                                                        <i class="ri-delete-bin-fill align-bottom me-2 text-muted"></i> Delete
-                                                    </a>
-                                                </li>
-                                            <?php } ?>
-                                        </ul>
-                                    </div>
+                                    <div class="btn-group" role="group">
+                                        <a href="<?php echo site_url('formulir/detail_data/' . $v['id']); ?>" class="btn btn-sm btn-info">View</a>
+                                        <?php if($v['status'] != 2) { ?>
+                                            <a href="<?php echo site_url('formulir/edit_data/' . $v['id']); ?>" class="btn btn-sm btn-warning">Edit</a>
+                                        <?php } ?>
+                                        <?php if($userdata['pos_name'] == 'ADMINISTRATOR') { ?>                                                
+                                            <a href="<?php echo site_url('formulir/delete_formulir/' . $v['id']); ?>" onclick="return confirm('Apakah Anda yakin?');" class="btn btn-sm btn-danger">
+                                                Delete
+                                            </a>
+                                        <?php } ?>
+                                    </div>                                    
                                 </td>
                             </tr>    
                         <?php } ?>
