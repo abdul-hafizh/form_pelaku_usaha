@@ -37,7 +37,7 @@ class Formulir extends Telescoope_Controller {
 
         $config['allowed_types'] = '*';
         $config['overwrite'] = false;
-        $config['max_size'] = 1024 * 500;
+        $config['max_size'] = 1024 * 50;
         $config['upload_path'] = $dir;
         $this->load->library('upload', $config);
         $this->load->model("Global_m");

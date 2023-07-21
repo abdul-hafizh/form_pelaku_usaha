@@ -91,10 +91,10 @@ class Log extends Telescoope_Controller {
 
 			$data_user = array(
 				'employeeid' => $insert_id,
-				'user_name' => $post['user_name_inp'],
+				'user_name' => strtolower(str_replace(' ', '', $post['user_name_inp'])),
 				'complete_name' => $post['fullname'],
 				'created_date' => date('Y-m-d H:i:s')
-				);
+			);
 	
 			if(!empty($password)){
 				$data_user['password'] = strtoupper(do_hash($password,'sha1'));

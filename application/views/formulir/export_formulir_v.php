@@ -29,6 +29,7 @@
             <th>Tanggal Selesai</th>
             <th>Petugas</th>
             <th>Pendamping</th>
+            <th>Update By</th>
             <th>Phone Petugas</th>
             <th>Phone Pendamping</th>
             <th>Username</th>
@@ -63,6 +64,7 @@
                 <td><?php echo $v['tanggal_update']; ?></td>
                 <td><?php echo $v['tanggal_selesai']; ?></td>
                 <td><?php echo $v['nama_input']; ?></td>
+                <td><?php $idpnd = $this->db->select('pendamping_id')->where('id', $v['user_id'])->get('adm_employee')->row_array(); $namapnd = $this->db->select('fullname')->where('id', $idpnd['pendamping_id'])->get('adm_employee')->row_array(); echo $namapnd['fullname']; ?></td>
                 <td><?php echo $v['nama_update']; ?></td>
                 <td><?php echo $v['phone_input']; ?></td>
                 <td><?php echo $v['phone_update']; ?></td>

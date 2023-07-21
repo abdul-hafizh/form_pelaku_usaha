@@ -117,13 +117,13 @@
                             <div class="col-lg-3">
                                 <div class="input-group">
                                     <span class="input-group-text">Modal</span>
-                                    <input type="number" class="form-control modal_inp" maxlength="50" name="modal" placeholder="Modal Dasar" value="<?php echo $detail['modal']; ?>">
+                                    <input type="number" class="form-control modal_inp" min="500000" name="modal" placeholder="Modal Dasar" value="<?php echo $detail['modal']; ?>">
                                 </div>
                             </div>
                             <div class="col-lg-3">
                                 <div class="input-group">
                                     <span class="input-group-text">Kapasitas Produksi/Tahun</span>
-                                    <input type="number" class="form-control jml_prod_inp" maxlength="50" name="jml_produksi" placeholder="Kapasitas Produksi/Tahun" value="<?php echo $detail['jml_produksi']; ?>">
+                                    <input type="number" class="form-control jml_prod_inp" min="1" name="jml_produksi" placeholder="Kapasitas Produksi/Tahun" value="<?php echo $detail['jml_produksi']; ?>">
                                 </div>
                             </div>
                             <div class="col-lg-3">
@@ -196,7 +196,7 @@
                             <label class="form-label">&nbsp;</label>
                         </div>
                         <div class="col-lg-3">
-                            <select class="select-single" name="provinsi" id="provinsi">
+                            <select class="select-single" name="provinsi" id="provinsi" required>
                                 <option value="">Pilih Provinsi</option>
                                 <?php foreach($provinsi as $v) { ?>
                                     <option value="<?php echo $v['province_name']; ?>" <?php echo $detail['provinsi'] == $v['province_name'] ? 'selected' : '' ; ?>><?php echo $v['province_name']; ?></option>

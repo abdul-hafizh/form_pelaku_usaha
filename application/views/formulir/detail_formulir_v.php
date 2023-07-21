@@ -8,7 +8,7 @@
         <div class="card">
             <div class="card-header">                
                 <div class="float-start">
-                    <h5 class="card-title mb-0">Detail Data Pelaku Usaha</h5>
+                    <h5 class="card-title mb-0">Detail Data Pelaku Usaha. Petugas: <?php $idptg = $this->db->select('fullname')->where('id', $detail['user_id'])->get('adm_employee')->row_array(); echo $idptg['fullname']; ?></h5>
                 </div>
                 <div class="float-end">
                     <?php if($detail['status'] == 1) { ?>                        
@@ -62,7 +62,7 @@
                             <label class="form-label text-danger">&nbsp;&nbsp;&nbsp;&nbsp; Alasan Tidak Diapprove</label>
                         </div>
                         <div class="col-lg-9">
-                            <input type="text" class="form-control" name="alasan" placeholder="Alasan" value="<?php echo $detail['alasan']; ?>" readonly>                            
+                            <textarea class="form-control" name="alasan" rows="3" placeholder="Alasan" readonly ><?php echo $detail['alasan']; ?></textarea>
                         </div>
                     </div>
                 <?php } ?>
@@ -581,11 +581,11 @@
                             </div>
                             <div class="mt-2">
                                 <label class="form-label">NIB</label>
-                                <input type="text" class="form-control" name="no_nib" placeholder="No NIB" value="<?php echo $detail['no_nib'];?>">
+                                <input type="text" class="form-control" name="no_nib" placeholder="No NIB" value="<?php echo $detail['no_nib'];?>" required>
                             </div>
                             <div class="mt-2">
                                 <label class="form-label">KBLI</label>
-                                <input type="text" class="form-control" name="kbli" placeholder="KBLI" value="<?php echo $detail['kbli'];?>">
+                                <input type="text" class="form-control" name="kbli" placeholder="KBLI" value="<?php echo $detail['kbli'];?>" required>
                             </div>
                             <div class="mt-2">
                                 <label class="form-label">Username Pelaku Usaha</label>
@@ -593,7 +593,7 @@
                             </div>
                             <div class="mt-2">
                                 <label class="form-label">Password Pelaku Usaha</label>
-                                <input type="password" class="form-control" name="password" placeholder="Password" required>
+                                <input type="text" class="form-control" name="password" placeholder="Password" required>
                             </div>                            
                         </div>
                         <div class="col-lg-12"><hr/>

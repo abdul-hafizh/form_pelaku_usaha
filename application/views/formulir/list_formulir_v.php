@@ -28,7 +28,8 @@
                             <th>Nama Produk</th>
                             <th>Jenis Usaha</th>
                             <th>Provinsi</th>
-                            <th>No Kontak / WA</th>
+                            <th>Petugas</th>
+                            <th>Pendamping</th>
                             <th>Status Approve</th>
                             <th>Status Pendampingan</th>
                             <th>Foto Produk</th>
@@ -44,8 +45,9 @@
                                 <td><?php echo $v['nama_produk']; ?></td>
                                 <td><?php echo $v['jenis_produk']; ?></td>
                                 <td><?php echo $v['provinsi']; ?></td>
-                                <td><?php echo $v['no_telp']; ?></td>
-                                <td><?php if ($v['status'] == 2) { echo '<span class="badge bg-success">Sudah Diapprove</span>'; } elseif ($v['status'] == 3) { echo '<span class="badge bg-danger">Tidak Diapprove</span>'; } else { echo '<span class="badge bg-danger">Belum Diapprove</span>'; } ?></td>
+                                <td><?php $idptg = $this->db->select('fullname')->where('id', $v['user_id'])->get('adm_employee')->row_array(); echo $idptg['fullname']; ?></td>
+                                <td><?php $idpnd = $this->db->select('pendamping_id')->where('id', $v['user_id'])->get('adm_employee')->row_array(); $namapnd = $this->db->select('fullname')->where('id', $idpnd['pendamping_id'])->get('adm_employee')->row_array(); echo $namapnd['fullname']; ?></td>
+                                <td><?php if ($v['status'] == 2) { echo '<span class="badge bg-success">Sudah Diapprove</span>'; } elseif ($v['status'] == 3) { echo '<span class="badge bg-info">Tidak Diapprove</span>'; } else { echo '<span class="badge bg-danger">Belum Diapprove</span>'; } ?></td>
                                 <td><?php echo $v['status_pendamping'] == 2 ? '<span class="badge bg-success">Selesai Pendamping</span>' : '<span class="badge bg-danger">Belum Selesai</span>' ; ?></td>
                                 <td>
                                     <div class="avatar-group">
