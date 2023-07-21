@@ -1,4 +1,5 @@
-<link rel="stylesheet" type="text/css" href="<?php echo base_url()?>assets/app-assets/vendors/css/select2.min.css">
+<!--select2 css-->
+<link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css" rel="stylesheet" />
 
 <?php
     $pesan = $this->session->userdata('message');
@@ -25,7 +26,7 @@
                             <label class="col-md-3 label-control">Nama Employee</label>
                             <div class="col-md-9">
                                 <div class="position-relative">
-                                    <select class="select2 form-control" name="employeeid_inp" required>
+                                    <select class="select-single" name="employeeid_inp" required>
                                         <option value="" disabled selected>Pilih Employee</option>
                                         <?php foreach($get_employee as $v) { ?>
                                             <option value="<?php echo $v['id'];?>"><?php echo $v['fullname'];?></option>
@@ -68,12 +69,11 @@
     <div class="col-2"></div>
 </div>
 
-<script src="<?php echo base_url()?>assets/app-assets/vendors/js/select2.full.min.js"></script>
+<!--select2 cdn-->
+<script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js"></script>
+
 <script>
     $(document).ready(function () {
-        $(".select2").select2({
-            dropdownAutoWidth: true,
-            width: '100%'
-        });
+        $(".select-single").select2();
     });
 </script>

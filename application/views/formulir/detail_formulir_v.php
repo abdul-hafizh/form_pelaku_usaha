@@ -8,7 +8,7 @@
         <div class="card">
             <div class="card-header">                
                 <div class="float-start">
-                    <h5 class="card-title mb-0">Detail Data Pelaku Usaha. Petugas: <?php $idptg = $this->db->select('fullname')->where('id', $detail['user_id'])->get('adm_employee')->row_array(); echo $idptg['fullname']; ?></h5>
+                    <h5 class="card-title mb-0">Petugas: <?php $idptg = $this->db->select('fullname')->where('id', $detail['user_id'])->get('adm_employee')->row_array(); echo $idptg['fullname']; ?></h5>
                 </div>
                 <div class="float-end">
                     <?php if($detail['status'] == 1) { ?>                        
@@ -48,6 +48,12 @@
                     </div>
                 </div>
                 <?php } ?>
+                <div class="row mb-3">
+                    <div class="col-lg-12">
+                        <label class="float-start">&nbsp;</label>
+                        <label class="form-label float-end text-muted"><i><?php echo 'input: ' . $detail['tanggal_input'] . ' | update: ' . $detail['tanggal_update'] . ' | approve: ' . $detail['tanggal_approve'] ; ?></i></label>
+                    </div>
+                </div>
                 <div class="row mb-3">
                     <div class="col-lg-3">
                         <label class="form-label">1. Nama Pelaku Usaha</label>
