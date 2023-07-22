@@ -130,6 +130,11 @@ class Formulir extends Telescoope_Controller {
 
         $post = $this->input->post(); 
 
+        if (count($post) == 0) {
+            $this->setMessage("Isi data dengan Lengkap.");
+            redirect(site_url('formulir/tambah_data'));
+        }
+
         $this->db->trans_begin();
 
         $dir = './uploads/' . $this->data['dir'];
