@@ -151,7 +151,7 @@ class Formulir extends Telescoope_Controller {
             }
 
             if(!empty($_FILES['foto_produk1']['name'])){
-                $_FILES['file']['name'] = $this->data['userdata']['employee_id'] . '_prod1_' . date('his') . '_' . $_FILES['foto_produk1']['name'];
+                $_FILES['file']['name'] = $this->data['userdata']['employee_id'] . '_prod1_' . date('his') . '_' . $post['desc_produk1'] . '_' . $_FILES['foto_produk1']['name'];
                 $_FILES['file']['type'] = $_FILES['foto_produk1']['type'];
                 $_FILES['file']['tmp_name'] = $_FILES['foto_produk1']['tmp_name'];
                 $_FILES['file']['error'] = $_FILES['foto_produk1']['error'];
@@ -160,7 +160,7 @@ class Formulir extends Telescoope_Controller {
             }
 
             if(!empty($_FILES['foto_produk1_2']['name'])){
-                $_FILES['file']['name'] = $this->data['userdata']['employee_id'] . '_prod1_2_' . date('his') . '_' . $_FILES['foto_produk1_2']['name'];
+                $_FILES['file']['name'] = $this->data['userdata']['employee_id'] . '_prod1_2_' . date('his') . '_' . isset($post['desc_produk1_2']) ? $post['desc_produk1_2'] . '_' . $_FILES['foto_produk1_2']['name'] : $_FILES['foto_produk1_2']['name'];
                 $_FILES['file']['type'] = $_FILES['foto_produk1_2']['type'];
                 $_FILES['file']['tmp_name'] = $_FILES['foto_produk1_2']['tmp_name'];
                 $_FILES['file']['error'] = $_FILES['foto_produk1_2']['error'];
@@ -169,7 +169,7 @@ class Formulir extends Telescoope_Controller {
             }
 
             if(!empty($_FILES['foto_produk1_3']['name'])){
-                $_FILES['file']['name'] = $this->data['userdata']['employee_id'] . '_prod1_3_' . date('his') . '_' . $_FILES['foto_produk1_3']['name'];
+                $_FILES['file']['name'] = $this->data['userdata']['employee_id'] . '_prod1_3_' . date('his') . '_' . isset($post['desc_produk1_3']) ? $post['desc_produk1_3'] . '_' . $_FILES['foto_produk1_3']['name'] : $_FILES['foto_produk1_3']['name'];
                 $_FILES['file']['type'] = $_FILES['foto_produk1_3']['type'];
                 $_FILES['file']['tmp_name'] = $_FILES['foto_produk1_3']['tmp_name'];
                 $_FILES['file']['error'] = $_FILES['foto_produk1_3']['error'];
@@ -178,7 +178,7 @@ class Formulir extends Telescoope_Controller {
             }
 
             if(!empty($_FILES['foto_produk2']['name'])){
-                $_FILES['file']['name'] = $this->data['userdata']['employee_id'] . '_prod2_' . date('his') . '_' . $_FILES['foto_produk2']['name'];
+                $_FILES['file']['name'] = $this->data['userdata']['employee_id'] . '_prod2_' . date('his') . '_' . isset($post['desc_produk2']) ? $post['desc_produk2'] . '_' . $_FILES['foto_produk2']['name'] : $_FILES['foto_produk2']['name'];
                 $_FILES['file']['type'] = $_FILES['foto_produk2']['type'];
                 $_FILES['file']['tmp_name'] = $_FILES['foto_produk2']['tmp_name'];
                 $_FILES['file']['error'] = $_FILES['foto_produk2']['error'];
@@ -187,7 +187,7 @@ class Formulir extends Telescoope_Controller {
             }
 
             if(!empty($_FILES['foto_produk2_2']['name'])){
-                $_FILES['file']['name'] = $this->data['userdata']['employee_id'] . '_prod2_2_' . date('his') . '_' . $_FILES['foto_produk2_2']['name'];
+                $_FILES['file']['name'] = $this->data['userdata']['employee_id'] . '_prod2_2_' . date('his') . '_' . isset($post['desc_produk2_2']) ? $post['desc_produk2_2'] . '_' . $_FILES['foto_produk2_2']['name'] : $_FILES['foto_produk2_2']['name'];
                 $_FILES['file']['type'] = $_FILES['foto_produk2_2']['type'];
                 $_FILES['file']['tmp_name'] = $_FILES['foto_produk2_2']['tmp_name'];
                 $_FILES['file']['error'] = $_FILES['foto_produk2_2']['error'];
@@ -196,7 +196,7 @@ class Formulir extends Telescoope_Controller {
             }
 
             if(!empty($_FILES['foto_produk2_3']['name'])){
-                $_FILES['file']['name'] = $this->data['userdata']['employee_id'] . '_prod2_3_' . date('his') . '_' . $_FILES['foto_produk2_3']['name'];
+                $_FILES['file']['name'] = $this->data['userdata']['employee_id'] . '_prod2_3_' . date('his') . '_' . isset($post['desc_produk2_3']) ? $post['desc_produk2_3'] . '_' . $_FILES['foto_produk2_3']['name'] : $_FILES['foto_produk2_3']['name'];
                 $_FILES['file']['type'] = $_FILES['foto_produk2_3']['type'];
                 $_FILES['file']['tmp_name'] = $_FILES['foto_produk2_3']['tmp_name'];
                 $_FILES['file']['error'] = $_FILES['foto_produk2_3']['error'];
@@ -205,7 +205,7 @@ class Formulir extends Telescoope_Controller {
             }
 
             if(!empty($_FILES['foto_produk3']['name'])){
-                $_FILES['file']['name'] = $this->data['userdata']['employee_id'] . '_prod3_' . date('his') . '_' . $_FILES['foto_produk3']['name'];
+                $_FILES['file']['name'] = $this->data['userdata']['employee_id'] . '_prod3_' . date('his') . '_' . isset($post['desc_produk3']) ? $post['desc_produk3'] . '_' . $_FILES['foto_produk3']['name'] : $_FILES['foto_produk3']['name'];
                 $_FILES['file']['type'] = $_FILES['foto_produk3']['type'];
                 $_FILES['file']['tmp_name'] = $_FILES['foto_produk3']['tmp_name'];
                 $_FILES['file']['error'] = $_FILES['foto_produk3']['error'];
@@ -214,7 +214,7 @@ class Formulir extends Telescoope_Controller {
             }
 
             if(!empty($_FILES['foto_produk3_2']['name'])){
-                $_FILES['file']['name'] = $this->data['userdata']['employee_id'] . '_prod3_2_' . date('his') . '_' . $_FILES['foto_produk3_2']['name'];
+                $_FILES['file']['name'] = $this->data['userdata']['employee_id'] . '_prod3_2_' . date('his') . '_' . isset($post['desc_produk3_2']) ? $post['desc_produk3_2'] . '_' . $_FILES['foto_produk3_2']['name'] : $_FILES['foto_produk3_2']['name'];
                 $_FILES['file']['type'] = $_FILES['foto_produk3_2']['type'];
                 $_FILES['file']['tmp_name'] = $_FILES['foto_produk3_2']['tmp_name'];
                 $_FILES['file']['error'] = $_FILES['foto_produk3_2']['error'];
@@ -223,7 +223,7 @@ class Formulir extends Telescoope_Controller {
             }
 
             if(!empty($_FILES['foto_produk3_3']['name'])){
-                $_FILES['file']['name'] = $this->data['userdata']['employee_id'] . '_prod3_3_' . date('his') . '_' . $_FILES['foto_produk3_3']['name'];
+                $_FILES['file']['name'] = $this->data['userdata']['employee_id'] . '_prod3_3_' . date('his') . '_' . isset($post['desc_produk3_3']) ? $post['desc_produk3_3'] . '_' . $_FILES['foto_produk3_3']['name'] : $_FILES['foto_produk3_3']['name'];
                 $_FILES['file']['type'] = $_FILES['foto_produk3_3']['type'];
                 $_FILES['file']['tmp_name'] = $_FILES['foto_produk3_3']['tmp_name'];
                 $_FILES['file']['error'] = $_FILES['foto_produk3_3']['error'];
@@ -232,7 +232,7 @@ class Formulir extends Telescoope_Controller {
             }
 
             if(!empty($_FILES['foto_produk4']['name'])){
-                $_FILES['file']['name'] = $this->data['userdata']['employee_id'] . '_prod4_' . date('his') . '_' . $_FILES['foto_produk4']['name'];
+                $_FILES['file']['name'] = $this->data['userdata']['employee_id'] . '_prod4_' . date('his') . '_' . isset($post['desc_produk4']) ? $post['desc_produk4'] . '_' . $_FILES['foto_produk4']['name'] : $_FILES['foto_produk4']['name'];
                 $_FILES['file']['type'] = $_FILES['foto_produk4']['type'];
                 $_FILES['file']['tmp_name'] = $_FILES['foto_produk4']['tmp_name'];
                 $_FILES['file']['error'] = $_FILES['foto_produk4']['error'];
@@ -241,7 +241,7 @@ class Formulir extends Telescoope_Controller {
             }
 
             if(!empty($_FILES['foto_produk4_2']['name'])){
-                $_FILES['file']['name'] = $this->data['userdata']['employee_id'] . '_prod4_2_' . date('his') . '_' . $_FILES['foto_produk4_2']['name'];
+                $_FILES['file']['name'] = $this->data['userdata']['employee_id'] . '_prod4_2_' . date('his') . '_' . isset($post['desc_produk4_2']) ? $post['desc_produk4_2'] . '_' . $_FILES['foto_produk4_2']['name'] : $_FILES['foto_produk4_2']['name'];
                 $_FILES['file']['type'] = $_FILES['foto_produk4_2']['type'];
                 $_FILES['file']['tmp_name'] = $_FILES['foto_produk4_2']['tmp_name'];
                 $_FILES['file']['error'] = $_FILES['foto_produk4_2']['error'];
@@ -250,7 +250,7 @@ class Formulir extends Telescoope_Controller {
             }
 
             if(!empty($_FILES['foto_produk4_3']['name'])){
-                $_FILES['file']['name'] = $this->data['userdata']['employee_id'] . '_prod4_3_' . date('his') . '_' . $_FILES['foto_produk4_3']['name'];
+                $_FILES['file']['name'] = $this->data['userdata']['employee_id'] . '_prod4_3_' . date('his') . '_' . isset($post['desc_produk4_3']) ? $post['desc_produk4_3'] . '_' . $_FILES['foto_produk4_3']['name'] : $_FILES['foto_produk4_3']['name'];
                 $_FILES['file']['type'] = $_FILES['foto_produk4_3']['type'];
                 $_FILES['file']['tmp_name'] = $_FILES['foto_produk4_3']['tmp_name'];
                 $_FILES['file']['error'] = $_FILES['foto_produk4_3']['error'];
@@ -259,7 +259,7 @@ class Formulir extends Telescoope_Controller {
             }
 
             if(!empty($_FILES['foto_produk5']['name'])){
-                $_FILES['file']['name'] = $this->data['userdata']['employee_id'] . '_prod5_' . date('his') . '_' . $_FILES['foto_produk5']['name'];
+                $_FILES['file']['name'] = $this->data['userdata']['employee_id'] . '_prod5_' . date('his') . '_' . isset($post['desc_produk5']) ? $post['desc_produk5'] . '_' . $_FILES['foto_produk5']['name'] : $_FILES['foto_produk5']['name'];
                 $_FILES['file']['type'] = $_FILES['foto_produk5']['type'];
                 $_FILES['file']['tmp_name'] = $_FILES['foto_produk5']['tmp_name'];
                 $_FILES['file']['error'] = $_FILES['foto_produk5']['error'];
@@ -268,7 +268,7 @@ class Formulir extends Telescoope_Controller {
             }
 
             if(!empty($_FILES['foto_produk5_2']['name'])){
-                $_FILES['file']['name'] = $this->data['userdata']['employee_id'] . '_prod5_2_' . date('his') . '_' . $_FILES['foto_produk5_2']['name'];
+                $_FILES['file']['name'] = $this->data['userdata']['employee_id'] . '_prod5_2_' . date('his') . '_' . isset($post['desc_produk5_2']) ? $post['desc_produk5_2'] . '_' . $_FILES['foto_produk5_2']['name'] : $_FILES['foto_produk5_2']['name'];
                 $_FILES['file']['type'] = $_FILES['foto_produk5_2']['type'];
                 $_FILES['file']['tmp_name'] = $_FILES['foto_produk5_2']['tmp_name'];
                 $_FILES['file']['error'] = $_FILES['foto_produk5_2']['error'];
@@ -277,7 +277,7 @@ class Formulir extends Telescoope_Controller {
             }
 
             if(!empty($_FILES['foto_produk5_3']['name'])){
-                $_FILES['file']['name'] = $this->data['userdata']['employee_id'] . '_prod5_3_' . date('his') . '_' . $_FILES['foto_produk5_3']['name'];
+                $_FILES['file']['name'] = $this->data['userdata']['employee_id'] . '_prod5_3_' . date('his') . '_' . isset($post['desc_produk5_3']) ? $post['desc_produk5_3'] . '_' . $_FILES['foto_produk5_3']['name'] : $_FILES['foto_produk5_3']['name'];
                 $_FILES['file']['type'] = $_FILES['foto_produk5_3']['type'];
                 $_FILES['file']['tmp_name'] = $_FILES['foto_produk5_3']['tmp_name'];
                 $_FILES['file']['error'] = $_FILES['foto_produk5_3']['error'];
@@ -286,7 +286,7 @@ class Formulir extends Telescoope_Controller {
             }
 
             if(!empty($_FILES['foto_produk6']['name'])){
-                $_FILES['file']['name'] = $this->data['userdata']['employee_id'] . '_prod6_' . date('his') . '_' . $_FILES['foto_produk6']['name'];
+                $_FILES['file']['name'] = $this->data['userdata']['employee_id'] . '_prod6_' . date('his') . '_' . isset($post['desc_produk6']) ? $post['desc_produk6'] . '_' . $_FILES['foto_produk6']['name'] : $_FILES['foto_produk6']['name'];
                 $_FILES['file']['type'] = $_FILES['foto_produk6']['type'];
                 $_FILES['file']['tmp_name'] = $_FILES['foto_produk6']['tmp_name'];
                 $_FILES['file']['error'] = $_FILES['foto_produk6']['error'];
@@ -295,7 +295,7 @@ class Formulir extends Telescoope_Controller {
             }
 
             if(!empty($_FILES['foto_produk6_2']['name'])){
-                $_FILES['file']['name'] = $this->data['userdata']['employee_id'] . '_prod6_2_' . date('his') . '_' . $_FILES['foto_produk6_2']['name'];
+                $_FILES['file']['name'] = $this->data['userdata']['employee_id'] . '_prod6_2_' . date('his') . '_' . isset($post['desc_produk6_2']) ? $post['desc_produk6_2'] . '_' . $_FILES['foto_produk6_2']['name'] : $_FILES['foto_produk6_2']['name'];
                 $_FILES['file']['type'] = $_FILES['foto_produk6_2']['type'];
                 $_FILES['file']['tmp_name'] = $_FILES['foto_produk6_2']['tmp_name'];
                 $_FILES['file']['error'] = $_FILES['foto_produk6_2']['error'];
@@ -304,7 +304,7 @@ class Formulir extends Telescoope_Controller {
             }
 
             if(!empty($_FILES['foto_produk6_3']['name'])){
-                $_FILES['file']['name'] = $this->data['userdata']['employee_id'] . '_prod6_3_' . date('his') . '_' . $_FILES['foto_produk6_3']['name'];
+                $_FILES['file']['name'] = $this->data['userdata']['employee_id'] . '_prod6_3_' . date('his') . '_' . isset($post['desc_produk6_3']) ? $post['desc_produk6_3'] . '_' . $_FILES['foto_produk6_3']['name'] : $_FILES['foto_produk6_3']['name'];
                 $_FILES['file']['type'] = $_FILES['foto_produk6_3']['type'];
                 $_FILES['file']['tmp_name'] = $_FILES['foto_produk6_3']['tmp_name'];
                 $_FILES['file']['error'] = $_FILES['foto_produk6_3']['error'];
@@ -313,7 +313,7 @@ class Formulir extends Telescoope_Controller {
             }
 
             if(!empty($_FILES['foto_produk7']['name'])){
-                $_FILES['file']['name'] = $this->data['userdata']['employee_id'] . '_prod7_' . date('his') . '_' . $_FILES['foto_produk7']['name'];
+                $_FILES['file']['name'] = $this->data['userdata']['employee_id'] . '_prod7_' . date('his') . '_' . isset($post['desc_produk7']) ? $post['desc_produk7'] . '_' . $_FILES['foto_produk7']['name'] : $_FILES['foto_produk7']['name'];
                 $_FILES['file']['type'] = $_FILES['foto_produk7']['type'];
                 $_FILES['file']['tmp_name'] = $_FILES['foto_produk7']['tmp_name'];
                 $_FILES['file']['error'] = $_FILES['foto_produk7']['error'];
@@ -322,7 +322,7 @@ class Formulir extends Telescoope_Controller {
             }
 
             if(!empty($_FILES['foto_produk7_2']['name'])){
-                $_FILES['file']['name'] = $this->data['userdata']['employee_id'] . '_prod7_2_' . date('his') . '_' . $_FILES['foto_produk7_2']['name'];
+                $_FILES['file']['name'] = $this->data['userdata']['employee_id'] . '_prod7_2_' . date('his') . '_' . isset($post['desc_produk7_2']) ? $post['desc_produk7_2'] . '_' . $_FILES['foto_produk7_2']['name'] : $_FILES['foto_produk7_2']['name'];
                 $_FILES['file']['type'] = $_FILES['foto_produk7_2']['type'];
                 $_FILES['file']['tmp_name'] = $_FILES['foto_produk7_2']['tmp_name'];
                 $_FILES['file']['error'] = $_FILES['foto_produk7_2']['error'];
@@ -331,7 +331,7 @@ class Formulir extends Telescoope_Controller {
             }
 
             if(!empty($_FILES['foto_produk7_3']['name'])){
-                $_FILES['file']['name'] = $this->data['userdata']['employee_id'] . '_prod7_3_' . date('his') . '_' . $_FILES['foto_produk7_3']['name'];
+                $_FILES['file']['name'] = $this->data['userdata']['employee_id'] . '_prod7_3_' . date('his') . '_' . isset($post['desc_produk7_3']) ? $post['desc_produk7_3'] . '_' . $_FILES['foto_produk7_3']['name'] : $_FILES['foto_produk7_3']['name'];
                 $_FILES['file']['type'] = $_FILES['foto_produk7_3']['type'];
                 $_FILES['file']['tmp_name'] = $_FILES['foto_produk7_3']['tmp_name'];
                 $_FILES['file']['error'] = $_FILES['foto_produk7_3']['error'];
@@ -340,7 +340,7 @@ class Formulir extends Telescoope_Controller {
             }
 
             if(!empty($_FILES['foto_produk8']['name'])){
-                $_FILES['file']['name'] = $this->data['userdata']['employee_id'] . '_prod8_' . date('his') . '_' . $_FILES['foto_produk8']['name'];
+                $_FILES['file']['name'] = $this->data['userdata']['employee_id'] . '_prod8_' . date('his') . '_' . isset($post['desc_produk8']) ? $post['desc_produk8'] . '_' . $_FILES['foto_produk8']['name'] : $_FILES['foto_produk8']['name'];
                 $_FILES['file']['type'] = $_FILES['foto_produk8']['type'];
                 $_FILES['file']['tmp_name'] = $_FILES['foto_produk8']['tmp_name'];
                 $_FILES['file']['error'] = $_FILES['foto_produk8']['error'];
@@ -349,7 +349,7 @@ class Formulir extends Telescoope_Controller {
             }
 
             if(!empty($_FILES['foto_produk8_2']['name'])){
-                $_FILES['file']['name'] = $this->data['userdata']['employee_id'] . '_prod8_2_' . date('his') . '_' . $_FILES['foto_produk8_2']['name'];
+                $_FILES['file']['name'] = $this->data['userdata']['employee_id'] . '_prod8_2_' . date('his') . '_' . isset($post['desc_produk8_2']) ? $post['desc_produk8_2'] . '_' . $_FILES['foto_produk8_2']['name'] : $_FILES['foto_produk8_2']['name'];
                 $_FILES['file']['type'] = $_FILES['foto_produk8_2']['type'];
                 $_FILES['file']['tmp_name'] = $_FILES['foto_produk8_2']['tmp_name'];
                 $_FILES['file']['error'] = $_FILES['foto_produk8_2']['error'];
@@ -358,7 +358,7 @@ class Formulir extends Telescoope_Controller {
             }
 
             if(!empty($_FILES['foto_produk8_3']['name'])){
-                $_FILES['file']['name'] = $this->data['userdata']['employee_id'] . '_prod8_3_' . date('his') . '_' . $_FILES['foto_produk8_3']['name'];
+                $_FILES['file']['name'] = $this->data['userdata']['employee_id'] . '_prod8_3_' . date('his') . '_' . isset($post['desc_produk8_3']) ? $post['desc_produk8_3'] . '_' . $_FILES['foto_produk8_3']['name'] : $_FILES['foto_produk8_3']['name'];
                 $_FILES['file']['type'] = $_FILES['foto_produk8_3']['type'];
                 $_FILES['file']['tmp_name'] = $_FILES['foto_produk8_3']['tmp_name'];
                 $_FILES['file']['error'] = $_FILES['foto_produk8_3']['error'];
@@ -367,7 +367,7 @@ class Formulir extends Telescoope_Controller {
             }
 
             if(!empty($_FILES['foto_produk9']['name'])){
-                $_FILES['file']['name'] = $this->data['userdata']['employee_id'] . '_prod9_' . date('his') . '_' . $_FILES['foto_produk9']['name'];
+                $_FILES['file']['name'] = $this->data['userdata']['employee_id'] . '_prod9_' . date('his') . '_' . isset($post['desc_produk9']) ? $post['desc_produk9'] . '_' . $_FILES['foto_produk9']['name'] : $_FILES['foto_produk9']['name'];
                 $_FILES['file']['type'] = $_FILES['foto_produk9']['type'];
                 $_FILES['file']['tmp_name'] = $_FILES['foto_produk9']['tmp_name'];
                 $_FILES['file']['error'] = $_FILES['foto_produk9']['error'];
@@ -376,7 +376,7 @@ class Formulir extends Telescoope_Controller {
             }
 
             if(!empty($_FILES['foto_produk9_2']['name'])){
-                $_FILES['file']['name'] = $this->data['userdata']['employee_id'] . '_prod9_2_' . date('his') . '_' . $_FILES['foto_produk9_2']['name'];
+                $_FILES['file']['name'] = $this->data['userdata']['employee_id'] . '_prod9_2_' . date('his') . '_' . isset($post['desc_produk9_2']) ? $post['desc_produk9_2'] . '_' . $_FILES['foto_produk9_2']['name'] : $_FILES['foto_produk9_2']['name'];
                 $_FILES['file']['type'] = $_FILES['foto_produk9_2']['type'];
                 $_FILES['file']['tmp_name'] = $_FILES['foto_produk9_2']['tmp_name'];
                 $_FILES['file']['error'] = $_FILES['foto_produk9_2']['error'];
@@ -385,7 +385,7 @@ class Formulir extends Telescoope_Controller {
             }
 
             if(!empty($_FILES['foto_produk9_3']['name'])){
-                $_FILES['file']['name'] = $this->data['userdata']['employee_id'] . '_prod9_3_' . date('his') . '_' . $_FILES['foto_produk9_3']['name'];
+                $_FILES['file']['name'] = $this->data['userdata']['employee_id'] . '_prod9_3_' . date('his') . '_' . isset($post['desc_produk9_3']) ? $post['desc_produk9_3'] . '_' . $_FILES['foto_produk9_3']['name'] : $_FILES['foto_produk9_3']['name'];
                 $_FILES['file']['type'] = $_FILES['foto_produk9_3']['type'];
                 $_FILES['file']['tmp_name'] = $_FILES['foto_produk9_3']['tmp_name'];
                 $_FILES['file']['error'] = $_FILES['foto_produk9_3']['error'];
@@ -394,7 +394,7 @@ class Formulir extends Telescoope_Controller {
             }
 
             if(!empty($_FILES['foto_produk10']['name'])){
-                $_FILES['file']['name'] = $this->data['userdata']['employee_id'] . '_prod10_' . date('his') . '_' . $_FILES['foto_produk10']['name'];
+                $_FILES['file']['name'] = $this->data['userdata']['employee_id'] . '_prod10_' . date('his') . '_' . isset($post['desc_produk10']) ? $post['desc_produk10'] . '_' . $_FILES['foto_produk10']['name'] : $_FILES['foto_produk10']['name'];
                 $_FILES['file']['type'] = $_FILES['foto_produk10']['type'];
                 $_FILES['file']['tmp_name'] = $_FILES['foto_produk10']['tmp_name'];
                 $_FILES['file']['error'] = $_FILES['foto_produk10']['error'];
@@ -403,7 +403,7 @@ class Formulir extends Telescoope_Controller {
             }
 
             if(!empty($_FILES['foto_produk10_2']['name'])){
-                $_FILES['file']['name'] = $this->data['userdata']['employee_id'] . '_prod10_2_' . date('his') . '_' . $_FILES['foto_produk10_2']['name'];
+                $_FILES['file']['name'] = $this->data['userdata']['employee_id'] . '_prod10_2_' . date('his') . '_' . isset($post['desc_produk10_2']) ? $post['desc_produk10_2'] . '_' . $_FILES['foto_produk10_2']['name'] : $_FILES['foto_produk10_2']['name'];
                 $_FILES['file']['type'] = $_FILES['foto_produk10_2']['type'];
                 $_FILES['file']['tmp_name'] = $_FILES['foto_produk10_2']['tmp_name'];
                 $_FILES['file']['error'] = $_FILES['foto_produk10_2']['error'];
@@ -412,7 +412,7 @@ class Formulir extends Telescoope_Controller {
             }
 
             if(!empty($_FILES['foto_produk10_3']['name'])){
-                $_FILES['file']['name'] = $this->data['userdata']['employee_id'] . '_prod10_3_' . date('his') . '_' . $_FILES['foto_produk10_3']['name'];
+                $_FILES['file']['name'] = $this->data['userdata']['employee_id'] . '_prod10_3_' . date('his') . '_' . isset($post['desc_produk10_3']) ? $post['desc_produk10_3'] . '_' . $_FILES['foto_produk10_3']['name'] : $_FILES['foto_produk10_3']['name'];
                 $_FILES['file']['type'] = $_FILES['foto_produk10_3']['type'];
                 $_FILES['file']['tmp_name'] = $_FILES['foto_produk10_3']['tmp_name'];
                 $_FILES['file']['error'] = $_FILES['foto_produk10_3']['error'];
@@ -554,7 +554,7 @@ class Formulir extends Telescoope_Controller {
             }
 
             if(!empty($_FILES['foto_produk1']['name'])){
-                $_FILES['file']['name'] = $this->data['userdata']['employee_id'] . '_prod1_' . date('his') . '_' . $_FILES['foto_produk1']['name'];
+                $_FILES['file']['name'] = $this->data['userdata']['employee_id'] . '_prod1_' . date('his') . '_' . $post['desc_produk1'] . '_' . $_FILES['foto_produk1']['name'];
                 $_FILES['file']['type'] = $_FILES['foto_produk1']['type'];
                 $_FILES['file']['tmp_name'] = $_FILES['foto_produk1']['tmp_name'];
                 $_FILES['file']['error'] = $_FILES['foto_produk1']['error'];
@@ -563,7 +563,7 @@ class Formulir extends Telescoope_Controller {
             }
 
             if(!empty($_FILES['foto_produk1_2']['name'])){
-                $_FILES['file']['name'] = $this->data['userdata']['employee_id'] . '_prod1_2_' . date('his') . '_' . $_FILES['foto_produk1_2']['name'];
+                $_FILES['file']['name'] = $this->data['userdata']['employee_id'] . '_prod1_2_' . date('his') . '_' . isset($post['desc_produk1_2']) ? $post['desc_produk1_2'] . '_' . $_FILES['foto_produk1_2']['name'] : $_FILES['foto_produk1_2']['name'];
                 $_FILES['file']['type'] = $_FILES['foto_produk1_2']['type'];
                 $_FILES['file']['tmp_name'] = $_FILES['foto_produk1_2']['tmp_name'];
                 $_FILES['file']['error'] = $_FILES['foto_produk1_2']['error'];
@@ -572,7 +572,7 @@ class Formulir extends Telescoope_Controller {
             }
 
             if(!empty($_FILES['foto_produk1_3']['name'])){
-                $_FILES['file']['name'] = $this->data['userdata']['employee_id'] . '_prod1_3_' . date('his') . '_' . $_FILES['foto_produk1_3']['name'];
+                $_FILES['file']['name'] = $this->data['userdata']['employee_id'] . '_prod1_3_' . date('his') . '_' . isset($post['desc_produk1_3']) ? $post['desc_produk1_3'] . '_' . $_FILES['foto_produk1_3']['name'] : $_FILES['foto_produk1_3']['name'];
                 $_FILES['file']['type'] = $_FILES['foto_produk1_3']['type'];
                 $_FILES['file']['tmp_name'] = $_FILES['foto_produk1_3']['tmp_name'];
                 $_FILES['file']['error'] = $_FILES['foto_produk1_3']['error'];
@@ -581,7 +581,7 @@ class Formulir extends Telescoope_Controller {
             }
 
             if(!empty($_FILES['foto_produk2']['name'])){
-                $_FILES['file']['name'] = $this->data['userdata']['employee_id'] . '_prod2_' . date('his') . '_' . $_FILES['foto_produk2']['name'];
+                $_FILES['file']['name'] = $this->data['userdata']['employee_id'] . '_prod2_' . date('his') . '_' . isset($post['desc_produk2']) ? $post['desc_produk2'] . '_' . $_FILES['foto_produk2']['name'] : $_FILES['foto_produk2']['name'];
                 $_FILES['file']['type'] = $_FILES['foto_produk2']['type'];
                 $_FILES['file']['tmp_name'] = $_FILES['foto_produk2']['tmp_name'];
                 $_FILES['file']['error'] = $_FILES['foto_produk2']['error'];
@@ -590,7 +590,7 @@ class Formulir extends Telescoope_Controller {
             }
 
             if(!empty($_FILES['foto_produk2_2']['name'])){
-                $_FILES['file']['name'] = $this->data['userdata']['employee_id'] . '_prod2_2_' . date('his') . '_' . $_FILES['foto_produk2_2']['name'];
+                $_FILES['file']['name'] = $this->data['userdata']['employee_id'] . '_prod2_2_' . date('his') . '_' . isset($post['desc_produk2_2']) ? $post['desc_produk2_2'] . '_' . $_FILES['foto_produk2_2']['name'] : $_FILES['foto_produk2_2']['name'];
                 $_FILES['file']['type'] = $_FILES['foto_produk2_2']['type'];
                 $_FILES['file']['tmp_name'] = $_FILES['foto_produk2_2']['tmp_name'];
                 $_FILES['file']['error'] = $_FILES['foto_produk2_2']['error'];
@@ -599,7 +599,7 @@ class Formulir extends Telescoope_Controller {
             }
 
             if(!empty($_FILES['foto_produk2_3']['name'])){
-                $_FILES['file']['name'] = $this->data['userdata']['employee_id'] . '_prod2_3_' . date('his') . '_' . $_FILES['foto_produk2_3']['name'];
+                $_FILES['file']['name'] = $this->data['userdata']['employee_id'] . '_prod2_3_' . date('his') . '_' . isset($post['desc_produk2_3']) ? $post['desc_produk2_3'] . '_' . $_FILES['foto_produk2_3']['name'] : $_FILES['foto_produk2_3']['name'];
                 $_FILES['file']['type'] = $_FILES['foto_produk2_3']['type'];
                 $_FILES['file']['tmp_name'] = $_FILES['foto_produk2_3']['tmp_name'];
                 $_FILES['file']['error'] = $_FILES['foto_produk2_3']['error'];
@@ -608,7 +608,7 @@ class Formulir extends Telescoope_Controller {
             }
 
             if(!empty($_FILES['foto_produk3']['name'])){
-                $_FILES['file']['name'] = $this->data['userdata']['employee_id'] . '_prod3_' . date('his') . '_' . $_FILES['foto_produk3']['name'];
+                $_FILES['file']['name'] = $this->data['userdata']['employee_id'] . '_prod3_' . date('his') . '_' . isset($post['desc_produk3']) ? $post['desc_produk3'] . '_' . $_FILES['foto_produk3']['name'] : $_FILES['foto_produk3']['name'];
                 $_FILES['file']['type'] = $_FILES['foto_produk3']['type'];
                 $_FILES['file']['tmp_name'] = $_FILES['foto_produk3']['tmp_name'];
                 $_FILES['file']['error'] = $_FILES['foto_produk3']['error'];
@@ -617,7 +617,7 @@ class Formulir extends Telescoope_Controller {
             }
 
             if(!empty($_FILES['foto_produk3_2']['name'])){
-                $_FILES['file']['name'] = $this->data['userdata']['employee_id'] . '_prod3_2_' . date('his') . '_' . $_FILES['foto_produk3_2']['name'];
+                $_FILES['file']['name'] = $this->data['userdata']['employee_id'] . '_prod3_2_' . date('his') . '_' . isset($post['desc_produk3_2']) ? $post['desc_produk3_2'] . '_' . $_FILES['foto_produk3_2']['name'] : $_FILES['foto_produk3_2']['name'];
                 $_FILES['file']['type'] = $_FILES['foto_produk3_2']['type'];
                 $_FILES['file']['tmp_name'] = $_FILES['foto_produk3_2']['tmp_name'];
                 $_FILES['file']['error'] = $_FILES['foto_produk3_2']['error'];
@@ -626,7 +626,7 @@ class Formulir extends Telescoope_Controller {
             }
 
             if(!empty($_FILES['foto_produk3_3']['name'])){
-                $_FILES['file']['name'] = $this->data['userdata']['employee_id'] . '_prod3_3_' . date('his') . '_' . $_FILES['foto_produk3_3']['name'];
+                $_FILES['file']['name'] = $this->data['userdata']['employee_id'] . '_prod3_3_' . date('his') . '_' . isset($post['desc_produk3_3']) ? $post['desc_produk3_3'] . '_' . $_FILES['foto_produk3_3']['name'] : $_FILES['foto_produk3_3']['name'];
                 $_FILES['file']['type'] = $_FILES['foto_produk3_3']['type'];
                 $_FILES['file']['tmp_name'] = $_FILES['foto_produk3_3']['tmp_name'];
                 $_FILES['file']['error'] = $_FILES['foto_produk3_3']['error'];
@@ -635,7 +635,7 @@ class Formulir extends Telescoope_Controller {
             }
 
             if(!empty($_FILES['foto_produk4']['name'])){
-                $_FILES['file']['name'] = $this->data['userdata']['employee_id'] . '_prod4_' . date('his') . '_' . $_FILES['foto_produk4']['name'];
+                $_FILES['file']['name'] = $this->data['userdata']['employee_id'] . '_prod4_' . date('his') . '_' . isset($post['desc_produk4']) ? $post['desc_produk4'] . '_' . $_FILES['foto_produk4']['name'] : $_FILES['foto_produk4']['name'];
                 $_FILES['file']['type'] = $_FILES['foto_produk4']['type'];
                 $_FILES['file']['tmp_name'] = $_FILES['foto_produk4']['tmp_name'];
                 $_FILES['file']['error'] = $_FILES['foto_produk4']['error'];
@@ -644,7 +644,7 @@ class Formulir extends Telescoope_Controller {
             }
 
             if(!empty($_FILES['foto_produk4_2']['name'])){
-                $_FILES['file']['name'] = $this->data['userdata']['employee_id'] . '_prod4_2_' . date('his') . '_' . $_FILES['foto_produk4_2']['name'];
+                $_FILES['file']['name'] = $this->data['userdata']['employee_id'] . '_prod4_2_' . date('his') . '_' . isset($post['desc_produk4_2']) ? $post['desc_produk4_2'] . '_' . $_FILES['foto_produk4_2']['name'] : $_FILES['foto_produk4_2']['name'];
                 $_FILES['file']['type'] = $_FILES['foto_produk4_2']['type'];
                 $_FILES['file']['tmp_name'] = $_FILES['foto_produk4_2']['tmp_name'];
                 $_FILES['file']['error'] = $_FILES['foto_produk4_2']['error'];
@@ -653,7 +653,7 @@ class Formulir extends Telescoope_Controller {
             }
 
             if(!empty($_FILES['foto_produk4_3']['name'])){
-                $_FILES['file']['name'] = $this->data['userdata']['employee_id'] . '_prod4_3_' . date('his') . '_' . $_FILES['foto_produk4_3']['name'];
+                $_FILES['file']['name'] = $this->data['userdata']['employee_id'] . '_prod4_3_' . date('his') . '_' . isset($post['desc_produk4_3']) ? $post['desc_produk4_3'] . '_' . $_FILES['foto_produk4_3']['name'] : $_FILES['foto_produk4_3']['name'];
                 $_FILES['file']['type'] = $_FILES['foto_produk4_3']['type'];
                 $_FILES['file']['tmp_name'] = $_FILES['foto_produk4_3']['tmp_name'];
                 $_FILES['file']['error'] = $_FILES['foto_produk4_3']['error'];
@@ -662,7 +662,7 @@ class Formulir extends Telescoope_Controller {
             }
 
             if(!empty($_FILES['foto_produk5']['name'])){
-                $_FILES['file']['name'] = $this->data['userdata']['employee_id'] . '_prod5_' . date('his') . '_' . $_FILES['foto_produk5']['name'];
+                $_FILES['file']['name'] = $this->data['userdata']['employee_id'] . '_prod5_' . date('his') . '_' . isset($post['desc_produk5']) ? $post['desc_produk5'] . '_' . $_FILES['foto_produk5']['name'] : $_FILES['foto_produk5']['name'];
                 $_FILES['file']['type'] = $_FILES['foto_produk5']['type'];
                 $_FILES['file']['tmp_name'] = $_FILES['foto_produk5']['tmp_name'];
                 $_FILES['file']['error'] = $_FILES['foto_produk5']['error'];
@@ -671,7 +671,7 @@ class Formulir extends Telescoope_Controller {
             }
 
             if(!empty($_FILES['foto_produk5_2']['name'])){
-                $_FILES['file']['name'] = $this->data['userdata']['employee_id'] . '_prod5_2_' . date('his') . '_' . $_FILES['foto_produk5_2']['name'];
+                $_FILES['file']['name'] = $this->data['userdata']['employee_id'] . '_prod5_2_' . date('his') . '_' . isset($post['desc_produk5_2']) ? $post['desc_produk5_2'] . '_' . $_FILES['foto_produk5_2']['name'] : $_FILES['foto_produk5_2']['name'];
                 $_FILES['file']['type'] = $_FILES['foto_produk5_2']['type'];
                 $_FILES['file']['tmp_name'] = $_FILES['foto_produk5_2']['tmp_name'];
                 $_FILES['file']['error'] = $_FILES['foto_produk5_2']['error'];
@@ -680,7 +680,7 @@ class Formulir extends Telescoope_Controller {
             }
 
             if(!empty($_FILES['foto_produk5_3']['name'])){
-                $_FILES['file']['name'] = $this->data['userdata']['employee_id'] . '_prod5_3_' . date('his') . '_' . $_FILES['foto_produk5_3']['name'];
+                $_FILES['file']['name'] = $this->data['userdata']['employee_id'] . '_prod5_3_' . date('his') . '_' . isset($post['desc_produk5_3']) ? $post['desc_produk5_3'] . '_' . $_FILES['foto_produk5_3']['name'] : $_FILES['foto_produk5_3']['name'];
                 $_FILES['file']['type'] = $_FILES['foto_produk5_3']['type'];
                 $_FILES['file']['tmp_name'] = $_FILES['foto_produk5_3']['tmp_name'];
                 $_FILES['file']['error'] = $_FILES['foto_produk5_3']['error'];
@@ -689,7 +689,7 @@ class Formulir extends Telescoope_Controller {
             }
 
             if(!empty($_FILES['foto_produk6']['name'])){
-                $_FILES['file']['name'] = $this->data['userdata']['employee_id'] . '_prod6_' . date('his') . '_' . $_FILES['foto_produk6']['name'];
+                $_FILES['file']['name'] = $this->data['userdata']['employee_id'] . '_prod6_' . date('his') . '_' . isset($post['desc_produk6']) ? $post['desc_produk6'] . '_' . $_FILES['foto_produk6']['name'] : $_FILES['foto_produk6']['name'];
                 $_FILES['file']['type'] = $_FILES['foto_produk6']['type'];
                 $_FILES['file']['tmp_name'] = $_FILES['foto_produk6']['tmp_name'];
                 $_FILES['file']['error'] = $_FILES['foto_produk6']['error'];
@@ -698,7 +698,7 @@ class Formulir extends Telescoope_Controller {
             }
 
             if(!empty($_FILES['foto_produk6_2']['name'])){
-                $_FILES['file']['name'] = $this->data['userdata']['employee_id'] . '_prod6_2_' . date('his') . '_' . $_FILES['foto_produk6_2']['name'];
+                $_FILES['file']['name'] = $this->data['userdata']['employee_id'] . '_prod6_2_' . date('his') . '_' . isset($post['desc_produk6_2']) ? $post['desc_produk6_2'] . '_' . $_FILES['foto_produk6_2']['name'] : $_FILES['foto_produk6_2']['name'];
                 $_FILES['file']['type'] = $_FILES['foto_produk6_2']['type'];
                 $_FILES['file']['tmp_name'] = $_FILES['foto_produk6_2']['tmp_name'];
                 $_FILES['file']['error'] = $_FILES['foto_produk6_2']['error'];
@@ -707,7 +707,7 @@ class Formulir extends Telescoope_Controller {
             }
 
             if(!empty($_FILES['foto_produk6_3']['name'])){
-                $_FILES['file']['name'] = $this->data['userdata']['employee_id'] . '_prod6_3_' . date('his') . '_' . $_FILES['foto_produk6_3']['name'];
+                $_FILES['file']['name'] = $this->data['userdata']['employee_id'] . '_prod6_3_' . date('his') . '_' . isset($post['desc_produk6_3']) ? $post['desc_produk6_3'] . '_' . $_FILES['foto_produk6_3']['name'] : $_FILES['foto_produk6_3']['name'];
                 $_FILES['file']['type'] = $_FILES['foto_produk6_3']['type'];
                 $_FILES['file']['tmp_name'] = $_FILES['foto_produk6_3']['tmp_name'];
                 $_FILES['file']['error'] = $_FILES['foto_produk6_3']['error'];
@@ -716,7 +716,7 @@ class Formulir extends Telescoope_Controller {
             }
 
             if(!empty($_FILES['foto_produk7']['name'])){
-                $_FILES['file']['name'] = $this->data['userdata']['employee_id'] . '_prod7_' . date('his') . '_' . $_FILES['foto_produk7']['name'];
+                $_FILES['file']['name'] = $this->data['userdata']['employee_id'] . '_prod7_' . date('his') . '_' . isset($post['desc_produk7']) ? $post['desc_produk7'] . '_' . $_FILES['foto_produk7']['name'] : $_FILES['foto_produk7']['name'];
                 $_FILES['file']['type'] = $_FILES['foto_produk7']['type'];
                 $_FILES['file']['tmp_name'] = $_FILES['foto_produk7']['tmp_name'];
                 $_FILES['file']['error'] = $_FILES['foto_produk7']['error'];
@@ -725,7 +725,7 @@ class Formulir extends Telescoope_Controller {
             }
 
             if(!empty($_FILES['foto_produk7_2']['name'])){
-                $_FILES['file']['name'] = $this->data['userdata']['employee_id'] . '_prod7_2_' . date('his') . '_' . $_FILES['foto_produk7_2']['name'];
+                $_FILES['file']['name'] = $this->data['userdata']['employee_id'] . '_prod7_2_' . date('his') . '_' . isset($post['desc_produk7_2']) ? $post['desc_produk7_2'] . '_' . $_FILES['foto_produk7_2']['name'] : $_FILES['foto_produk7_2']['name'];
                 $_FILES['file']['type'] = $_FILES['foto_produk7_2']['type'];
                 $_FILES['file']['tmp_name'] = $_FILES['foto_produk7_2']['tmp_name'];
                 $_FILES['file']['error'] = $_FILES['foto_produk7_2']['error'];
@@ -734,7 +734,7 @@ class Formulir extends Telescoope_Controller {
             }
 
             if(!empty($_FILES['foto_produk7_3']['name'])){
-                $_FILES['file']['name'] = $this->data['userdata']['employee_id'] . '_prod7_3_' . date('his') . '_' . $_FILES['foto_produk7_3']['name'];
+                $_FILES['file']['name'] = $this->data['userdata']['employee_id'] . '_prod7_3_' . date('his') . '_' . isset($post['desc_produk7_3']) ? $post['desc_produk7_3'] . '_' . $_FILES['foto_produk7_3']['name'] : $_FILES['foto_produk7_3']['name'];
                 $_FILES['file']['type'] = $_FILES['foto_produk7_3']['type'];
                 $_FILES['file']['tmp_name'] = $_FILES['foto_produk7_3']['tmp_name'];
                 $_FILES['file']['error'] = $_FILES['foto_produk7_3']['error'];
@@ -743,7 +743,7 @@ class Formulir extends Telescoope_Controller {
             }
 
             if(!empty($_FILES['foto_produk8']['name'])){
-                $_FILES['file']['name'] = $this->data['userdata']['employee_id'] . '_prod8_' . date('his') . '_' . $_FILES['foto_produk8']['name'];
+                $_FILES['file']['name'] = $this->data['userdata']['employee_id'] . '_prod8_' . date('his') . '_' . isset($post['desc_produk8']) ? $post['desc_produk8'] . '_' . $_FILES['foto_produk8']['name'] : $_FILES['foto_produk8']['name'];
                 $_FILES['file']['type'] = $_FILES['foto_produk8']['type'];
                 $_FILES['file']['tmp_name'] = $_FILES['foto_produk8']['tmp_name'];
                 $_FILES['file']['error'] = $_FILES['foto_produk8']['error'];
@@ -752,7 +752,7 @@ class Formulir extends Telescoope_Controller {
             }
 
             if(!empty($_FILES['foto_produk8_2']['name'])){
-                $_FILES['file']['name'] = $this->data['userdata']['employee_id'] . '_prod8_2_' . date('his') . '_' . $_FILES['foto_produk8_2']['name'];
+                $_FILES['file']['name'] = $this->data['userdata']['employee_id'] . '_prod8_2_' . date('his') . '_' . isset($post['desc_produk8_2']) ? $post['desc_produk8_2'] . '_' . $_FILES['foto_produk8_2']['name'] : $_FILES['foto_produk8_2']['name'];
                 $_FILES['file']['type'] = $_FILES['foto_produk8_2']['type'];
                 $_FILES['file']['tmp_name'] = $_FILES['foto_produk8_2']['tmp_name'];
                 $_FILES['file']['error'] = $_FILES['foto_produk8_2']['error'];
@@ -761,7 +761,7 @@ class Formulir extends Telescoope_Controller {
             }
 
             if(!empty($_FILES['foto_produk8_3']['name'])){
-                $_FILES['file']['name'] = $this->data['userdata']['employee_id'] . '_prod8_3_' . date('his') . '_' . $_FILES['foto_produk8_3']['name'];
+                $_FILES['file']['name'] = $this->data['userdata']['employee_id'] . '_prod8_3_' . date('his') . '_' . isset($post['desc_produk8_3']) ? $post['desc_produk8_3'] . '_' . $_FILES['foto_produk8_3']['name'] : $_FILES['foto_produk8_3']['name'];
                 $_FILES['file']['type'] = $_FILES['foto_produk8_3']['type'];
                 $_FILES['file']['tmp_name'] = $_FILES['foto_produk8_3']['tmp_name'];
                 $_FILES['file']['error'] = $_FILES['foto_produk8_3']['error'];
@@ -770,7 +770,7 @@ class Formulir extends Telescoope_Controller {
             }
 
             if(!empty($_FILES['foto_produk9']['name'])){
-                $_FILES['file']['name'] = $this->data['userdata']['employee_id'] . '_prod9_' . date('his') . '_' . $_FILES['foto_produk9']['name'];
+                $_FILES['file']['name'] = $this->data['userdata']['employee_id'] . '_prod9_' . date('his') . '_' . isset($post['desc_produk9']) ? $post['desc_produk9'] . '_' . $_FILES['foto_produk9']['name'] : $_FILES['foto_produk9']['name'];
                 $_FILES['file']['type'] = $_FILES['foto_produk9']['type'];
                 $_FILES['file']['tmp_name'] = $_FILES['foto_produk9']['tmp_name'];
                 $_FILES['file']['error'] = $_FILES['foto_produk9']['error'];
@@ -779,7 +779,7 @@ class Formulir extends Telescoope_Controller {
             }
 
             if(!empty($_FILES['foto_produk9_2']['name'])){
-                $_FILES['file']['name'] = $this->data['userdata']['employee_id'] . '_prod9_2_' . date('his') . '_' . $_FILES['foto_produk9_2']['name'];
+                $_FILES['file']['name'] = $this->data['userdata']['employee_id'] . '_prod9_2_' . date('his') . '_' . isset($post['desc_produk9_2']) ? $post['desc_produk9_2'] . '_' . $_FILES['foto_produk9_2']['name'] : $_FILES['foto_produk9_2']['name'];
                 $_FILES['file']['type'] = $_FILES['foto_produk9_2']['type'];
                 $_FILES['file']['tmp_name'] = $_FILES['foto_produk9_2']['tmp_name'];
                 $_FILES['file']['error'] = $_FILES['foto_produk9_2']['error'];
@@ -788,7 +788,7 @@ class Formulir extends Telescoope_Controller {
             }
 
             if(!empty($_FILES['foto_produk9_3']['name'])){
-                $_FILES['file']['name'] = $this->data['userdata']['employee_id'] . '_prod9_3_' . date('his') . '_' . $_FILES['foto_produk9_3']['name'];
+                $_FILES['file']['name'] = $this->data['userdata']['employee_id'] . '_prod9_3_' . date('his') . '_' . isset($post['desc_produk9_3']) ? $post['desc_produk9_3'] . '_' . $_FILES['foto_produk9_3']['name'] : $_FILES['foto_produk9_3']['name'];
                 $_FILES['file']['type'] = $_FILES['foto_produk9_3']['type'];
                 $_FILES['file']['tmp_name'] = $_FILES['foto_produk9_3']['tmp_name'];
                 $_FILES['file']['error'] = $_FILES['foto_produk9_3']['error'];
@@ -797,7 +797,7 @@ class Formulir extends Telescoope_Controller {
             }
 
             if(!empty($_FILES['foto_produk10']['name'])){
-                $_FILES['file']['name'] = $this->data['userdata']['employee_id'] . '_prod10_' . date('his') . '_' . $_FILES['foto_produk10']['name'];
+                $_FILES['file']['name'] = $this->data['userdata']['employee_id'] . '_prod10_' . date('his') . '_' . isset($post['desc_produk10']) ? $post['desc_produk10'] . '_' . $_FILES['foto_produk10']['name'] : $_FILES['foto_produk10']['name'];
                 $_FILES['file']['type'] = $_FILES['foto_produk10']['type'];
                 $_FILES['file']['tmp_name'] = $_FILES['foto_produk10']['tmp_name'];
                 $_FILES['file']['error'] = $_FILES['foto_produk10']['error'];
@@ -806,7 +806,7 @@ class Formulir extends Telescoope_Controller {
             }
 
             if(!empty($_FILES['foto_produk10_2']['name'])){
-                $_FILES['file']['name'] = $this->data['userdata']['employee_id'] . '_prod10_2_' . date('his') . '_' . $_FILES['foto_produk10_2']['name'];
+                $_FILES['file']['name'] = $this->data['userdata']['employee_id'] . '_prod10_2_' . date('his') . '_' . isset($post['desc_produk10_2']) ? $post['desc_produk10_2'] . '_' . $_FILES['foto_produk10_2']['name'] : $_FILES['foto_produk10_2']['name'];
                 $_FILES['file']['type'] = $_FILES['foto_produk10_2']['type'];
                 $_FILES['file']['tmp_name'] = $_FILES['foto_produk10_2']['tmp_name'];
                 $_FILES['file']['error'] = $_FILES['foto_produk10_2']['error'];
@@ -815,7 +815,7 @@ class Formulir extends Telescoope_Controller {
             }
 
             if(!empty($_FILES['foto_produk10_3']['name'])){
-                $_FILES['file']['name'] = $this->data['userdata']['employee_id'] . '_prod10_3_' . date('his') . '_' . $_FILES['foto_produk10_3']['name'];
+                $_FILES['file']['name'] = $this->data['userdata']['employee_id'] . '_prod10_3_' . date('his') . '_' . isset($post['desc_produk10_3']) ? $post['desc_produk10_3'] . '_' . $_FILES['foto_produk10_3']['name'] : $_FILES['foto_produk10_3']['name'];
                 $_FILES['file']['type'] = $_FILES['foto_produk10_3']['type'];
                 $_FILES['file']['tmp_name'] = $_FILES['foto_produk10_3']['tmp_name'];
                 $_FILES['file']['error'] = $_FILES['foto_produk10_3']['error'];

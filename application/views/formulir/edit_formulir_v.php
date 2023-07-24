@@ -249,7 +249,7 @@
                                 </a>
                             </div>
                             <input type="file" class="form-control" name="foto_produk1">
-                            <input type="text" class="form-control mt-2" name="desc_produk1" placeholder="Keterangan Varian 1" value="<?php echo $detail['desc_produk1']?>">
+                            <input type="text" class="form-control mt-2" name="desc_produk1" placeholder="Keterangan Varian 1" value="<?php echo $detail['desc_produk1']?>" required>
                         </div>
                         <div class="col-lg-3">
                             <label class="form-label">Varian 2</label>
