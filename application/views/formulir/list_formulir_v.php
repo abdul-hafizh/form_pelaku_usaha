@@ -12,14 +12,16 @@
                     <h5 class="card-title mb-0">List Formulir</h5>
                 </div>
                 <div class="float-end">
-                    <a href="<?php echo site_url('formulir/tambah_data');?>" class="btn btn-sm btn-primary"><i class="ri-add-line align-middle me-1"></i> Tambah Data</a>
-                    <?php if($userdata['pos_name'] != 'ENUM' && $userdata['pos_name'] != 'KORWIL') { ?>
+                    <?php if($userdata['pos_name'] == 'ENUM') { ?>
+                        <a href="<?php echo site_url('formulir/tambah_data');?>" class="btn btn-sm btn-primary"><i class="ri-add-line align-middle me-1"></i> Tambah Data</a>
+                    <?php } ?>
+                    <?php if($userdata['pos_name'] != 'ENUM') { ?>
                         <a href="<?php echo site_url('formulir/export_data');?>" onclick="return confirm('Apakah Anda yakin?');" class="btn btn-sm btn-warning"><i class="las la-file-excel"></i> Export Data</a>
                     <?php } ?>
                 </div>
             </div>
             <div class="card-body">
-                <table id="data-form" class="table table-bordered dt-responsive nowrap table-striped align-middle" style="width:100%">
+                <table id="scroll-horizontal" class="table nowrap align-middle table-bordered table-striped" style="width:100%">
                     <thead>
                         <tr>
                             <th class='col-sm-1 text-center'>No</th>
@@ -72,13 +74,8 @@
                                 <td>
                                     <div class="btn-group" role="group">
                                         <a href="<?php echo site_url('formulir/detail_data/' . $v['id']); ?>" class="btn btn-sm btn-info">View</a>
-                                        <?php if($v['status'] != 2) { ?>
+                                        <?php if($v['status'] != 2 && $userdata['pos_name'] == 'ENUM') { ?>
                                             <a href="<?php echo site_url('formulir/edit_data/' . $v['id']); ?>" class="btn btn-sm btn-warning">Edit</a>
-                                        <?php } ?>
-                                        <?php if($userdata['pos_name'] == 'ADMINISTRATOR') { ?>                                                
-                                            <a href="<?php echo site_url('formulir/delete_formulir/' . $v['id']); ?>" onclick="return confirm('Apakah Anda yakin?');" class="btn btn-sm btn-danger">
-                                                Delete
-                                            </a>
                                         <?php } ?>
                                     </div>                                    
                                 </td>
@@ -104,6 +101,6 @@
 
 <script>    
     $(document).ready(function () {
-        $("#data-form").DataTable();
+        $("#scroll-horizontal").DataTable({ scrollX: !0 });
     })
 </script>

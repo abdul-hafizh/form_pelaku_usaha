@@ -533,6 +533,11 @@ class Formulir extends Telescoope_Controller {
 
         $post = $this->input->post(); 
 
+        if (count($post) == 0) {
+            $this->setMessage("Isi data dengan Benar.");
+            redirect(site_url('formulir'));
+        }
+
         $this->db->trans_begin();
 
         $dir = './uploads/' . $this->data['dir'];

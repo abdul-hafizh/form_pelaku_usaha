@@ -106,7 +106,7 @@
                             </div>
                         </div>
                         <div class="col-lg-3 is_nib">
-                            <input type="number" class="form-control" name="no_nib no_nib_inp" placeholder="NIB Jika Ada" value="<?php echo $detail['no_nib']; ?>" >
+                            <input type="number" class="form-control no_nib_inp" name="no_nib" placeholder="NIB Jika Ada" value="<?php echo $detail['no_nib']; ?>" >
                         </div>
                     </div>
                     <div class="is_no_nib">
@@ -650,5 +650,18 @@
                 $(".no_nib_inp").val("");
             }            
         });
+
+        if(!$('.no_nib_inp').val() == ''){
+            $(".is_no_nib").hide();
+            $(".modal_inp").val("");
+            $(".jml_prod_inp").val("");
+            $(".satuan_inp").val("");
+            $(".tahun_inp").val("");
+            $(".bulan_inp").val("");
+
+        } else {
+            $(".is_nib").hide();
+            $(".no_nib_inp").val("");
+        }
     })
 </script>

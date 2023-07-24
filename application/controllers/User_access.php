@@ -69,7 +69,7 @@ class User_access extends Telescoope_Controller
       }
 
       if($pos2){        
-        $data['get_user'] = $this->Administration_m->user_access_view("", "", "VIEWER", $this->data['userdata']['pendamping_id'])->result_array();      
+        $data['get_user'] = $this->Administration_m->user_access_view("", "", "VIEWER", $this->data['userdata']['employee_id'])->result_array();      
       }
 
       $this->template("user_access/list_user_v", "User Access", $data);
@@ -90,7 +90,7 @@ class User_access extends Telescoope_Controller
 
       if($pos2){
 
-        $data['get_employee'] = $this->Administration_m->get_new_employee("", "VIEWER", $this->data['userdata']['pendamping_id'])->result_array();
+        $data['get_employee'] = $this->Administration_m->get_new_employee("", "VIEWER", $this->data['userdata']['employee_id'])->result_array();
 
       }
 

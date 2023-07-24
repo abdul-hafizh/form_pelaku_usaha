@@ -49,10 +49,10 @@ class Formulir_m extends CI_Model {
 	public function getFormulirSrv($user = 0){
 		
 		if($user > 0) {
-			$this->db->where('formulir_surveyor.id_surveyor', $user);
+			$this->db->where('aa.pendamping_id', $user);
 		}
 		$this->db->select('formulir.*');
-		$this->db->join('formulir_surveyor', 'formulir_surveyor.id_formulir = formulir.id', 'left');
+		$this->db->join('adm_employee as aa', 'formulir.user_id = aa.id', 'left');
 		$this->db->order_by('id', 'desc');
 
 		return $this->db->get('formulir');
