@@ -10,13 +10,44 @@ class Formulir_m extends CI_Model {
 
 	}
 
-	public function getFormulir($user = 0){
+	public function getFormulir($user = 0, $prov = "", $pend = 0, $stat = 0){
 		
+		$this->db->select('formulir.*, aa.pendamping_id, aa.fullname');
+
+		if($user > 0) { $this->db->where('formulir.user_id', $user); }
+		if(!empty($prov)) { $this->db->where('formulir.provinsi', $prov); }
+		if($pend > 0) { $this->db->where('aa.pendamping_id', $pend); }
+		if($stat > 0) { $this->db->where('formulir.status', $stat); }
+		
+		$this->db->order_by('id', 'desc');
+		$this->db->join('adm_employee as aa', 'formulir.user_id = aa.id', 'left');		
+
+		return $this->db->get('formulir');
+
+	}
+
+	public function getFormulirProv($user = 0){
+		
+		$this->db->distinct();
+		$this->db->select('provinsi');
 		if($user > 0) {
 			$this->db->where('user_id', $user);
 		}
-		$this->db->order_by('id', 'desc');
+		$this->db->where('provinsi IS NOT NULL', null, false);
+		$this->db->order_by('provinsi', 'asc');
 
+		return $this->db->get('formulir');
+
+	}
+
+	public function getFormulirPend($user = 0){
+		
+		$this->db->distinct();
+		$this->db->select('aa.pendamping_id');
+		if($user > 0) {
+			$this->db->where('formulir.user_id', $user);
+		}
+		$this->db->join('adm_employee as aa', 'formulir.user_id = aa.id', 'left');		
 		return $this->db->get('formulir');
 
 	}

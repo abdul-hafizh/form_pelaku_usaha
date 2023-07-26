@@ -1,8 +1,70 @@
 <!--datatable css-->
 <link rel="stylesheet" href="https://cdn.datatables.net/1.11.5/css/dataTables.bootstrap5.min.css" />
+<!-- select2 css-->
+<link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css" rel="stylesheet" />
 <!--datatable responsive css-->
 <link rel="stylesheet" href="https://cdn.datatables.net/responsive/2.2.9/css/responsive.bootstrap.min.css" />
 <link rel="stylesheet" href="https://cdn.datatables.net/buttons/2.2.2/css/buttons.dataTables.min.css">
+
+<?php if($userdata['pos_name'] != 'ENUM' && $userdata['pos_name'] != 'VIEWER') { ?>
+    <div class="row">
+        <div class="col-lg-12">
+            <div class="card">
+                <div class="card-header align-items-center d-flex">
+                    <h4 class="card-title mb-0 flex-grow-1">Filter Data</h4>
+                </div>
+                <div class="card-body">
+                    <form action="<?php echo site_url('formulir'); ?>" method="post">
+                        <div class="row gy-4">                        
+                            <div class="col-xxl-3 col-md-6">
+                                <div>
+                                    <select class="select-single" name="provinsi">
+                                        <option value="">Pilih Provinsi</option>
+                                        <?php foreach($provinsi as $v) { ?>
+                                            <option value="<?php echo $v['provinsi']; ?>"><?php echo $v['provinsi']; ?></option>
+                                        <?php } ?>
+                                    </select>
+                                </div>
+                            </div>
+                            <!--end col-->
+                            <div class="col-xxl-3 col-md-6">
+                                <div>
+                                    <select class="select-single" name="pendamping">
+                                        <option value="">Pilih Pendamping</option>
+                                        <?php foreach($pendamping as $v) { ?>
+                                            <?php $idpnd = $this->db->distinct()->select('id,fullname')->where('id', $v['pendamping_id'])->get('adm_employee')->row_array();  ?>
+                                            <option value="<?php echo $idpnd['id']; ?>"><?php echo $idpnd['fullname']; ?></option>
+                                        <?php } ?>
+                                    </select>
+                                </div>
+                            </div>
+                            <!--end col-->  
+                            <div class="col-xxl-3 col-md-6">
+                                <div>                        
+                                    <select class="select-single" name="status_approve">
+                                        <option value="">Pilih Status</option>                                
+                                        <option value="1">Belum Diapprove</option>                                
+                                        <option value="2">Sudah Diapprove</option>                                
+                                        <option value="3">Tidak Diapprove</option>                                
+                                    </select>
+                                </div>
+                            </div>
+                            <!--end col-->                        
+                            <div class="col-xxl-3 col-md-6">
+                                <div class="d-grid">                            
+                                    <input type="submit" class="btn btn-primary btn-block btn-sm" value="Filter">
+                                </div>
+                            </div>
+                            <!--end col-->      
+                        </div>
+                    </form>                      
+                </div>
+            </div>
+        </div>
+        <!--end col-->
+    </div>
+    <!--end row-->                                
+<?php } ?>  
 
 <div class="row">
     <div class="col-lg-12">
@@ -99,8 +161,11 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.53/pdfmake.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jszip/3.1.3/jszip.min.js"></script>
 
+<!--select2 cdn-->
+<script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js"></script>
 <script>    
     $(document).ready(function () {
         $("#scroll-horizontal").DataTable({ scrollX: !0 });
+        $(".select-single").select2();
     })
 </script>

@@ -55,19 +55,35 @@ class Formulir extends Telescoope_Controller {
 
         $data = array();
 
+        $post = $this->input->post();     
+
+        $prov = "";
+        $pend = 0;
+        $stat = 0;
+        
+        if (count($post) > 0) {
+            $prov = isset($post['provinsi']) ? $post['provinsi'] : '' ;
+            $pend = isset($post['pendamping']) ? $post['pendamping'] : 0 ;
+            $stat = isset($post['status_approve']) ? $post['status_approve'] : 0 ;
+        } 
+
         $position = $this->Administration_m->getPosition("ENUM");
         $srv = $this->Administration_m->getPosition("VIEWER");
 
-        $data['list_formulir'] = $this->Formulir_m->getFormulir($this->data['userdata']['employee_id'])->result_array();
+        $data['list_formulir'] = $this->Formulir_m->getFormulir($this->data['userdata']['employee_id'], $prov, $pend, $stat)->result_array();
+        $data['provinsi'] = $this->Formulir_m->getFormulirProv($this->data['userdata']['employee_id'])->result_array();        
 
         if(!$position){
             
-            $data['list_formulir'] = $this->Formulir_m->getFormulir()->result_array();
+            $data['list_formulir'] = $this->Formulir_m->getFormulir("", $prov, $pend, $stat)->result_array();
+            $data['provinsi'] = $this->Formulir_m->getFormulirProv()->result_array();
+            $data['pendamping'] = $this->Formulir_m->getFormulirPend()->result_array();
         
         }
         if($srv){
             
-            $data['list_formulir'] = $this->Formulir_m->getFormulirSrv($this->data['userdata']['employee_id'])->result_array();
+            $data['list_formulir'] = $this->Formulir_m->getFormulirSrv($this->data['userdata']['employee_id'], $prov, $pend, $stat)->result_array();
+            $data['provinsi'] = $this->Formulir_m->getFormulirProv($this->data['userdata']['employee_id'])->result_array();
         }
 
 
