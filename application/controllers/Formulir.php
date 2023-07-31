@@ -55,39 +55,120 @@ class Formulir extends Telescoope_Controller {
 
         $data = array();
 
-        $post = $this->input->post();     
-
-        $prov = "";
-        $pend = 0;
-        $stat = 0;
-        
-        if (count($post) > 0) {
-            $prov = isset($post['provinsi']) ? $post['provinsi'] : '' ;
-            $pend = isset($post['pendamping']) ? $post['pendamping'] : 0 ;
-            $stat = isset($post['status_approve']) ? $post['status_approve'] : 0 ;
-        } 
-
         $position = $this->Administration_m->getPosition("ENUM");
         $srv = $this->Administration_m->getPosition("VIEWER");
 
-        $data['list_formulir'] = $this->Formulir_m->getFormulir($this->data['userdata']['employee_id'], $prov, $pend, $stat)->result_array();
         $data['provinsi'] = $this->Formulir_m->getFormulirProv($this->data['userdata']['employee_id'])->result_array();        
 
-        if(!$position){
-            
-            $data['list_formulir'] = $this->Formulir_m->getFormulir("", $prov, $pend, $stat)->result_array();
+        if(!$position){            
             $data['provinsi'] = $this->Formulir_m->getFormulirProv()->result_array();
             $data['pendamping'] = $this->Formulir_m->getFormulirPend()->result_array();
         
         }
-        if($srv){
-            
-            $data['list_formulir'] = $this->Formulir_m->getFormulirSrv($this->data['userdata']['employee_id'], $prov, $pend, $stat)->result_array();
+        if($srv){            
             $data['provinsi'] = $this->Formulir_m->getFormulirProv($this->data['userdata']['employee_id'])->result_array();
         }
 
 
 		$this->template("formulir/list_formulir_v", "List Formulir", $data);
+    }
+
+    public function get_data(){
+        $post = $this->input->post();     
+        
+        $draw = $post['draw'];
+        $row = $post['start'];
+        $rowperpage = $post['length']; 
+        $columnIndex = $post['order'][0]['column'];
+        $columnName = $post['columns'][$columnIndex]['data'];
+        $prov = isset($post['s_provinsi']) ? $post['s_provinsi'] : "";
+        $pend = $post['s_pendamping'] > 0 ? $post['s_pendamping'] : 0;
+        $stat = $post['s_status'] > 0 ? $post['s_status'] : 0;        
+
+        $position = $this->Administration_m->getPosition("ENUM");
+        $srv = $this->Administration_m->getPosition("VIEWER");
+
+        $this->db->limit($rowperpage, $row);
+        $result = $this->Formulir_m->getFormulir($this->data['userdata']['employee_id'], $prov, $pend, $stat);
+        $count = $this->Formulir_m->getFormulir($this->data['userdata']['employee_id'], $prov, $pend, $stat);
+
+        if(!$position){            
+            $this->db->limit($rowperpage, $row);
+            $result = $this->Formulir_m->getFormulir("", $prov, $pend, $stat);
+            $count = $this->Formulir_m->getFormulir("", $prov, $pend, $stat);
+        }
+
+        if($srv){            
+            $this->db->limit($rowperpage, $row);
+            $result = $this->Formulir_m->getFormulir($this->data['userdata']['employee_id'], $prov, $pend, $stat);
+            $count = $this->Formulir_m->getFormulir($this->data['userdata']['employee_id'], $prov, $pend, $stat);
+        }                    
+
+        $totalRecords = $count->num_rows();
+        $totalRecordwithFilter = $count->num_rows();
+
+        $data = array();
+        
+        foreach($result->result_array() as $v) {
+            $idptg = $this->db->select('fullname')->where('id', $v['user_id'])->get('adm_employee')->row_array();
+            $idpnd = $this->db->select('pendamping_id')->where('id', $v['user_id'])->get('adm_employee')->row_array(); $namapnd = $this->db->select('fullname')->where('id', $idpnd['pendamping_id'])->get('adm_employee')->row_array();
+            $status_app = '<span class="badge bg-danger">Belum Diapprove</span>'; if ($v['status'] == 2) { $status_app = '<span class="badge bg-success">Sudah Diapprove</span>'; } elseif ($v['status'] == 3) { $status_app = '<span class="badge bg-info">Tidak Diapprove</span>'; }
+            $foto_ktp ='<a href="' . base_url('uploads/formulir/' . $v['foto_ktp']) . '" target="_blank" class="avatar-group-item" data-img="' . base_url('uploads/formulir/' . $v['foto_ktp']) . '" data-bs-toggle="tooltip" data-bs-trigger="hover" data-bs-placement="top" title="Foto Ktp">
+                            <img src="' . base_url('uploads/formulir/' . $v['foto_ktp']) . '" alt="" class="rounded-circle avatar-xxs">
+                        </a>';
+            $foto_prod1 ='<a href="' . base_url('uploads/formulir/' . $v['foto_produk1']) . '" target="_blank" class="avatar-group-item" data-img="' . base_url('uploads/formulir/' . $v['foto_produk1']) . '" data-bs-toggle="tooltip" data-bs-trigger="hover" data-bs-placement="top" title="Foto Produk 1">
+                            <img src="' . base_url('uploads/formulir/' . $v['foto_produk1']) . '" alt="" class="rounded-circle avatar-xxs">
+                        </a>';      
+
+            if(!empty($v['foto_produk2'])) {
+                $foto_prod2 ='<a href="' . base_url('uploads/formulir/' . $v['foto_produk2']) . '" target="_blank" class="avatar-group-item" data-img="' . base_url('uploads/formulir/' . $v['foto_produk2']) . '" data-bs-toggle="tooltip" data-bs-trigger="hover" data-bs-placement="top" title="Foto Produk 2">
+                            <img src="' . base_url('uploads/formulir/' . $v['foto_produk2']) . '" alt="" class="rounded-circle avatar-xxs">
+                        </a>'; 
+            } else $foto_prod2 = '';
+                        
+            if(!empty($v['foto_produk3'])) {
+                $foto_prod3 ='<a href="' . base_url('uploads/formulir/' . $v['foto_produk3']) . '" target="_blank" class="avatar-group-item" data-img="' . base_url('uploads/formulir/' . $v['foto_produk3']) . '" data-bs-toggle="tooltip" data-bs-trigger="hover" data-bs-placement="top" title="Foto Produk 3">
+                                <img src="' . base_url('uploads/formulir/' . $v['foto_produk3']) . '" alt="" class="rounded-circle avatar-xxs">
+                            </a>';        
+            } else $foto_prod3 = '';
+            
+            if($v['status'] != 2 && $this->data['userdata']['pos_name'] == 'ENUM') {
+
+                $action = '<div class="btn-group" role="group">
+                        <a href="' .  site_url('formulir/detail_data/' . $v['id']) . '" class="btn btn-sm btn-info">View</a>
+                        <a href="' . site_url('formulir/edit_data/' . $v['id']) . '" class="btn btn-sm btn-warning">Edit</a>
+                    </div>';
+
+            } else {
+                $action = '<div class="btn-group" role="group">
+                        <a href="' .  site_url('formulir/detail_data/' . $v['id']) . '" class="btn btn-sm btn-info">View</a>                        
+                    </div>';
+            }
+
+            $data[] = array(
+                "nama_pelaku_usaha" => $v['nama_pelaku_usaha'],
+                "kbli" => $v['kbli'],
+                "nama_produk" => $v['nama_produk'],
+                "jenis_produk" => $v['jenis_produk'],
+                "provinsi" => $v['provinsi'],
+                "petugas" => $idptg['fullname'],
+                "pendamping" => $namapnd['fullname'],
+                "status_app" => $status_app,
+                "status_pend" => $v['status_pendamping'] == 2 ? '<span class="badge bg-success">Selesai Pendamping</span>' : '<span class="badge bg-danger">Belum Selesai</span>',
+                "foto" => '<div class="avatar-group">' . $foto_ktp . $foto_prod1 . $foto_prod2 . $foto_prod3 . '</div>',
+                "action" => $action
+            );
+        }
+        
+        ## Response
+        $response = array(
+            "draw" => intval($draw),
+            "iTotalRecords" => $totalRecords,
+            "iTotalDisplayRecords" => $totalRecordwithFilter,
+            "aaData" => $data
+        );
+        
+        echo json_encode($response);
     }
 
     public function tambah_data(){

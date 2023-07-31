@@ -14,56 +14,59 @@
                     <h4 class="card-title mb-0 flex-grow-1">Filter Data</h4>
                 </div>
                 <div class="card-body">
-                    <form action="<?php echo site_url('formulir'); ?>" method="post">
-                        <div class="row gy-4">                        
-                            <div class="col-xxl-3 col-md-6">
-                                <div>
-                                    <select class="select-single" name="provinsi">
-                                        <option value="">Pilih Provinsi</option>
-                                        <?php foreach($provinsi as $v) { ?>
-                                            <option value="<?php echo $v['provinsi']; ?>"><?php echo $v['provinsi']; ?></option>
-                                        <?php } ?>
-                                    </select>
-                                </div>
+                    <div class="row gy-4">                        
+                        <div class="col-xxl-3 col-md-6">
+                            <div>
+                                <select class="select-single" name="provinsi" id="provinsi_src">
+                                    <option value="">Pilih Provinsi</option>
+                                    <?php foreach($provinsi as $v) { ?>
+                                        <option value="<?php echo $v['provinsi']; ?>"><?php echo $v['provinsi']; ?></option>
+                                    <?php } ?>
+                                </select>
                             </div>
-                            <!--end col-->
-                            <div class="col-xxl-3 col-md-6">
-                                <div>
-                                    <select class="select-single" name="pendamping">
-                                        <option value="">Pilih Pendamping</option>
-                                        <?php foreach($pendamping as $v) { ?>
-                                            <?php $idpnd = $this->db->distinct()->select('id,fullname')->where('id', $v['pendamping_id'])->get('adm_employee')->row_array();  ?>
-                                            <option value="<?php echo $idpnd['id']; ?>"><?php echo $idpnd['fullname']; ?></option>
-                                        <?php } ?>
-                                    </select>
-                                </div>
-                            </div>
-                            <!--end col-->  
-                            <div class="col-xxl-3 col-md-6">
-                                <div>                        
-                                    <select class="select-single" name="status_approve">
-                                        <option value="">Pilih Status</option>                                
-                                        <option value="1">Belum Diapprove</option>                                
-                                        <option value="2">Sudah Diapprove</option>                                
-                                        <option value="3">Tidak Diapprove</option>                                
-                                    </select>
-                                </div>
-                            </div>
-                            <!--end col-->                        
-                            <div class="col-xxl-3 col-md-6">
-                                <div class="d-grid">                            
-                                    <input type="submit" class="btn btn-primary btn-block btn-sm" value="Filter">
-                                </div>
-                            </div>
-                            <!--end col-->      
                         </div>
-                    </form>                      
+                        <!--end col-->
+                        <div class="col-xxl-3 col-md-6">
+                            <div>
+                                <select class="select-single" name="pendamping" id="pendamping_src">
+                                    <option value="">Pilih Pendamping</option>
+                                    <?php foreach($pendamping as $v) { ?>
+                                        <?php $idpnd = $this->db->distinct()->select('id,fullname')->where('id', $v['pendamping_id'])->get('adm_employee')->row_array();  ?>
+                                        <option value="<?php echo $idpnd['id']; ?>"><?php echo $idpnd['fullname']; ?></option>
+                                    <?php } ?>
+                                </select>
+                            </div>
+                        </div>
+                        <!--end col-->  
+                        <div class="col-xxl-3 col-md-6">
+                            <div>                        
+                                <select class="select-single" name="status_approve" id="status_src">
+                                    <option value="">Pilih Status</option>                                
+                                    <option value="1">Belum Diapprove</option>                                
+                                    <option value="2">Sudah Diapprove</option>                                
+                                    <option value="3">Tidak Diapprove</option>                                
+                                </select>
+                            </div>
+                        </div>
+                        <!--end col-->                        
+                        <div class="col-xxl-3 col-md-6 btn-group">
+                            <button type="button" class="btn btn-block btn-primary btn-sm" id="dt_cari" name="button">Filter</button>                        
+                            <button type="button" class="btn btn-block btn-info btn-sm" id="dt_reset" name="button">Reset</button>
+                        </div>
+                        <!--end col-->      
+                    </div>                
                 </div>
             </div>
         </div>
         <!--end col-->
     </div>
     <!--end row-->                                
+<?php } else { ?>  
+
+    <input type="hidden" id="provinsi_src" value="">
+    <input type="hidden" id="pendamping_src" value="">
+    <input type="hidden" id="status_src" value="">
+
 <?php } ?>  
 
 <div class="row">
@@ -86,7 +89,6 @@
                 <table id="scroll-horizontal" class="table nowrap align-middle table-bordered table-striped" style="width:100%">
                     <thead>
                         <tr>
-                            <th class='col-sm-1 text-center'>No</th>
                             <th>Pelaku Usaha</th>
                             <th>KBLI</th>
                             <th>Nama Produk</th>
@@ -96,54 +98,10 @@
                             <th>Pendamping</th>
                             <th>Status Approve</th>
                             <th>Status Pendampingan</th>
-                            <th>Foto Produk</th>
+                            <th>Foto</th>
                             <th>Action</th>
                         </tr>
                     </thead>
-                    <tbody>
-                        <?php $no=1; foreach($list_formulir as $v) { ?>
-                            <tr> 
-                                <td class='text-center'><?php echo $no++; ?></td>
-                                <td><?php echo $v['nama_pelaku_usaha']; ?></td>
-                                <td><?php echo $v['kbli']; ?></td>
-                                <td><?php echo $v['nama_produk']; ?></td>
-                                <td><?php echo $v['jenis_produk']; ?></td>
-                                <td><?php echo $v['provinsi']; ?></td>
-                                <td><?php $idptg = $this->db->select('fullname')->where('id', $v['user_id'])->get('adm_employee')->row_array(); echo $idptg['fullname']; ?></td>
-                                <td><?php $idpnd = $this->db->select('pendamping_id')->where('id', $v['user_id'])->get('adm_employee')->row_array(); $namapnd = $this->db->select('fullname')->where('id', $idpnd['pendamping_id'])->get('adm_employee')->row_array(); echo $namapnd['fullname']; ?></td>
-                                <td><?php if ($v['status'] == 2) { echo '<span class="badge bg-success">Sudah Diapprove</span>'; } elseif ($v['status'] == 3) { echo '<span class="badge bg-info">Tidak Diapprove</span>'; } else { echo '<span class="badge bg-danger">Belum Diapprove</span>'; } ?></td>
-                                <td><?php echo $v['status_pendamping'] == 2 ? '<span class="badge bg-success">Selesai Pendamping</span>' : '<span class="badge bg-danger">Belum Selesai</span>' ; ?></td>
-                                <td>
-                                    <div class="avatar-group">
-                                        <a href="<?php echo base_url('uploads/formulir/' . $v['foto_ktp']); ?>" target="_blank" class="avatar-group-item" data-img="<?php echo base_url('uploads/formulir/' . $v['foto_ktp']); ?>" data-bs-toggle="tooltip" data-bs-trigger="hover" data-bs-placement="top" title="Foto Ktp">
-                                            <img src="<?php echo base_url('uploads/formulir/' . $v['foto_ktp']); ?>" alt="" class="rounded-circle avatar-xxs">
-                                        </a>                                    
-                                        <a href="<?php echo base_url('uploads/formulir/' . $v['foto_produk1']); ?>" target="_blank" class="avatar-group-item" data-img="<?php echo base_url('uploads/formulir/' . $v['foto_produk1']); ?>" data-bs-toggle="tooltip" data-bs-trigger="hover" data-bs-placement="top" title="Foto Produk 1">
-                                            <img src="<?php echo base_url('uploads/formulir/' . $v['foto_produk1']); ?>" alt="" class="rounded-circle avatar-xxs">
-                                        </a>                                                                            
-                                        <?php if(!empty($v['foto_produk2'])) { ?>
-                                            <a href="<?php echo base_url('uploads/formulir/' . $v['foto_produk2']); ?>" target="_blank" class="avatar-group-item" data-img="<?php echo base_url('uploads/formulir/' . $v['foto_produk2']); ?>" data-bs-toggle="tooltip" data-bs-trigger="hover" data-bs-placement="top" title="Foto Produk 2">
-                                                <img src="<?php echo base_url('uploads/formulir/' . $v['foto_produk2']); ?>" alt="" class="rounded-circle avatar-xxs">
-                                            </a>                                
-                                        <?php } ?>
-                                        <?php if(!empty($v['foto_produk3'])) { ?>
-                                            <a href="<?php echo base_url('uploads/formulir/' . $v['foto_produk3']); ?>" target="_blank" class="avatar-group-item" data-img="<?php echo base_url('uploads/formulir/' . $v['foto_produk3']); ?>" data-bs-toggle="tooltip" data-bs-trigger="hover" data-bs-placement="top" title="Foto Produk 3">
-                                                <img src="<?php echo base_url('uploads/formulir/' . $v['foto_produk3']); ?>" alt="" class="rounded-circle avatar-xxs">
-                                            </a>                                
-                                        <?php } ?>
-                                    </div>
-                                </td>
-                                <td>
-                                    <div class="btn-group" role="group">
-                                        <a href="<?php echo site_url('formulir/detail_data/' . $v['id']); ?>" class="btn btn-sm btn-info">View</a>
-                                        <?php if($v['status'] != 2 && $userdata['pos_name'] == 'ENUM') { ?>
-                                            <a href="<?php echo site_url('formulir/edit_data/' . $v['id']); ?>" class="btn btn-sm btn-warning">Edit</a>
-                                        <?php } ?>
-                                    </div>                                    
-                                </td>
-                            </tr>    
-                        <?php } ?>
-                    </tbody>
                 </table>
             </div>
         </div>
@@ -165,7 +123,43 @@
 <script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js"></script>
 <script>    
     $(document).ready(function () {
-        $("#scroll-horizontal").DataTable({ scrollX: !0 });
         $(".select-single").select2();
+
+        $('#dt_cari').click(function() {
+            table.ajax.reload();
+        });
+
+        $('#dt_reset').click(function() {
+            location.reload();
+        });
+
+        var table = $("#scroll-horizontal").DataTable({             
+            'processing': true,
+            'serverSide': true,
+            'serverMethod': 'post',
+            'ajax': {
+                'url':'<?php echo site_url('formulir/get_data');?>',
+                "type": "post",
+                "data": function(d){                    
+                    d.s_provinsi = $('#provinsi_src').val();
+                    d.s_pendamping = $('#pendamping_src').val();
+                    d.s_status = $('#status_src').val();
+                },
+            },
+            scrollX: !0,
+            'columns': [
+                { data: 'nama_pelaku_usaha' },
+                { data: 'kbli' },
+                { data: 'nama_produk' },
+                { data: 'jenis_produk' },
+                { data: 'provinsi' },
+                { data: 'petugas' },
+                { data: 'pendamping' },
+                { data: 'status_app' },
+                { data: 'status_pend' },
+                { data: 'foto' },
+                { data: 'action' },
+            ]            
+        });
     })
 </script>

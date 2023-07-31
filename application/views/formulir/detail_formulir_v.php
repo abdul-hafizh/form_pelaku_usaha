@@ -33,6 +33,12 @@
                 </div>
             </div>
             <div class="card-body">
+                <div class="row mb-3">
+                    <div class="col-lg-12">
+                        <label class="float-start">&nbsp;</label>
+                        <label class="form-label float-end text-muted"><i><?php echo 'input: ' . $detail['tanggal_input'] . ' | update: ' . $detail['tanggal_update'] . ' | approve: ' . $detail['tanggal_approve'] ; ?></i></label>
+                    </div>
+                </div>
                 <?php if(isset($form_srv['username']) && $userdata['pos_name'] != 'ENUM') { ?>
                     <div class="row mb-3">
                         <div class="col-lg-3">
@@ -47,13 +53,7 @@
                         <input type="text" class="form-control" value="<?php echo $form_srv['password']; ?>" readonly>
                     </div>
                 </div>
-                <?php } ?>
-                <div class="row mb-3">
-                    <div class="col-lg-12">
-                        <label class="float-start">&nbsp;</label>
-                        <label class="form-label float-end text-muted"><i><?php echo 'input: ' . $detail['tanggal_input'] . ' | update: ' . $detail['tanggal_update'] . ' | approve: ' . $detail['tanggal_approve'] ; ?></i></label>
-                    </div>
-                </div>
+                <?php } ?>                
                 <div class="row mb-3">
                     <div class="col-lg-3">
                         <label class="form-label">1. Nama Pelaku Usaha</label>
