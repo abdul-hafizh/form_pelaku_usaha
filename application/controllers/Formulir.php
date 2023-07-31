@@ -100,8 +100,8 @@ class Formulir extends Telescoope_Controller {
 
         if($srv){            
             $this->db->limit($rowperpage, $row);
-            $result = $this->Formulir_m->getFormulir($this->data['userdata']['employee_id'], $prov, $pend, $stat);
-            $count = $this->Formulir_m->getFormulir($this->data['userdata']['employee_id'], $prov, $pend, $stat);
+            $result = $this->Formulir_m->getFormulirSrv($this->data['userdata']['employee_id'], $prov, $pend, $stat);
+            $count = $this->Formulir_m->getFormulirSrv($this->data['userdata']['employee_id'], $prov, $pend, $stat);
         }                    
 
         $totalRecords = $count->num_rows();
