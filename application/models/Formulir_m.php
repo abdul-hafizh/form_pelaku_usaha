@@ -82,7 +82,7 @@ class Formulir_m extends CI_Model {
 		if($user > 0) {
 			$this->db->where('aa.pendamping_id', $user);
 		}
-		$this->db->select('formulir.*');
+		$this->db->select('formulir.*, aa.fullname');
 		$this->db->join('adm_employee as aa', 'formulir.user_id = aa.id', 'left');
 		$this->db->order_by('id', 'desc');
 

@@ -79,28 +79,80 @@ class Formulir extends Telescoope_Controller {
         $draw = $post['draw'];
         $row = $post['start'];
         $rowperpage = $post['length']; 
+        $search = $post['search']['value']; 
         $columnIndex = $post['order'][0]['column'];
         $columnName = $post['columns'][$columnIndex]['data'];
         $prov = isset($post['s_provinsi']) ? $post['s_provinsi'] : "";
         $pend = $post['s_pendamping'] > 0 ? $post['s_pendamping'] : 0;
-        $stat = $post['s_status'] > 0 ? $post['s_status'] : 0;        
-
+        $stat = $post['s_status'] > 0 ? $post['s_status'] : 0;     
+                
         $position = $this->Administration_m->getPosition("ENUM");
         $srv = $this->Administration_m->getPosition("VIEWER");
 
+        if (!empty($search)) {
+            $this->db->like('nama_pelaku_usaha', $search);
+            $this->db->or_like('kbli', $search);
+            $this->db->or_like('nama_produk', $search);
+            $this->db->or_like('jenis_produk', $search);
+            $this->db->or_like('formulir.provinsi', $search);
+            $this->db->or_like('fullname', $search);
+        }
         $this->db->limit($rowperpage, $row);
         $result = $this->Formulir_m->getFormulir($this->data['userdata']['employee_id'], $prov, $pend, $stat);
+
+        if (!empty($search)) {
+            $this->db->like('nama_pelaku_usaha', $search);
+            $this->db->or_like('kbli', $search);
+            $this->db->or_like('nama_produk', $search);
+            $this->db->or_like('jenis_produk', $search);
+            $this->db->or_like('formulir.provinsi', $search);
+            $this->db->or_like('fullname', $search);
+        }
         $count = $this->Formulir_m->getFormulir($this->data['userdata']['employee_id'], $prov, $pend, $stat);
 
-        if(!$position){            
+        if(!$position){     
+            if (!empty($search)) {
+                $this->db->like('nama_pelaku_usaha', $search);
+                $this->db->or_like('kbli', $search);
+                $this->db->or_like('nama_produk', $search);
+                $this->db->or_like('jenis_produk', $search);
+                $this->db->or_like('formulir.provinsi', $search);
+                $this->db->or_like('fullname', $search);
+            }       
             $this->db->limit($rowperpage, $row);
             $result = $this->Formulir_m->getFormulir("", $prov, $pend, $stat);
+
+            if (!empty($search)) {
+                $this->db->like('nama_pelaku_usaha', $search);
+                $this->db->or_like('kbli', $search);
+                $this->db->or_like('nama_produk', $search);
+                $this->db->or_like('jenis_produk', $search);
+                $this->db->or_like('formulir.provinsi', $search);
+                $this->db->or_like('fullname', $search);
+            }
             $count = $this->Formulir_m->getFormulir("", $prov, $pend, $stat);
         }
 
         if($srv){            
+            if (!empty($search)) {
+                $this->db->like('nama_pelaku_usaha', $search);
+                $this->db->or_like('kbli', $search);
+                $this->db->or_like('nama_produk', $search);
+                $this->db->or_like('jenis_produk', $search);
+                $this->db->or_like('provinsi', $search);
+                $this->db->or_like('fullname', $search);
+            }
             $this->db->limit($rowperpage, $row);
             $result = $this->Formulir_m->getFormulirSrv($this->data['userdata']['employee_id'], $prov, $pend, $stat);
+
+            if (!empty($search)) {
+                $this->db->like('nama_pelaku_usaha', $search);
+                $this->db->or_like('kbli', $search);
+                $this->db->or_like('nama_produk', $search);
+                $this->db->or_like('jenis_produk', $search);
+                $this->db->or_like('provinsi', $search);
+                $this->db->or_like('fullname', $search);
+            }
             $count = $this->Formulir_m->getFormulirSrv($this->data['userdata']['employee_id'], $prov, $pend, $stat);
         }                    
 
@@ -110,7 +162,6 @@ class Formulir extends Telescoope_Controller {
         $data = array();
         
         foreach($result->result_array() as $v) {
-            $idptg = $this->db->select('fullname')->where('id', $v['user_id'])->get('adm_employee')->row_array();
             $idpnd = $this->db->select('pendamping_id')->where('id', $v['user_id'])->get('adm_employee')->row_array(); $namapnd = $this->db->select('fullname')->where('id', $idpnd['pendamping_id'])->get('adm_employee')->row_array();
             $status_app = '<span class="badge bg-danger">Belum Diapprove</span>'; if ($v['status'] == 2) { $status_app = '<span class="badge bg-success">Sudah Diapprove</span>'; } elseif ($v['status'] == 3) { $status_app = '<span class="badge bg-info">Tidak Diapprove</span>'; }
             $foto_ktp ='<a href="' . base_url('uploads/formulir/' . $v['foto_ktp']) . '" target="_blank" class="avatar-group-item" data-img="' . base_url('uploads/formulir/' . $v['foto_ktp']) . '" data-bs-toggle="tooltip" data-bs-trigger="hover" data-bs-placement="top" title="Foto Ktp">
@@ -151,7 +202,7 @@ class Formulir extends Telescoope_Controller {
                 "nama_produk" => $v['nama_produk'],
                 "jenis_produk" => $v['jenis_produk'],
                 "provinsi" => $v['provinsi'],
-                "petugas" => $idptg['fullname'],
+                "petugas" => $v['fullname'],
                 "pendamping" => $namapnd['fullname'],
                 "status_app" => $status_app,
                 "status_pend" => $v['status_pendamping'] == 2 ? '<span class="badge bg-success">Selesai Pendamping</span>' : '<span class="badge bg-danger">Belum Selesai</span>',
