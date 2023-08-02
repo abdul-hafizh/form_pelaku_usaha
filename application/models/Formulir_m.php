@@ -84,7 +84,7 @@ class Formulir_m extends CI_Model {
 		}
 		$this->db->select('formulir.*, aa.fullname');
 		$this->db->join('adm_employee as aa', 'formulir.user_id = aa.id', 'left');
-		$this->db->order_by('id', 'desc');
+		$this->db->order_by('formulir.id', 'desc');
 
 		return $this->db->get('formulir');
 
@@ -92,10 +92,14 @@ class Formulir_m extends CI_Model {
 
 	public function getDetail($id, $user = 0){
 		
-		$this->db->where('id', $id);
+		$this->db->select('formulir.*, aa.fullname, aa.pendamping_id');
+
 		if($user > 0) {
 			$this->db->where('user_id', $user);
 		}
+		
+		$this->db->where('formulir.id', $id);
+		$this->db->join('adm_employee as aa', 'formulir.user_id = aa.id', 'left');
 
 		return $this->db->get('formulir');
 

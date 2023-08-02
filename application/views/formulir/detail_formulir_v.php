@@ -8,7 +8,7 @@
         <div class="card">
             <div class="card-header">                
                 <div class="float-start">
-                    <h5 class="card-title mb-0">Petugas: <?php $idptg = $this->db->select('fullname')->where('id', $detail['user_id'])->get('adm_employee')->row_array(); echo $idptg['fullname']; ?></h5>
+                    <h5 class="card-title mb-0">Petugas: <?php $idptg = $this->db->select('fullname')->where('id', $detail['user_id'])->get('adm_employee')->row_array(); echo $idptg['fullname']; ?> | Pendamping: <?php $idpend = $this->db->select('fullname')->where('id', $detail['pendamping_id'])->get('adm_employee')->row_array(); echo $idpend['fullname']; ?></h5>
                 </div>
                 <div class="float-end">
                     <?php if($detail['status'] == 1) { ?>                        
