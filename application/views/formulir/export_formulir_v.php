@@ -34,6 +34,7 @@
             <th>Phone Pendamping</th>
             <th>Username</th>
             <th>Password</th>
+            <th>Alasan Unapprove</th>
             <th>Status Approve</th>
             <th>Status Pendampingan</th>
         </tr>
@@ -70,6 +71,7 @@
                 <td><?php echo $v['phone_update']; ?></td>
                 <td><?php echo $v['username']; ?></td>
                 <td><?php echo $v['password']; ?></td>
+                <td><?php echo $v['alasan']; ?></td>
                 <td><?php if ($v['status'] == 2) { echo '<span>Sudah Diapprove</span>'; } elseif ($v['status'] == 3) { echo '<span>Tidak Diapprove</span>'; } else { echo '<span class="badge bg-danger">Belum Diapprove</span>'; } ?></td>
                 <td><?php echo $v['status_pendamping'] == 2 ? '<span>Selesai Pendamping</span>' : '<span>Belum Selesai</span>' ; ?></td>                                
             </tr>    
