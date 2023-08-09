@@ -45,6 +45,12 @@ class Formulir extends Telescoope_Controller {
 
         $sess = $this->session->userdata(do_hash(SESSION_PREFIX));
 
+        $position = $this->Administration_m->getPosition("ENUM");
+
+        if($position) {
+            $this->noAccess("Maaf, pengisian data sudah ditutup.");
+        }
+
         if(empty($sess)){
             redirect(site_url('log/in'));
         }

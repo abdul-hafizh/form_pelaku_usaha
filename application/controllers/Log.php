@@ -154,12 +154,19 @@ class Log extends Telescoope_Controller {
 			$data = $this->Administration_m->checkLogin($username,$password)->row_array();
 
 			$emp = $this->Administration_m->employee_view($data['employeeid'])->row_array();
-
+			
 			if(!empty($data)){
 				if($emp['status'] == 2){
-					$first_pos = $this->db->where("employee_id",$data['employeeid'])->order_by('is_main_job','desc')->get("vw_adm_pos")->row()->pos_id;
-					$this->session->set_userdata(do_hash("ROLE"),$first_pos);
-					$this->session->set_userdata(do_hash(SESSION_PREFIX),$data['id']);
+					if($emp['job_title'] == 'ENUM') {
+
+						$this->setMessage("Maaf, pengisian data sudah ditutup.","Error");
+
+					} else {
+
+						$first_pos = $this->db->where("employee_id",$data['employeeid'])->order_by('is_main_job','desc')->get("vw_adm_pos")->row()->pos_id;
+						$this->session->set_userdata(do_hash("ROLE"),$first_pos);
+						$this->session->set_userdata(do_hash(SESSION_PREFIX),$data['id']);
+					}
 				} else {
 					$this->setMessage("Maaf, akun Anda belum aktif.","Error");
 				}
