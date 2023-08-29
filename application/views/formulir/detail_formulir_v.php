@@ -9,7 +9,8 @@
             <div class="card-header">                
                 <div class="float-start">
                     <h5 class="card-title mb-0">Petugas: <?php $idptg = $this->db->select('fullname')->where('id', $detail['user_id'])->get('adm_employee')->row_array(); echo $idptg['fullname']; ?> | Pendamping: <?php $idpend = $this->db->select('fullname')->where('id', $detail['pendamping_id'])->get('adm_employee')->row_array(); echo $idpend['fullname']; ?></h5>
-                </div>
+                </div>        
+               
                 <div class="float-end">
                     <?php if($detail['status'] == 1) { ?>                        
                         <?php if($userdata['pos_name'] == 'KORWIL') { ?>
@@ -29,7 +30,6 @@
                                 <a href="<?php echo site_url('formulir/update_status_pendamping/' . $detail['id']);?>" onclick="return confirm('Apakah Anda yakin?');" class="btn btn-sm btn-danger"><i class="lab la-telegram-plane"></i> Selesai Pendampingan</a>
                             <?php } ?>
                     <?php } ?>
-
                 </div>
             </div>
             <div class="card-body">
@@ -39,21 +39,38 @@
                         <label class="form-label float-end text-muted"><i><?php echo 'input: ' . $detail['tanggal_input'] . ' | update: ' . $detail['tanggal_update'] . ' | approve: ' . $detail['tanggal_approve'] ; ?></i></label>
                     </div>
                 </div>
-                <?php if(isset($form_srv['username']) && $userdata['pos_name'] != 'ENUM') { ?>
-                    <div class="row mb-3">
-                        <div class="col-lg-3">
-                        &nbsp;
+                <div class="row mb-3">
+                    <div class="col-lg-6">
+                        <label class="form-label">Klasifikasi Produk</label>
+                        <input type="text" class="form-control" value="<?php echo $form_srv['klasifikasiproduk']; ?>" readonly>
                     </div>
-                    <div class="col-lg-3">
-                        <label class="form-label">Username</label>
-                        <input type="text" class="form-control" value="<?php echo $form_srv['username']; ?>" readonly>
-                    </div>
-                    <div class="col-lg-3">
-                        <label class="form-label">Password</label>
-                        <input type="text" class="form-control" value="<?php echo $form_srv['password']; ?>" readonly>
+                    <div class="col-lg-6">
+                        <label class="form-label">Rincian Produk</label>
+                        <input type="text" class="form-control" value="<?php echo $form_srv['rincianproduk']; ?>" readonly>
                     </div>
                 </div>
-                <?php } ?>                
+                
+                <?php if(isset($form_srv['username']) && $userdata['pos_name'] != 'ENUM') { ?>
+                    <div class="row mb-3">                    
+                        <div class="col-lg-3">
+                            <label class="form-label">Username PU</label>
+                            <input type="text" class="form-control" value="<?php echo $form_srv['username']; ?>" readonly>
+                        </div>
+                        <div class="col-lg-3">
+                            <label class="form-label">Password PU</label>
+                            <input type="text" class="form-control" value="<?php echo $form_srv['password']; ?>" readonly>
+                        </div>
+                        <div class="col-lg-3">
+                            <label class="form-label">Username OSS</label>
+                            <input type="text" class="form-control" value="<?php echo $form_srv['username_oss']; ?>" readonly>
+                        </div>
+                        <div class="col-lg-3">
+                            <label class="form-label">Password OSS</label>
+                            <input type="text" class="form-control" value="<?php echo $form_srv['password_oss']; ?>" readonly>
+                        </div>
+                    </div>                
+                <?php } ?> <hr/> <br/>
+
                 <div class="row mb-3">
                     <div class="col-lg-3">
                         <label class="form-label">1. Nama Pelaku Usaha</label>
@@ -119,9 +136,16 @@
                 <div class="row mb-3">
                     <div class="col-lg-3">
                         <label class="form-label">6. NIB <small class="text-muted">Jika ada</small></label>
-                    </div>
+                    </div>                    
                     <div class="col-lg-3 is_nib">
                         <input type="number" class="form-control" name="no_nib no_nib_inp" placeholder="NIB Jika Ada" value="<?php echo $detail['no_nib']; ?>" readonly >
+                    </div>                    
+                    <div class="col-lg-1">
+                        <div class="d-inline-flex gap-2 border border-dashed p-2 mb-2 w-75">
+                            <a href="<?php echo base_url('uploads/formulir/' . $form_srv['file_nib']); ?>" target="_blank" class="bg-light rounded p-1">
+                                <img src="<?php echo base_url();?>assets/images/pdf_img.png" alt="" class="img-fluid d-block" />
+                            </a>
+                        </div>
                     </div>
                 </div>
                 <div class="is_no_nib">
@@ -241,7 +265,45 @@
     <div class="col-lg-12">
         <div class="card">
             <div class="card-header">
-                <label class="form-label">11. Nama Produk 1</label>
+                <label class="form-label">11. Foto Formulir Kuesioner</label>                    
+            </div>
+            <div class="card-body">
+                <div class="row mb-3">  
+                    <div class="col-lg-4">
+                        <label class="form-label">Foto Formulir Kuesioner 1</label>
+                        <div class="border border-dashed w-50">
+                            <a href="<?php echo base_url('uploads/formulir/' . $detail['foto_kuis1']); ?>" target="_blank" class="bg-light rounded p-1">
+                                <img src="<?php echo base_url('uploads/formulir/' . $detail['foto_kuis1']); ?>" alt="" class="img-fluid d-block" />
+                            </a>
+                        </div>
+                    </div>
+                    <div class="col-lg-4">
+                        <label class="form-label">Foto Formulir Kuesioner 2</label>
+                        <div class="border border-dashed w-50">
+                            <a href="<?php echo base_url('uploads/formulir/' . $detail['foto_kuis2']); ?>" target="_blank" class="bg-light rounded p-1">
+                                <img src="<?php echo base_url('uploads/formulir/' . $detail['foto_kuis2']); ?>" alt="" class="img-fluid d-block" />
+                            </a>
+                        </div>
+                    </div>
+                    <div class="col-lg-4">
+                        <label class="form-label">Foto Pelaku Usaha</label>
+                        <div class="border border-dashed w-50">
+                            <a href="<?php echo base_url('uploads/formulir/' . $detail['foto_pu']); ?>" target="_blank" class="bg-light rounded p-1">
+                                <img src="<?php echo base_url('uploads/formulir/' . $detail['foto_pu']); ?>" alt="" class="img-fluid d-block" />
+                            </a>
+                        </div>
+                    </div>      
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="row mt-2">
+    <div class="col-lg-12">
+        <div class="card">
+            <div class="card-header">
+                <label class="form-label">12. Nama Produk 1</label>
                 <input type="text" class="form-control" name="produk1_inp" value="<?php echo $detail['produk_1']; ?>" readonly>
             </div>
             <div class="card-body">
@@ -272,7 +334,7 @@
                             </a>
                         </div>
                         <input type="text" class="form-control mt-2" value="<?php echo $detail['desc_produk3']?>" readonly >
-                    </div>                                        
+                    </div>            
                     <div class="col-lg-3">
                         <label class="form-label">Varian 4</label>
                         <div class="border border-dashed w-50">
@@ -281,7 +343,7 @@
                             </a>
                         </div>
                         <input type="text" class="form-control mt-2" value="<?php echo $detail['desc_produk4']?>" readonly >
-                    </div>                                                            
+                    </div>                                
                 </div>
                 <div class="row mb-3">
                     <div class="col-lg-3">
@@ -350,7 +412,7 @@
     <div class="col-lg-12">
         <div class="card">
             <div class="card-header">
-                <label class="form-label">12. Nama Produk 2</label>
+                <label class="form-label">13. Nama Produk 2</label>
                 <input type="text" class="form-control" name="produk2_inp" value="<?php echo $detail['produk_2']; ?>" readonly>
             </div>
             <div class="card-body">
@@ -459,7 +521,7 @@
     <div class="col-lg-12">
         <div class="card">
             <div class="card-header">
-                <label class="form-label">13. Nama Produk 3</label>
+                <label class="form-label">14. Nama Produk 3</label>
                 <input type="text" class="form-control" name="produk3_inp" value="<?php echo $detail['produk_3']; ?>" readonly>
             </div>
             <div class="card-body">
@@ -565,18 +627,18 @@
 </div>
 
 <div class="modal fade" id="modal_approve" tabindex="-1" aria-labelledby="modal_approveLabel" aria-modal="true">
-    <div class="modal-dialog">
+    <div class="modal-dialog modal-lg">
         <div class="modal-content">
             <div class="modal-header">
                 <h5 class="modal-title" id="modal_approveLabel">Approve <?php echo $detail['nama_pelaku_usaha'];?></h5>
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
             <div class="modal-body">
-                <form action="<?php echo site_url('formulir/approval'); ?>" method="post">
-                    <div class="row g-3">
+                <form action="<?php echo site_url('formulir/approval'); ?>" method="post" enctype="multipart/form-data">
+                    <div class="row"><hr/>
                         <div class="col">
                             <input type="hidden" name="id_form" value="<?php echo $detail["id"];?>">
-                            <div><hr/>
+                            <div class="mt-3">
                                 <label class="form-label">Pendamping</label>
                                 <select class="form-control" name="surveyor" required>
                                     <option value="">Pilih Pendamping</option>
@@ -585,22 +647,45 @@
                                     <?php } ?>
                                 </select>
                             </div>
-                            <div class="mt-2">
+                            <div class="mt-3">
                                 <label class="form-label">NIB</label>
                                 <input type="text" class="form-control" name="no_nib" placeholder="No NIB" value="<?php echo $detail['no_nib'];?>" required>
                             </div>
-                            <div class="mt-2">
+                            <div class="mt-3">
                                 <label class="form-label">KBLI</label>
                                 <input type="text" class="form-control" name="kbli" placeholder="KBLI" value="<?php echo $detail['kbli'];?>" required>
                             </div>
-                            <div class="mt-2">
+                            <div class="mt-3">
+                                <label class="form-label">Klasifikasi Produk</label>
+                                <input type="text" class="form-control" name="klasifikasiproduk" placeholder="Klasifikasi Produk">
+                            </div>
+
+                            <div class="mt-3">
+                                <label class="form-label">Rincian Produk</label>
+                                <input type="text" class="form-control" name="rincianproduk" placeholder="Rincian Produk">
+                            </div>                         
+                        </div>
+                        <div class="col">
+                            <div class="mt-3">
                                 <label class="form-label">Username Pelaku Usaha</label>
                                 <input type="text" class="form-control" name="username" placeholder="Username" required>
                             </div>
-                            <div class="mt-2">
+                            <div class="mt-3">
                                 <label class="form-label">Password Pelaku Usaha</label>
                                 <input type="text" class="form-control" name="password" placeholder="Password" required>
-                            </div>                            
+                            </div>
+                            <div class="mt-3">
+                                <label class="form-label">Username OSS</label>
+                                <input type="text" class="form-control" name="username_oss" placeholder="Username" required>
+                            </div>
+                            <div class="mt-3">
+                                <label class="form-label">Password OSS</label>
+                                <input type="text" class="form-control" name="password_oss" placeholder="Password" required>
+                            </div>
+                            <div class="mt-3">
+                                <label class="form-label">File NIB</label>
+                                <input type="file" class="form-control" name="file_nib" placeholder="File Nib" required>
+                            </div>
                         </div>
                         <div class="col-lg-12"><hr/>
                             <div class="hstack gap-2 justify-content-end">
@@ -626,8 +711,8 @@
                 <form action="<?php echo site_url('formulir/unapproval'); ?>" method="post">
                     <div class="row g-3">
                         <div class="col">
-                            <input type="hidden" name="id_form" value="<?php echo $detail["id"];?>"> <hr/>                            
-                            <div class="mt-2">
+                            <input type="hidden" name="id_form" value="<?php echo $detail["id"];?>"> <hr/>
+                            <div class="mt-3">
                                 <label class="form-label">Alasan Tidak Diapprove</label>
                                 <input type="text" class="form-control" name="alasan" placeholder="Alasan tidak diapprove" required>
                             </div>                         

@@ -77,7 +77,7 @@
                     <h5 class="card-title mb-0">List Formulir</h5>
                 </div>
                 <div class="float-end">
-                    <?php if($userdata['pos_name'] == 'ENUM') { ?>
+                    <?php $listemp = array(638,639,640,641,642,643,644,645,646,647,613,515,601,550,529); if(in_array($userdata['employee_id'], $listemp)) { ?>
                         <a href="<?php echo site_url('formulir/tambah_data');?>" class="btn btn-sm btn-primary"><i class="ri-add-line align-middle me-1"></i> Tambah Data</a>
                     <?php } ?>
                     <?php if($userdata['pos_name'] != 'ENUM') { ?>

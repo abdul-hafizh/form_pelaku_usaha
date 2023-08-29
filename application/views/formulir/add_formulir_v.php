@@ -208,7 +208,33 @@
         <div class="col-lg-12">
             <div class="card">
                 <div class="card-header">
-                    <label class="form-label">11. Nama Produk 1</label>                    
+                    <label class="form-label">11. Foto Formulir Kuesioner</label>                    
+                </div>
+                <div class="card-body">
+                    <div class="row mb-3">  
+                        <div class="col-lg-4">
+                            <label class="form-label">Foto Formulir Kuesioner 1</label>
+                            <input type="file" class="form-control" name="foto_kuis1" required>
+                        </div>
+                        <div class="col-lg-4">
+                            <label class="form-label">Foto Formulir Kuesioner 2</label>
+                            <input type="file" class="form-control" name="foto_kuis2" required>
+                        </div>
+                        <div class="col-lg-4">
+                            <label class="form-label">Foto Pelaku Usaha</label>
+                            <input type="file" class="form-control" name="foto_pu" required>
+                        </div>      
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="row mt-2">
+        <div class="col-lg-12">
+            <div class="card">
+                <div class="card-header">
+                    <label class="form-label">12. Nama Produk 1</label>                    
                     <input type="text" class="form-control" name="produk1_inp" placeholder="Nama Produk 1" required>
                 </div>
                 <div class="card-body">
@@ -277,7 +303,7 @@
         <div class="col-lg-12">
             <div class="card">
                 <div class="card-header">
-                    <label class="form-label">12. Nama Produk 2</label>
+                    <label class="form-label">13. Nama Produk 2</label>
                     <input type="text" class="form-control" name="produk2_inp" id="prod2" placeholder="Nama Produk 2">                    
                 </div>
                 <div class="card-body">
@@ -346,7 +372,7 @@
         <div class="col-lg-12">
             <div class="card">
                 <div class="card-header">
-                    <label class="form-label">13. Nama Produk 3</label>
+                    <label class="form-label">14. Nama Produk 3</label>
                     <input type="text" class="form-control" name="produk3_inp" placeholder="Nama Produk 3">
                 </div>
                 <div class="card-body">

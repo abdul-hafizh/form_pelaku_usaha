@@ -45,12 +45,6 @@ class Formulir extends Telescoope_Controller {
 
         $sess = $this->session->userdata(do_hash(SESSION_PREFIX));
 
-        $position = $this->Administration_m->getPosition("ENUM");
-
-        if($position) {
-            $this->noAccess("Maaf, pengisian data sudah ditutup.");
-        }
-
         if(empty($sess)){
             redirect(site_url('log/in'));
         }
@@ -245,6 +239,12 @@ class Formulir extends Telescoope_Controller {
         $data = array();
 
         $position = $this->Administration_m->getPosition("ENUM");
+
+        $listemp = array(638,639,640,641,642,643,644,645,646,647,613,515,601,550,529);
+        
+        if (!in_array($this->data['userdata']['employee_id'], $listemp)) {
+            $this->noAccess("Maaf, pengisian data sudah ditutup.");
+        }
 
         if(!$position){
             $this->noAccess("Hanya Petugas yang dapat mengubah data.");
@@ -586,6 +586,34 @@ class Formulir extends Telescoope_Controller {
                 if($this->upload->do_upload('file')){ $uploadProduk10_3 = $this->upload->data(); }
             }
 
+            if(!empty($_FILES['foto_kuis1']['name'])){
+                $_FILES['file']['name'] = $this->data['userdata']['employee_id'] . '_' . date('his') . '_' . $_FILES['foto_kuis1']['name'];
+                $_FILES['file']['type'] = $_FILES['foto_kuis1']['type'];
+                $_FILES['file']['tmp_name'] = $_FILES['foto_kuis1']['tmp_name'];
+                $_FILES['file']['error'] = $_FILES['foto_kuis1']['error'];
+                $_FILES['file']['size'] = $_FILES['foto_kuis1']['size'];
+                if($this->upload->do_upload('file')){ $uploadfoto_kuis1 = $this->upload->data(); }
+            }
+
+            if(!empty($_FILES['foto_kuis2']['name'])){
+                $_FILES['file']['name'] = $this->data['userdata']['employee_id'] . '_' . date('his') . '_' . $_FILES['foto_kuis2']['name'];
+                $_FILES['file']['type'] = $_FILES['foto_kuis2']['type'];
+                $_FILES['file']['tmp_name'] = $_FILES['foto_kuis2']['tmp_name'];
+                $_FILES['file']['error'] = $_FILES['foto_kuis2']['error'];
+                $_FILES['file']['size'] = $_FILES['foto_kuis2']['size'];
+                if($this->upload->do_upload('file')){ $uploadfoto_kuis2 = $this->upload->data(); }
+            }
+
+            if(!empty($_FILES['foto_pu']['name'])){
+                $_FILES['file']['name'] = $this->data['userdata']['employee_id'] . '_' . date('his') . '_' . $_FILES['foto_pu']['name'];
+                $_FILES['file']['type'] = $_FILES['foto_pu']['type'];
+                $_FILES['file']['tmp_name'] = $_FILES['foto_pu']['tmp_name'];
+                $_FILES['file']['error'] = $_FILES['foto_pu']['error'];
+                $_FILES['file']['size'] = $_FILES['foto_pu']['size'];
+                if($this->upload->do_upload('file')){ $uploadfoto_pu = $this->upload->data(); }
+            }
+
+
         // end upload
 
         $data = array(
@@ -671,6 +699,9 @@ class Formulir extends Telescoope_Controller {
             'desc_produk10' => $post['desc_produk10'],
             'desc_produk10_2' => $post['desc_produk10_2'],
             'desc_produk10_3' => $post['desc_produk10_3'],
+            'foto_kuis1' => isset($uploadfoto_kuis1['file_name']) ? $uploadfoto_kuis1['file_name'] : '',
+            'foto_kuis2' => isset($uploadfoto_kuis2['file_name']) ? $uploadfoto_kuis2['file_name'] : '',
+            'foto_pu' => isset($uploadfoto_pu['file_name']) ? $uploadfoto_pu['file_name'] : '',
             'status' => 1,
             'tanggal_input' => date('Y-m-d H:i:s'),
             'user_id' => $this->data['userdata']['employee_id']
@@ -679,6 +710,17 @@ class Formulir extends Telescoope_Controller {
         $simpan = $this->db->insert('formulir', $data);
         
         if($simpan){
+
+            // $formulir_id = $this->db->insert_id();
+            
+            // if (!empty($formulir_id)) {
+                
+            //     $pusat = array("Petugas A", "Petugas B", "Petugas C");
+
+            //     $assignedPusat = $pusat[array_rand($pusat)]; 
+                
+                
+            // }
             
             if ($this->db->trans_status() === FALSE)  {
                 $this->setMessage("Failed save data.");
@@ -989,6 +1031,33 @@ class Formulir extends Telescoope_Controller {
                 if($this->upload->do_upload('file')){ $uploadProduk10_3 = $this->upload->data(); }
             }
 
+            if(!empty($_FILES['foto_kuis1']['name'])){
+                $_FILES['file']['name'] = $this->data['userdata']['employee_id'] . '_' . date('his') . '_' . $_FILES['foto_kuis1']['name'];
+                $_FILES['file']['type'] = $_FILES['foto_kuis1']['type'];
+                $_FILES['file']['tmp_name'] = $_FILES['foto_kuis1']['tmp_name'];
+                $_FILES['file']['error'] = $_FILES['foto_kuis1']['error'];
+                $_FILES['file']['size'] = $_FILES['foto_kuis1']['size'];
+                if($this->upload->do_upload('file')){ $uploadfoto_kuis1 = $this->upload->data(); }
+            }
+
+            if(!empty($_FILES['foto_kuis2']['name'])){
+                $_FILES['file']['name'] = $this->data['userdata']['employee_id'] . '_' . date('his') . '_' . $_FILES['foto_kuis2']['name'];
+                $_FILES['file']['type'] = $_FILES['foto_kuis2']['type'];
+                $_FILES['file']['tmp_name'] = $_FILES['foto_kuis2']['tmp_name'];
+                $_FILES['file']['error'] = $_FILES['foto_kuis2']['error'];
+                $_FILES['file']['size'] = $_FILES['foto_kuis2']['size'];
+                if($this->upload->do_upload('file')){ $uploadfoto_kuis2 = $this->upload->data(); }
+            }
+
+            if(!empty($_FILES['foto_pu']['name'])){
+                $_FILES['file']['name'] = $this->data['userdata']['employee_id'] . '_' . date('his') . '_' . $_FILES['foto_pu']['name'];
+                $_FILES['file']['type'] = $_FILES['foto_pu']['type'];
+                $_FILES['file']['tmp_name'] = $_FILES['foto_pu']['tmp_name'];
+                $_FILES['file']['error'] = $_FILES['foto_pu']['error'];
+                $_FILES['file']['size'] = $_FILES['foto_pu']['size'];
+                if($this->upload->do_upload('file')){ $uploadfoto_pu = $this->upload->data(); }
+            }
+
         // end upload
 
         $row_data = $this->Formulir_m->getDetail($post['id_form'], $this->data['userdata']['employee_id'])->row_array();
@@ -1046,7 +1115,7 @@ class Formulir extends Telescoope_Controller {
             'foto_produk9_2' => isset($uploadProduk9_2['file_name']) ? $uploadProduk9_2['file_name'] : $row_data['foto_produk9_2'],
             'foto_produk9_3' => isset($uploadProduk9_3['file_name']) ? $uploadProduk9_3['file_name'] : $row_data['foto_produk9_3'],
             'foto_produk10_2' => isset($uploadProduk10_2['file_name']) ? $uploadProduk10_2['file_name'] : $row_data['foto_produk10_2'],
-            'foto_produk10_3' => isset($uploadProduk10_3['file_name']) ? $uploadProduk10_3['file_name'] : $row_data['foto_produk10_3'],
+            'foto_produk10_3' => isset($uploadProduk10_3['file_name']) ? $uploadProduk10_3['file_name'] : $row_data['foto_produk10_3'],            
             'desc_produk1' => $post['desc_produk1'],
             'desc_produk1_2' => $post['desc_produk1_2'],
             'desc_produk1_3' => $post['desc_produk1_3'],
@@ -1077,6 +1146,9 @@ class Formulir extends Telescoope_Controller {
             'desc_produk10' => $post['desc_produk10'],
             'desc_produk10_2' => $post['desc_produk10_2'],
             'desc_produk10_3' => $post['desc_produk10_3'],
+            'foto_kuis1' => isset($uploadfoto_kuis1['file_name']) ? $uploadfoto_kuis1['file_name'] : $row_data['foto_kuis1'],
+            'foto_kuis2' => isset($uploadfoto_kuis2['file_name']) ? $uploadfoto_kuis2['file_name'] : $row_data['foto_kuis2'],
+            'foto_pu' => isset($uploadfoto_pu['file_name']) ? $uploadfoto_pu['file_name'] : $row_data['foto_pu'],
             'tanggal_update' => date('Y-m-d H:i:s'),
             'update_by' => $this->data['userdata']['employee_id']
         );
@@ -1105,7 +1177,18 @@ class Formulir extends Telescoope_Controller {
 
         $post = $this->input->post(); 
 
-        $this->db->trans_begin();        
+        $this->db->trans_begin();      
+        
+        $dir = './uploads/' . $this->data['dir'];
+
+        if(!empty($_FILES['file_nib']['name'])){
+            $_FILES['file']['name'] = $this->data['userdata']['employee_id'] . '_nib_' . date('his') . '_' . $_FILES['file_nib']['name'];
+            $_FILES['file']['type'] = $_FILES['file_nib']['type'];
+            $_FILES['file']['tmp_name'] = $_FILES['file_nib']['tmp_name'];
+            $_FILES['file']['error'] = $_FILES['file_nib']['error'];
+            $_FILES['file']['size'] = $_FILES['file_nib']['size'];
+            if($this->upload->do_upload('file')){ $uploadNib = $this->upload->data(); }
+        }
 
         $data = array(            
             'status' => 2,
@@ -1123,7 +1206,10 @@ class Formulir extends Telescoope_Controller {
             'klasifikasiproduk' => $post['klasifikasiproduk'],
             'rincianproduk' => $post['rincianproduk'],
             'username' => $post['username'],
+            'username_oss' => $post['username_oss'],
             'password' => $post['password'],
+            'password_oss' => $post['password_oss'],
+            'file_nib' => isset($uploadNib['file_name']) ? $uploadNib['file_name'] : '',
             'tanggal_input' => date('Y-m-d H:i:s'),
             'input_by' => $this->data['userdata']['employee_id']
         );

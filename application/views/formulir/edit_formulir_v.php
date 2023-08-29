@@ -231,12 +231,53 @@
             </div>
         </div>
     </div>
+
+    <div class="row mt-2">
+        <div class="col-lg-12">
+            <div class="card">
+                <div class="card-header">
+                    <label class="form-label">11. Foto Formulir Kuesioner</label>                    
+                </div>
+                <div class="card-body">
+                    <div class="row mb-3">  
+                        <div class="col-lg-4">
+                            <label class="form-label">Foto Formulir Kuesioner 1</label>
+                            <div class="border border-dashed w-50">
+                                <a href="<?php echo base_url('uploads/formulir/' . $detail['foto_kuis1']); ?>" target="_blank" class="bg-light rounded p-1">
+                                    <img src="<?php echo base_url('uploads/formulir/' . $detail['foto_kuis1']); ?>" alt="" class="img-fluid d-block" />
+                                </a>
+                            </div>
+                            <input type="file" class="form-control" name="foto_kuis1">
+                        </div>
+                        <div class="col-lg-4">
+                            <label class="form-label">Foto Formulir Kuesioner 2</label>
+                            <div class="border border-dashed w-50">
+                                <a href="<?php echo base_url('uploads/formulir/' . $detail['foto_kuis2']); ?>" target="_blank" class="bg-light rounded p-1">
+                                    <img src="<?php echo base_url('uploads/formulir/' . $detail['foto_kuis2']); ?>" alt="" class="img-fluid d-block" />
+                                </a>
+                            </div>
+                            <input type="file" class="form-control" name="foto_kuis2">
+                        </div>
+                        <div class="col-lg-4">
+                            <label class="form-label">Foto Pelaku Usaha</label>
+                            <div class="border border-dashed w-50">
+                                <a href="<?php echo base_url('uploads/formulir/' . $detail['foto_pu']); ?>" target="_blank" class="bg-light rounded p-1">
+                                    <img src="<?php echo base_url('uploads/formulir/' . $detail['foto_pu']); ?>" alt="" class="img-fluid d-block" />
+                                </a>
+                            </div>
+                            <input type="file" class="form-control" name="foto_pu">
+                        </div>      
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
     
     <div class="row mt-2">
         <div class="col-lg-12">
             <div class="card">
                 <div class="card-header">
-                    <label class="form-label">11. Nama Produk 1</label>
+                    <label class="form-label">12. Nama Produk 1</label>
                     <input type="text" class="form-control" name="produk1_inp" value="<?php echo $detail['produk_1']; ?>" required>
                 </div>
                 <div class="card-body">
@@ -355,7 +396,7 @@
         <div class="col-lg-12">
             <div class="card">
                 <div class="card-header">
-                    <label class="form-label">12. Nama Produk 2</label>
+                    <label class="form-label">13. Nama Produk 2</label>
                     <input type="text" class="form-control" name="produk2_inp" value="<?php echo $detail['produk_2']; ?>">                    
                 </div>
                 <div class="card-body">
@@ -474,7 +515,7 @@
         <div class="col-lg-12">
             <div class="card">
                 <div class="card-header">
-                    <label class="form-label">13. Nama Produk 3</label>
+                    <label class="form-label">14. Nama Produk 3</label>
                     <input type="text" class="form-control" name="produk3_inp" value="<?php echo $detail['produk_3']; ?>">
                 </div>
                 <div class="card-body">
