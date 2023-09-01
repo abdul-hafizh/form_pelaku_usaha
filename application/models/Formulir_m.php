@@ -26,6 +26,23 @@ class Formulir_m extends CI_Model {
 
 	}
 
+	public function getFormulirPusat($user = 0, $prov = "", $pend = 0, $stat = 0){
+		
+		$this->db->select('formulir.*, aa.pendamping_id, aa.fullname');
+
+		if($user > 0) { $this->db->where('task.user_id', $user); }
+		if(!empty($prov)) { $this->db->where('formulir.provinsi', $prov); }
+		if($pend > 0) { $this->db->where('aa.pendamping_id', $pend); }
+		if($stat > 0) { $this->db->where('formulir.status', $stat); }
+		
+		$this->db->order_by('id', 'desc');
+		$this->db->join('adm_employee as aa', 'formulir.user_id = aa.id', 'left');		
+		$this->db->join('task', 'formulir.id = task.formulir_id', 'left');		
+
+		return $this->db->get('formulir');
+
+	}
+
 	public function getFormulirProv($user = 0){
 		
 		$this->db->distinct();
@@ -109,6 +126,13 @@ class Formulir_m extends CI_Model {
 		
 		$this->db->where('id_formulir', $id);	
 		return $this->db->get('formulir_surveyor');
+
+	}
+
+	public function getTask($id){
+		
+		$this->db->where('user_id', $id);	
+		return $this->db->get('task');
 
 	}
 	

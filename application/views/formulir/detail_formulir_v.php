@@ -39,16 +39,19 @@
                         <label class="form-label float-end text-muted"><i><?php echo 'input: ' . $detail['tanggal_input'] . ' | update: ' . $detail['tanggal_update'] . ' | approve: ' . $detail['tanggal_approve'] ; ?></i></label>
                     </div>
                 </div>
-                <div class="row mb-3">
-                    <div class="col-lg-6">
-                        <label class="form-label">Klasifikasi Produk</label>
-                        <input type="text" class="form-control" value="<?php echo $form_srv['klasifikasiproduk']; ?>" readonly>
+
+                <?php if(isset($form_srv['klasifikasiproduk'])) { ?>
+                    <div class="row mb-3">
+                        <div class="col-lg-6">
+                            <label class="form-label">Klasifikasi Produk</label>
+                            <input type="text" class="form-control" value="<?php echo $form_srv['klasifikasiproduk']; ?>" readonly>
+                        </div>
+                        <div class="col-lg-6">
+                            <label class="form-label">Rincian Produk</label>
+                            <input type="text" class="form-control" value="<?php echo $form_srv['rincianproduk']; ?>" readonly>
+                        </div>
                     </div>
-                    <div class="col-lg-6">
-                        <label class="form-label">Rincian Produk</label>
-                        <input type="text" class="form-control" value="<?php echo $form_srv['rincianproduk']; ?>" readonly>
-                    </div>
-                </div>
+                <?php } ?>
                 
                 <?php if(isset($form_srv['username']) && $userdata['pos_name'] != 'ENUM') { ?>
                     <div class="row mb-3">                    
@@ -132,22 +135,26 @@
                     <div class="col-lg-9">
                         <input type="number" class="form-control" name="no_npwp" placeholder="NPWP Jika Ada" value="<?php echo $detail['no_npwp']; ?>" readonly >
                     </div>
-                </div>                
-                <div class="row mb-3">
-                    <div class="col-lg-3">
-                        <label class="form-label">6. NIB <small class="text-muted">Jika ada</small></label>
-                    </div>                    
-                    <div class="col-lg-3 is_nib">
-                        <input type="number" class="form-control" name="no_nib no_nib_inp" placeholder="NIB Jika Ada" value="<?php echo $detail['no_nib']; ?>" readonly >
-                    </div>                    
-                    <div class="col-lg-1">
-                        <div class="d-inline-flex gap-2 border border-dashed p-2 mb-2 w-75">
-                            <a href="<?php echo base_url('uploads/formulir/' . $form_srv['file_nib']); ?>" target="_blank" class="bg-light rounded p-1">
-                                <img src="<?php echo base_url();?>assets/images/pdf_img.png" alt="" class="img-fluid d-block" />
-                            </a>
+                </div>     
+
+                <?php if(isset($form_srv['file_nib'])) { ?>
+                    <div class="row mb-3">
+                        <div class="col-lg-3">
+                            <label class="form-label">6. NIB <small class="text-muted">Jika ada</small></label>
+                        </div>                    
+                        <div class="col-lg-3 is_nib">
+                            <input type="number" class="form-control" name="no_nib no_nib_inp" placeholder="NIB Jika Ada" value="<?php echo $detail['no_nib']; ?>" readonly >
+                        </div>                    
+                        <div class="col-lg-1">
+                            <div class="d-inline-flex gap-2 border border-dashed p-2 mb-2 w-75">
+                                <a href="<?php echo base_url('uploads/formulir/' . $form_srv['file_nib']); ?>" target="_blank" class="bg-light rounded p-1">
+                                    <img src="<?php echo base_url();?>assets/images/pdf_img.png" alt="" class="img-fluid d-block" />
+                                </a>
+                            </div>
                         </div>
                     </div>
-                </div>
+                <?php } ?>
+                
                 <div class="is_no_nib">
                     <div class="row mb-3">
                         <div class="col-lg-3">

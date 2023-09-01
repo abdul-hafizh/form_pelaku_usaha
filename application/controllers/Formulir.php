@@ -55,12 +55,12 @@ class Formulir extends Telescoope_Controller {
 
         $data = array();
 
-        $position = $this->Administration_m->getPosition("ENUM");
+        $enum = $this->Administration_m->getPosition("ENUM");
         $srv = $this->Administration_m->getPosition("VIEWER");
 
-        $data['provinsi'] = $this->Formulir_m->getFormulirProv($this->data['userdata']['employee_id'])->result_array();        
+        $data['provinsi'] = $this->Formulir_m->getFormulirProv($this->data['userdata']['employee_id'])->result_array();
 
-        if(!$position){            
+        if(!$enum){            
             $data['provinsi'] = $this->Formulir_m->getFormulirProv()->result_array();
             $data['pendamping'] = $this->Formulir_m->getFormulirPend()->result_array();
         
@@ -86,8 +86,9 @@ class Formulir extends Telescoope_Controller {
         $pend = $post['s_pendamping'] > 0 ? $post['s_pendamping'] : 0;
         $stat = $post['s_status'] > 0 ? $post['s_status'] : 0;     
                 
-        $position = $this->Administration_m->getPosition("ENUM");
+        $enum = $this->Administration_m->getPosition("ENUM");
         $srv = $this->Administration_m->getPosition("VIEWER");
+        $pusat = $this->Administration_m->getPosition("KORWIL");
 
         if (!empty($search)) {
             $this->db->group_start();
@@ -114,7 +115,7 @@ class Formulir extends Telescoope_Controller {
         }
         $count = $this->Formulir_m->getFormulir($this->data['userdata']['employee_id'], $prov, $pend, $stat);
 
-        if(!$position){     
+        if(!$enum){     
             if (!empty($search)) {
                 $this->db->group_start();
                 $this->db->like('nama_pelaku_usaha', $search);
@@ -166,6 +167,33 @@ class Formulir extends Telescoope_Controller {
                 $this->db->group_end();
             }
             $count = $this->Formulir_m->getFormulirSrv($this->data['userdata']['employee_id'], $prov, $pend, $stat);
+        }  
+
+        if($pusat){            
+            if (!empty($search)) {
+                $this->db->group_start();
+                $this->db->like('nama_pelaku_usaha', $search);
+                $this->db->or_like('kbli', $search);
+                $this->db->or_like('nama_produk', $search);
+                $this->db->or_like('jenis_produk', $search);
+                $this->db->or_like('formulir.provinsi', $search);
+                $this->db->or_like('fullname', $search);
+                $this->db->group_end();
+            }
+            $this->db->limit($rowperpage, $row);
+            $result = $this->Formulir_m->getFormulirPusat($this->data['userdata']['employee_id'], $prov, $pend, $stat);
+
+            if (!empty($search)) {
+                $this->db->group_start();
+                $this->db->like('nama_pelaku_usaha', $search);
+                $this->db->or_like('kbli', $search);
+                $this->db->or_like('nama_produk', $search);
+                $this->db->or_like('jenis_produk', $search);
+                $this->db->or_like('formulir.provinsi', $search);
+                $this->db->or_like('fullname', $search);
+                $this->db->group_end();
+            }
+            $count = $this->Formulir_m->getFormulirPusat($this->data['userdata']['employee_id'], $prov, $pend, $stat);
         }                    
 
         $totalRecords = $count->num_rows();
@@ -711,16 +739,42 @@ class Formulir extends Telescoope_Controller {
         
         if($simpan){
 
-            // $formulir_id = $this->db->insert_id();
-            
-            // if (!empty($formulir_id)) {
-                
-            //     $pusat = array("Petugas A", "Petugas B", "Petugas C");
+            $formulir_id = $this->db->insert_id();
 
-            //     $assignedPusat = $pusat[array_rand($pusat)]; 
+            $task_1 = $this->Formulir_m->getTask(284)->num_rows();
+            $task_2 = $this->Formulir_m->getTask(651)->num_rows();
+            $task_3 = $this->Formulir_m->getTask(652)->num_rows();
+            $task_4 = $this->Formulir_m->getTask(653)->num_rows();
+            
+            if (!empty($formulir_id)) {
                 
+                if ($task_1 == $task_2 && $task_1 == $task_3 && $task_1 == $task_4 && $task_2 == $task_3 && $task_2 == $task_4) {
+                    
+                    $assign = 284;
+
+                } else if ($task_1 > $task_2 && $task_1 > $task_3 && $task_1 > $task_4 && $task_2 == $task_3 && $task_2 == $task_4 && $task_3 == $task_4) {
+
+                    $assign = 651;
+
+                } else if ($task_1 == $task_2 && $task_1 > $task_3 && $task_1 > $task_4 && $task_2 > $task_3 && $task_2 > $task_4) {
+
+                    $assign = 652;
+
+                } else if ($task_1 == $task_2 && $task_1 == $task_3 && $task_1 > $task_4 && $task_2 > $task_4 && $task_3 > $task_4) {
+
+                    $assign = 653;
+
+                }                
                 
-            // }
+                $data_pusat = array(
+                    'user_id' => $assign,
+                    'formulir_id' => $formulir_id,
+                    'created_date' => date('Y-m-d H:i:s')
+                );
+
+                $this->db->insert('task', $data_pusat);
+                
+            }
             
             if ($this->db->trans_status() === FALSE)  {
                 $this->setMessage("Failed save data.");
