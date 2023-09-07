@@ -268,9 +268,18 @@ class Formulir extends Telescoope_Controller {
 
         $position = $this->Administration_m->getPosition("ENUM");
 
-        $listemp = array(638,639,640,641,642,643,644,645,646,647,613,515,601,550,529);
+        $this->db->select('id');
+        $this->db->from('adm_employee');
+        $this->db->where('id >=', 780);
+        $query = $this->db->get();
+
+        $list_ids = array();
+
+        foreach ($query->result_array() as $row) {
+            $list_ids[] = $row['id'];
+        }
         
-        if (!in_array($this->data['userdata']['employee_id'], $listemp)) {
+        if (!in_array($this->data['userdata']['employee_id'], $list_ids)) {
             $this->noAccess("Maaf, pengisian data sudah ditutup.");
         }
 

@@ -155,13 +155,22 @@ class Log extends Telescoope_Controller {
 
 			$emp = $this->Administration_m->employee_view($data['employeeid'])->row_array();
 
-			$listemp = array(638,639,640,641,642,643,644,645,646,647,613,515,601,550,529);
+			$this->db->select('id');
+			$this->db->from('adm_employee');
+			$this->db->where('id >=', 780);
+			$query = $this->db->get();
+
+			$list_ids = array();
+
+			foreach ($query->result_array() as $row) {
+				$list_ids[] = $row['id'];
+			}
 			
 			if(!empty($data)){
 				if($emp['status'] == 2){
 					if($emp['job_title'] == 'ENUM') {
 						
-						if (in_array($data['employeeid'], $listemp)) {
+						if (in_array($data['employeeid'], $list_ids)) {
 
 							$first_pos = $this->db->where("employee_id",$data['employeeid'])->order_by('is_main_job','desc')->get("vw_adm_pos")->row()->pos_id;
 							$this->session->set_userdata(do_hash("ROLE"),$first_pos);
