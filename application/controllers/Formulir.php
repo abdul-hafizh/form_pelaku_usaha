@@ -326,6 +326,10 @@ class Formulir extends Telescoope_Controller {
             $data['pendamping'] = $this->db->get_where('adm_employee', ['id' => $data['detail']['user_id']])->row_array();
         }
 
+        $pusat = $this->db->select('fullname')->join('task', 'adm_employee.id = task.user_id', 'left')->where('task.formulir_id', $data['detail']['id'])->get('adm_employee')->row_array();
+
+        $data['pusat'] = $pusat != NULL ? " | " . $pusat['fullname'] : "";
+
 		$this->template("formulir/detail_formulir_v", "Detail Data Pelaku Usaha", $data);
     }
 

@@ -38,6 +38,7 @@
             <th>Password OSS</th>
             <th>Alasan Unapprove</th>
             <th>Status Approve</th>
+            <th>Pusat</th>
             <th>Status Pendampingan</th>
         </tr>
     </thead>
@@ -77,6 +78,7 @@
                 <td><?php echo $v['password_oss']; ?></td>
                 <td><?php echo $v['alasan']; ?></td>
                 <td><?php if ($v['status'] == 2) { echo '<span>Sudah Diapprove</span>'; } elseif ($v['status'] == 3) { echo '<span>Tidak Diapprove</span>'; } else { echo '<span class="badge bg-danger">Belum Diapprove</span>'; } ?></td>
+                <td><?php $pusat = $this->db->select('fullname')->join('task', 'adm_employee.id = task.user_id', 'left')->where('task.formulir_id', $v['id'])->get('adm_employee')->row_array(); echo $pusat != NULL ? $pusat['fullname'] : ""?></td>
                 <td><?php echo $v['status_pendamping'] == 2 ? '<span>Selesai Pendamping</span>' : '<span>Belum Selesai</span>' ; ?></td>                                
             </tr>    
         <?php } ?>
