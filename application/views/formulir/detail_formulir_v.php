@@ -136,15 +136,15 @@
                         <input type="number" class="form-control" name="no_npwp" placeholder="NPWP Jika Ada" value="<?php echo $detail['no_npwp']; ?>" readonly >
                     </div>
                 </div>     
-
-                <?php if(isset($form_srv['file_nib'])) { ?>
-                    <div class="row mb-3">
-                        <div class="col-lg-3">
-                            <label class="form-label">6. NIB <small class="text-muted">Jika ada</small></label>
-                        </div>                    
-                        <div class="col-lg-3 is_nib">
-                            <input type="number" class="form-control" name="no_nib no_nib_inp" placeholder="NIB Jika Ada" value="<?php echo $detail['no_nib']; ?>" readonly >
-                        </div>                    
+                
+                <div class="row mb-3">
+                    <div class="col-lg-3">
+                        <label class="form-label">6. NIB <small class="text-muted">Jika ada</small></label>
+                    </div>                    
+                    <div class="col-lg-3 is_nib">
+                        <input type="number" class="form-control" name="no_nib no_nib_inp" placeholder="NIB Jika Ada" value="<?php echo $detail['no_nib']; ?>" readonly >
+                    </div>                
+                    <?php if(isset($form_srv['file_nib'])) { ?>    
                         <div class="col-lg-1">
                             <div class="d-inline-flex gap-2 border border-dashed p-2 mb-2 w-75">
                                 <a href="<?php echo base_url('uploads/formulir/' . $form_srv['file_nib']); ?>" target="_blank" class="bg-light rounded p-1">
@@ -152,8 +152,8 @@
                                 </a>
                             </div>
                         </div>
-                    </div>
-                <?php } ?>
+                    <?php } ?>
+                </div>
                 
                 <div class="is_no_nib">
                     <div class="row mb-3">
