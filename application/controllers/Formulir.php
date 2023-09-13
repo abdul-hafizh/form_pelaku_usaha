@@ -1270,6 +1270,7 @@ class Formulir extends Telescoope_Controller {
         $data_srv = array(            
             'id_formulir' => $post['id_form'],
             'id_surveyor' => $post['surveyor'],
+            'id_pu' => $post['id_pu'],
             'klasifikasiproduk' => $post['klasifikasiproduk'],
             'rincianproduk' => $post['rincianproduk'],
             'username' => $post['username'],

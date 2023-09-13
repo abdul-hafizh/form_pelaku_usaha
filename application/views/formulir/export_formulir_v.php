@@ -7,6 +7,7 @@
         <tr>
             <th class='col-sm-1 text-center'>No</th>
             <th>Pelaku Usaha</th>
+            <th>No ID PU</th>
             <th>NIK</th>
             <th>KBLI</th>
             <th>Nama Produk</th>
@@ -47,6 +48,7 @@
             <tr> 
                 <td class='text-center'><?php echo $no++; ?></td>
                 <td><?php echo $v['nama_pelaku_usaha']; ?></td>
+                <td><?php echo $v['id_pu']; ?></td>
                 <td><?php echo "'".$v['nik']; ?></td>
                 <td><?php echo $v['kbli']; ?></td>
                 <td><?php echo $v['nama_produk']; ?></td>

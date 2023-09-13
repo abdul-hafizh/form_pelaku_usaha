@@ -35,7 +35,7 @@
             <div class="card-body">
                 <div class="row mb-3">
                     <div class="col-lg-12">
-                        <label class="float-start">&nbsp;</label>
+                        <label class="form-label float-start text-muted"><?php echo isset($form_srv['id_pu']) ? 'No ID PU: ' . $form_srv['id_pu'] : '' ?></label>
                         <label class="form-label float-end text-muted"><i><?php echo 'input: ' . $detail['tanggal_input'] . ' | update: ' . $detail['tanggal_update'] . ' | approve: ' . $detail['tanggal_approve'] ; ?></i></label>
                     </div>
                 </div>
@@ -666,11 +666,14 @@
                                 <label class="form-label">Klasifikasi Produk</label>
                                 <input type="text" class="form-control" name="klasifikasiproduk" placeholder="Klasifikasi Produk">
                             </div>
-
                             <div class="mt-3">
                                 <label class="form-label">Rincian Produk</label>
                                 <input type="text" class="form-control" name="rincianproduk" placeholder="Rincian Produk">
-                            </div>                         
+                            </div>    
+                            <div class="mt-3">
+                                <label class="form-label">No ID PU</label>
+                                <input type="number" class="form-control" name="id_pu" min="0" max="9999999" placeholder="1234567" required>
+                            </div>                 
                         </div>
                         <div class="col">
                             <div class="mt-3">
