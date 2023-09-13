@@ -130,7 +130,7 @@ class Log extends Telescoope_Controller {
 	public function get_pendamping()
 	{
 		$provinces = $this->input->post('provinsi', true);
-		$data = $this->db->get_where('adm_employee', ['provinsi' => $provinces, 'adm_pos_id' => 4])->result_array();
+		$data = $this->db->get_where('adm_employee', ['provinsi' => $provinces, 'adm_pos_id' => 4, 'status' => 2])->result_array();
 		echo json_encode($data);
 	}
 	
