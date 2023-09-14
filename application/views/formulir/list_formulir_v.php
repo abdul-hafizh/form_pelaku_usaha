@@ -96,6 +96,7 @@
                             <th>Pendamping</th>
                             <th>Status Approve</th>
                             <th>Status Pendampingan</th>
+                            <th>Pusat</th>
                             <th>Foto</th>
                             <th>Action</th>
                         </tr>
@@ -155,6 +156,7 @@
                 { data: 'pendamping' },
                 { data: 'status_app' },
                 { data: 'status_pend' },
+                { data: 'pusat' },
                 { data: 'foto' },
                 { data: 'action' },
             ]            

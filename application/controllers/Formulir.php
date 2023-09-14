@@ -236,6 +236,8 @@ class Formulir extends Telescoope_Controller {
                     </div>';
             }
 
+            $pusat = $this->db->select('fullname')->join('task', 'adm_employee.id = task.user_id', 'left')->where('task.formulir_id', $v['id'])->get('adm_employee')->row_array();
+
             $data[] = array(
                 "nama_pelaku_usaha" => $v['nama_pelaku_usaha'],
                 "kbli" => $v['kbli'],
@@ -246,6 +248,7 @@ class Formulir extends Telescoope_Controller {
                 "pendamping" => $namapnd['fullname'],
                 "status_app" => $status_app,
                 "status_pend" => $v['status_pendamping'] == 2 ? '<span class="badge bg-success">Selesai Pendamping</span>' : '<span class="badge bg-danger">Belum Selesai</span>',
+                "pusat" => $pusat != NULL ? $pusat['fullname'] : "",
                 "foto" => '<div class="avatar-group">' . $foto_ktp . $foto_prod1 . $foto_prod2 . $foto_prod3 . '</div>',
                 "action" => $action
             );
