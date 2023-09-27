@@ -53,7 +53,7 @@
                     </div>
                 <?php } ?>
                 
-                <?php if(isset($form_srv['username']) && $userdata['pos_name'] != 'ENUM') { ?>
+                <?php if(isset($form_srv['username'])) { ?>
                     <div class="row mb-3">                    
                         <div class="col-lg-3">
                             <label class="form-label">Username PU</label>
