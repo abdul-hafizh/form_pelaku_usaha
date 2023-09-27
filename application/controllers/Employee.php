@@ -180,7 +180,7 @@ class Employee extends Telescoope_Controller
         'fullname' => $post['fullname'],
         'nik' => $post['nik'],
         'provinsi' => $post['provinsi'],
-        'kabupaten' => $post['kabupaten'],
+        'kabupaten' => isset($post['kabupaten']) ? $post['kabupaten'] : '',
         'alamat' => $post['alamat'],
         'email' => $post['email'],
         'phone' => $post['phone'],
